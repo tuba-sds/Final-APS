@@ -1,0 +1,5 @@
+# Local Claude Code settings (machine-specific)
+.claude/
+
+# OS
+.DS_Store
