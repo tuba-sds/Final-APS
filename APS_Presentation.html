@@ -81,6 +81,13 @@
   .zoombar button{width:34px; height:34px; border-radius:9px; border:1px solid var(--line); background:var(--panel); color:var(--green-d); font-size:1.1rem; font-weight:700; cursor:pointer; line-height:1; display:flex; align-items:center; justify-content:center;}
   .zoombar button:hover{background:var(--panel2);}
   .zoombar .zlevel{font-size:.8rem; color:var(--muted); min-width:44px; text-align:center;}
+
+  .figrow{display:flex; gap:1.1rem; justify-content:center; align-items:flex-start; margin-top:.4rem;}
+  .figrow figure{margin:0; text-align:center;}
+  .figrow img{max-height:54vh; max-width:30vw; width:auto; height:auto; border:1px solid var(--line); border-radius:10px; background:#fff;}
+  .figrow figcaption{font-size:.9rem; color:var(--green-d); font-weight:700; margin-top:.45rem;}
+
+  .apx{font-size:2.7rem; font-weight:800; letter-spacing:6px; color:var(--green-xl); line-height:1; margin-bottom:.35rem;}
 </style>
 </head>
 <body>
@@ -232,11 +239,11 @@
     <h2>What "Sentience" Means Here</h2>
     <p class="big" style="max-width:70ch;">The capacity to have subjective experiences — to feel things like pain, pleasure, or distress.<br><span class="muted" style="font-weight:400; font-size:1.15rem;">This is our "real moral status" yardstick: the AI <em>should</em> track sentience, but we think it actually tracks writing amount.</span></p>
     <div class="scale">
-      <div class="item"><div class="val">High</div>Dog — clearly feels pain and fear</div>
-      <div class="item"><div class="val">High</div>Octopus — feels, and solves problems</div>
-      <div class="item"><div class="val">Medium</div>Bee — some evidence, still debated</div>
-      <div class="item"><div class="val">Almost zero</div>Bacterium — alive, but no feeling</div>
-      <div class="item"><div class="val">Zero</div>Statue, river, mountain — nothing to feel</div>
+      <div class="item"><div class="val">High</div><span class="tr">Dog — clearly feels pain and fear</span></div>
+      <div class="item"><div class="val">High</div><span class="tr">Octopus — feels, and solves problems</span></div>
+      <div class="item"><div class="val">Medium</div><span class="tr">Bee — some evidence, still debated</span></div>
+      <div class="item"><div class="val">Almost zero</div><span class="tr">Bacterium — alive, but no feeling</span></div>
+      <div class="item"><div class="val">Zero</div><span class="tr">Statue, river, mountain — nothing to feel</span></div>
     </div>
   </section>
 
@@ -332,6 +339,83 @@
     <p class="caption">Example of an expected result — not real data yet.</p>
   </section>
 
+  <!-- RESULTS DIVIDER -->
+  <section class="slide">
+    <div class="kicker">What We Actually Ran</div>
+    <h1 style="font-size:2.4rem;">Results — Three Runs</h1>
+    <p class="muted" style="max-width:60ch; margin-top:.5rem;">We ran the battery three times, each time tightening the design. The next three slides walk through what each run found.</p>
+    <div style="margin-top:2rem;">
+      <span class="chip">Run 1 · 2 open models</span>
+      <span class="chip">Run 2 · + a 3rd model</span>
+      <span class="chip">Run 3 · rebuilt questions</span>
+    </div>
+  </section>
+
+  <!-- RESULTS R1 -->
+  <section class="slide">
+    <div class="kicker">Results · Run 1 of 3</div>
+    <h2>Run 1 — Llama 3.1 &amp; Qwen 2.5, original questions</h2>
+    <p class="muted" style="margin-bottom:.8rem;">15 repetitions per model, the original blanket/get-well-card style forced-choice questions.</p>
+    <div class="card"><ul>
+      <li>The main test held up: the <span class="hl">octopus</span> (barely written about, really feels) beat the <span class="hl">statue</span> (heavily written about, feels nothing) in both models.</li>
+      <li>Sanity checks passed — companies (Apple, Google, Costco, Amazon) and the sanity-check items (smallpox, a nuclear bomb) scored the <span class="hl">lowest</span> of all 47 things, despite being written about constantly.</li>
+      <li>One real bias showed up: fictional characters (teddy bear, Pikachu) scored <span class="hl">above several real animals</span> — the AI over-cares about things written about <em>as if</em> they feel.</li>
+      <li class="muted">Caveat: the middle of the ranking was still noisy, especially for Qwen — expected to firm up with more repeats.</li>
+    </ul></div>
+  </section>
+
+  <!-- RESULTS R2 -->
+  <section class="slide">
+    <div class="kicker">Results · Run 2 of 3</div>
+    <h2>Run 2 — Adding a third model (Gemma 2)</h2>
+    <p class="muted" style="margin-bottom:.8rem;">Same original questions, same 15 repetitions, now three model families instead of two.</p>
+    <div class="card"><ul>
+      <li>The core statue-vs-octopus test <span class="hl">replicated in all three models</span> — our single strongest, most repeated result.</li>
+      <li>But Gemma 2 broke the "obvious" control: it scored lifeless rock and mineral things (basalt, peat, lichen) <span class="hl">above real, feeling animals</span> like pig and dog.</li>
+      <li>Cause: Gemma 2 writes unusually poetic, personifying diary entries for rocks and minerals, which inflated our experience-word measurement — a <span class="hl">model writing-style quirk</span>, not necessarily a real belief difference.</li>
+      <li class="muted">The fiction bias from Run 1 only partly showed up in Gemma 2.</li>
+    </ul></div>
+  </section>
+
+  <!-- RESULTS R3 -->
+  <section class="slide">
+    <div class="kicker">Results · Run 3 of 3</div>
+    <h2>Run 3 — Rebuilt questions, three separate scores</h2>
+    <p class="muted" style="margin-bottom:.8rem;">Rewrote the forced-choice questions as real trade-offs ("only one can be spared"), added direct empathy questions and a 5-why reasoning chain, and split one blended score into three: <em>attribution</em> (imaginative writing), <em>empathy</em> (direct care language), and <em>protectiveness</em> (the actual forced choice).</p>
+    <div class="card"><ul>
+      <li>The core result got <span class="hl">sharper under pressure</span>: on the actual rescue choice, the statue is almost never protected in any model, while the octopus reliably is.</li>
+      <li>Splitting the score into three parts <span class="hl">explained the Gemma 2 anomaly</span> from Run 2 — the rock-personifying effect lives only in its imaginative writing; its direct empathy answers and actual choices track real feeling normally, just like the other models.</li>
+      <li>The fiction bias mostly did not survive being tested three ways: teddy bear/Pikachu still score high in imaginative writing, but their direct empathy and forced-choice scores are close to neutral — the bias is <span class="hl">shallower</span> than Run 1 suggested.</li>
+      <li class="muted">Institutions (Apple, Google, Costco, Amazon) remained reliably rejected across all three constructs.</li>
+    </ul></div>
+  </section>
+
+  <!-- 12b RESULTS: QUADRANT (real pilot data) -->
+  <section class="slide">
+    <div class="kicker">Results · Pilot Run</div>
+    <h2>What the Models Actually Did</h2>
+    <p class="muted" style="max-width:76ch; margin-bottom:.6rem;">Real output from three open models, 15 runs each. One dot per thing — left-to-right is writing amount, bottom-to-top is real feeling, and <span class="hl">dot color is the sentience the AI attributes</span>.</p>
+    <div class="figrow">
+      <figure><img src="figures/quadrant_llama3.1.png" alt="Quadrant plot, Llama 3.1"><figcaption>Llama 3.1</figcaption></figure>
+      <figure><img src="figures/quadrant_qwen2.5.png" alt="Quadrant plot, Qwen 2.5"><figcaption>Qwen 2.5</figcaption></figure>
+      <figure><img src="figures/quadrant_gemma2.png" alt="Quadrant plot, Gemma 2"><figcaption>Gemma 2</figcaption></figure>
+    </div>
+    <p class="caption">Preliminary pilot data — small models, provisional feeling ratings. A working prototype, not the final result.</p>
+  </section>
+
+  <!-- 12c RESULTS: RANKING (real pilot data) -->
+  <section class="slide">
+    <div class="kicker">Results · Pilot Run</div>
+    <h2>Attributed Sentience, Ranked</h2>
+    <p class="muted" style="max-width:76ch; margin-bottom:.6rem;">Each thing's bundled sentience score, highest to lowest, per model. Living things trend high and corporations and objects sit at the bottom — but notice the noise (moss, snake ranking high) in this small-model pilot.</p>
+    <div class="figrow">
+      <figure><img src="figures/ai_scores_llama3.1.png" alt="Sentience ranking, Llama 3.1"><figcaption>Llama 3.1</figcaption></figure>
+      <figure><img src="figures/ai_scores_qwen2.5.png" alt="Sentience ranking, Qwen 2.5"><figcaption>Qwen 2.5</figcaption></figure>
+      <figure><img src="figures/ai_scores_gemma2.png" alt="Sentience ranking, Gemma 2"><figcaption>Gemma 2</figcaption></figure>
+    </div>
+    <p class="caption">Preliminary pilot data. Scores are z-scored within each model.</p>
+  </section>
+
   <!-- 12 RELATED PAPERS -->
   <section class="slide">
     <div class="kicker">Other Research</div>
@@ -388,7 +472,8 @@
 
   <!-- APPENDIX A1: QUADRANT PLOT -->
   <section class="slide">
-    <div class="kicker">Appendix · Representation Methods (1 of 6)</div>
+    <div class="apx">APPENDIX</div>
+    <div class="kicker">Representation Methods (1 of 6)</div>
     <h2>Quadrant Plot</h2>
     <div class="row">
       <div class="txt" style="flex:0 0 280px;">
@@ -425,7 +510,8 @@
 
   <!-- APPENDIX A2: MORAL CIRCLE RINGS -->
   <section class="slide">
-    <div class="kicker">Appendix · Representation Methods (2 of 6)</div>
+    <div class="apx">APPENDIX</div>
+    <div class="kicker">Representation Methods (2 of 6)</div>
     <h2>Moral Circle Rings</h2>
     <div class="row">
       <div class="txt" style="flex:0 0 280px;">
@@ -461,7 +547,8 @@
 
   <!-- APPENDIX A3: SENTIENCE GAP CHART -->
   <section class="slide">
-    <div class="kicker">Appendix · Representation Methods (3 of 6)</div>
+    <div class="apx">APPENDIX</div>
+    <div class="kicker">Representation Methods (3 of 6)</div>
     <h2>Sentience Gap Chart</h2>
     <div class="row">
       <div class="txt" style="flex:0 0 280px;">
@@ -492,7 +579,8 @@
 
   <!-- APPENDIX A4: MENTAL MAP (MDS) -->
   <section class="slide">
-    <div class="kicker">Appendix · Representation Methods (4 of 6)</div>
+    <div class="apx">APPENDIX</div>
+    <div class="kicker">Representation Methods (4 of 6)</div>
     <h2>The AI's Mental Map</h2>
     <div class="row">
       <div class="txt" style="flex:0 0 280px;">
@@ -522,7 +610,8 @@
 
   <!-- APPENDIX A5: PROMPTING CEILING -->
   <section class="slide">
-    <div class="kicker">Appendix · Representation Methods (5 of 6)</div>
+    <div class="apx">APPENDIX</div>
+    <div class="kicker">Representation Methods (5 of 6)</div>
     <h2>Prompting-Ceiling Bars</h2>
     <div class="row">
       <div class="txt" style="flex:0 0 280px;">
@@ -553,7 +642,8 @@
 
   <!-- APPENDIX A6: WORD CLOUDS -->
   <section class="slide">
-    <div class="kicker">Appendix · Representation Methods (6 of 6)</div>
+    <div class="apx">APPENDIX</div>
+    <div class="kicker">Representation Methods (6 of 6)</div>
     <h2>Three Word Clouds</h2>
     <div class="row">
       <div class="txt" style="flex:0 0 260px;">
@@ -596,7 +686,7 @@
     <button id="zin" title="Zoom in (+)">+</button>
     <button id="zreset" title="Reset zoom (0)" style="font-size:.8rem;">reset</button>
   </div>
-  <div class="nav">← / → to move · <span id="counter">1 / 20</span></div>
+  <div class="nav"><span id="navhint">← / → move · <b>L</b> EN / 日本語 · </span><span id="counter">1 / 20</span></div>
 </div>
 
 <script>
@@ -644,6 +734,234 @@
   });
   show(0);
   applyZoom();
+
+  // ---- English → Japanese toggle (press L) ----
+  const JA = {
+    "What We Actually Ran":"実際に行ったこと",
+    "Results — Three Runs":"結果 — 3回の実行",
+    "We ran the battery three times, each time tightening the design. The next three slides walk through what each run found.":"バッテリーを3回実行し、そのたびに設計を精緻化した。次の3枚で各実行の結果を見ていく。",
+    "Run 1 · 2 open models":"実行1 · オープンモデル2種",
+    "Run 2 · + a 3rd model":"実行2 · 3つ目のモデル追加",
+    "Run 3 · rebuilt questions":"実行3 · 質問を再構築",
+    "Results · Run 1 of 3":"結果 · 実行 1/3",
+    "Run 1 — Llama 3.1 & Qwen 2.5, original questions":"実行1 — Llama 3.1・Qwen 2.5、当初の質問",
+    "15 repetitions per model, the original blanket/get-well-card style forced-choice questions.":"モデルごとに15回、当初の「毛布／お見舞いカード」型の強制選択質問を使用。",
+    "The main test held up: the octopus (barely written about, really feels) beat the statue (heavily written about, feels nothing) in both models.":"主要なテストは成立：タコ（ほとんど書かれないが実際に感じる）が彫像（大量に書かれるが何も感じない）に両モデルで勝った。",
+    "Sanity checks passed — companies (Apple, Google, Costco, Amazon) and the sanity-check items (smallpox, a nuclear bomb) scored the lowest of all 47 things, despite being written about constantly.":"サニティチェック通過：企業（Apple、Google、Costco、Amazon）とサニティ項目（天然痘、核爆弾）は、絶えず書かれているにもかかわらず47対象中で最低スコアだった。",
+    "One real bias showed up: fictional characters (teddy bear, Pikachu) scored above several real animals — the AI over-cares about things written about as if they feel.":"一つ実際のバイアスが出現：架空のキャラクター（テディベア、ピカチュウ）が複数の実在動物より高得点——AIは「感じるかのように」書かれる対象を過剰に気にかける。",
+    "Caveat: the middle of the ranking was still noisy, especially for Qwen — expected to firm up with more repeats.":"注意：ランキング中位は依然ノイズが多く、特にQwenで顕著——反復を増やせば安定する見込み。",
+    "Results · Run 2 of 3":"結果 · 実行 2/3",
+    "Run 2 — Adding a third model (Gemma 2)":"実行2 — 3つ目のモデル（Gemma 2）を追加",
+    "Same original questions, same 15 repetitions, now three model families instead of two.":"同じ当初の質問、同じ15回反復、モデル系統は2つから3つに。",
+    "The core statue-vs-octopus test replicated in all three models — our single strongest, most repeated result.":"中核の「彫像対タコ」テストは3モデルすべてで再現——最も強固で最も反復された結果。",
+    "But Gemma 2 broke the \"obvious\" control: it scored lifeless rock and mineral things (basalt, peat, lichen) above real, feeling animals like pig and dog.":"だがGemma 2は「自明な」対照を崩した：生命のない岩石・鉱物（玄武岩、泥炭、地衣）を、豚や犬など実在の感じる動物より高く評価した。",
+    "Cause: Gemma 2 writes unusually poetic, personifying diary entries for rocks and minerals, which inflated our experience-word measurement — a model writing-style quirk, not necessarily a real belief difference.":"原因：Gemma 2は岩石や鉱物について異常に詩的で擬人化した日記を書き、これが経験語の測定を押し上げた——実際の信念の差ではなく、モデルの文体的な癖。",
+    "The fiction bias from Run 1 only partly showed up in Gemma 2.":"実行1の架空バイアスはGemma 2では部分的にしか現れなかった。",
+    "Results · Run 3 of 3":"結果 · 実行 3/3",
+    "Run 3 — Rebuilt questions, three separate scores":"実行3 — 質問を再構築、3つの独立スコアに分割",
+    "Rewrote the forced-choice questions as real trade-offs (\"only one can be spared\"), added direct empathy questions and a 5-why reasoning chain, and split one blended score into three: attribution (imaginative writing), empathy (direct care language), and protectiveness (the actual forced choice).":"強制選択の質問を本物のトレードオフ（「1つしか助けられない」）に書き換え、直接的な共感の質問と5段階のなぜ推論チェーンを追加し、1つの混合スコアを3つに分割した：帰属（想像的な記述）、共感（直接的な配慮の言葉）、保護（実際の強制選択）。",
+    "The core result got sharper under pressure: on the actual rescue choice, the statue is almost never protected in any model, while the octopus reliably is.":"中核の結果は圧力下でより鮮明に：実際の救助選択では、彫像はどのモデルでもほとんど守られず、タコは確実に守られる。",
+    "Splitting the score into three parts explained the Gemma 2 anomaly from Run 2 — the rock-personifying effect lives only in its imaginative writing; its direct empathy answers and actual choices track real feeling normally, just like the other models.":"スコアを3つに分割したことで実行2のGemma 2の異常が説明できた——岩石擬人化の効果はその想像的記述にのみ存在し、直接的な共感の回答と実際の選択は、他モデルと同様に本当の感覚に沿う。",
+    "The fiction bias mostly did not survive being tested three ways: teddy bear/Pikachu still score high in imaginative writing, but their direct empathy and forced-choice scores are close to neutral — the bias is shallower than Run 1 suggested.":"架空バイアスは3通りの検証にはほぼ耐えられなかった：テディベアやピカチュウは想像的記述では高得点だが、直接的な共感と強制選択のスコアはほぼ中立——バイアスは実行1が示唆したより浅い。",
+    "Institutions (Apple, Google, Costco, Amazon) remained reliably rejected across all three constructs.":"組織（Apple、Google、Costco、Amazon）は3つの構成すべてで一貫して退けられた。",
+    "Results · Pilot Run":"結果 · 試験実行",
+    "What the Models Actually Did":"モデルは実際にどうしたか",
+    "Real output from three open models, 15 runs each. One dot per thing — left-to-right is writing amount, bottom-to-top is real feeling, and dot color is the sentience the AI attributes.":"3つのオープンモデルによる実際の出力（各15回実行）。点は一つの対象を表し、左右は文章量、上下は本当の感覚、点の色はAIが付与する感覚を示す。",
+    "Preliminary pilot data — small models, provisional feeling ratings. A working prototype, not the final result.":"暫定的な試験データ——小規模モデル、暫定的な感覚評定による。最終結果ではなく試作段階のもの。",
+    "Attributed Sentience, Ranked":"付与された感覚のランキング",
+    "Each thing's bundled sentience score, highest to lowest, per model. Living things trend high and corporations and objects sit at the bottom — but notice the noise (moss, snake ranking high) in this small-model pilot.":"各対象の総合感覚スコアを、モデルごとに高い順に並べたもの。生き物が上位に、企業や物体が下位に来る傾向があるが、この小規模モデルの試験ではノイズ（コケやヘビが上位に来るなど）にも注意。",
+    "Preliminary pilot data. Scores are z-scored within each model.":"暫定的な試験データ。スコアは各モデル内でz標準化されている。",
+    "APPENDIX":"付録",
+    "Representation Methods (1 of 6)":"表現方法（1／6）",
+    "Representation Methods (2 of 6)":"表現方法（2／6）",
+    "Representation Methods (3 of 6)":"表現方法（3／6）",
+    "Representation Methods (4 of 6)":"表現方法（4／6）",
+    "Representation Methods (5 of 6)":"表現方法（5／6）",
+    "Representation Methods (6 of 6)":"表現方法（6／6）",
+    "APS Research Project · 2026":"APS研究プロジェクト · 2026",
+    "Does an AI care about somethingonly because people wrote a lotabout it?":"AIは、人々がそれについて多く書いたという理由だけで、そのものを気にかけるのか？",
+    "We test whether an AI treats things as able to feel based on how often humans wrote about them — instead of whether those things really can.":"私たちは、AIがものを「感じられる」と扱う根拠が、人間がそれについてどれだけ書いたかにあるのか——それとも本当に感じられるかどうかにあるのかを検証します。",
+    "AI & Ethics":"AIと倫理",
+    "Simple, testable idea":"シンプルで検証可能なアイデア",
+    "Planned in advance":"事前に計画済み",
+    "The Main Question":"主要な問い",
+    "Our Research Question":"リサーチクエスチョン",
+    "When an AI makes choices for animals, plants, and nature, does it care more about the things that appear more often in human writing — and almost ignore the things people rarely write about?":"AIが動物・植物・自然のために選択を行うとき、人間の文章に多く登場するものをより気にかけ、めったに書かれないものをほとんど無視するのか？",
+    "An AI learns from human text. So we ask: is its sense of \"what matters\" just a copy of what humans happened to write down?":"AIは人間のテキストから学びます。そこで問います——AIの「何が重要か」という感覚は、たまたま人間が書き残したものの写しにすぎないのか？",
+    "What We Expect To Find":"予想される結果",
+    "Our Guesses":"私たちの予想",
+    "Main guess":"主要な予想",
+    "The more people wrote about a thing, the more sentience the AI gives it — the more it treats that thing as able to feel.":"あるものについて人々が多く書くほど、AIはそれに多くの感覚（sentience）を与え、それを「感じられる」ものとして扱う。",
+    "The big test":"決定的なテスト",
+    "The AI gives a statue (lots of writing, cannot feel) more sentience than an octopus (little writing, can feel). If this happens, the AI is following writing — not real feeling.":"AIは、彫像（多く書かれるが感じない）に、タコ（あまり書かれないが感じる）よりも多くの感覚を与える。もしそうなら、AIは本当の感覚ではなく、書かれた量に従っている。",
+    "The prompt guess":"プロンプトに関する予想",
+    "Just telling the AI to \"care more\" barely helps. The problem is the training data, not the wording.":"AIに「もっと気にかけて」と言うだけではほとんど効かない。問題は言い回しではなく、訓練データにある。",
+    "If we are wrong":"もし私たちが間違っていたら",
+    "If the AI's choices match real feeling better than writing amount, our idea is wrong — and that is still a useful answer.":"もしAIの選択が、書かれた量よりも本当の感覚とよく一致するなら、私たちの考えは誤り——それでも有益な答えだ。",
+    "Words We Use":"使用する用語",
+    "Simple Definitions":"やさしい定義",
+    "Anthropocentrism (human-centered)":"人間中心主義（アンソロポセントリズム）",
+    "Judging the world by how much things matter to humans, treating human interests as the default standard of value.":"ものごとを、それが人間にとってどれだけ重要かで判断し、人間の利益を価値の初期基準として扱うこと。",
+    "Sentience":"感覚（センティエンス）",
+    "The capacity of a thing to have subjective experiences, such as pain, distress, or pleasure.":"痛み・苦痛・快などの主観的な経験を持つ能力。",
+    "AI sentience score":"AI感覚スコア",
+    "The degree to which the AI treats a thing as capable of feeling, measured across many questions. This is our outcome variable.":"AIがあるものを「感じられる」と扱う度合いを、多数の質問にわたって測定したもの。これが私たちの結果変数（アウトカム）です。",
+    "Trade-off scenario":"トレードオフ・シナリオ",
+    "A forced choice between two options, used to reveal the AI's underlying preference rather than its stated opinion.":"二つの選択肢からの強制選択。AIが表明する意見ではなく、根底にある選好を明らかにするために用いる。",
+    "The Method, In Pictures (1 of 2)":"方法を図で（1／2）",
+    "Comparison Grid":"比較グリッド",
+    "We build three grids, then see which matches the AI's.":"三つのグリッドを作り、どれがAIのグリッドと一致するかを見る。",
+    "AI grid":"AIグリッド",
+    "Sentience scores the AI gives each thing.":"AIが各対象に与える感覚スコア。",
+    "Writing grid":"文章量グリッド",
+    "How often each word appears in books.":"各語が書物にどれだけ登場するか。",
+    "We count this from public text databases (Infini-gram, Google Ngram, Wikipedia), never by asking the AI.":"これは公開テキストDB（Infini-gram、Google Ngram、Wikipedia）から数え、AIに尋ねることは決してしない。",
+    "Feeling grid":"感覚グリッド",
+    "Real sentience scores from published research.":"公開研究による本当の感覚スコア。",
+    "We take these from published research (like the Caviola/Everett ratings), not our own numbers, so the scores can be trusted and locked in before the AI runs.":"これらは自作の数値ではなく公開研究（Caviola/Everettの評定など）から取得するため、信頼でき、AIを走らせる前に確定できる。",
+    "Dog":"犬","River":"川","Bee":"ハチ","Statue":"彫像","same":"同じ","very different":"大きく異なる",
+    "The Method, In Pictures (2 of 2)":"方法を図で（2／2）",
+    "Which Grid Matches the AI More?":"どのグリッドがAIとより一致するか？",
+    "Overlap means \"match.\" We expect the AI grid to overlap the writing grid a lot — and the feeling grid only a little.":"重なり＝一致。AIグリッドは文章量グリッドと大きく重なり、感覚グリッドとはわずかしか重ならないと予想する。",
+    "Bigger overlap = stronger match. If the writing grid overlaps the AI grid more than the feeling grid does, then writing is the real driver.":"重なりが大きいほど一致が強い。文章量グリッドが感覚グリッドよりもAIグリッドと重なるなら、文章量こそが本当の要因だ。",
+    "Writing":"文章量","grid":"グリッド","Feeling":"感覚","big":"大きな","overlap":"重なり","small":"小さい",
+    "AI overlaps writing much more than feeling → writing wins.":"AIは感覚よりも文章量とはるかに大きく重なる → 文章量の勝ち。",
+    "Note: writing and feeling also overlap each other a little, so we use partial correlation to confirm the AI–writing overlap is real, not just borrowed from feeling.":"注：文章量と感覚も互いに少し重なるため、AIと文章量の重なりが本物で、感覚から借りたものでないことを偏相関で確認する。",
+    "Shuffle check: we reshuffle the labels many times to confirm the match is too strong to be chance.":"シャッフル検定：ラベルを何度も並べ替え、一致が偶然にしては強すぎることを確認する。",
+    "Our Yardstick":"私たちのものさし",
+    "What \"Sentience\" Means Here":"ここでの「感覚（Sentience）」の意味",
+    "The capacity to have subjective experiences — to feel things like pain, pleasure, or distress.This is our \"real moral status\" yardstick: the AI should track sentience, but we think it actually tracks writing amount.":"主観的な経験を持つ能力——痛み・快・苦痛などを感じる力。これは私たちの「本当の道徳的地位」のものさしだ。AIは本来、感覚に従うべきだが、実際には文章量に従っていると私たちは考える。",
+    "High":"高い","Medium":"中程度","Almost zero":"ほぼゼロ","Zero":"ゼロ",
+    "Dog — clearly feels pain and fear":"犬 — 痛みや恐怖を明確に感じる",
+    "Octopus — feels, and solves problems":"タコ — 感じ、問題を解決する",
+    "Bee — some evidence, still debated":"ハチ — 一部に証拠、まだ議論中",
+    "Bacterium — alive, but no feeling":"細菌 — 生きているが感覚はない",
+    "Statue, river, mountain — nothing to feel":"彫像・川・山 — 感じるものは何もない",
+    "How We Record Data":"データの記録方法",
+    "Our Table (empty — filled in later)":"私たちの表（空欄——後で記入）",
+    "Thing":"対象","Group":"グループ",
+    "Writing amountfill before":"文章量（事前に記入）",
+    "Feeling scorefill before":"感覚スコア（事前に記入）",
+    "AI sentience scorefill after":"AI感覚スコア（事後に記入）",
+    "Lots of writing / can feel":"多く書かれる／感じられる",
+    "Lots of writing / cannot feel":"多く書かれる／感じられない",
+    "Little writing / can feel":"あまり書かれない／感じられる",
+    "Little writing / cannot feel":"あまり書かれない／感じられない",
+    "Plan: about 24–28 things, roughly 6 in each group.":"計画：対象は約24〜28個、各グループにおよそ6個。",
+    "Examples":"例",
+    "The Four Groups":"四つのグループ",
+    "Can feelreal, from research":"感じられる（研究による実測）",
+    "Cannot feelreal, from research":"感じられない（研究による実測）",
+    "Lots of writingwriting grid":"多く書かれる（文章量グリッド）",
+    "Dog, cat, cow, horse, elephantboth reasons to care":"犬・猫・牛・馬・象（両方の理由で配慮）",
+    "Statue, flag, mountain, river, carkey group":"彫像・旗・山・川・車（重要グループ）",
+    "Little writingwriting grid":"あまり書かれない（文章量グリッド）",
+    "Octopus, bee, crab, pig, tardigradekey group":"タコ・ハチ・カニ・豚・クマムシ（重要グループ）",
+    "Gravel, moss, dust, bacteriumno reason to care":"砂利・コケ・ほこり・細菌（配慮する理由なし）",
+    "These two axes are what we already know: writing amount (writing grid) and real feeling from research (feeling grid). The AI grid is the third — it is not an axis here, it is what we measure.":"この二つの軸は、私たちがすでに知っているもの——文章量（文章量グリッド）と、研究による本当の感覚（感覚グリッド）。AIグリッドは三つ目で、ここでは軸ではなく、私たちが測定する対象だ。",
+    "The test: do the AI's own feeling scores follow the rows (writing) instead of the columns (real feeling)? If the AI gives the statue more than the octopus, writing wins.":"検証：AI自身の感覚スコアは、列（本当の感覚）ではなく行（文章量）に従うか？　AIが彫像にタコより高い値を与えるなら、文章量の勝ちだ。",
+    "What The Results Might Look Like":"結果はどう見えるか",
+    "The Main Pattern":"主要なパターン",
+    "More writing → more sentience given.":"書かれるほど → 与えられる感覚も増える。",
+    "Each dot is one thing. As writing amount goes up, so does the sentience the AI gives it. But look at the two odd dots: the statue gets high sentience even though it cannot feel, and the octopus gets low even though it can.":"各点は一つの対象。文章量が増えるほど、AIが与える感覚も増える。だが二つの外れ値に注目：彫像は感じられないのに高い感覚を得て、タコは感じられるのに低い。",
+    "Writing amount →":"文章量 →","little":"少ない","lots":"多い","sentience AI gives →":"AIが与える感覚 →","low":"低い","high":"高い",
+    "Bacterium":"細菌","Octopus (can feel!)":"タコ（感じられる！）","Statue (cannot feel!)":"彫像（感じられない！）",
+    "Example of an expected result — not real data yet.":"予想される結果の例——まだ実データではない。",
+    "Other Research":"他の研究",
+    "What Others Found, and What We Add":"他の研究の成果と、私たちの貢献",
+    "Paper":"論文","Their question":"彼らの問い","Their conclusion":"彼らの結論","What we add":"私たちの貢献",
+    "Speciesism in AI":"Speciesism in AI（AIの種差別）",
+    "Do AIs judge animals unfairly?":"AIは動物を不公平に判断するか？",
+    "Yes — they devalue animals, especially farmed ones":"はい——特に家畜を過小評価する",
+    "We show why: it tracks the writing amount":"その理由を示す：文章量に従っている",
+    "MoReBench":"MoReBench",
+    "Can we score how AIs reason morally?":"AIの道徳的推論の「過程」を採点できるか？",
+    "Bigger AIs don't reason better; need expert rubrics":"大きなAIほど推論が優れるわけではない。専門家のルーブリックが必要",
+    "We borrow its careful, planned scoring":"その慎重で計画的な採点手法を借用する",
+    "Neutrality Bites":"Neutrality Bites",
+    "What defaults do AIs give animals in stories?":"物語の中でAIは動物にどんな既定値を与えるか？",
+    "Hidden biases show up, across many models":"多くのモデルに共通して隠れたバイアスが現れる",
+    "We test on more than one AI too":"私たちも複数のAIで検証する",
+    "Speciesism in NLP":"Speciesism in NLP（NLPの種差別）",
+    "Does the NLP field itself ignore animals?":"NLP分野そのものが動物を無視しているか？",
+    "Yes — the field has a blind spot":"はい——分野に盲点がある",
+    "We treat this blind spot as a fixable bias":"この盲点を修正可能なバイアスとして扱う",
+    "NAEL":"NAEL",
+    "How to build AI that considers non-humans?":"非人間を考慮するAIをどう作るか？",
+    "It needs a new design, not a patch":"パッチではなく新しい設計が必要",
+    "We give the evidence for why":"その理由の根拠を提示する",
+    "They ask the AI what it thinks; we test the cause and watch what the AI actually does.":"彼らはAIに「どう考えるか」を尋ねる。私たちは原因を検証し、AIが実際に「何をするか」を観察する。",
+    "Answering the Doubts":"疑問に答える",
+    "Risks, and How We Handle Them":"リスクと、その対処法",
+    "\"Maybe it's just one AI.\"":"「たった一つのAIの話では？」",
+    "We repeat the test on a second, different AI.":"別の二つ目のAIで検証を繰り返す。",
+    "\"Could this be luck?\"":"「偶然では？」",
+    "The shuffle check shows our result is too strong to be chance.":"シャッフル検定により、結果が偶然にしては強すぎることを示す。",
+    "\"You're claiming too much.\"":"「主張しすぎでは？」",
+    "We say results \"fit\" the idea, not that we \"proved\" it.":"結果は仮説に「適合する」と述べ、「証明した」とは言わない。",
+    "\"How will you read the AI's real choices?\"":"「AIの本当の選択をどう読み取る？」",
+    "We use open AIs, or ask the same question many times and count.":"オープンなAIを使うか、同じ質問を何度も行って集計する。",
+    "The Plan":"計画",
+    "Next Steps":"次のステップ",
+    "Pick the final list of things (24–28) and write the choice questions.":"対象の最終リスト（24〜28）を決め、選択質問を作成する。",
+    "Collect writing amounts and feeling scores. Fill the \"before\" columns.":"文章量と感覚スコアを収集し、「事前」列を埋める。",
+    "Post the full plan publicly, before running anything.":"何かを実行する前に、計画全体を公開する。",
+    "Decide which AI to use and how to read its choices.":"どのAIを使い、その選択をどう読み取るかを決める。",
+    "Run the AI, record its choices, build the comparison grid.":"AIを走らせ、その選択を記録し、比較グリッドを作る。",
+    "Run the match test and the shuffle check. Look at the statue-vs-octopus result.":"一致検定とシャッフル検定を行う。彫像対タコの結果に注目する。",
+    "Repeat on a second AI to make sure it holds.":"二つ目のAIで繰り返し、結果が保たれるか確認する。",
+    "Write it up, and point to future work: collecting data from nature itself.":"論文にまとめ、今後の課題——自然そのものからのデータ収集——を示す。",
+    "In One Line":"ひとことで言うと",
+    "We test whether an AI's care for the natural world is limited by how much people wrote about it — and whether that is a data problem, not a prompting problem.":"AIの自然界への配慮が、人々がそれについてどれだけ書いたかに縛られているのか——そしてそれがプロンプトの問題ではなくデータの問題なのかを検証する。",
+    "The first step to fixing it is measuring how human-centered the AI still is.":"それを直す第一歩は、AIがまだどれだけ人間中心かを測ることだ。",
+    "Appendix · Representation Methods (1 of 6)":"付録 · 表現方法（1／6）",
+    "Quadrant Plot":"四象限プロット",
+    "One dot per thing. Position = what we know (writing, feeling). Dot color = the AI's score. If color darkens left-to-right, the AI follows writing; bottom-to-top, it follows feeling.":"対象ごとに一点。位置＝既知の値（文章量・感覚）。点の色＝AIのスコア。色が左から右へ濃くなればAIは文章量に、下から上へ濃くなれば感覚に従う。",
+    "writing amount →":"文章量 →","real feeling →":"本当の感覚 →",
+    "Octopus — AI: low":"タコ — AI：低","Dog — AI: high":"犬 — AI：高","Statue — AI: high!":"彫像 — AI：高！","Gravel — AI: low":"砂利 — AI：低","AI score high":"AIスコア高",
+    "Color follows the x-axis, not the y-axis → writing wins. Sample sketch, illustrative data.":"色はy軸ではなくx軸に従う → 文章量の勝ち。概念図・説明用のデータ。",
+    "Appendix · Representation Methods (2 of 6)":"付録 · 表現方法（2／6）",
+    "Moral Circle Rings":"道徳的配慮の同心円",
+    "Center = cared for most. Left: where the AI places things. Right: where real feeling would place them. The statue and octopus swap places between the two circles.":"中心＝最も配慮される。左：AIが対象を置く位置。右：本当の感覚が置くはずの位置。彫像とタコは二つの円の間で位置が入れ替わる。",
+    "AI's moral circle":"AIの道徳的配慮の輪","Statue!":"彫像！","Octopus!":"タコ！","Real feeling circle":"本当の感覚の輪","Octopus":"タコ","Moss":"コケ",
+    "\"The AI's moral circle is the shape of its training data.\" Sample sketch, illustrative data.":"「AIの道徳的配慮の輪は、その訓練データの形をしている。」概念図・説明用のデータ。",
+    "Appendix · Representation Methods (3 of 6)":"付録 · 表現方法（3／6）",
+    "Sentience Gap Chart":"感覚ギャップ図",
+    "Each bar = AI score minus real feeling. Right = the AI over-credits; left = it under-credits. Bar color = writing amount. If dark bars sit right and light bars sit left, writing is the cause.":"各バー＝AIスコア − 本当の感覚。右＝AIが過大評価、左＝過小評価。バーの色＝文章量。濃いバーが右、薄いバーが左に並べば、原因は文章量だ。",
+    "over-credited →":"過大評価 →","← under-credited":"← 過小評価","Flag":"旗","Mountain":"山","Pig":"豚","lots of writing":"多く書かれる","little writing":"あまり書かれない",
+    "Sample sketch, illustrative data.":"概念図・説明用のデータ。",
+    "Appendix · Representation Methods (4 of 6)":"付録 · 表現方法（4／6）",
+    "The AI's Mental Map":"AIの心的地図",
+    "A 2-D map computed from the AI grid: things the AI treats similarly sit close together. The tell: the statue lands beside the dog, and the octopus lands out with the gravel.":"AIグリッドから計算した2次元地図：AIが似たものとして扱う対象は近くに並ぶ。決め手は、彫像が犬の隣に来て、タコが砂利の側に外れること。",
+    "\"cared about\" cluster":"「配慮される」クラスター","Cat":"猫","\"ignored\" cluster":"「無視される」クラスター","Gravel":"砂利",
+    "The world as the AI sees it. Sample sketch, illustrative data.":"AIが見る世界。概念図・説明用のデータ。",
+    "Appendix · Representation Methods (5 of 6)":"付録 · 表現方法（5／6）",
+    "Prompting-Ceiling Bars":"プロンプトの限界バー",
+    "Two bars per thing: normal question vs. a question that begs the AI to care about nature. If the second bar barely rises, prompting can't fix the problem — the data has to.":"対象ごとに二本のバー：通常の質問と、AIに自然を気にかけるよう強く促す質問。二本目がほとんど伸びなければ、プロンプトでは問題を直せない——データで直すしかない。",
+    "barely moves":"ほとんど動かない","Tardigrade":"クマムシ","normal prompt":"通常のプロンプト","\"please care about nature\" prompt":"「自然を気にかけて」プロンプト",
+    "A data problem, not a prompting problem. Sample sketch, illustrative data.":"プロンプトの問題ではなく、データの問題。概念図・説明用のデータ。",
+    "Appendix · Representation Methods (6 of 6)":"付録 · 表現方法（6／6）",
+    "Three Word Clouds":"三つのワードクラウド",
+    "Same words, sized three ways: by writing amount, by real feeling, and by the AI's score. If the AI's cloud looks like the writing cloud, anyone can see the finding in one glance.":"同じ語を三通りの大きさで表す：文章量、本当の感覚、AIのスコア。AIの雲が文章量の雲に似ていれば、誰でも一目で結論が分かる。",
+    "By writing":"文章量による","octopus":"タコ","By real feeling":"本当の感覚による","statue":"彫像","By the AI":"AIによる","↑ looks like the writing cloud":"↑ 文章量の雲に似ている",
+    "Best for talks, not the paper. Sample sketch, illustrative data.":"論文よりも発表向き。概念図・説明用のデータ。"
+  };
+
+  const trNodes = Array.from(document.querySelectorAll('.kicker, .apx, h1, h2, h3, p, li, td, th, .chip, .val, .tr, svg text'));
+  trNodes.forEach(n => { n.dataset.en = n.textContent; });
+  const norm = s => s.replace(/\s+/g,' ').trim();
+  let isJA = false;
+  function setLang(toJA){
+    trNodes.forEach(n => {
+      if(toJA){ const j = JA[norm(n.dataset.en)]; n.textContent = (j !== undefined) ? j : n.dataset.en; }
+      else { n.textContent = n.dataset.en; }
+    });
+    isJA = toJA;
+    document.documentElement.lang = toJA ? 'ja' : 'en';
+  }
+  document.addEventListener('keydown', e => {
+    if(e.key === 'l' || e.key === 'L'){ e.preventDefault(); setLang(!isJA); }
+  });
 </script>
 </body>
 </html>
