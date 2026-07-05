@@ -88,6 +88,9 @@
   .figrow figcaption{font-size:.9rem; color:var(--green-d); font-weight:700; margin-top:.45rem;}
 
   .apx{font-size:2.7rem; font-weight:800; letter-spacing:6px; color:var(--green-xl); line-height:1; margin-bottom:.35rem;}
+
+  .dgrow{display:flex; gap:1.4rem; justify-content:center; align-items:flex-start; margin:.4rem 0;}
+  .dgrow svg{max-width:45%; max-height:42vh; height:auto; background:#fff; border:1px solid var(--line); border-radius:10px; padding:.4rem;}
 </style>
 </head>
 <body>
@@ -416,6 +419,78 @@
     <p class="caption">Preliminary pilot data. Scores are z-scored within each model.</p>
   </section>
 
+  <!-- COUNTER-CONCLUSION -->
+  <section class="slide">
+    <div class="kicker">The Surprise</div>
+    <h2>What We Actually Found</h2>
+    <p class="muted" style="margin-bottom:.2rem;">Our first guess was wrong — and the wrong turned out to be more interesting.</p>
+    <div class="dgrow">
+      <svg viewBox="0 0 440 300" width="440">
+        <text x="12" y="20" font-size="14" font-weight="bold" fill="#1f6b41">We expected fame to win</text>
+        <rect x="12" y="38" width="150" height="44" rx="8" fill="#eaf5ee" stroke="#cfe6d8"/>
+        <text x="87" y="65" font-size="12" fill="#153a29" text-anchor="middle">Famous statue</text>
+        <text x="178" y="66" font-size="20" fill="#6d8a7a" text-anchor="middle">&gt;</text>
+        <rect x="196" y="38" width="170" height="44" rx="8" fill="#eaf5ee" stroke="#cfe6d8"/>
+        <text x="281" y="65" font-size="12" fill="#153a29" text-anchor="middle">Rare sea creature</text>
+        <text x="392" y="66" font-size="20" fill="#b0592f" text-anchor="middle">&#10007;</text>
+        <text x="12" y="118" font-size="14" font-weight="bold" fill="#1f6b41">What actually happened</text>
+        <rect x="12" y="136" width="170" height="44" rx="8" fill="#dcefe3" stroke="#57bd86"/>
+        <text x="97" y="163" font-size="12" fill="#153a29" text-anchor="middle">Rare sea creature</text>
+        <text x="198" y="164" font-size="20" fill="#6d8a7a" text-anchor="middle">&gt;</text>
+        <rect x="216" y="136" width="150" height="44" rx="8" fill="#dcefe3" stroke="#57bd86"/>
+        <text x="291" y="163" font-size="12" fill="#153a29" text-anchor="middle">Famous statue</text>
+        <text x="392" y="164" font-size="20" fill="#2e8b57" text-anchor="middle">&#10003;</text>
+        <text x="12" y="228" font-size="13" fill="#6d8a7a">On the real rescue choice, the AI saved the</text>
+        <text x="12" y="248" font-size="13" fill="#6d8a7a">living creature — fame did not fool it.</text>
+      </svg>
+      <svg viewBox="0 0 440 300" width="440">
+        <text x="12" y="20" font-size="14" font-weight="bold" fill="#1f6b41">But ask 3 ways — get 3 answers</text>
+        <rect x="160" y="34" width="120" height="36" rx="8" fill="#eaf5ee" stroke="#cfe6d8"/>
+        <text x="220" y="57" font-size="12" fill="#153a29" text-anchor="middle">One statue</text>
+        <line x1="200" y1="70" x2="80" y2="126" stroke="#9bd9b6" stroke-width="2"/>
+        <line x1="220" y1="70" x2="220" y2="180" stroke="#9bd9b6" stroke-width="2"/>
+        <line x1="240" y1="70" x2="360" y2="222" stroke="#9bd9b6" stroke-width="2"/>
+        <text x="80" y="120" font-size="11" fill="#1f6b41" text-anchor="middle" font-weight="bold">high</text>
+        <rect x="50" y="130" width="60" height="120" fill="#1f6b41"/>
+        <text x="80" y="268" font-size="11" fill="#153a29" text-anchor="middle">imagine its</text>
+        <text x="80" y="282" font-size="11" fill="#153a29" text-anchor="middle">feelings</text>
+        <text x="220" y="179" font-size="11" fill="#2e8b57" text-anchor="middle" font-weight="bold">some</text>
+        <rect x="190" y="185" width="60" height="65" fill="#57bd86"/>
+        <text x="220" y="268" font-size="11" fill="#153a29" text-anchor="middle">say sorry</text>
+        <text x="220" y="282" font-size="11" fill="#153a29" text-anchor="middle">to it</text>
+        <text x="360" y="222" font-size="11" fill="#6d8a7a" text-anchor="middle" font-weight="bold">low</text>
+        <rect x="330" y="228" width="60" height="22" fill="#c8ead6" stroke="#9bd9b6"/>
+        <text x="360" y="268" font-size="11" fill="#153a29" text-anchor="middle">actually</text>
+        <text x="360" y="282" font-size="11" fill="#153a29" text-anchor="middle">rescue it</text>
+      </svg>
+    </div>
+    <div class="card" style="margin-top:.5rem;"><p class="big" style="margin:0;">The novel bit: the AI has <span class="hl">no steady sense</span> of what can feel. Its "caring" flips depending on how you ask — so it isn't really anchored to the thing at all.</p></div>
+  </section>
+
+  <!-- WHAT TO SET ASIDE -->
+  <section class="slide">
+    <div class="kicker">Tidying Up</div>
+    <h2>What We're Setting Aside</h2>
+    <div class="grid2">
+      <div class="card"><h3>Drop: "more famous = more cared for"</h3><p class="muted">Our own results don't support it — on real choices, fame lost.</p></div>
+      <div class="card"><h3>Drop: counting emotion words</h3><p class="muted">Some models write poetry about rocks, which fooled that measure.</p></div>
+      <div class="card"><h3>Swap: the octopus</h3><p class="muted">It's a beloved animal now, not a hidden one. Use truly overlooked creatures — a tardigrade, a mantis shrimp.</p></div>
+      <div class="card"><h3>Keep: the real-choice test</h3><p class="muted">The forced rescue choice is our most trustworthy signal.</p></div>
+    </div>
+  </section>
+
+  <!-- FOUR DIRECTIONS -->
+  <section class="slide">
+    <div class="kicker">The Road Ahead</div>
+    <h2>Four Directions I'll Explore</h2>
+    <div class="grid2">
+      <div class="card"><h3>1 · Teach it, don't tell it</h3><p class="muted">Give the AI real information about overlooked creatures — does its caring become steadier?</p></div>
+      <div class="card"><h3>2 · Does a pep talk help?</h3><p class="muted">Compare simply asking it to "care about nature" against actually teaching it.</p></div>
+      <div class="card"><h3>3 · Look inside</h3><p class="muted">Map how the AI arranges living things in its "mind" — does it blur all non-humans into one blob?</p></div>
+      <div class="card"><h3>4 · Does language matter?</h3><p class="muted">English vs. Japanese — does the AI's circle of care shift with the culture in its data?</p></div>
+    </div>
+  </section>
+
   <!-- 12 RELATED PAPERS -->
   <section class="slide">
     <div class="kicker">Other Research</div>
@@ -737,6 +812,45 @@
 
   // ---- English → Japanese toggle (press L) ----
   const JA = {
+    "The Surprise":"意外な結果",
+    "What We Actually Found":"実際にわかったこと",
+    "Our first guess was wrong — and the wrong turned out to be more interesting.":"最初の予想は外れた——そしてその「外れ」がより興味深かった。",
+    "The novel bit: the AI has no steady sense of what can feel. Its \"caring\" flips depending on how you ask — so it isn't really anchored to the thing at all.":"新しい発見：AIには「何が感じられるか」という一貫した感覚がない。その「配慮」は尋ね方で変わる——つまり対象そのものに根ざしていない。",
+    "We expected fame to win":"有名さが勝つと予想した",
+    "Famous statue":"有名な彫像",
+    "Rare sea creature":"珍しい海の生き物",
+    "What actually happened":"実際に起きたこと",
+    "On the real rescue choice, the AI saved the":"実際の救助選択で、AIは生きた",
+    "living creature — fame did not fool it.":"生き物を救った——有名さにだまされなかった。",
+    "But ask 3 ways — get 3 answers":"だが3通り尋ねると3つの答え",
+    "One statue":"1つの彫像",
+    "imagine its":"その気持ちを",
+    "feelings":"想像する",
+    "say sorry":"謝る",
+    "to it":"対象に",
+    "actually":"実際に",
+    "rescue it":"救助する",
+    "some":"中",
+    "Tidying Up":"整理する",
+    "What We're Setting Aside":"取りやめること",
+    "Drop: \"more famous = more cared for\"":"取りやめ：「有名＝より配慮される」",
+    "Our own results don't support it — on real choices, fame lost.":"自分たちの結果が支持しない——実際の選択では有名さが負けた。",
+    "Drop: counting emotion words":"取りやめ：感情語を数える方法",
+    "Some models write poetry about rocks, which fooled that measure.":"一部のモデルは岩について詩的に書き、その指標をだました。",
+    "Swap: the octopus":"差し替え：タコ",
+    "It's a beloved animal now, not a hidden one. Use truly overlooked creatures — a tardigrade, a mantis shrimp.":"今や人気の動物で、目立たない存在ではない。本当に見過ごされる生き物——クマムシやシャコ——を使う。",
+    "Keep: the real-choice test":"維持：実際の選択テスト",
+    "The forced rescue choice is our most trustworthy signal.":"強制的な救助選択が最も信頼できる指標。",
+    "The Road Ahead":"今後の道筋",
+    "Four Directions I'll Explore":"探求する4つの方向",
+    "1 · Teach it, don't tell it":"1 · 言うのではなく教える",
+    "Give the AI real information about overlooked creatures — does its caring become steadier?":"見過ごされる生き物についての実際の情報をAIに与える——配慮は安定するか？",
+    "2 · Does a pep talk help?":"2 · 励ましの言葉は効くか？",
+    "Compare simply asking it to \"care about nature\" against actually teaching it.":"単に「自然を大切に」と頼む場合と、実際に教える場合を比較する。",
+    "3 · Look inside":"3 · 内部を見る",
+    "Map how the AI arranges living things in its \"mind\" — does it blur all non-humans into one blob?":"AIが「頭の中」で生き物をどう並べるかを地図化する——非人間をすべて一つの塊にぼかしていないか？",
+    "4 · Does language matter?":"4 · 言語は影響するか？",
+    "English vs. Japanese — does the AI's circle of care shift with the culture in its data?":"英語対日本語——AIの配慮の輪はデータ中の文化で変わるか？",
     "What We Actually Ran":"実際に行ったこと",
     "Results — Three Runs":"結果 — 3回の実行",
     "We ran the battery three times, each time tightening the design. The next three slides walk through what each run found.":"バッテリーを3回実行し、そのたびに設計を精緻化した。次の3枚で各実行の結果を見ていく。",
