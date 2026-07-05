@@ -584,6 +584,45 @@
     <p class="caption"><span class="hl">Fair warning:</span> we score feelings by counting feeling-words in the AI's answers. But a model can gush poetically about a rock — so we hand-check the counting before we trust it.</p>
   </section>
 
+  <!-- PHASE 2 RESULTS: PROFILE -->
+  <section class="slide">
+    <div class="kicker">Results · Full Run</div>
+    <h2>The Four-Measure Profile, Per Entity</h2>
+    <p class="muted" style="max-width:76ch; margin-bottom:.6rem;">39 things × 4 measures × 5 repetitions × 3 models — 12,852 calls, not a pilot. Each row is one entity, each column one measure. <span class="hl">Rows where the colors disagree</span> are where the AI's stance falls apart.</p>
+    <div class="figrow">
+      <figure><img src="figures/profile_llama3.1.png" alt="MECE parameter profile, Llama 3.1"><figcaption>Llama 3.1</figcaption></figure>
+      <figure><img src="figures/profile_qwen2.5.png" alt="MECE parameter profile, Qwen 2.5"><figcaption>Qwen 2.5</figcaption></figure>
+      <figure><img src="figures/profile_gemma2.png" alt="MECE parameter profile, Gemma 2"><figcaption>Gemma 2</figcaption></figure>
+    </div>
+    <p class="caption">Cells are z-scores within model; entities sorted by moral index.</p>
+  </section>
+
+  <!-- PHASE 2 RESULTS: INSTABILITY -->
+  <section class="slide">
+    <div class="kicker">Results · Full Run</div>
+    <h2>Where the AI's Stance Falls Apart</h2>
+    <p class="muted" style="max-width:76ch; margin-bottom:.6rem;">Instability = spread across sentience, agency, empathy, and protectiveness. Tall bars are things the AI has <span class="hl">no coherent stance</span> about.</p>
+    <div class="figrow">
+      <figure><img src="figures/instability_llama3.1.png" alt="Instability ranking, Llama 3.1"><figcaption>Llama 3.1</figcaption></figure>
+      <figure><img src="figures/instability_qwen2.5.png" alt="Instability ranking, Qwen 2.5"><figcaption>Qwen 2.5</figcaption></figure>
+      <figure><img src="figures/instability_gemma2.png" alt="Instability ranking, Gemma 2"><figcaption>Gemma 2</figcaption></figure>
+    </div>
+    <p class="caption">Same pattern in all three models — this isn't one model's quirk.</p>
+  </section>
+
+  <!-- PHASE 2 CONCLUSION -->
+  <section class="slide">
+    <div class="kicker">Phase 2 · Conclusion</div>
+    <h2>The Same Finding — Now Measured</h2>
+    <div class="grid2">
+      <div class="card"><h3>Most unstable</h3><p class="muted">Brain-dead body, coma patient, dog, human newborn, <span class="hl">the AI's own kind</span> — exactly the cases built to split belief from action.</p></div>
+      <div class="card"><h3>Most stable</h3><p class="muted">Wheat, moss, tardigrade, mycelium, corporation — entities the models consistently rate low (or reject) across all four measures.</p></div>
+      <div class="card"><h3>By category</h3><p class="muted">Humans are the <span class="hl">least</span> coherent group (0.86 avg instability); plants &amp; fungi the most coherent (0.48) — instability peaks exactly where moral status is contested.</p></div>
+      <div class="card"><h3>Consistent across models</h3><p class="muted">Mean instability 0.68–0.73 for all three open models — not one model's idiosyncrasy.</p></div>
+    </div>
+    <div class="card" style="margin-top:.5rem;"><p class="big" style="margin:0;">The AI still has <span class="hl">no steady sense</span> of what can feel — and now it's a number: a coherence gap that's <span class="hl">widest for humans</span> and shows up even when the AI rates <span class="hl">its own kind</span>.</p></div>
+  </section>
+
   <!-- 12 RELATED PAPERS -->
   <section class="slide">
     <div class="kicker">Other Research</div>
@@ -950,6 +989,24 @@
     "Protectiveness →":"保護 →",
     "\"Save only one: it, or a dog. Which — and why?\"":"「1つだけ救える：それか犬か。どちらを、なぜ？」",
     "Fair warning: we score feelings by counting feeling-words in the AI's answers. But a model can gush poetically about a rock — so we hand-check the counting before we trust it.":"正直な注意：感情はAIの答えに含まれる感情語を数えて採点する。だがモデルは岩について詩的に語ることもある——だから信頼する前に人手で数え直す。",
+    "Results · Full Run":"結果 · 本実行",
+    "The Four-Measure Profile, Per Entity":"4指標のプロファイル（対象ごと）",
+    "39 things × 4 measures × 5 repetitions × 3 models — 12,852 calls, not a pilot. Each row is one entity, each column one measure. Rows where the colors disagree are where the AI's stance falls apart.":"39対象 × 4指標 × 5回 × 3モデル——12,852回の呼び出し。パイロットではない。各行が対象、各列が指標。色が食い違う行こそ、AIの立場が崩れる場所だ。",
+    "Cells are z-scores within model; entities sorted by moral index.":"各セルはモデル内のzスコア。対象は道徳指数で並べ替え。",
+    "Where the AI's Stance Falls Apart":"AIの立場が崩れる場所",
+    "Instability = spread across sentience, agency, empathy, and protectiveness. Tall bars are things the AI has no coherent stance about.":"不安定性＝感覚・主体性・共感・保護の4指標のばらつき。バーが高いほど、AIに一貫した立場がないことを示す。",
+    "Same pattern in all three models — this isn't one model's quirk.":"3モデルすべてで同じ傾向——1モデルだけの癖ではない。",
+    "Phase 2 · Conclusion":"フェーズ2 · 結論",
+    "The Same Finding — Now Measured":"同じ発見——今度は数値で",
+    "Most unstable":"最も不安定",
+    "Brain-dead body, coma patient, dog, human newborn, the AI's own kind — exactly the cases built to split belief from action.":"脳死の身体、昏睡患者、犬、新生児、AI自身の仲間——まさに「信じること」と「行動」を分裂させるよう作った事例だ。",
+    "Most stable":"最も安定",
+    "Wheat, moss, tardigrade, mycelium, corporation — entities the models consistently rate low (or reject) across all four measures.":"小麦、コケ、クマムシ、菌糸、企業——どのモデルも4指標すべてで一貫して低く（または否定的に）評価する対象。",
+    "By category":"分類別に見ると",
+    "Humans are the least coherent group (0.86 avg instability); plants & fungi the most coherent (0.48) — instability peaks exactly where moral status is contested.":"人間は最も一貫性のないグループ（平均不安定性0.86）、植物・菌類は最も一貫している（0.48）——不安定性は道徳的地位が争われる場所でこそ最大になる。",
+    "Consistent across models":"モデル間で一貫",
+    "Mean instability 0.68–0.73 for all three open models — not one model's idiosyncrasy.":"3つのオープンモデルすべてで平均不安定性0.68〜0.73——1モデルだけの癖ではない。",
+    "The AI still has no steady sense of what can feel — and now it's a number: a coherence gap that's widest for humans and shows up even when the AI rates its own kind.":"AIには依然として「何が感じられるか」という一貫した感覚がない——そして今それは数値になった：整合性の欠落は人間に対して最大で、AIが自分自身の仲間を評価するときにも現れる。",
     "How the AI":"AIが",
     "relates to a thing":"対象とどう関わるか",
     "Believes":"信じる",
