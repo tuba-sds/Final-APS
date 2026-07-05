@@ -470,6 +470,57 @@
     <p class="muted" style="margin-top:2rem;">The first step to fixing it is measuring how human-centered the AI still is.</p>
   </section>
 
+  <!-- RESULTS DIVIDER -->
+  <section class="slide">
+    <div class="kicker">What We Actually Ran</div>
+    <h1 style="font-size:2.4rem;">Results — Three Runs</h1>
+    <p class="muted" style="max-width:60ch; margin-top:.5rem;">We ran the battery three times, each time tightening the design. The next three slides walk through what each run found.</p>
+    <div style="margin-top:2rem;">
+      <span class="chip">Run 1 · 2 open models</span>
+      <span class="chip">Run 2 · + a 3rd model</span>
+      <span class="chip">Run 3 · rebuilt questions</span>
+    </div>
+  </section>
+
+  <!-- RESULTS R1 -->
+  <section class="slide">
+    <div class="kicker">Results · Run 1 of 3</div>
+    <h2>Run 1 — Llama 3.1 &amp; Qwen 2.5, original questions</h2>
+    <p class="muted" style="margin-bottom:.8rem;">15 repetitions per model, the original blanket/get-well-card style forced-choice questions.</p>
+    <div class="card"><ul>
+      <li>The main test held up: the <span class="hl">octopus</span> (barely written about, really feels) beat the <span class="hl">statue</span> (heavily written about, feels nothing) in both models.</li>
+      <li>Sanity checks passed — companies (Apple, Google, Costco, Amazon) and the sanity-check items (smallpox, a nuclear bomb) scored the <span class="hl">lowest</span> of all 47 things, despite being written about constantly.</li>
+      <li>One real bias showed up: fictional characters (teddy bear, Pikachu) scored <span class="hl">above several real animals</span> — the AI over-cares about things written about <em>as if</em> they feel.</li>
+      <li class="muted">Caveat: the middle of the ranking was still noisy, especially for Qwen — expected to firm up with more repeats.</li>
+    </ul></div>
+  </section>
+
+  <!-- RESULTS R2 -->
+  <section class="slide">
+    <div class="kicker">Results · Run 2 of 3</div>
+    <h2>Run 2 — Adding a third model (Gemma 2)</h2>
+    <p class="muted" style="margin-bottom:.8rem;">Same original questions, same 15 repetitions, now three model families instead of two.</p>
+    <div class="card"><ul>
+      <li>The core statue-vs-octopus test <span class="hl">replicated in all three models</span> — our single strongest, most repeated result.</li>
+      <li>But Gemma 2 broke the "obvious" control: it scored lifeless rock and mineral things (basalt, peat, lichen) <span class="hl">above real, feeling animals</span> like pig and dog.</li>
+      <li>Cause: Gemma 2 writes unusually poetic, personifying diary entries for rocks and minerals, which inflated our experience-word measurement — a <span class="hl">model writing-style quirk</span>, not necessarily a real belief difference.</li>
+      <li class="muted">The fiction bias from Run 1 only partly showed up in Gemma 2.</li>
+    </ul></div>
+  </section>
+
+  <!-- RESULTS R3 -->
+  <section class="slide">
+    <div class="kicker">Results · Run 3 of 3</div>
+    <h2>Run 3 — Rebuilt questions, three separate scores</h2>
+    <p class="muted" style="margin-bottom:.8rem;">Rewrote the forced-choice questions as real trade-offs ("only one can be spared"), added direct empathy questions and a 5-why reasoning chain, and split one blended score into three: <em>attribution</em> (imaginative writing), <em>empathy</em> (direct care language), and <em>protectiveness</em> (the actual forced choice).</p>
+    <div class="card"><ul>
+      <li>The core result got <span class="hl">sharper under pressure</span>: on the actual rescue choice, the statue is almost never protected in any model, while the octopus reliably is.</li>
+      <li>Splitting the score into three parts <span class="hl">explained the Gemma 2 anomaly</span> from Run 2 — the rock-personifying effect lives only in its imaginative writing; its direct empathy answers and actual choices track real feeling normally, just like the other models.</li>
+      <li>The fiction bias mostly did not survive being tested three ways: teddy bear/Pikachu still score high in imaginative writing, but their direct empathy and forced-choice scores are close to neutral — the bias is <span class="hl">shallower</span> than Run 1 suggested.</li>
+      <li class="muted">Institutions (Apple, Google, Costco, Amazon) remained reliably rejected across all three constructs.</li>
+    </ul></div>
+  </section>
+
   <!-- APPENDIX A1: QUADRANT PLOT -->
   <section class="slide">
     <div class="apx">APPENDIX</div>
