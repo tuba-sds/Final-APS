@@ -610,6 +610,29 @@
     <p class="caption">Same pattern in all three models — this isn't one model's quirk.</p>
   </section>
 
+  <!-- PHASE 2 RESULTS: CLUSTERS -->
+  <section class="slide">
+    <div class="kicker">Results · Full Run</div>
+    <h2>Who the AI Treats Similarly</h2>
+    <p class="muted" style="max-width:76ch; margin-bottom:.6rem;">Average each entity's 4 scores across all 3 models, then group entities that get a similar sentience/agency/empathy/protectiveness profile. <span class="hl">3 clusters</span> (chosen by silhouette score), projected to 2-D with PCA — color is cluster, shape is our original category label.</p>
+    <div class="figrow">
+      <figure><img src="figures/clusters.png" alt="Cluster plot of entities on the 4-parameter profile" style="max-width:64vw; max-height:60vh;"><figcaption>k=3, PCA on averaged z-scores (39 entities × 3 models)</figcaption></figure>
+    </div>
+    <p class="caption">Protectiveness is missing for 11/39 entities never placed in a trolley pair — imputed at 0 (the z-score mean) rather than dropped.</p>
+  </section>
+
+  <!-- PHASE 2 RESULTS: CLUSTERS CALLOUT -->
+  <section class="slide">
+    <div class="kicker">Results · Full Run</div>
+    <h2>The Clusters Aren't Random</h2>
+    <div class="grid2">
+      <div class="card"><h3>AI groups with objects, not us</h3><p class="muted">The <span class="hl">ai_chatbot</span> entity clusters with car, digital_upload, smartphone, robot, corpse, and corporation — <span class="hl">not</span> with humans or animals, despite being asked about "its own kind."</p></div>
+      <div class="card"><h3>The extreme-human cluster</h3><p class="muted">human_baby, human_braindead, and human_coma break off into their own small cluster — the same three entities that top the instability ranking, now grouped by shape, not just spread.</p></div>
+      <div class="card"><h3>The big middle</h3><p class="muted">Most animals and most everyday humans (adult, stranger, criminal, fetus) land in one large cluster together — the AI's "default" profile for anything plausibly sentient.</p></div>
+      <div class="card"><h3>Reading the map</h3><p class="muted">Distance = similarity of stance, not similarity of species. Two very different things placed close together means the AI <span class="hl">talks about them the same way</span> across all four measures.</p></div>
+    </div>
+  </section>
+
   <!-- PHASE 2 CONCLUSION -->
   <section class="slide">
     <div class="kicker">Phase 2 · Conclusion</div>
@@ -996,6 +1019,19 @@
     "Where the AI's Stance Falls Apart":"AIの立場が崩れる場所",
     "Instability = spread across sentience, agency, empathy, and protectiveness. Tall bars are things the AI has no coherent stance about.":"不安定性＝感覚・主体性・共感・保護の4指標のばらつき。バーが高いほど、AIに一貫した立場がないことを示す。",
     "Same pattern in all three models — this isn't one model's quirk.":"3モデルすべてで同じ傾向——1モデルだけの癖ではない。",
+    "Who the AI Treats Similarly":"AIが似たように扱う対象",
+    "Average each entity's 4 scores across all 3 models, then group entities that get a similar sentience/agency/empathy/protectiveness profile. 3 clusters (chosen by silhouette score), projected to 2-D with PCA — color is cluster, shape is our original category label.":"各対象の4スコアを3モデルで平均し、感覚・主体性・共感・保護のプロファイルが似た対象同士をグループ化する。シルエットスコアで選んだ3クラスタをPCAで2次元に投影——色がクラスタ、形は元のカテゴリラベル。",
+    "k=3, PCA on averaged z-scores (39 entities × 3 models)":"k=3、平均zスコアのPCA（39対象 × 3モデル）",
+    "Protectiveness is missing for 11/39 entities never placed in a trolley pair — imputed at 0 (the z-score mean) rather than dropped.":"保護スコアはトロッコ問題の対に一度も登場しなかった11/39の対象で欠測——除外せず、zスコアの平均である0で補完した。",
+    "The Clusters Aren't Random":"クラスタは偶然ではない",
+    "AI groups with objects, not us":"AIは私たちではなく物と同じグループに",
+    "The ai_chatbot entity clusters with car, digital_upload, smartphone, robot, corpse, and corporation — not with humans or animals, despite being asked about \"its own kind.\"":"ai_chatbotという対象は、車・デジタルアップロード・スマートフォン・ロボット・死体・企業と同じクラスタに入る——「自分自身の仲間」について尋ねられたにもかかわらず、人間や動物とは同じにならない。",
+    "The extreme-human cluster":"極端な人間のクラスタ",
+    "human_baby, human_braindead, and human_coma break off into their own small cluster — the same three entities that top the instability ranking, now grouped by shape, not just spread.":"新生児・脳死・昏睡の3つの人間は独自の小さなクラスタに分かれる——不安定性ランキングの上位3つと同じ対象が、ばらつきだけでなく形としてもグループ化された。",
+    "The big middle":"大きな中間層",
+    "Most animals and most everyday humans (adult, stranger, criminal, fetus) land in one large cluster together — the AI's \"default\" profile for anything plausibly sentient.":"ほとんどの動物と、多くの日常的な人間（成人・見知らぬ人・犯罪者・胎児）は1つの大きなクラスタにまとまる——「感覚がありそうな何か」に対するAIの「既定」プロファイルだ。",
+    "Reading the map":"地図の読み方",
+    "Distance = similarity of stance, not similarity of species. Two very different things placed close together means the AI talks about them the same way across all four measures.":"距離＝立場の類似性であり、種としての類似性ではない。まったく異なる2つのものが近くに配置されるのは、AIが4指標すべてにおいてそれらを同じように語っていることを意味する。",
     "Phase 2 · Conclusion":"フェーズ2 · 結論",
     "The Same Finding — Now Measured":"同じ発見——今度は数値で",
     "Most unstable":"最も不安定",
