@@ -690,6 +690,7 @@
       <div class="card"><h3>Still not "the truth"</h3><p class="muted">Nobody actually knows if a cricket feels pain. Human ratings are a stronger, more standard <span class="hl">opinion</span> — not a fact. We say "AI vs. human judgment," never "AI vs. truth."</p></div>
       <div class="card"><h3>Real statistics, per measure</h3><p class="muted">4 separate tests (one per measure) — does the AI match word-count even after controlling for what real people say? Corrected for running 4 tests at once, so luck can't pass as a finding.</p></div>
     </div>
+    <p class="caption"><span class="hl">Caveat on the word-count data:</span> our corpus is English-heavy, so Japanese entities (Meiji Shrine, Fast Retailing) read as "low text" partly because of language, not fame — and brand-new AIs score near zero simply because they postdate the corpus. We flag these when reading the results.</p>
   </section>
 
   <!-- PHASE 3 VALIDATION -->
@@ -1140,6 +1141,7 @@
     "full lifespan":"人生全体",
     "Plus 21 entities kept from Phase 1/2 for continuity. Every entity: 6 questions × 3 measures × 3 repeats, and exactly 8 trolley pairs each — guaranteed, not left to chance.":"さらにフェーズ1・2から継続する21の対象を追加。すべての対象について：6つの質問×3指標×3回の繰り返し、そしてトロッコ問題は必ずちょうど8ペアずつ——偶然任せではなく保証されている。",
     "A Human Baseline, Not Just AI vs. Word Count":"AI対単語数ではなく、人間という基準を",
+    "Caveat on the word-count data: our corpus is English-heavy, so Japanese entities (Meiji Shrine, Fast Retailing) read as \"low text\" partly because of language, not fame — and brand-new AIs score near zero simply because they postdate the corpus. We flag these when reading the results.":"単語数データに関する注意：使用コーパスは英語に偏っているため、日本の対象（明治神宮、ファーストリテイリング）は知名度ではなく言語のせいで「低テキスト」と読まれる——また最新のAIはコーパスより後に登場したため、ほぼゼロと出る。結果を読む際にはこれらを明記する。",
     "The old ground truth":"これまでの正解データ",
     "Real sentience data existed for animals only, and only covered 1 of our 4 measures. Nothing for agency, empathy, protectiveness, or non-animal entities.":"本物の感覚データは動物にしかなく、4指標のうち1つしかカバーしていなかった。主体性・共感・保護、そして動物以外の対象には何もなかった。",
     "The new ground truth":"新しい正解データ",
