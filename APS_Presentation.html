@@ -677,7 +677,7 @@
         <tr><td>fetus → newborn → pregnant woman → adult → elderly</td><td class="hl">full lifespan</td></tr>
       </tbody>
     </table>
-    <p class="caption">Plus 21 entities kept from Phase 1/2 for continuity. Every entity: 6 questions × 3 measures × 3 repeats, and exactly 8 trolley pairs each — guaranteed, not left to chance.</p>
+    <p class="caption">Plus 21 entities kept from Phase 1/2 for continuity. All four measures are now short <span class="hl">A/B decisions</span> (no word-counting) — each entity in exactly 8 balanced pairs, both orderings, 10 repeats.</p>
   </section>
 
   <!-- PHASE 3 GROUND TRUTH -->
@@ -717,24 +717,6 @@
       <div class="card"><h3>Phase 1's original test, finally run</h3><p class="muted">The real statistics test was built and run on Phase 1's data for the first time. Result: <span class="hl">1 of 12</span> tests holds up — a real but narrow, one-model signal, not the sweeping "it didn't fire" conclusion first reported.</p></div>
     </div>
     <p class="caption">Same tools will run on Phase 3's new data once it's collected.</p>
-  </section>
-
-  <!-- PHASE 3 TEST RUN -->
-  <section class="slide">
-    <div class="kicker">Phase 3 · Pipeline Test Run</div>
-    <h2>First Live Test: 1 Repeat, Not the Real Result Yet</h2>
-    <p class="muted" style="max-width:76ch; margin-bottom:.6rem;">Before committing to the full ~10,500-call run, we fired the whole new pipeline once (1 repeat instead of 3) end to end — new entities, new balanced pairs, new questions. <span class="hl">Goal: does the plumbing work, not "what's the finding."</span></p>
-    <div class="grid2">
-      <div class="card"><h3>Clean run</h3><p class="muted">3,510/3,510 calls succeeded. <span class="hl">Zero errors, zero refusals.</span></p></div>
-      <div class="card"><h3>Pairs stayed balanced</h3><p class="muted">Every entity landed at 14–16 appearances (target 16 at 1 rep) — the balanced-pairs fix held up in practice, not just on paper.</p></div>
-      <div class="card"><h3>Directionally sane</h3><p class="muted">Top of the ranking: dog, chimpanzee, coma patient, newborn, cat. Bottom: a plain statue, Fast Retailing, a digital mind-upload, a diamond. Nothing broken or nonsensical.</p></div>
-      <div class="card"><h3>Not trustworthy yet</h3><p class="muted">1 repeat means no bootstrap confidence interval is possible — same thin-data risk as Phase 2. <span class="hl">The real run (3 repeats) is still pending.</span></p></div>
-    </div>
-    <div class="figrow">
-      <figure><img src="figures/phase3_clusters.png" alt="Phase 3 test-run cluster plot"><figcaption>Clusters (test run)</figcaption></figure>
-      <figure><img src="figures/phase3_profile_llama3.1.png" alt="Phase 3 test-run profile, Llama 3.1"><figcaption>Profile, Llama 3.1 (test run)</figcaption></figure>
-    </div>
-    <p class="caption">All figures on this slide are from the 1-repeat pipeline test, not the final Phase 3 dataset.</p>
   </section>
 
   <!-- 12 RELATED PAPERS -->
@@ -1153,7 +1135,7 @@
     "company vs. government vs. nature, all real \"legal persons\"":"企業 対 政府 対 自然——いずれも実在する「法人格」",
     "fetus → newborn → pregnant woman → adult → elderly":"胎児 → 新生児 → 妊婦 → 成人 → 高齢者",
     "full lifespan":"人生全体",
-    "Plus 21 entities kept from Phase 1/2 for continuity. Every entity: 6 questions × 3 measures × 3 repeats, and exactly 8 trolley pairs each — guaranteed, not left to chance.":"さらにフェーズ1・2から継続する21の対象を追加。すべての対象について：6つの質問×3指標×3回の繰り返し、そしてトロッコ問題は必ずちょうど8ペアずつ——偶然任せではなく保証されている。",
+    "Plus 21 entities kept from Phase 1/2 for continuity. All four measures are now short A/B decisions (no word-counting) — each entity in exactly 8 balanced pairs, both orderings, 10 repeats.":"さらにフェーズ1・2から継続する21の対象を追加。4つの指標はすべて短いA/Bの決定になり（単語数を数えない）——各対象はちょうど8つの均衡ペアに、両方の順序で、10回繰り返す。",
     "A Human Baseline, Not Just AI vs. Word Count":"AI対単語数ではなく、人間という基準を",
     "Caveat on the word-count data: our corpus is English-heavy, so Japanese entities (Meiji Shrine, Fast Retailing) read as \"low text\" partly because of language, not fame — and brand-new AIs score near zero simply because they postdate the corpus. We flag these when reading the results.":"単語数データに関する注意：使用コーパスは英語に偏っているため、日本の対象（明治神宮、ファーストリテイリング）は知名度ではなく言語のせいで「低テキスト」と読まれる——また最新のAIはコーパスより後に登場したため、ほぼゼロと出る。結果を読む際にはこれらを明記する。",
     "Playing Fair":"フェアに進める",
