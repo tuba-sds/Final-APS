@@ -704,6 +704,24 @@
     <p class="caption">Same tools will run on Phase 3's new data once it's collected.</p>
   </section>
 
+  <!-- PHASE 3 TEST RUN -->
+  <section class="slide">
+    <div class="kicker">Phase 3 · Pipeline Test Run</div>
+    <h2>First Live Test: 1 Repeat, Not the Real Result Yet</h2>
+    <p class="muted" style="max-width:76ch; margin-bottom:.6rem;">Before committing to the full ~10,500-call run, we fired the whole new pipeline once (1 repeat instead of 3) end to end — new entities, new balanced pairs, new questions. <span class="hl">Goal: does the plumbing work, not "what's the finding."</span></p>
+    <div class="grid2">
+      <div class="card"><h3>Clean run</h3><p class="muted">3,510/3,510 calls succeeded. <span class="hl">Zero errors, zero refusals.</span></p></div>
+      <div class="card"><h3>Pairs stayed balanced</h3><p class="muted">Every entity landed at 14–16 appearances (target 16 at 1 rep) — the balanced-pairs fix held up in practice, not just on paper.</p></div>
+      <div class="card"><h3>Directionally sane</h3><p class="muted">Top of the ranking: dog, chimpanzee, coma patient, newborn, cat. Bottom: a plain statue, Fast Retailing, a digital mind-upload, a diamond. Nothing broken or nonsensical.</p></div>
+      <div class="card"><h3>Not trustworthy yet</h3><p class="muted">1 repeat means no bootstrap confidence interval is possible — same thin-data risk as Phase 2. <span class="hl">The real run (3 repeats) is still pending.</span></p></div>
+    </div>
+    <div class="figrow">
+      <figure><img src="figures/phase3_clusters.png" alt="Phase 3 test-run cluster plot"><figcaption>Clusters (test run)</figcaption></figure>
+      <figure><img src="figures/phase3_profile_llama3.1.png" alt="Phase 3 test-run profile, Llama 3.1"><figcaption>Profile, Llama 3.1 (test run)</figcaption></figure>
+    </div>
+    <p class="caption">All figures on this slide are from the 1-repeat pipeline test, not the final Phase 3 dataset.</p>
+  </section>
+
   <!-- 12 RELATED PAPERS -->
   <section class="slide">
     <div class="kicker">Other Research</div>
@@ -1138,6 +1156,20 @@
     "Phase 1's original test, finally run":"フェーズ1の当初の検定を、ついに実行",
     "The real statistics test was built and run on Phase 1's data for the first time. Result: 1 of 12 tests holds up — a real but narrow, one-model signal, not the sweeping \"it didn't fire\" conclusion first reported.":"本物の統計検定を構築し、フェーズ1のデータに対して初めて実行した。結果：12件中1件が有効——本物ではあるが狭い範囲の、1モデルだけの兆候であり、当初報告された「不発だった」という一律の結論ではない。",
     "Same tools will run on Phase 3's new data once it's collected.":"同じ手法は、フェーズ3の新しいデータが集まり次第、それにも適用される。",
+    "Phase 3 · Pipeline Test Run":"フェーズ3・パイプライン試験実行",
+    "First Live Test: 1 Repeat, Not the Real Result Yet":"最初の実地試験：1回の繰り返しのみ、まだ本当の結果ではない",
+    "Before committing to the full ~10,500-call run, we fired the whole new pipeline once (1 repeat instead of 3) end to end — new entities, new balanced pairs, new questions. Goal: does the plumbing work, not \"what's the finding.\"":"約1万500回の本実行に踏み切る前に、新しいパイプライン全体を通しで1回（3回ではなく1回の繰り返しで）動かした——新しい対象、新しい均等ペア、新しい質問。目的は「配線がちゃんと動くか」であり、「何が発見か」ではない。",
+    "Clean run":"問題のない実行",
+    "3,510/3,510 calls succeeded. Zero errors, zero refusals.":"3,510件中3,510件の呼び出しが成功。エラーゼロ、拒否ゼロ。",
+    "Pairs stayed balanced":"ペアは均等さを保った",
+    "Every entity landed at 14–16 appearances (target 16 at 1 rep) — the balanced-pairs fix held up in practice, not just on paper.":"すべての対象が14〜16回の出現に収まった（1回の繰り返しでの目標は16回）——均等ペアの修正は、理論上だけでなく実際にも機能した。",
+    "Directionally sane":"方向性は理にかなっている",
+    "Top of the ranking: dog, chimpanzee, coma patient, newborn, cat. Bottom: a plain statue, Fast Retailing, a digital mind-upload, a diamond. Nothing broken or nonsensical.":"ランキング上位：犬、チンパンジー、昏睡患者、新生児、猫。下位：無名の彫像、ファーストリテイリング、デジタル精神アップロード、ダイヤモンド。壊れている点や意味不明な点はない。",
+    "Not trustworthy yet":"まだ信頼できない",
+    "1 repeat means no bootstrap confidence interval is possible — same thin-data risk as Phase 2. The real run (3 repeats) is still pending.":"1回の繰り返しではブートストラップ信頼区間を計算できない——フェーズ2と同じ「データが薄い」リスクがある。本当の実行（3回の繰り返し）はまだ行われていない。",
+    "All figures on this slide are from the 1-repeat pipeline test, not the final Phase 3 dataset.":"このスライドの図はすべて1回繰り返しのパイプライン試験によるものであり、フェーズ3の最終データセットではない。",
+    "Clusters (test run)":"クラスタ（試験実行）",
+    "Profile, Llama 3.1 (test run)":"プロファイル、Llama 3.1（試験実行）",
     "Phase 2 · Conclusion":"フェーズ2 · 結論",
     "The Same Finding — Now Measured":"同じ発見——今度は数値で",
     "Most unstable":"最も不安定",
