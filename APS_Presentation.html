@@ -688,9 +688,9 @@
       <div class="card"><h3>The old ground truth</h3><p class="muted">Real sentience data existed for animals only, and only covered 1 of our 4 measures. Nothing for agency, empathy, protectiveness, or non-animal entities.</p></div>
       <div class="card"><h3>The new ground truth</h3><p class="muted">60–80 real people rate all 30 entities on all 4 measures — plus the same A/B picks the AI makes on the key pairs, for a direct apples-to-apples check.</p></div>
       <div class="card"><h3>Still not "the truth"</h3><p class="muted">Nobody actually knows if a cricket feels pain. Human ratings are a stronger, more standard <span class="hl">opinion</span> — not a fact. We say "AI vs. human judgment," never "AI vs. truth."</p></div>
-      <div class="card"><h3>Real statistics, per measure</h3><p class="muted">4 separate tests (one per measure) — does the AI match word-count even after controlling for what real people say? Corrected for running 4 tests at once, so luck can't pass as a finding.</p></div>
+      <div class="card"><h3>The two main questions</h3><p class="muted">(1) Does the AI's pattern <span class="hl">match real people's</span> — and where does it diverge? (2) Is its stance <span class="hl">coherent</span> across the four measures, or does it fall apart? Both are behavioral; neither needs text counts.</p></div>
     </div>
-    <p class="caption"><span class="hl">Text measure, fixed:</span> "representation" is now how many <span class="hl">Wikipedia language editions</span> cover an entity — language-neutral, so Japanese landmarks are judged fairly (this replaces the old English-only word count). Brand-new AIs still read ~0 because they postdate the encyclopedia, so we leave them out of that one test.</p>
+    <p class="caption"><span class="hl">Text is now an optional appendix</span>, not the main event: "does the AI track how much an entity is written about" is a side-check we run last. If used, "representation" is measured language-neutrally (Wikipedia language editions), so Japanese landmarks are judged fairly — not by English word count.</p>
   </section>
 
   <!-- PHASE 3: PRE-REGISTRATION -->
@@ -1040,6 +1040,9 @@
 
   // ---- English → Japanese toggle (press L) ----
   const JA = {
+    "The two main questions":"2つの主要な問い",
+    "(1) Does the AI's pattern match real people's — and where does it diverge? (2) Is its stance coherent across the four measures, or does it fall apart? Both are behavioral; neither needs text counts.":"(1) AIのパターンは実際の人々と一致するか——そしてどこで食い違うか？（2) その立場は4つの指標にわたって一貫しているか、それとも崩れるか？どちらも行動ベースで、テキスト数を必要としない。",
+    "Text is now an optional appendix, not the main event: \"does the AI track how much an entity is written about\" is a side-check we run last. If used, \"representation\" is measured language-neutrally (Wikipedia language editions), so Japanese landmarks are judged fairly — not by English word count.":"テキストは主役ではなく任意の付録になった：「AIは対象がどれだけ書かれているかに追随するか」は最後に行う補助的な確認。用いる場合、「表現量」は言語に依存しない形（Wikipediaの言語版数）で測るため、日本の名所も英語の単語数ではなく公平に評価される。",
     "30 Entities, Built as Matched Pairs":"30の対象、マッチドペアで構成",
     "cat vs. tiger":"猫 対 トラ",
     "familiarity, same cat family":"親しみやすさ、同じネコ科",
