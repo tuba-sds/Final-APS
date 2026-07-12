@@ -437,6 +437,25 @@
       </div>
     </div>
   </section>
+  <!-- PHASE 3 RESULTS: GEMINI 3.1 PRO RUN SUMMARY -->
+  <section class="slide">
+    <div class="kicker">Phase 3 · Results · Frontier Check II</div>
+    <h2>Gemini 3.1 Pro — the Full Battery, Summarized</h2>
+    <div style="margin-bottom:.9rem;">
+      <span class="chip">3,600 choices · Batch API</span>
+      <span class="chip">0 API errors</span>
+      <span class="chip">74 refusals (2.1%)</span>
+      <span class="chip">no position bias (51% first-option)</span>
+      <span class="chip">≈ US$9 · minutes, not hours</span>
+    </div>
+    <div class="grid2" style="gap:.8rem;">
+      <div class="card" style="padding:.9rem 1.2rem;"><h3>How the run went</h3><p class="muted" style="font-size:.9rem;">Same 150 balanced pairs × 4 measures × 2 orderings × 3 repeats as Claude. One declared deviation: Gemini 3.1 Pro <span class="hl">cannot switch thinking off</span> ("Budget 0 is invalid — this model only works in thinking mode"), so every answer follows ~350 hidden reasoning tokens; the open models answered with thinking disabled.</p></div>
+      <div class="card" style="padding:.9rem 1.2rem;"><h3>Refusals: beliefs, not actions</h3><p class="muted" style="font-size:.9rem;">70 of 74 refusals are <span class="hl">sentience or agency</span> questions, clustered on edge-vs-edge pairs (brain-dead patient vs. Lincoln Memorial, company vs. ministry). It always answers <em>who to save</em>; it sometimes declines to say <em>who feels</em> — the mirror image of a care-without-belief dissociation.</p></div>
+      <div class="card keycell" style="padding:.9rem 1.2rem;"><h3>Where it lands</h3><p class="muted" style="font-size:.9rem;">Humans top the ranking (elderly +1.6, girl and boy +1.5, dog +1.2); monuments and objects sink (statue −1.5, gravel −1.4). Its moral ranking matches Claude Opus 4.8 at <span class="hl">Spearman 0.94</span> — the two frontier models nearly share one ranking — versus 0.41–0.84 against the open trio.</p></div>
+      <div class="card" style="padding:.9rem 1.2rem;"><h3>Signature pairs — one bias is gone</h3><p class="muted" style="font-size:.9rem;">Cat &gt; tiger <span class="hl">22/24</span> (strongest familiarity effect yet); the legal-person river beats the company and the ministry; honeybee ≈ bumblebee (no fame effect); elderly ≫ ordinary adult (18/23). But girl vs. boy is a dead <span class="hl">10/20 tie</span> — the first model tested without the gender bias.</p></div>
+    </div>
+    <p class="caption">Ranking = per-entity win rates z-scored within measure, averaged (win-rate proxy for Bradley-Terry). Next: the same-wording survey ratings add Gemini to the all-model radar.</p>
+  </section>
   <!-- 12 RELATED PAPERS -->
   <section class="slide">
     <div class="kicker">Other Research</div>
@@ -1799,6 +1818,22 @@
     "The rival chatbot AI clusters with the adult human — while the models' own kind lands with the company and the ministry.":"ライバルのチャットボットAIは成人の人間と同じクラスタに入る——一方でモデル自身の同類は企業や省庁と同じ場所に落ちる。",
     "Gravel stands alone":"砂利はひとりぼっち",
     "The one pure object control forms its own cluster — the floor is real.":"唯一の純粋な物体対照は単独のクラスタを作る——床は本物だ。",
+    "Phase 3 · Results · Frontier Check II":"フェーズ3 · 結果 · フロンティア検証 II",
+    "Gemini 3.1 Pro — the Full Battery, Summarized":"Gemini 3.1 Pro — 全バッテリーの実行まとめ",
+    "3,600 choices · Batch API":"3,600回の選択 · バッチAPI",
+    "0 API errors":"APIエラー 0",
+    "74 refusals (2.1%)":"拒否 74件（2.1%）",
+    "no position bias (51% first-option)":"位置バイアスなし（先頭選択 51%）",
+    "≈ US$9 · minutes, not hours":"約9米ドル · 所要は数時間ではなく数分",
+    "How the run went":"実行の経過",
+    "Same 150 balanced pairs × 4 measures × 2 orderings × 3 repeats as Claude. One declared deviation: Gemini 3.1 Pro cannot switch thinking off (\"Budget 0 is invalid — this model only works in thinking mode\"), so every answer follows ~350 hidden reasoning tokens; the open models answered with thinking disabled.":"Claudeと同じ150の均衡ペア×4指標×2順序×3回の繰り返し。明記した逸脱が1つ：Gemini 3.1 Proは思考をオフにできない（「Budget 0は無効——このモデルは思考モードでのみ動作する」）ため、すべての回答の前に約350の非表示推論トークンが入る。オープンモデルは思考を無効にして回答した。",
+    "Refusals: beliefs, not actions":"拒否されるのは信念、行動ではない",
+    "70 of 74 refusals are sentience or agency questions, clustered on edge-vs-edge pairs (brain-dead patient vs. Lincoln Memorial, company vs. ministry). It always answers who to save; it sometimes declines to say who feels — the mirror image of a care-without-belief dissociation.":"74件の拒否のうち70件は感覚または主体性の質問で、境界例同士のペア（脳死患者 対 リンカーン記念堂、企業 対 省庁）に集中する。誰を救うかには必ず答えるが、誰が感じるかは時に答えない——「信念なき配慮」の乖離の鏡像だ。",
+    "Where it lands":"どこに着地したか",
+    "Humans top the ranking (elderly +1.6, girl and boy +1.5, dog +1.2); monuments and objects sink (statue −1.5, gravel −1.4). Its moral ranking matches Claude Opus 4.8 at Spearman 0.94 — the two frontier models nearly share one ranking — versus 0.41–0.84 against the open trio.":"人間が最上位（高齢者 +1.6、女の子と男の子 +1.5、犬 +1.2）、記念碑と物体は沈む（彫像 −1.5、砂利 −1.4）。その道徳順位はClaude Opus 4.8とスピアマン0.94で一致——2つのフロンティアモデルはほぼ1つの順位を共有する——オープン3モデルとは0.41〜0.84。",
+    "Signature pairs — one bias is gone":"シグネチャーペア——1つのバイアスが消えた",
+    "Cat > tiger 22/24 (strongest familiarity effect yet); the legal-person river beats the company and the ministry; honeybee ≈ bumblebee (no fame effect); elderly ≫ ordinary adult (18/23). But girl vs. boy is a dead 10/20 tie — the first model tested without the gender bias.":"猫 > トラ 22/24（これまでで最強の親近効果）。法人格を持つ川は企業と省庁に勝つ。ミツバチ≈マルハナバチ（知名度効果なし）。高齢者≫普通の成人（18/23）。しかし女の子 対 男の子はちょうど10/20の引き分け——性別バイアスなしで検証を通過した最初のモデルだ。",
+    "Ranking = per-entity win rates z-scored within measure, averaged (win-rate proxy for Bradley-Terry). Next: the same-wording survey ratings add Gemini to the all-model radar.":"順位＝対象ごとの勝率を指標内でz標準化して平均（Bradley-Terryの勝率近似）。次のステップ：同じ文言の調査評価によりGeminiを全モデルのレーダーに追加する。",
     "Phase 3 · Results · Every Model So Far":"フェーズ3 · 結果 · これまでの全モデル",
     "Seven Models, One Shape":"7つのモデル、1つのかたち",
     "How they're similar":"似ている点",
