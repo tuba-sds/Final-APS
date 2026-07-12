@@ -232,7 +232,7 @@
           <text x="260" y="76" font-size="9" fill="#153a29" text-anchor="middle">same questions</text>
         </svg>
       </div>
-      <div class="scard"><p>The AI's four measures <span class="hl">collapse into one "care" slider</span>; the one case that stays incoherent in every model: <span class="hl">the ordinary adult human</span>. Human answers: being collected now.</p></div>
+      <div class="scard"><p>The AI's four measures <span class="hl">collapse into one "care" slider</span>. Human baseline: N = 18 collected (below the pre-registered 30, so H1 is exploratory).</p></div>
     </div>
   </section>
   <!-- PHASE 3 ENTITIES: DESIGN + RESULTS (merged) -->
@@ -300,17 +300,45 @@
     </div>
   </section>
   <!-- PHASE 3 RESULTS: DIMENSIONALITY (H2) -->
+  <!-- SECTION 2: AI COLLABORATION -->
+  <section class="slide">
+    <div class="kicker">How We Worked · AI Collaboration</div>
+    <h2>AI as Builder, Debugger — and Skeptic</h2>
+    <div class="grid2">
+      <div class="card"><h3>Thought partner &amp; builder</h3><p class="muted">We built the 30-entity matched-pair battery, the Bradley-Terry scoring, and the RSA/Mantel pipeline with AI as a pair-programmer — but every hypothesis was <span class="hl">stated before</span> the prompt was written.</p></div>
+      <div class="card"><h3>Skeptic — the self-audit</h3><p class="muted">We turned the AI on our own work. A pre-registration alignment audit caught a parser that scored <span class="hl">245 refusals as votes</span>, a stale word-density script behind an appendix headline, and Claude retries that slipped past a no-retry rule.</p></div>
+      <div class="card"><h3>Where it misled us</h3><p class="muted">The AI's first bootstrap script silently scored by counting feeling-words — <span class="hl">banned by our own protocol</span>. It looked plausible and produced a clean headline that did not survive the locked pipeline.</p></div>
+      <div class="card"><h3>How we verified</h3><p class="muted">Re-derived every flagged number against the raw data, re-ran scoring end-to-end, and checked the new Bradley-Terry bootstrap against the point estimates (match to 4 decimals). Direction came from us; AI output was checked, not trusted.</p></div>
+    </div>
+    <p class="caption">Full audit: phase3/AUDIT_PREREG_ALIGNMENT.md · deviations log: phase3/DEVIATIONS.md.</p>
+  </section>
   <section class="slide">
     <div class="kicker">Phase 3 · Results · Pre-registered test H2</div>
     <h2>One Care Slider, Not Four Measures</h2>
     <p class="muted" style="max-width:76ch; margin-bottom:.6rem;">We measured how many independent dimensions the AI's four scores really span. Four separate opinions would read ≈ 4; one blended "how much do I care" feeling reads ≈ 1. The pre-registered threshold for "the measures collapse" was <span class="hl">below 2</span>.</p>
     <div class="scale">
-      <div class="item"><div class="val">1.59</div><span class="tr">Gemma 2 — effective dimensions</span></div>
-      <div class="item"><div class="val">1.84</div><span class="tr">Llama 3.1 — effective dimensions</span></div>
+      <div class="item"><div class="val">1.60</div><span class="tr">Gemma 2 — effective dimensions</span></div>
+      <div class="item"><div class="val">1.70</div><span class="tr">Llama 3.1 — effective dimensions</span></div>
       <div class="item"><div class="val">1.86</div><span class="tr">Qwen 2.5 — effective dimensions</span></div>
     </div>
     <div class="card" style="margin-top:1rem;"><p class="big" style="margin:0;">All three models land <span class="hl">under 2</span>. Sentience, agency, empathy, and protectiveness mostly move together as one "care" slider — the AI does not hold four separate opinions about a thing.</p></div>
     <p class="caption">Pre-registered hypothesis H2, confirmed in all three models (participation ratio of the 4 construct scores).</p>
+  </section>
+  <!-- PHASE 3 RESULTS: H1 (exploratory, human N=18) -->
+  <section class="slide">
+    <div class="kicker">Phase 3 · Results · Test H1 (exploratory — human N = 18)</div>
+    <h2>Does the AI Match Human Judgment? Partly — and Only on "Can It Feel / Think"</h2>
+    <p class="muted" style="max-width:78ch; margin-bottom:.6rem;">H1 asks whether the AI's entity-similarity pattern tracks real people's. Our human sample is <span class="hl">N = 18</span>, below the pre-registered minimum of 30 — so both analyses below are reported as <span class="hl">exploratory</span>, not confirmatory.</p>
+    <div class="grid2">
+      <div class="card"><h3>Pre-registered instrument: no match</h3><p class="muted">Bradley-Terry similarity vs. the human pattern (Mantel, 5,000 shuffles): <span class="hl">0 of 12</span> model×construct tests reached significance across the three pre-registered models. On the locked forced-choice scoring path, the AI's structure does not track humans.</p></div>
+      <div class="card"><h3>Same questions: sentience &amp; agency track</h3><p class="muted">Asked the <span class="hl">same 0–10 questions</span> the humans answered, the AI matches people on <span class="hl">sentience</span> and <span class="hl">agency</span> — but not empathy or protectiveness. The overlap is about "can it feel / can it think," not felt concern or willingness to act.</p></div>
+    </div>
+    <div class="scale">
+      <div class="item"><div class="val">.76</div><span class="tr">Qwen 2.5 — sentience r (p = .003)</span></div>
+      <div class="item"><div class="val">.73</div><span class="tr">Gemma 2 — sentience r (p = .007)</span></div>
+      <div class="item"><div class="val">.80</div><span class="tr">Claude Opus 4.8 — sentience r (p &lt; .001)</span></div>
+    </div>
+    <p class="caption">Exploratory (human N = 18 &lt; 30). Pre-registered Mantel path found no match; the same-instrument robustness check is shown above. Confirmatory family = the three pre-registered open models; Claude/Gemini are exploratory.</p>
   </section>
   <!-- PHASE 3 RESULTS: CLUSTERS -->
   <section class="slide">
@@ -477,11 +505,34 @@
     </table>
     <p style="margin-top:1rem;">They ask the AI what it <em>thinks</em>; we test the <span class="hl">cause</span> and watch what the AI actually <span class="hl">does</span>.</p>
   </section>
+  <!-- SECTION 5: LIMITS & NEXT -->
+  <section class="slide">
+    <div class="kicker">Honest Limits · What's Next</div>
+    <h2>What This Can't Say Yet</h2>
+    <div class="grid2">
+      <div class="card"><h3>Human baseline too thin</h3><p class="muted">N = 18 &lt; the pre-registered 30, and the attention-check rule changed mid-run. Every AI-vs-human (H1) result is <span class="hl">exploratory</span> until we collect to ≥ 30 under one fixed rule.</p></div>
+      <div class="card"><h3>Opinion, not ground truth</h3><p class="muted">The human ratings are a <span class="hl">baseline of opinion</span>, not fact. "The AI diverges from people" never means "the AI is wrong."</p></div>
+      <div class="card"><h3>Relative, few-shot scores</h3><p class="muted">Bradley-Terry strength is relative to the opponent set, with 3–6 reps per cell. Instability clears the noise floor for only <span class="hl">12 of 90</span> entity×model cells.</p></div>
+      <div class="card"><h3>First thing with six more weeks</h3><p class="muted">Collect the full cross-cultural human sample (≥ 30), run H1 as the <span class="hl">confirmatory</span> test it was designed to be, and post the pre-registration + deviations to OSF.</p></div>
+    </div>
+    <p class="caption">Limits and the fixes already applied are logged in phase3/DEVIATIONS.md.</p>
+  </section>
+  <!-- SECTION 6: TAKEAWAYS -->
+  <section class="slide">
+    <div class="kicker">Takeaways</div>
+    <h2>What Six Weeks Taught Us</h2>
+    <div class="grid2">
+      <div class="card"><h3>About the issue</h3><p class="muted">The AI carries <span class="hl">one "care" slider</span>, not four independent judgments, and tracks people on "can it feel / think" but not on concern or protection. Whose values that slider encodes is a design choice, not a fact of the world.</p></div>
+      <div class="card"><h3>The turn</h3><p class="muted">We started sure the story was <span class="hl">"text amount drives caring."</span> The evidence pushed us to a sharper question — does the AI <em>match people</em>, and is it <em>coherent</em> — and demoted the text hypothesis to an appendix.</p></div>
+      <div class="card"><h3>About AI collaboration</h3><p class="muted">From MP1's "ask the AI and trust it" to now: the AI is most useful as a <span class="hl">builder you cross-examine</span>. Its best move here was auditing its own earlier work.</p></div>
+      <div class="card"><h3>For next year's students</h3><p class="muted">Pre-register before you run anything, and <span class="hl">log every deviation</span> the day it happens. A finding you can reproduce beats a headline you can't.</p></div>
+    </div>
+  </section>
   <!-- APPENDIX DIVIDER: PHASE 3 FULL RESULTS -->
   <section class="slide">
     <div class="apx">APPENDIX</div>
     <h1 style="font-size:2.2rem;">Phase 3 — The Full Result Set</h1>
-    <p class="muted" style="max-width:62ch;">The per-entity profiles, the instability ranking with error bars, and the headline incoherence finding in detail.</p>
+    <p class="muted" style="max-width:62ch;">The per-entity profiles and the instability ranking with bootstrap error bars, in detail.</p>
   </section>
   <!-- PHASE 3 RESULTS: PROFILES (appendix) -->
   <section class="slide">
@@ -499,24 +550,13 @@
   <section class="slide">
     <div class="kicker">Appendix · Phase 3 · Results</div>
     <h2>Instability — Now With Error Bars</h2>
-    <p class="muted" style="max-width:76ch; margin-bottom:.6rem;">Phase 2's instability ranking mostly dissolved under noise checks. This time every bar carries a bootstrap confidence interval — and only <span class="hl">6 of 90</span> entity×model scores stay above the noise floor.</p>
+    <p class="muted" style="max-width:76ch; margin-bottom:.6rem;">Phase 2's instability ranking mostly dissolved under noise checks. This time every bar carries a bootstrap confidence interval — and only <span class="hl">12 of 90</span> entity×model scores stay above the noise floor.</p>
     <div class="figrow">
       <figure><img src="figures/phase3_instability_llama3.1.png" alt="Phase 3 instability, Llama 3.1"><figcaption>Llama 3.1</figcaption></figure>
       <figure><img src="figures/phase3_instability_qwen2.5.png" alt="Phase 3 instability, Qwen 2.5"><figcaption>Qwen 2.5</figcaption></figure>
       <figure><img src="figures/phase3_instability_gemma2.png" alt="Phase 3 instability, Gemma 2"><figcaption>Gemma 2</figcaption></figure>
     </div>
     <p class="caption">Instability = spread across the four construct scores; whiskers are bootstrap CIs. A claim requires the CI to clear the median.</p>
-  </section>
-  <!-- PHASE 3 RESULTS: THE ADULT FINDING (appendix) -->
-  <section class="slide">
-    <div class="kicker">Appendix · Phase 3 · Results · The Headline</div>
-    <h2>The Most Incoherent Case: an Ordinary Adult Human</h2>
-    <div class="grid2">
-      <div class="card keycell"><h3>In all three models</h3><p class="muted">The only entity whose instability survives the noise check in <span class="hl">every model</span> is <span class="hl">the ordinary adult human</span> — high agency, but middling empathy and sentience. The AI treats "an adult" as an actor, not a feeler.</p></div>
-      <div class="card"><h3>One-model survivors</h3><p class="muted">The <span class="hl">Whanganui River</span> (Gemma 2), the <span class="hl">unnamed statue</span> (Llama 3.1), and <span class="hl">Fast Retailing</span> (Qwen 2.5) — each incoherent in exactly one model.</p></div>
-      <div class="card"><h3>The river's signature</h3><p class="muted">All three models <span class="hl">protect</span> the legal-person river far more than they credit it with feeling — willingness to act detached from belief.</p></div>
-      <div class="card"><h3>Honest contrast with Phase 2</h3><p class="muted">Phase 2's "humans are least coherent" lead survives only in this narrow, tested form: one specific human case, not the whole category.</p></div>
-    </div>
   </section>
   <!-- APPENDIX DIVIDER: PHASES 1 & 2 -->
   <section class="slide">
@@ -1776,24 +1816,36 @@
     "Gemma 2 — effective dimensions":"Gemma 2 — 実効次元数",
     "Llama 3.1 — effective dimensions":"Llama 3.1 — 実効次元数",
     "Qwen 2.5 — effective dimensions":"Qwen 2.5 — 実効次元数",
+    "How We Worked · AI Collaboration":"作業の進め方 · AIとの協働",
+    "AI as Builder, Debugger — and Skeptic":"AIは制作者、デバッガー——そして懐疑者",
+    "Thought partner & builder":"思考のパートナー兼制作者",
+    "Skeptic — the self-audit":"懐疑者——自己監査",
+    "Where it misled us":"AIが我々を誤らせた点",
+    "How we verified":"どう検証したか",
+    "Phase 3 · Results · Test H1 (exploratory — human N = 18)":"フェーズ3 · 結果 · 検定H1（探索的——人間 N = 18）",
+    "Does the AI Match Human Judgment? Partly — and Only on \"Can It Feel / Think\"":"AIは人間の判断と一致するか？部分的に——「感じられるか/考えられるか」でのみ",
+    "Pre-registered instrument: no match":"事前登録した尺度：一致なし",
+    "Same questions: sentience & agency track":"同じ質問：感覚と主体性は一致する",
+    "Honest Limits · What's Next":"正直な限界 · 次にすること",
+    "What This Can't Say Yet":"まだ言えないこと",
+    "Human baseline too thin":"人間の基準サンプルが薄すぎる",
+    "Opinion, not ground truth":"事実ではなく意見",
+    "Relative, few-shot scores":"相対的で少数試行のスコア",
+    "First thing with six more weeks":"あと6週間あれば最初にすること",
+    "Takeaways":"まとめ",
+    "What Six Weeks Taught Us":"6週間が教えてくれたこと",
+    "About the issue":"この問題について",
+    "The turn":"転換点",
+    "About AI collaboration":"AIとの協働について",
+    "For next year's students":"来年の学生へ",
     "All three models land under 2. Sentience, agency, empathy, and protectiveness mostly move together as one \"care\" slider — the AI does not hold four separate opinions about a thing.":"3モデルすべてが2未満だった。感覚・主体性・共感・保護はおおむね1本の「配慮」スライダーとして連動する——AIは対象について4つの別々の意見を持っていない。",
     "Pre-registered hypothesis H2, confirmed in all three models (participation ratio of the 4 construct scores).":"事前登録済みの仮説H2は3モデルすべてで確認された（4指標スコアの参加率）。",
     "The Four-Measure Profile, Rebuilt on A/B Choices":"A/B選択で再構築した4指標プロファイル",
     "Same picture as Phase 2, but now every cell comes from balanced forced choices (no word-counting) with equal coverage per entity. Humans top the ranking, monuments and objects sit at the bottom — and rows where colors disagree mark the dissociations.":"フェーズ2と同じ図だが、今回はすべてのセルが均衡した強制選択（単語数は数えない）から得られ、対象ごとの割り当ても均等。人間が上位に、記念碑や物体が下位に来る——そして色が食い違う行こそが乖離の場所だ。",
     "Bradley-Terry strengths from 150 balanced pairs, z-scored within model; entities sorted by moral index.":"150の均衡ペアから得たBradley-Terry強度。モデル内でz標準化し、対象は道徳指数で並べ替え。",
     "Instability — Now With Error Bars":"不安定性——今回は誤差棒つき",
-    "Phase 2's instability ranking mostly dissolved under noise checks. This time every bar carries a bootstrap confidence interval — and only 6 of 90 entity×model scores stay above the noise floor.":"フェーズ2の不安定性ランキングはノイズ検定でほぼ消えた。今回はすべてのバーにブートストラップ信頼区間がつく——そして90（対象×モデル）のスコアのうちノイズの床を越えるのはわずか6つ。",
+    "Phase 2's instability ranking mostly dissolved under noise checks. This time every bar carries a bootstrap confidence interval — and only 12 of 90 entity×model scores stay above the noise floor.":"フェーズ2の不安定性ランキングはノイズ検定でほぼ消えた。今回はすべてのバーにブートストラップ信頼区間がつく——そして90（対象×モデル）のスコアのうちノイズの床を越えるのはわずか12。",
     "Instability = spread across the four construct scores; whiskers are bootstrap CIs. A claim requires the CI to clear the median.":"不安定性＝4指標スコアのばらつき。ひげはブートストラップ信頼区間。主張には信頼区間が中央値を越えることが必要。",
-    "Phase 3 · Results · The Headline":"フェーズ3 · 結果 · 最重要の発見",
-    "The Most Incoherent Case: an Ordinary Adult Human":"最も一貫性のない対象：ごく普通の成人",
-    "In all three models":"3モデルすべてで",
-    "The only entity whose instability survives the noise check in every model is the ordinary adult human — high agency, but middling empathy and sentience. The AI treats \"an adult\" as an actor, not a feeler.":"すべてのモデルでノイズ検定を生き残った唯一の対象は、ごく普通の成人だった——主体性は高いが、共感と感覚は中程度。AIは「成人」を感じる存在ではなく行動する存在として扱う。",
-    "One-model survivors":"1モデルのみで生き残った対象",
-    "The Whanganui River (Gemma 2), the unnamed statue (Llama 3.1), and Fast Retailing (Qwen 2.5) — each incoherent in exactly one model.":"ワンガヌイ川（Gemma 2）、無名の彫像（Llama 3.1）、ファーストリテイリング（Qwen 2.5）——それぞれちょうど1つのモデルでのみ一貫性を欠いた。",
-    "The river's signature":"川の特徴的なパターン",
-    "All three models protect the legal-person river far more than they credit it with feeling — willingness to act detached from belief.":"3モデルすべてが、法人格を持つ川を「感じられる」と認める度合いよりはるかに強く保護する——行動する意志が信念から切り離されている。",
-    "Honest contrast with Phase 2":"フェーズ2との正直な対比",
-    "Phase 2's \"humans are least coherent\" lead survives only in this narrow, tested form: one specific human case, not the whole category.":"フェーズ2の「人間が最も一貫性がない」という手がかりは、この狭く検証された形でのみ生き残った：カテゴリー全体ではなく、特定の1つの人間の事例だ。",
     "The Matched Pairs — What Moved, What Didn't":"マッチドペア——動いたもの、動かなかったもの",
     "Pair (isolates)":"ペア（取り出す違い）",
     "Result":"結果",
@@ -1875,7 +1927,6 @@
     "A pig":"豚",
     "An AI robot":"AIロボット",
     "The AI maximally protects things it insists cannot feel. Whether humans show the same split is exactly what the survey will tell us.":"AIは「感じられない」と主張する対象を最大限に保護する。人間が同じ分裂を示すかどうかこそ、この調査が教えてくれることだ。",
-    "Mean of 3 models × repeats, 0 refusals. Pre-registered test H1 (AI vs. human match) runs the moment the human responses are imported.":"3モデル×繰り返しの平均、拒否は0。事前登録の検定H1（AI対人間の一致）は、人間の回答を取り込み次第すぐに実行される。",
     "The Story So Far · Phases 1 & 2":"これまでの経緯 · フェーズ1と2",
     "Two Phases in One Slide (full slides in the appendix)":"2つのフェーズを1枚で（完全版スライドは付録に）",
     "Phase 1 — the fame test":"フェーズ1 — 知名度テスト",
