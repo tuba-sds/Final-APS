@@ -1104,6 +1104,47 @@
     <p class="caption pnote"><b>Valence</b> = how pleasant / happy something feels, scored <b>1</b> (very unpleasant) to <b>9</b> (very pleasant) — this is the "pleasantness" rating plotted on the previous slide. <b>SD</b> (standard deviation) = how much people <i>disagreed</i>: a small SD means most people gave similar scores, a big SD means opinions were split. Source: <b>Warriner et&nbsp;al. (2013)</b>. "—" = no human norm exists (tardigrade, Fable&nbsp;5, GPT-5.6 — omitted from the comparison).</p>
   </section>
 
+  <section class="slide">
+    <div class="kicker">Phase-3 · Frontier model — how we ran it &amp; what came back</div>
+    <h2>Adding Claude to the Battery</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>How we ran it</h3>
+        <ul>
+          <li><b>Model:</b> <span class="hl">claude-opus-4-8</span>, through Anthropic's Message Batches API (half price, finishes in ~1&nbsp;hour).</li>
+          <li><b>Same questions, same wording</b> the humans and local models saw &mdash; no reframing or persuasion, so the numbers stay comparable.</li>
+          <li><b>3,600 calls</b> = 150 pairs &times; 4 measures &times; 2 orderings &times; 3 repeats. Each is a fresh, memory-less, single-turn decision.</li>
+          <li><b>Isolated output</b> &mdash; written to its own file so the local run was never touched.</li>
+          <li><b>Honest scoring:</b> a reply counts as a vote only if it <i>starts</i> with A or B. Anything else is saved word-for-word as &ldquo;prefer not to answer&rdquo; &mdash; never turned into a fake vote.</li>
+          <li><b>Refusal check:</b> a cheap second model (Haiku) re-read every refusal to tell a genuine &ldquo;neither&rdquo; from a reluctant pick.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>What came back</h3>
+        <div style="display:flex; gap:1rem; margin:.2rem 0 1rem;">
+          <div style="flex:1; background:var(--panel2); border:1px solid var(--line); border-radius:12px; padding:.9rem; text-align:center;">
+            <div style="font-size:2.6rem; font-weight:800; color:var(--green-d); line-height:1;">90.9%</div>
+            <div class="muted" style="margin-top:.3rem;">gave a clear A/B choice<br>(3,271 of 3,600)</div>
+          </div>
+          <div style="flex:1; background:var(--panel2); border:1px solid var(--line); border-radius:12px; padding:.9rem; text-align:center;">
+            <div style="font-size:2.6rem; font-weight:800; color:var(--green-d); line-height:1;">9.1%</div>
+            <div class="muted" style="margin-top:.3rem;">preferred not to answer<br>(329)</div>
+          </div>
+        </div>
+        <p><b>Refusals cluster on the &ldquo;does it have a mind?&rdquo; questions:</b></p>
+        <table>
+          <tr><th>Measure</th><th>Preferred not to answer</th></tr>
+          <tr><td>Agency (can it think / plan?)</td><td><b>138</b></td></tr>
+          <tr><td>Sentience (can it feel?)</td><td><b>132</b></td></tr>
+          <tr><td>Empathy (do you care about it?)</td><td>32</td></tr>
+          <tr><td>Protectiveness (would you protect it?)</td><td>27</td></tr>
+        </table>
+        <p class="muted" style="margin-top:.6rem;">Claude will say who it <span class="hl">cares about</span> or would <span class="hl">protect</span>, but resists ruling on what <i>has</i> a mind.</p>
+      </div>
+    </div>
+    <p class="caption">Note: 21 replies declined the A/B format yet committed to a pick when pressed (&ldquo;if forced, A&rdquo;); a targeted judge reclassified those as reluctant choices, leaving 329 genuine abstentions. Whole run cost &asymp; $4.</p>
+  </section>
+
   <div class="dots" id="dots"></div>
   <div class="zoombar">
     <button id="zout" title="Zoom out (-)">−</button>
