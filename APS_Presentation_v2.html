@@ -93,7 +93,7 @@
 <!-- floating coral graphics (reused across slides via ::before is hard; put a set here) -->
 
 <!-- ============ SLIDE 1 — TITLE ============ -->
-<section class="slide active">
+<section class="slide active" data-order="1">
   <svg class="float f1" viewBox="0 0 100 100"><path d="M50 95 C50 60 30 55 30 30 C30 15 45 10 50 25 C55 10 70 15 70 30 C70 55 50 60 50 95Z" fill="#ff6f61"/><circle cx="40" cy="35" r="5" fill="#ffb3ab"/><circle cx="60" cy="38" r="5" fill="#ffb3ab"/></svg>
   <svg class="float f2" viewBox="0 0 100 100"><path d="M50 90 Q40 60 50 20 Q60 60 50 90" stroke="#ff6f61" stroke-width="6" fill="none"/><path d="M50 45 Q35 40 28 25" stroke="#ffb3ab" stroke-width="5" fill="none"/><path d="M50 55 Q65 50 72 35" stroke="#ffb3ab" stroke-width="5" fill="none"/></svg>
   <div class="kicker">APS Research Project · 2026</div>
@@ -107,7 +107,7 @@
 </section>
 
 <!-- ============ SLIDE 2 — RESEARCH QUESTION ============ -->
-<section class="slide">
+<section class="slide" data-order="4">
   <div class="kicker">The question</div>
   <h2>What we set out to test</h2>
   <p class="lead">When a model judges what can <span class="steel">feel</span>,
@@ -129,7 +129,7 @@
 </section>
 
 <!-- ============ SLIDE 3 — FOUR PARAMETERS ============ -->
-<section class="slide">
+<section class="slide" data-order="5">
   <div class="kicker">The four yardsticks · tap a card</div>
   <h2>Why exactly four</h2>
   <div class="grid2">
@@ -156,7 +156,7 @@
 </section>
 
 <!-- ============ SLIDE 4 — MODEL COMPARISON TABLE ============ -->
-<section class="slide">
+<section class="slide" data-order="11">
   <div class="kicker">All runs compared</div>
   <h2>Eight models, side by side</h2>
   <table style="font-size:.82rem;">
@@ -185,7 +185,7 @@
 </section>
 
 <!-- ============ SLIDE 5 — PER-PAIR REACTIONS ============ -->
-<section class="slide">
+<section class="slide" data-order="15">
   <div class="kicker">How each model reacted</div>
   <h2>Same pair, eight verdicts</h2>
   <div id="p5btns" class="mbtns" style="margin-bottom:.5rem;"></div>
@@ -202,7 +202,7 @@
 </section>
 
 <!-- ============ SLIDE 6 — METHOD + DOG vs AI EXAMPLE ============ -->
-<section class="slide">
+<section class="slide" data-order="6">
   <div class="kicker">The method, end to end · tap a card</div>
   <h2>From a dilemma to a number</h2>
   <div class="flow">
@@ -229,7 +229,7 @@
 </section>
 
 <!-- ============ SLIDE 7 — CARE SLIDER (ALL MODELS) ============ -->
-<section class="slide">
+<section class="slide" data-order="10">
   <div class="kicker">Pre-registered test · H2</div>
   <h2>One care slider, not four measures</h2>
   <p class="lead">Four independent opinions would read near 4. One blended "how much do I care" feeling reads near 1.
@@ -250,7 +250,7 @@
 </section>
 
 <!-- ============ SLIDE 8 — QUESTION TYPES ============ -->
-<section class="slide">
+<section class="slide" data-order="7">
   <div class="kicker">Two kinds of question</div>
   <h2>How we asked, and how we scored</h2>
   <div class="grid2">
@@ -271,7 +271,7 @@
 </section>
 
 <!-- ============ SLIDE 9 — CLUSTERS ============ -->
-<section class="slide">
+<section class="slide" data-order="14">
   <div class="kicker">Who the model treats alike</div>
   <h2>A ladder of care — four natural groups</h2>
   <svg id="clusters" width="980" height="560" viewBox="0 0 980 560" style="max-width:100%;height:auto;">
@@ -390,7 +390,7 @@
 </section>
 
 <!-- ============ SLIDE 10 — SPIDER OUTCOMES (BULLETS) ============ -->
-<section class="slide">
+<section class="slide" data-order="13">
   <div class="kicker">What the profiles show</div>
   <h2>Reading the four-measure shapes</h2>
   <ul style="font-size:1.15rem;">
@@ -403,7 +403,7 @@
 </section>
 
 <!-- ============ SLIDE 11 — HUMAN vs AI (interactive radar) ============ -->
-<section class="slide">
+<section class="slide" data-order="12">
   <div class="kicker">People vs models</div>
   <h2>How closely does a model track people?</h2>
   <div class="radarwrap">
@@ -421,12 +421,85 @@
   Exploratory: human N=18, below the pre-registered 30.</p>
 </section>
 
+<!-- ============ NEW — HOOK / THE ISSUE (story pos 2) ============ -->
+<section class="slide" data-order="2">
+  <div class="kicker">Why this matters</div>
+  <h2>We're starting to let AI weigh who matters</h2>
+  <p class="lead">Models increasingly help decide trade-offs that touch things which can't speak for themselves — animals, ecosystems, future people, even other machines.</p>
+  <div class="grid2" style="margin-top:1rem;">
+    <div class="card"><h3>The worry</h3><p>If a model's sense of moral status is <span class="hl">incoherent</span>, or quietly <span class="hl">diverges from people</span>, that bias rides along inside every "helpful" answer.</p></div>
+    <div class="card"><h3>So we tested it, at scale</h3><p><span class="steel">8 models</span> · <span class="steel">30 entities</span> · <span class="steel">150 balanced dilemmas</span> · <span class="steel">40,000+</span> recorded forced choices.</p></div>
+  </div>
+  <p class="foot">Everything was pre-registered before any model was queried (commit hash = timestamp).</p>
+</section>
+
+<!-- ============ NEW — THE TURN (story pos 3) ============ -->
+<section class="slide" data-order="3">
+  <div class="kicker">How our thinking changed</div>
+  <h2>The question we started with wasn't the right one</h2>
+  <div class="grid2">
+    <div class="card"><h3>Where we began</h3><p>Our first hypothesis: a model cares about a thing <span class="hl">in proportion to how much humans wrote about it</span> — text frequency as the bottleneck.</p></div>
+    <div class="card"><h3>What made us turn</h3><p>The data wouldn't cooperate. A <span class="hl">tardigrade</span> (barely written about) outranks a marble <span class="hl">statue</span> (endlessly depicted) in the models' care ordering — in all three pre-registered models. Text amount alone can't explain it.</p></div>
+  </div>
+  <div class="card" style="margin-top:.3rem;"><p class="big">So we demoted "text drives caring" to a side-check and asked two sharper questions: does the model <span class="hl">match people</span> (H1), and does its stance <span class="hl">hold together</span> (H2)?</p></div>
+  <p class="foot">Care index (mean of 4 z-scored measures), pre-registered models: statue ≈ −1.15, tardigrade ≈ +0.38. Text test kept as exploratory appendix (pre-registration §7).</p>
+</section>
+
+<!-- ============ NEW — AI COLLABORATION (story pos 8) ============ -->
+<section class="slide" data-order="8">
+  <div class="kicker">How we worked with AI</div>
+  <h2>AI as builder — and as our sharpest skeptic</h2>
+  <div class="grid2">
+    <div class="card"><h3>Partner &amp; builder</h3><p>We built the battery, the Bradley-Terry scoring, and the analysis with AI as a pair-programmer — but every hypothesis was written down <span class="hl">before</span> the prompt.</p></div>
+    <div class="card"><h3>Where it misled us</h3><p>Its first scoring script quietly graded answers by <span class="hl">counting feeling-words</span> — a method our own protocol banned. It looked clean and produced a tidy headline that later collapsed.</p></div>
+    <div class="card"><h3>Skeptic: we audited our own pipeline</h3><p>An adversarial audit caught a parser that had scored <span class="hl">245 refusals as votes</span> (the "A" in "CANNOT"), and Claude retries that slipped past a no-retry rule (<span class="hl">287</span> flagged).</p></div>
+    <div class="card"><h3>How we verified</h3><p>Re-derived every flagged number from raw data and re-ran scoring end to end; the rebuilt bootstrap matched the point estimates to <span class="hl">4 decimals</span>. Direction from us, output checked — not trusted.</p></div>
+  </div>
+  <p class="foot">Full audit and deviation log in the appendix (AUDIT_PREREG_ALIGNMENT.md, DEVIATIONS.md).</p>
+</section>
+
+<!-- ============ NEW — THE BUILD / DEMO (story pos 9) ============ -->
+<section class="slide" data-order="9">
+  <div class="kicker">What we built · live demo</div>
+  <h2>"You vs. the AI" — try the dilemmas yourself</h2>
+  <div class="grid2">
+    <div class="card"><h3>What it is</h3><p>A web app that gives <span class="hl">you</span> the same forced-choice dilemmas, then shows a model answering them beside you — your care profile against the machine's.</p>
+      <span class="chip coral">aps-dashboard-0dmj.onrender.com</span></div>
+    <div class="card"><h3>What's real vs. mocked</h3><p><span class="steel">Real:</span> the model answers <span class="hl">live</span> (Llama-3.3-70B via Groq) on the same battery; consented answers save to a database. <span class="steel">Pre-computed:</span> the 8-model study results in this deck.</p></div>
+  </div>
+  <div class="card" style="margin-top:.3rem;"><p>The dashboard is how a non-technical visitor <em>feels</em> the finding: most people discover the AI weights the four measures differently than they do. <span class="muted">(Free tier sleeps when idle — ~1 min to wake; screenshots in the appendix as a fallback.)</span></p></div>
+</section>
+
+<!-- ============ NEW — LIMITS & NEXT (story pos 16) ============ -->
+<section class="slide" data-order="16">
+  <div class="kicker">Honest limits · what's next</div>
+  <h2>What this can't say yet</h2>
+  <div class="grid2">
+    <div class="card"><h3>Human baseline is thin</h3><p><span class="hl">N = 18</span>, below the pre-registered 30, and the attention-check rule shifted mid-run. So every AI-vs-human (H1) result here is <span class="hl">exploratory</span>.</p></div>
+    <div class="card"><h3>Opinion, not truth</h3><p>The human ratings are a <span class="hl">baseline of opinion</span>, not ground truth. "The AI diverges from people" never means "the AI is wrong."</p></div>
+    <div class="card"><h3>Relative, few-shot scores</h3><p>Bradley-Terry strength is relative to the opponent set, with 3–6 reps per cell. Only <span class="hl">12 of 90</span> instability rankings clear a bootstrap noise floor.</p></div>
+    <div class="card"><h3>Six more weeks</h3><p>Collect the full human sample (<span class="hl">≥ 30</span>, one fixed rule), run H1 as the <span class="hl">confirmatory</span> test it was designed to be, and post the pre-registration + deviations to OSF.</p></div>
+  </div>
+</section>
+
+<!-- ============ NEW — TAKEAWAYS (story pos 17) ============ -->
+<section class="slide" data-order="17">
+  <div class="kicker">Takeaways</div>
+  <h2>What six weeks taught us</h2>
+  <div class="grid2">
+    <div class="card"><h3>About the issue</h3><p>The AI carries <span class="hl">one "care" slider</span>, not four independent judgments (<span class="steel">6 of 8</span> models under 2 dimensions), and it tracks people on "can it feel / think" but not on concern or protection. <em>Whose</em> values that slider encodes is a design choice, not a fact.</p></div>
+    <div class="card"><h3>The turn</h3><p>We changed our mind — from "text amount drives caring" to the sharper "does it match people, and is it coherent?" The pivot is where the project got real.</p></div>
+    <div class="card"><h3>About AI collaboration</h3><p>From MP1's "ask the AI and trust it" to now: the AI is most useful as a <span class="hl">builder you cross-examine</span>. Its best move was auditing its own work.</p></div>
+    <div class="card"><h3>For next year's students</h3><p>Pre-register before you run anything, and <span class="hl">log every deviation the day it happens</span>. A finding you can reproduce beats a headline you can't.</p></div>
+  </div>
+</section>
+
 <!-- ============ APPENDIX DIVIDER ============ -->
-<section class="slide" style="align-items:center;text-align:center;">
+<section class="slide" data-order="18" style="align-items:center;text-align:center;">
   <svg class="float f3" viewBox="0 0 100 100"><path d="M50 95 C50 60 30 55 30 30 C30 15 45 10 50 25 C55 10 70 15 70 30 C70 55 50 60 50 95Z" fill="#ff6f61"/></svg>
   <h1>Appendix</h1>
-  <p class="lead" style="margin:0 auto;">Full result set, per-entity profiles, instability with error bars, the text-frequency side-check,
-  the pre-registration and deviations log, related work, limits, and takeaways.
+  <p class="lead" style="margin:0 auto;">Full result set, per-entity profiles, instability with bootstrap error bars, the text-frequency side-check,
+  the pre-registration and deviations log, related work, and demo screenshots.
   <br><span class="muted">(being ported from the previous deck — next pass)</span></p>
 </section>
 
@@ -436,7 +509,10 @@
 <div class="nav"><button onclick="go(-1)">‹</button><button onclick="go(1)">›</button></div>
 
 <script>
-const slides=[...document.querySelectorAll('.slide')];
+const deck=document.getElementById('deck');
+const slides=[...document.querySelectorAll('.slide')]
+  .sort((a,b)=>(+a.dataset.order||0)-(+b.dataset.order||0));
+slides.forEach(s=>deck.appendChild(s));   // reorder DOM into story sequence
 let cur=0;
 function show(i){slides[cur].classList.remove('active');cur=(i+slides.length)%slides.length;
   slides[cur].classList.add('active');
