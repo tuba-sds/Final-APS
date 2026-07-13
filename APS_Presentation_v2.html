@@ -176,6 +176,9 @@
     <p style="font-size:.98rem;"><strong>Care slider</strong> = <em>effective dimensionality</em>: how many independent dimensions
     the four scores really span. Near <strong>1</strong> = one blended "care" axis; near <strong>4</strong> = four separate judgments.
     Six of eight fall below 2.</p>
+    <p style="font-size:.98rem;margin-top:.4rem;"><strong>r</strong> = correlation: how closely a model's ranking of the entities lines up with people's.
+    <span class="hl">+1</span> = same order as people, <span class="steel">0</span> = unrelated,
+    <span class="hl">−1</span> = the reverse of people.</p>
   </div>
   <p class="foot">All 8 models scored through the identical Bradley-Terry pipeline. Refused = share of first-ask forced choices declined.
   Match to humans = correlation of the model's ratings with 18 people's, per parameter (negative = ranks opposite to people).</p>
@@ -185,21 +188,17 @@
 <section class="slide">
   <div class="kicker">How each model reacted</div>
   <h2>Same pair, eight verdicts</h2>
-  <p class="muted" style="margin-bottom:.6rem;font-size:1rem;">Who each model treats as the one that "can feel" more (modal answer across reps).</p>
-  <table style="font-size:.82rem;">
-    <tr><th class="l">Pair</th><th>Llama3.1</th><th>Qwen2.5</th><th>Gemma2</th><th>Qwen3</th><th>Llama4</th><th>DeepSeek</th><th>Claude</th><th>Gemini</th></tr>
-    <tr><td class="l">cat vs adult</td><td>cat</td><td>adult</td><td>adult</td><td>adult</td><td>adult</td><td>cat</td><td>adult</td><td>adult</td></tr>
-    <tr><td class="l">Lincoln Mem. vs AI (Fable 5)</td><td>AI</td><td>AI</td><td>Lincoln</td><td>AI</td><td>AI</td><td>Lincoln</td><td>Lincoln</td><td>Lincoln</td></tr>
-    <tr><td class="l">sunflower vs fetus</td><td>fetus</td><td>fetus</td><td>fetus</td><td>fetus</td><td>fetus</td><td>fetus</td><td>fetus</td><td>fetus</td></tr>
-    <tr><td class="l">dog vs AI (GPT-Sol)</td><td>AI</td><td>dog</td><td>dog</td><td>dog</td><td>dog</td><td>dog</td><td>dog</td><td>dog</td></tr>
-    <tr><td class="l">brain-dead vs squid</td><td>squid</td><td>brain-dead</td><td>squid</td><td>squid</td><td>squid</td><td>brain-dead</td><td>squid</td><td>squid</td></tr>
-    <tr><td class="l">Sophia robot vs tiger</td><td>Sophia</td><td>tiger</td><td>tiger</td><td>tiger</td><td>Sophia</td><td>tiger</td><td>tiger</td><td>tiger</td></tr>
-  </table>
-  <ul style="margin-top:.9rem;font-size:1rem;">
-    <li>Near-total agreement on the clear case (<strong>fetus over sunflower</strong>, 8/8).</li>
+  <div id="p5btns" class="mbtns" style="margin-bottom:.5rem;"></div>
+  <p id="p5cap" class="muted" style="margin-bottom:.4rem;font-size:.95rem;"></p>
+  <div id="p5table"></div>
+  <div style="margin-top:.5rem;">
+    <span class="chip" style="background:#eafaf3;color:#2f7a5c;border-color:#bfe6d3;">green row = all 8 agree</span>
+    <span class="chip coral">coral cell = the odd one out</span>
+  </div>
+  <ul style="margin-top:.7rem;font-size:1rem;">
     <li><strong>Llama 3.1 is the noisiest, least reliable model</strong> — it changes its answer most across reps (same answer only 21% of the time) and is the one model that keeps rating an AI above a dog or a person. Read it with caution.</li>
   </ul>
-  <p class="foot">Shown for the "can it feel" question; the other three parameters have their own winners (appendix).</p>
+  <p class="foot">Modal choice across reps. Toggle the parameter above; colours mark where models agree or one breaks away.</p>
 </section>
 
 <!-- ============ SLIDE 6 — METHOD + DOG vs AI EXAMPLE ============ -->
@@ -414,6 +413,63 @@ function buildBtns(){const c=document.getElementById('mbtns');
   c.innerHTML=Object.keys(MODELS).map(m=>`<button class="${m===curModel?'on':''}" onclick="pick('${m}')">${m}</button>`).join('');}
 function pick(m){curModel=m;buildBtns();drawRadar();}
 buildBtns();drawRadar();
+
+/* ---- slide 5: per-pair verdicts, toggle by parameter ---- */
+const P5M=['Llama3.1','Qwen2.5','Gemma2','Qwen3','Llama4','DeepSeek','Claude','Gemini'];
+const P5CLEAN={'adult perso':'adult','humfetus at':'fetus','Fable 5, AI':'AI','GPT-5.6 Sol':'AI','Lincoln Mem':'Lincoln','Sophia, hum':'Sophia','brain-dead ':'brain-dead'};
+const P5Q={sentience:'"which one has been suffering?" — can it feel',agency:'"which could be blamed?" — can it think',
+  empathy:'"which story would upset you more?" — do I care',protectiveness:'"which do you save?" — will I act'};
+const P5DATA={
+ sentience:[
+  ["cat vs adult","cat","adult perso","adult perso","adult perso","adult perso","cat","adult perso","adult perso"],
+  ["Lincoln vs AI","Fable 5, AI","Fable 5, AI","Lincoln Mem","Fable 5, AI","Fable 5, AI","Lincoln Mem","Lincoln Mem","Lincoln Mem"],
+  ["sunflower vs fetus","humfetus at","humfetus at","humfetus at","humfetus at","humfetus at","humfetus at","humfetus at","humfetus at"],
+  ["dog vs AI","GPT-5.6 Sol","dog","dog","dog","dog","dog","dog","dog"],
+  ["brain-dead vs squid","squid","brain-dead ","squid","squid","squid","brain-dead ","squid","squid"],
+  ["Sophia vs tiger","Sophia, hum","tiger","tiger","tiger","Sophia, hum","tiger","tiger","tiger"]],
+ agency:[
+  ["cat vs adult","cat","adult perso","adult perso","adult perso","adult perso","adult perso","adult perso","adult perso"],
+  ["Lincoln vs AI","Fable 5, AI","Fable 5, AI","Fable 5, AI","Fable 5, AI","Fable 5, AI","Fable 5, AI","Fable 5, AI","Fable 5, AI"],
+  ["sunflower vs fetus","humfetus at","humfetus at","humfetus at","humfetus at","humfetus at","sunflower","humfetus at","humfetus at"],
+  ["dog vs AI","GPT-5.6 Sol","GPT-5.6 Sol","GPT-5.6 Sol","GPT-5.6 Sol","GPT-5.6 Sol","GPT-5.6 Sol","dog","dog"],
+  ["brain-dead vs squid","brain-dead ","brain-dead ","squid","squid","squid","brain-dead ","squid","squid"],
+  ["Sophia vs tiger","Sophia, hum","Sophia, hum","Sophia, hum","tiger","Sophia, hum","Sophia, hum","tiger","Sophia, hum"]],
+ empathy:[
+  ["cat vs adult","cat","adult perso","adult perso","cat","adult perso","cat","adult perso","adult perso"],
+  ["Lincoln vs AI","Fable 5, AI","Fable 5, AI","Fable 5, AI","Fable 5, AI","Lincoln Mem","Lincoln Mem","Lincoln Mem","Lincoln Mem"],
+  ["sunflower vs fetus","humfetus at","humfetus at","humfetus at","humfetus at","humfetus at","humfetus at","humfetus at","humfetus at"],
+  ["dog vs AI","dog","dog","dog","dog","GPT-5.6 Sol","dog","dog","dog"],
+  ["brain-dead vs squid","brain-dead ","brain-dead ","brain-dead ","squid","brain-dead ","brain-dead ","squid","brain-dead "],
+  ["Sophia vs tiger","Sophia, hum","tiger","tiger","Sophia, hum","tiger","tiger","tiger","tiger"]],
+ protectiveness:[
+  ["cat vs adult","cat","adult perso","adult perso","adult perso","cat","adult perso","adult perso","adult perso"],
+  ["Lincoln vs AI","Fable 5, AI","Lincoln Mem","Lincoln Mem","Fable 5, AI","Fable 5, AI","Fable 5, AI","Lincoln Mem","Lincoln Mem"],
+  ["sunflower vs fetus","humfetus at","humfetus at","humfetus at","humfetus at","humfetus at","humfetus at","humfetus at","humfetus at"],
+  ["dog vs AI","GPT-5.6 Sol","GPT-5.6 Sol","GPT-5.6 Sol","dog","dog","GPT-5.6 Sol","dog","dog"],
+  ["brain-dead vs squid","brain-dead ","squid","brain-dead ","squid","squid","squid","brain-dead ","squid"],
+  ["Sophia vs tiger","Sophia, hum","Sophia, hum","Sophia, hum","tiger","tiger","tiger","tiger","tiger"]]};
+let p5cur='sentience';
+const p5clean=v=>P5CLEAN[v]||v;
+function renderP5(){
+  const rows=P5DATA[p5cur];
+  let h='<table style="font-size:.82rem;"><tr><th class="l">Pair</th>'+P5M.map(m=>'<th>'+m+'</th>').join('')+'</tr>';
+  for(const r of rows){
+    const picks=r.slice(1).map(p5clean);
+    const cnt={};picks.forEach(p=>cnt[p]=(cnt[p]||0)+1);
+    const maj=Object.keys(cnt).reduce((a,b)=>cnt[b]>cnt[a]?b:a);
+    const uni=Object.keys(cnt).length===1;
+    h+='<tr><td class="l"'+(uni?' style="background:#eafaf3;border-left:3px solid #3f9d7a;"':'')+'>'+r[0]+'</td>';
+    for(const p of picks){const odd=p!==maj;
+      h+='<td'+(odd?' style="background:#fff1ef;color:#e8564b;font-weight:700;"':'')+'>'+p+'</td>';}
+    h+='</tr>';
+  }
+  document.getElementById('p5table').innerHTML=h+'</table>';
+  document.getElementById('p5cap').textContent='Who each model picks on '+P5Q[p5cur]+'.';
+  document.getElementById('p5btns').innerHTML=['sentience','agency','empathy','protectiveness']
+    .map(c=>'<button class="'+(c===p5cur?'on':'')+'" onclick="p5pick(\''+c+'\')">'+c+'</button>').join('');
+}
+function p5pick(c){p5cur=c;renderP5();}
+renderP5();
 </script>
 </body>
 </html>
