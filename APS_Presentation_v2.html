@@ -259,13 +259,25 @@
 <section class="slide" data-order="13">
   <div class="kicker">Pre-registered test · H1 · does it match people?</div>
   <h2>Where AI models agree with people — and where they don't</h2>
-  <ul style="font-size:1.15rem;">
-    <li><strong>They agree on "can it feel."</strong> Sentience tracks human ratings in <span class="hl">7 of 8 AI models</span> (median r = 0.75).</li>
-    <li><strong>They mostly agree on "can it think."</strong> Agency matches in <span class="hl">5 of 8</span> (median r = 0.58).</li>
-    <li><strong>They part ways on caring and protecting.</strong> Empathy matches in only <span class="hl">1 of 8</span> (median r = 0.19); protectiveness in <span class="hl">1 of 8</span> (median r ≈ 0).</li>
-    <li><strong>The shape barely changes across AI models</strong> — humans peak, monuments bottom out, animals and AIs sit in between, for all eight.</li>
-    <li><strong>One care slider explains it:</strong> the four axes move together, so an entity high on one tends to be high on all — one slider dressed as four.</li>
-  </ul>
+  <p class="muted" style="margin:-.4rem 0 .3rem;">Tap each parameter for the number.</p>
+  <div class="grid2">
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in">
+      <div class="flip-f"><h3>Sentience <span style="color:#2e7d43;">✓</span></h3><p class="muted">matches people · tap ↻</p></div>
+      <div class="flip-b"><p>Sentience tracks human ratings in <b>7 of 8</b> AI models (median r = 0.75).</p></div>
+    </div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in">
+      <div class="flip-f"><h3>Agency <span style="color:#2e7d43;">✓</span></h3><p class="muted">mostly matches · tap ↻</p></div>
+      <div class="flip-b"><p>Agency matches human ratings in <b>5 of 8</b> AI models (median r = 0.58).</p></div>
+    </div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in">
+      <div class="flip-f"><h3>Empathy <span style="color:#c0392b;">✗</span></h3><p class="muted">diverges · tap ↻</p></div>
+      <div class="flip-b"><p>Empathy matches in only <b>1 of 8</b> AI models (median r = 0.19).</p></div>
+    </div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in">
+      <div class="flip-f"><h3>Protectiveness <span style="color:#c0392b;">✗</span></h3><p class="muted">diverges · tap ↻</p></div>
+      <div class="flip-b"><p>Protectiveness matches in only <b>1 of 8</b> AI models (median r ≈ 0).</p></div>
+    </div></div>
+  </div>
   <p class="foot">Match = Mantel correlation of each AI model's 0–10 ratings with 18 people's, per parameter (results/rsa_comparison_results.csv). Next slide shows it as a shape.</p>
 </section>
 
@@ -561,7 +573,7 @@ function drawLadder(){
   s.innerHTML=g;
   const cap=document.getElementById('l14cap');
   if(l14cur==='Humans (8)')cap.innerHTML='<b>Humans</b> — from 0–10 ratings, 8 entities only (⚠ not a Bradley-Terry score; shown for comparison).';
-  else if(l14cur==='Average')cap.textContent='Average of all 8 models. Humans peak; monuments sink; AIs sit with institutions, not with living things.';
+  else if(l14cur==='Average')cap.textContent='Average of all 8 AI models — the shape barely changes across them: humans peak, monuments bottom out, animals and AIs sit in between.';
   else cap.innerHTML=`<b>${l14cur}</b> — care slider (effective dimensions): <b>${DIM[l14cur]}</b> (near 1 = one care axis).`;
 }
 function l14pick(m){l14cur=m;buildL14();drawLadder();}
