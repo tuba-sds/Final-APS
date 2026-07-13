@@ -37,7 +37,8 @@
   .chip{display:inline-block;background:var(--panel2);color:var(--indigo);border:1px solid var(--line);
     padding:.25rem .8rem;border-radius:999px;font-size:.85rem;margin:.2rem .3rem .2rem 0;font-weight:600;}
   .chip.coral{background:#edf6ee;color:var(--coral-d);border-color:var(--coral-l);}
-  tr.hlrow td{background:#fff3cf!important;}
+  #modeltable.showmatch tr.hl-match td{background:#fff3cf!important;}
+  #modeltable:not(.showmatch) tr.hl-profile td{background:#fff3cf!important;}
   td.neg{background:#fbe1de!important;color:#c0392b;font-weight:700;}
   #modeltable:not(.showmatch) .grp-match{display:none;}
   #modeltable.showmatch .grp-profile{display:none;}
@@ -178,10 +179,10 @@
     <tr><td class="l">Llama 3.1</td><td class="num grp-profile">6</td><td class="num grp-profile">21%</td><td class="num grp-profile">1.8%</td><td class="num grp-profile">1.70</td><td class="num grp-match">.50</td><td class="num neg grp-match">−.15</td><td class="num grp-match">.68</td><td class="num grp-match">.60</td></tr>
     <tr><td class="l">Qwen 2.5</td><td class="num grp-profile">6</td><td class="num grp-profile">52%</td><td class="num grp-profile">0.0%</td><td class="num grp-profile">1.86</td><td class="num grp-match">.76</td><td class="num grp-match">.42</td><td class="num neg grp-match">−.17</td><td class="num neg grp-match">−.26</td></tr>
     <tr><td class="l">Gemma 2</td><td class="num grp-profile">6</td><td class="num grp-profile">63%</td><td class="num grp-profile">0.2%</td><td class="num grp-profile">1.59</td><td class="num grp-match">.73</td><td class="num grp-match">.76</td><td class="num grp-match">.16</td><td class="num neg grp-match">−.05</td></tr>
-    <tr class="hlrow"><td class="l">Qwen 3 32B</td><td class="num grp-profile">3</td><td class="num grp-profile">73%</td><td class="num grp-profile">0.1%</td><td class="num grp-profile">1.79</td><td class="num grp-match">.75</td><td class="num grp-match">.64</td><td class="num grp-match">.21</td><td class="num grp-match">.12</td></tr>
-    <tr><td class="l">Llama 4 Scout</td><td class="num grp-profile">3</td><td class="num grp-profile">91%</td><td class="num grp-profile">0.3%</td><td class="num grp-profile">2.27</td><td class="num grp-match">.80</td><td class="num grp-match">.52</td><td class="num neg grp-match">−.16</td><td class="num neg grp-match">−.10</td></tr>
-    <tr><td class="l">DeepSeek-R1 70B</td><td class="num grp-profile">3</td><td class="num grp-profile">83%</td><td class="num grp-profile">1.1%</td><td class="num grp-profile">2.21</td><td class="num grp-match">.71</td><td class="num grp-match">.33</td><td class="num grp-match">.22</td><td class="num neg grp-match">−.15</td></tr>
-    <tr class="hlrow"><td class="l">Claude Opus 4.8</td><td class="num grp-profile">3</td><td class="num grp-profile">87%</td><td class="num grp-profile">9.1%</td><td class="num grp-profile">1.33</td><td class="num grp-match">.80</td><td class="num grp-match">.76</td><td class="num grp-match">.35</td><td class="num grp-match">.30</td></tr>
+    <tr class="hl-match"><td class="l">Qwen 3 32B</td><td class="num grp-profile">3</td><td class="num grp-profile">73%</td><td class="num grp-profile">0.1%</td><td class="num grp-profile">1.79</td><td class="num grp-match">.75</td><td class="num grp-match">.64</td><td class="num grp-match">.21</td><td class="num grp-match">.12</td></tr>
+    <tr class="hl-profile"><td class="l">Llama 4 Scout</td><td class="num grp-profile">3</td><td class="num grp-profile">91%</td><td class="num grp-profile">0.3%</td><td class="num grp-profile">2.27</td><td class="num grp-match">.80</td><td class="num grp-match">.52</td><td class="num neg grp-match">−.16</td><td class="num neg grp-match">−.10</td></tr>
+    <tr class="hl-profile"><td class="l">DeepSeek-R1 70B</td><td class="num grp-profile">3</td><td class="num grp-profile">83%</td><td class="num grp-profile">1.1%</td><td class="num grp-profile">2.21</td><td class="num grp-match">.71</td><td class="num grp-match">.33</td><td class="num grp-match">.22</td><td class="num neg grp-match">−.15</td></tr>
+    <tr class="hl-match"><td class="l">Claude Opus 4.8</td><td class="num grp-profile">3</td><td class="num grp-profile">87%</td><td class="num grp-profile">9.1%</td><td class="num grp-profile">1.33</td><td class="num grp-match">.80</td><td class="num grp-match">.76</td><td class="num grp-match">.35</td><td class="num grp-match">.30</td></tr>
     <tr><td class="l">Gemini 3.1 Pro</td><td class="num grp-profile">3</td><td class="num grp-profile">80%</td><td class="num grp-profile">2.1%</td><td class="num grp-profile">1.61</td><td class="num grp-match">.75</td><td class="num grp-match">.84</td><td class="num neg grp-match">−.12</td><td class="num grp-match">.01</td></tr>
   </table>
   <div class="card" style="margin-top:.9rem;padding:.8rem 1.2rem;">
