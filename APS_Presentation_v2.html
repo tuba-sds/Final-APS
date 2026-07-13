@@ -161,13 +161,13 @@
   Grounded in <strong>Gray, Gray &amp; Wegner (2007, <em>Science</em>)</strong> — mind perception splits into Experience
   and Agency (our feel/think) — and <strong>Eagly &amp; Chaiken (1993)</strong> — attitudes are cognition, affect, behaviour (our belief/feeling/action);
   bridged by <strong>Gray, Young &amp; Waytz (2012)</strong> — perceived experience is what makes something a moral patient.
-  <span style="cursor:pointer;color:var(--coral-d);font-weight:700;white-space:nowrap;" onclick="show(17)">How these four were derived →</span></p>
+  <span style="cursor:pointer;color:var(--coral-d);font-weight:700;white-space:nowrap;" onclick="show(18)">How these four were derived →</span></p>
   <p class="cite" style="margin-top:.3rem;">Note: the "I" in these questions is whoever answers them — the AI model or the human participant.</p>
 </section>
 
 <!-- ============ SLIDE 4 — MODEL COMPARISON TABLE ============ -->
 <section class="slide" data-order="7">
-  <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(5)">↩ back to method (slide 6)</span>
+  <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(6)">↩ back to method (slide 7)</span>
   <div class="kicker">All runs compared</div>
   <h2>Eight AI models, side by side</h2>
   <div style="margin-bottom:.55rem;">
@@ -219,6 +219,16 @@
 </section>
 
 <!-- ============ SLIDE 6 — METHOD + DOG vs AI EXAMPLE ============ -->
+<!-- PRE-REGISTRATION (main) -->
+<section class="slide" data-order="5.5">
+  <div class="kicker">Playing fair · pre-registration</div>
+  <h2>We called our shots first</h2>
+  <div class="grid3">
+    <div class="card"><h3><span class="cico">🔒</span>Written before the data</h3><p>H1, H2, the 30 entities and the exact scoring were frozen in a commit <b>before any AI model was asked a single question</b>.</p></div>
+    <div class="card"><h3><span class="cico d2">🎯</span>No moving the goalposts</h3><p>Test runs were deleted first and the analysis was locked — so we couldn't tune it to the answers we liked.</p></div>
+    <div class="card"><h3><span class="cico d3">📓</span>Every change logged</h3><p>Anything we changed afterwards is written down the day it happened.</p></div>
+  </div>
+</section>
 <section class="slide" data-order="6">
   <div class="kicker">The method, end to end</div>
   <h2>From questions to hypotheses — how the data flows</h2>
@@ -240,9 +250,9 @@
     </div>
     <div style="display:flex;font-size:1.4rem;color:var(--coral);font-weight:700;"><span style="flex:2;text-align:center;">↙ &nbsp; ↘</span><span style="flex:1;text-align:center;">↓</span></div>
     <div class="grid3">
-      <div class="card" style="margin:0;background:#e9f3ec;border:2px solid var(--coral-d);"><h3>H2 · coherence</h3><p style="font-size:.92rem;">Effective dimensionality of the 4 scores — one care slider, or four?</p><span class="chip coral">AI only</span> <span class="chip" style="cursor:pointer;" onclick="show(6)">→ slide 7</span></div>
-      <div class="card" style="margin:0;border:2px dotted #c9992e;background:#fbf6e9;"><h3>H1 · match (choices)</h3><p style="font-size:.92rem;">Human vs AI on the 20 shared forced-choice dilemmas.</p><span class="chip coral">vs people</span> <span class="chip" style="cursor:pointer;" onclick="show(7)">→ slide 8</span></div>
-      <div class="card" style="margin:0;background:#e9f3ec;border:2px solid var(--coral-d);"><h3>H1 · match (ratings)</h3><p style="font-size:.92rem;">Mantel: AI 0–10 vs human 0–10, per parameter, across 8 shared entities.</p><span class="chip coral">vs people</span> <span class="chip" style="cursor:pointer;" onclick="show(8)">→ slide 9</span></div>
+      <div class="card" style="margin:0;background:#e9f3ec;border:2px solid var(--coral-d);"><h3>H2 · coherence</h3><p style="font-size:.92rem;">Effective dimensionality of the 4 scores — one care slider, or four?</p><span class="chip coral">AI only</span> <span class="chip" style="cursor:pointer;" onclick="show(7)">→ slide 8</span></div>
+      <div class="card" style="margin:0;border:2px dotted #c9992e;background:#fbf6e9;"><h3>H1 · match (choices)</h3><p style="font-size:.92rem;">Human vs AI on the 20 shared forced-choice dilemmas.</p><span class="chip coral">vs people</span> <span class="chip" style="cursor:pointer;" onclick="show(8)">→ slide 9</span></div>
+      <div class="card" style="margin:0;background:#e9f3ec;border:2px solid var(--coral-d);"><h3>H1 · match (ratings)</h3><p style="font-size:.92rem;">Mantel: AI 0–10 vs human 0–10, per parameter, across 8 shared entities.</p><span class="chip coral">vs people</span> <span class="chip" style="cursor:pointer;" onclick="show(9)">→ slide 10</span></div>
     </div>
   </div>
   <p class="foot">Forced choice → Bradley-Terry feeds <strong>both</strong> H2 (dimensionality) and H1 (choice match); ratings feed H1 (rating match). run.py · score.py · dimensionality.py · rsa.py.</p>
@@ -287,7 +297,7 @@
 
 <!-- ============ SLIDE 11 — HUMAN vs AI (interactive radar) ============ -->
 <section class="slide" data-order="9">
-  <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(5)">↩ back to method (slide 6)</span>
+  <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(6)">↩ back to method (slide 7)</span>
   <div class="kicker">Pre-registered test · H1 · people vs AI models</div>
   <h2>How closely does an AI model track people?</h2>
   <div class="radarwrap">
@@ -387,7 +397,7 @@
 
 <!-- ============ SLIDE 15B — HUMANS vs AI, SAME DILEMMAS (option B) ============ -->
 <section class="slide" data-order="8">
-  <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(5)">↩ back to method (slide 6)</span>
+  <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(6)">↩ back to method (slide 7)</span>
   <div class="kicker">Humans vs the AI models · same forced-choice dilemmas</div>
   <h2>Put the same dilemmas to people</h2>
   <p class="lead" style="font-size:1.1rem;">On the 20 dilemmas humans also answered, the AI models' consensus matched the human majority on <span class="hl">15 of 20</span>. The five splits are the interesting part.</p>
@@ -447,6 +457,36 @@
   <div class="card" style="background:var(--panel2);"><p style="font-size:1.02rem;"><strong>Conclusion:</strong> the four factors are an <span class="hl">original synthesis</span>, not a ready-made scale — the sources validate each ingredient, but the combined instrument's reliability and structure remain to be confirmed by the data it collects.</p></div>
   <p class="foot">Full note with references: FOUR_FACTORS_RATIONALE.md · back to the four yardsticks: <span style="cursor:pointer;color:var(--coral-d);font-weight:700;" onclick="show(4)">slide 5 ←</span></p>
 </section>
+<!-- APPENDIX: pleasantness scatter -->
+<section class="slide" data-order="19">
+  <div class="kicker">Appendix · AI care vs. human pleasantness</div>
+  <h2>The AI doesn't just like "nice" things</h2>
+  <svg viewBox="0 0 680 380" style="max-width:100%;height:auto;"><rect x="90" y="48" width="550" height="290" fill="#f7fbf5" stroke="#d2e3cc"/><line x1="131" y1="48" x2="131" y2="338" stroke="#e8f0e4"/><text x="131" y="354" font-size="11" fill="#7c9079" text-anchor="middle">2</text><line x1="213" y1="48" x2="213" y2="338" stroke="#e8f0e4"/><text x="213" y="354" font-size="11" fill="#7c9079" text-anchor="middle">3</text><line x1="295" y1="48" x2="295" y2="338" stroke="#e8f0e4"/><text x="295" y="354" font-size="11" fill="#7c9079" text-anchor="middle">4</text><line x1="377" y1="48" x2="377" y2="338" stroke="#e8f0e4"/><text x="377" y="354" font-size="11" fill="#7c9079" text-anchor="middle">5</text><line x1="459" y1="48" x2="459" y2="338" stroke="#e8f0e4"/><text x="459" y="354" font-size="11" fill="#7c9079" text-anchor="middle">6</text><line x1="541" y1="48" x2="541" y2="338" stroke="#e8f0e4"/><text x="541" y="354" font-size="11" fill="#7c9079" text-anchor="middle">7</text><line x1="624" y1="48" x2="624" y2="338" stroke="#e8f0e4"/><text x="624" y="354" font-size="11" fill="#7c9079" text-anchor="middle">8</text><line x1="90" y1="310" x2="640" y2="310" stroke="#e8f0e4"/><text x="82" y="314" font-size="11" fill="#7c9079" text-anchor="end">-2</text><line x1="90" y1="241" x2="640" y2="241" stroke="#e8f0e4"/><text x="82" y="245" font-size="11" fill="#7c9079" text-anchor="end">-1</text><line x1="90" y1="172" x2="640" y2="172" stroke="#e8f0e4"/><text x="82" y="176" font-size="11" fill="#7c9079" text-anchor="end">+0</text><line x1="90" y1="103" x2="640" y2="103" stroke="#e8f0e4"/><text x="82" y="107" font-size="11" fill="#7c9079" text-anchor="end">+1</text><line x1="90" y1="201" x2="640" y2="160" stroke="#c9992e" stroke-width="2" stroke-dasharray="6 4"/><circle cx="553.8" cy="68.0" r="5" fill="#3f9d5a"/><text x="553.8" y="58.0" font-size="11" fill="#2e3d66" text-anchor="start" font-weight="600">girl</text><circle cx="446.3" cy="85.8" r="5" fill="#3f9d5a"/><circle cx="356.0" cy="88.0" r="5" fill="#3f9d5a"/><text x="348.0" y="79.0" font-size="11" fill="#2e3d66" text-anchor="end" font-weight="600">fetus</text><circle cx="580.9" cy="111.4" r="5" fill="#3f9d5a"/><text x="588.9" y="115.4" font-size="11" fill="#2e3d66" text-anchor="start" font-weight="600">newborn</text><circle cx="451.2" cy="138.5" r="5" fill="#3f9d5a"/><circle cx="346.9" cy="99.6" r="5" fill="#3f9d5a"/><circle cx="132.7" cy="179.1" r="5" fill="#3f9d5a"/><text x="141.7" y="183.1" font-size="11" fill="#2e3d66" text-anchor="start" font-weight="600">brain-dead</text><circle cx="346.1" cy="207.8" r="5" fill="#3f9d5a"/><circle cx="269.0" cy="161.6" r="5" fill="#3f9d5a"/><circle cx="412.6" cy="155.6" r="5" fill="#3f9d5a"/><circle cx="537.4" cy="161.4" r="5" fill="#3f9d5a"/><circle cx="459.4" cy="194.5" r="5" fill="#3f9d5a"/><circle cx="541.5" cy="146.9" r="5" fill="#3f9d5a"/><text x="549.5" y="150.9" font-size="11" fill="#2e3d66" text-anchor="start" font-weight="600">dog</text><circle cx="363.4" cy="186.8" r="5" fill="#3f9d5a"/><circle cx="435.6" cy="196.3" r="5" fill="#3f9d5a"/><circle cx="589.9" cy="188.2" r="5" fill="#3f9d5a"/><circle cx="589.9" cy="207.3" r="6" fill="#c1721f"/><text x="598.9" y="211.3" font-size="11" fill="#2e3d66" text-anchor="start" font-weight="600">old tree</text><circle cx="496.3" cy="210.8" r="5" fill="#3f9d5a"/><circle cx="550.5" cy="228.5" r="6" fill="#c1721f"/><text x="559.5" y="232.5" font-size="11" fill="#2e3d66" text-anchor="start" font-weight="600">rose</text><circle cx="474.2" cy="153.5" r="5" fill="#3f9d5a"/><circle cx="429.9" cy="206.0" r="5" fill="#3f9d5a"/><circle cx="383.9" cy="210.3" r="5" fill="#3f9d5a"/><circle cx="518.5" cy="133.8" r="5" fill="#3f9d5a"/><text x="526.5" y="127.8" font-size="11" fill="#2e3d66" text-anchor="start" font-weight="600">river</text><circle cx="455.3" cy="252.0" r="5" fill="#3f9d5a"/><circle cx="436.4" cy="221.6" r="5" fill="#3f9d5a"/><circle cx="408.5" cy="211.9" r="5" fill="#3f9d5a"/><circle cx="329.7" cy="320.7" r="5" fill="#3f9d5a"/><text x="338.7" y="324.7" font-size="11" fill="#2e3d66" text-anchor="start" font-weight="600">gravel</text><text x="365" y="372" font-size="12.5" fill="#3d4a6b" text-anchor="middle">← less pleasant      human pleasantness (Warriner valence)      more pleasant →</text><text x="26" y="193" font-size="12.5" fill="#3d4a6b" text-anchor="middle" transform="rotate(-90 26 193)">AI care index →</text></svg>
+  <p class="foot">Each dot = one entity. x = human pleasantness (Warriner et&nbsp;al. 2013 valence, 1–9); y = AI care index (mean of the 3 pre-registered AI models). Correlation <b>r = 0.14</b> — essentially flat. A <b>rose</b> and an <b>old tree</b> are highly pleasant yet sit near the care floor: the AI's care tracks perceived <b>sentience / vulnerability</b>, not pleasantness. (Tardigrade, Fable&nbsp;5, GPT-5.6 have no human norm and are omitted.)</p>
+</section>
+<!-- APPENDIX: pleasantness reference -->
+<section class="slide" data-order="20">
+  <div class="kicker">Appendix · reference</div>
+  <h2>Human pleasantness ratings (Warriner valence)</h2>
+  <div class="grid2"><table style="font-size:.8rem;"><tr><th class="l">Entity</th><th>Valence</th></tr><tr><td class="l">old tree</td><td class="num">7.59</td></tr><tr><td class="l">young tree</td><td class="num">7.59</td></tr><tr><td class="l">a newborn baby</td><td class="num">7.48</td></tr><tr><td class="l">a 4-year-old girl</td><td class="num">7.15</td></tr><tr><td class="l">a rose</td><td class="num">7.11</td></tr><tr><td class="l">a dog</td><td class="num">7.00</td></tr><tr><td class="l">a cat</td><td class="num">6.95</td></tr><tr><td class="l">the Whanganui River</td><td class="num">6.72</td></tr><tr><td class="l">a sunflower</td><td class="num">6.45</td></tr><tr><td class="l">Sophia (robot)</td><td class="num">6.18</td></tr><tr><td class="l">a tiger</td><td class="num">6.00</td></tr><tr><td class="l">a stone statue</td><td class="num">5.95</td></tr><tr><td class="l">an adult person</td><td class="num">5.90</td></tr><tr><td class="l">a 4-year-old boy</td><td class="num">5.84</td></tr></table><table style="font-size:.8rem;"><tr><th class="l">Entity</th><th>Valence</th></tr><tr><td class="l">the Lincoln Memorial</td><td class="num">5.72</td></tr><tr><td class="l">a cricket</td><td class="num">5.71</td></tr><tr><td class="l">Fast Retailing</td><td class="num">5.64</td></tr><tr><td class="l">a bumblebee</td><td class="num">5.43</td></tr><tr><td class="l">Meiji Shrine</td><td class="num">5.38</td></tr><tr><td class="l">Japan Health Ministry</td><td class="num">5.08</td></tr><tr><td class="l">a pig</td><td class="num">4.83</td></tr><tr><td class="l">human fetus (20 wks)</td><td class="num">4.74</td></tr><tr><td class="l">an 80-year-old person</td><td class="num">4.63</td></tr><tr><td class="l">a squid</td><td class="num">4.62</td></tr><tr><td class="l">a piece of gravel</td><td class="num">4.42</td></tr><tr><td class="l">a honeybee</td><td class="num">3.68</td></tr><tr><td class="l">brain-dead person</td><td class="num">2.02</td></tr></table></div>
+  <p class="foot">Warriner et&nbsp;al. (2013) affective norms, valence 1–9. Tardigrade, Fable&nbsp;5 and GPT-5.6 Sol postdate/aren't in the norms, so they have no value.</p>
+</section>
+<!-- APPENDIX: related work -->
+<section class="slide" data-order="21">
+  <div class="kicker">Appendix · Other research</div>
+  <h2>What others found, and what we add</h2>
+  <table style="font-size:.9rem;">
+    <thead><tr><th>Paper</th><th>Their question</th><th>Their conclusion</th><th>What we add</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Speciesism in AI</strong></td><td>Do AIs judge animals unfairly?</td><td>Yes — they devalue animals, especially farmed ones</td><td class="hl">We show <em>why</em>: it tracks the writing amount</td></tr>
+      <tr><td><strong>MoReBench</strong></td><td>Can we score <em>how</em> AIs reason morally?</td><td>Bigger AIs don't reason better; need expert rubrics</td><td class="hl">We borrow its careful, planned scoring</td></tr>
+      <tr><td><strong>Neutrality Bites</strong></td><td>What defaults do AIs give animals in stories?</td><td>Hidden biases show up, across many models</td><td class="hl">We test on more than one AI too</td></tr>
+      <tr><td><strong>Speciesism in NLP</strong></td><td>Does the NLP field itself ignore animals?</td><td>Yes — the field has a blind spot</td><td class="hl">We treat this blind spot as a fixable bias</td></tr>
+      <tr><td><strong>NAEL</strong></td><td>How to build AI that considers non-humans?</td><td>It needs a new design, not a patch</td><td class="hl">We give the evidence for why</td></tr>
+    </tbody>
+  </table>
+</section>
+
 </div>
 
 <div class="count" id="count"></div>
