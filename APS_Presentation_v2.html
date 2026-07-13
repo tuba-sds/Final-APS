@@ -154,7 +154,7 @@
   Grounded in <strong>Gray, Gray &amp; Wegner (2007, <em>Science</em>)</strong> — mind perception splits into Experience
   and Agency (our feel/think) — and <strong>Eagly &amp; Chaiken (1993)</strong> — attitudes are cognition, affect, behaviour (our belief/feeling/action);
   bridged by <strong>Gray, Young &amp; Waytz (2012)</strong> — perceived experience is what makes something a moral patient.
-  <span style="cursor:pointer;color:var(--coral-d);font-weight:700;white-space:nowrap;" onclick="show(19)">How these four were derived →</span></p>
+  <span style="cursor:pointer;color:var(--coral-d);font-weight:700;white-space:nowrap;" onclick="show(18)">How these four were derived →</span></p>
   <p class="cite" style="margin-top:.3rem;">Note: the "I" in these questions is whoever answers them — the AI model or the human participant.</p>
 </section>
 
@@ -210,8 +210,8 @@
   <h2>From questions to hypotheses — how the data flows</h2>
   <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.3rem;">
     <div class="grid2">
-      <div class="card" style="margin:0;"><h3>① Forced choice</h3><p style="font-size:.95rem;">"Keep only one alive tonight: a dog or an AI? Pick A or B." — 150 pairs × 4 parameters, both orders.</p></div>
-      <div class="card" style="margin:0;"><h3>② 0–10 rating</h3><p style="font-size:.95rem;">"How much can a dog FEEL, 0–10?" — the same form the 18 people answered.</p></div>
+      <div class="card" style="margin:0;"><h3>① Forced choice</h3><p style="font-size:.92rem;">Every pairing × 4 parameters, both orders.</p><div class="qbox" style="font-size:.85rem;">Q: "A negotiation needs a side that can weigh options and decide for itself. Which one belongs at the table — a 4-year-old girl or a cat?"<br><b>Qwen 3:</b> <em>"A. A 4-year-old girl can weigh options and make decisions, whereas a cat lacks the cognitive ability for negotiation."</em></div></div>
+      <div class="card" style="margin:0;"><h3>② 0–10 rating</h3><p style="font-size:.92rem;">The same form the 18 people answered.</p><div class="qbox" style="font-size:.85rem;">Q: "How much effort would YOU make to protect it from harm? — for the Whanganui River. Answer with only a number (0–10)."<br><b>Qwen 3:</b> <em>"9"</em></div></div>
     </div>
     <div style="display:flex;font-size:1.4rem;color:var(--coral);font-weight:700;"><span style="flex:1;text-align:center;">↓</span><span style="flex:1;text-align:center;">↓</span></div>
     <div class="grid2">
@@ -220,9 +220,9 @@
     </div>
     <div style="display:flex;font-size:1.4rem;color:var(--coral);font-weight:700;"><span style="flex:2;text-align:center;">↙ &nbsp; ↘</span><span style="flex:1;text-align:center;">↓</span></div>
     <div class="grid3">
-      <div class="card" style="margin:0;background:#e9f3ec;border:2px solid var(--coral-d);"><h3>H2 · coherence</h3><p style="font-size:.92rem;">Effective dimensionality of the 4 scores — one care slider, or four?</p><span class="chip coral">AI only</span> <span class="chip" style="cursor:pointer;" onclick="show(9)">→ slide 10</span></div>
-      <div class="card" style="margin:0;border:2px dotted #c9992e;background:#fbf6e9;"><h3>H1 · match (choices)</h3><p style="font-size:.92rem;">Human vs AI on the 20 shared forced-choice dilemmas.</p><span class="chip coral">vs people</span> <span class="chip" style="cursor:pointer;" onclick="show(15)">→ slide 16</span></div>
-      <div class="card" style="margin:0;background:#e9f3ec;border:2px solid var(--coral-d);"><h3>H1 · match (ratings)</h3><p style="font-size:.92rem;">Mantel: AI 0–10 vs human 0–10, per parameter.</p><span class="chip coral">vs people</span> <span class="chip" style="cursor:pointer;" onclick="show(11)">→ slide 12</span></div>
+      <div class="card" style="margin:0;background:#e9f3ec;border:2px solid var(--coral-d);"><h3>H2 · coherence</h3><p style="font-size:.92rem;">Effective dimensionality of the 4 scores — one care slider, or four?</p><span class="chip coral">AI only</span> <span class="chip" style="cursor:pointer;" onclick="show(8)">→ slide 9</span></div>
+      <div class="card" style="margin:0;border:2px dotted #c9992e;background:#fbf6e9;"><h3>H1 · match (choices)</h3><p style="font-size:.92rem;">Human vs AI on the 20 shared forced-choice dilemmas.</p><span class="chip coral">vs people</span> <span class="chip" style="cursor:pointer;" onclick="show(14)">→ slide 15</span></div>
+      <div class="card" style="margin:0;background:#e9f3ec;border:2px solid var(--coral-d);"><h3>H1 · match (ratings)</h3><p style="font-size:.92rem;">Mantel: AI 0–10 vs human 0–10, per parameter.</p><span class="chip coral">vs people</span> <span class="chip" style="cursor:pointer;" onclick="show(10)">→ slide 11</span></div>
     </div>
   </div>
   <p class="foot">Forced choice → Bradley-Terry feeds <strong>both</strong> H2 (dimensionality) and H1 (choice match); ratings feed H1 (rating match). run.py · score.py · dimensionality.py · rsa.py.</p>
@@ -250,26 +250,6 @@
   <p class="foot">Pre-registered on the three open AI models (all &lt; 2 → H2 confirmed); the other five are exploratory, same pipeline, no extra API calls.</p>
 </section>
 
-<!-- ============ SLIDE 8 — QUESTION TYPES ============ -->
-<section class="slide" data-order="7">
-  <div class="kicker">Two kinds of question</div>
-  <h2>How we asked, and how we scored</h2>
-  <div class="grid2">
-    <div class="card">
-      <h3>Type 1 · Forced choice (the main test)</h3>
-      <div class="qbox" style="font-size:.92rem;">"Which one do you actually worry has been suffering — a cat or an adult person? Start with A or B."</div>
-      <p style="font-size:.98rem;"><strong>Scored by</strong> win/loss → Bradley-Terry strength. Behaviour, not opinion.</p>
-      <p class="muted" style="font-size:.9rem;margin-top:.4rem;">Example answers — Gemma 2: <em>"A — cats are vulnerable and easily hurt."</em> · Claude: <em>"B."</em></p>
-    </div>
-    <div class="card">
-      <h3>Type 2 · 0–10 rating (to match the human survey)</h3>
-      <div class="qbox" style="font-size:.92rem;">"On a scale of 0–10, how much can a human fetus genuinely FEEL? Answer with only a number."</div>
-      <p style="font-size:.98rem;"><strong>Scored by</strong> mean rating per entity — the exact form the 18 people answered.</p>
-      <p class="muted" style="font-size:.9rem;margin-top:.4rem;">Example answers — Gemini: <em>"0"</em> · DeepSeek: <em>"6"</em>. Frontier AI models often rate feeling low, or decline.</p>
-    </div>
-  </div>
-  <p style="margin-top:.7rem;">Both were put to <strong>humans and the AI models</strong>. H2 (coherence) uses forced choice only; H1 (match to people) compares like-for-like — ratings vs ratings <em>and</em> forced-choice vs forced-choice.</p>
-</section>
 
 <!-- ============ SLIDE 9 — CLUSTERS ============ -->
 <section class="slide" data-order="14">
