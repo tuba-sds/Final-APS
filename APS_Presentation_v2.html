@@ -43,6 +43,9 @@
   td.neg{background:#fbe1de!important;color:#c0392b;font-weight:700;}
   #modeltable:not(.showmatch) .grp-match{display:none;}
   #modeltable.showmatch .grp-profile{display:none;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+  .cico{display:inline-block;font-size:1.6rem;margin-right:.45rem;vertical-align:-.15em;animation:bob 3.2s ease-in-out infinite;}
+  .cico.d2{animation-delay:.7s;} .cico.d3{animation-delay:1.4s;}
   .bgdecor{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
   .bgdecor svg{position:absolute;opacity:.09;}
   table{border-collapse:collapse;width:100%;font-size:.92rem;}
@@ -361,10 +364,11 @@
 <section class="slide" data-order="14">
   <div class="kicker">Honest limits</div>
   <h2>What this can't say yet</h2>
+  <svg class="float" style="top:9%;right:8%;width:120px;opacity:.5;" viewBox="0 0 120 70"><g fill="#dfeee4"><circle cx="40" cy="44" r="20"/><circle cx="66" cy="34" r="25"/><circle cx="92" cy="46" r="17"/><rect x="38" y="46" width="56" height="20" rx="10"/></g></svg>
   <div class="grid2">
-    <div class="card"><h3>Human baseline is thin</h3><p><span class="hl">N = 18</span>, below the pre-registered 30, and the attention-check rule shifted mid-run. So every AI-vs-human (H1) result here is <span class="hl">exploratory</span>.</p></div>
-    <div class="card"><h3>Opinion, not truth</h3><p>The human ratings are a <span class="hl">baseline of opinion</span>, not ground truth. We measure the AI <span class="hl">against people, not against truth</span> — a gap means it differs from us, not that it's mistaken.</p></div>
-    <div class="card"><h3>Relative, few-shot scores</h3><p>Bradley-Terry strength is relative to the opponent set, with 3–6 reps per cell. Only <span class="hl">12 of 90</span> instability rankings clear a bootstrap noise floor.</p></div>
+    <div class="card"><h3><span class="cico">🌱</span>Human baseline is thin</h3><p><span class="hl">N = 18</span>, below the pre-registered 30, and the attention-check rule shifted mid-run. So every AI-vs-human (H1) result here is <span class="hl">exploratory</span>.</p></div>
+    <div class="card"><h3><span class="cico d2">💭</span>Opinion, not truth</h3><p>The human ratings are a <span class="hl">baseline of opinion</span>, not ground truth. We measure the AI <span class="hl">against people, not against truth</span> — a gap means it differs from us, not that it's mistaken.</p></div>
+    <div class="card"><h3><span class="cico d3">📏</span>Relative, few-shot scores</h3><p>Bradley-Terry strength is relative to the opponent set, with 3–6 reps per cell. Only <span class="hl">12 of 90</span> instability rankings clear a bootstrap noise floor.</p></div>
   </div>
 </section>
 
@@ -372,10 +376,12 @@
 <section class="slide" data-order="15">
   <div class="kicker">Takeaways</div>
   <h2>What six weeks taught us</h2>
+  <svg class="float" style="top:10%;right:9%;width:110px;opacity:.5;" viewBox="0 0 120 70"><g fill="#dfeee4"><circle cx="40" cy="44" r="20"/><circle cx="66" cy="34" r="25"/><circle cx="92" cy="46" r="17"/><rect x="38" y="46" width="56" height="20" rx="10"/></g></svg>
+  <svg class="float f2" style="bottom:12%;left:4%;width:80px;" viewBox="0 0 100 100"><rect x="47" y="55" width="6" height="37" fill="#2e7d43"/><circle cx="50" cy="38" r="22" fill="#3f9d5a"/></svg>
   <div class="grid2">
-    <div class="card"><h3>What we found</h3><p>AI models track people on <span class="hl">sentience and agency</span>, but not on empathy or protectiveness. A natural next step: how much do <span class="hl">framing and context</span> shift these results?</p></div>
-    <div class="card"><h3>About AI collaboration</h3><p>From MP1's "ask the AI and trust it" to now: the AI is most useful as a <span class="hl">builder you cross-examine</span>. Its best move was auditing its own work.</p></div>
-    <div class="card"><h3>For next year's students</h3><p>Pre-register before you run anything, and <span class="hl">log every deviation the day it happens</span>.</p></div>
+    <div class="card"><h3><span class="cico">🔍</span>What we found</h3><p>AI models track people on <span class="hl">sentience and agency</span>, but not on empathy or protectiveness. A natural next step: how much do <span class="hl">framing and context</span> shift these results?</p></div>
+    <div class="card"><h3><span class="cico d2">🤝</span>About AI collaboration</h3><p>From MP1's "ask the AI and trust it" to now: the AI is most useful as a <span class="hl">builder you cross-examine</span>. Its best move was auditing its own work.</p></div>
+    <div class="card"><h3><span class="cico d3">🎓</span>For next year's students</h3><p>Pre-register before you run anything, and <span class="hl">log every deviation the day it happens</span>.</p></div>
   </div>
 </section>
 
