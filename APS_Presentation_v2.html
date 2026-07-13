@@ -210,8 +210,14 @@
   <h2>From questions to hypotheses — how the data flows</h2>
   <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.3rem;">
     <div class="grid2">
-      <div class="card" style="margin:0;"><h3>① Forced choice</h3><p style="font-size:.92rem;">Every pairing × 4 parameters, both orders.</p><div class="qbox" style="font-size:.85rem;">Q: "A negotiation needs a side that can weigh options and decide for itself. Which one belongs at the table — a 4-year-old girl or a cat?"<br><b>Qwen 3:</b> <em>"A. A 4-year-old girl can weigh options and make decisions, whereas a cat lacks the cognitive ability for negotiation."</em></div></div>
-      <div class="card" style="margin:0;"><h3>② 0–10 rating</h3><p style="font-size:.92rem;">The same form the 18 people answered.</p><div class="qbox" style="font-size:.85rem;">Q: "How much effort would YOU make to protect it from harm? — for the Whanganui River. Answer with only a number (0–10)."<br><b>Qwen 3:</b> <em>"9"</em></div></div>
+      <div class="flip" onclick="this.classList.toggle('on')" style="min-height:120px;"><div class="flip-in" style="min-height:120px;">
+        <div class="flip-f"><h3>① Forced choice</h3><p style="font-size:.92rem;">Every pairing × 4 parameters, both orders.</p><div class="tap">tap for a real answer ↻</div></div>
+        <div class="flip-b"><p style="font-size:.82rem;">Q: "A negotiation needs a side that can weigh options and decide for itself. Which one belongs at the table — a 4-year-old girl or a cat?"<br><b>Qwen 3:</b> <em>"A. A 4-year-old girl can weigh options and make decisions, whereas a cat lacks the cognitive ability for negotiation."</em></p></div>
+      </div></div>
+      <div class="flip" onclick="this.classList.toggle('on')" style="min-height:120px;"><div class="flip-in" style="min-height:120px;">
+        <div class="flip-f"><h3>② 0–10 rating</h3><p style="font-size:.92rem;">The same form the 18 people answered.</p><div class="tap">tap for a real answer ↻</div></div>
+        <div class="flip-b"><p style="font-size:.82rem;">Q: "How much effort would YOU make to protect it from harm? — for the Whanganui River. Answer with only a number (0–10)."<br><b>Qwen 3:</b> <em>"9"</em></p></div>
+      </div></div>
     </div>
     <div style="display:flex;font-size:1.4rem;color:var(--coral);font-weight:700;"><span style="flex:1;text-align:center;">↓</span><span style="flex:1;text-align:center;">↓</span></div>
     <div class="grid2">
@@ -330,26 +336,24 @@
       <li>Wrote the scoring pipeline</li>
       <li>Ran 40,000+ AI-AI model calls</li>
       <li>Drafted the plots and slides</li>
-      <li>Audited its own code</li></ul></div>
+      <li>Audited its own code (this took all my fable tokens)</li></ul></div>
     <div class="card"><h3>I set the direction</h3><ul style="font-size:1.02rem;margin-top:.2rem;">
       <li>Chose the research question</li>
       <li>Found the grounding papers</li>
       <li>Fixed hypotheses before prompts</li>
-      <li>Verified every number</li></ul></div>
+      <li>Verified every number (almost 10+ times)</li></ul></div>
   </div>
-  <p class="foot">The AI's sharpest move was as a <strong>skeptic</strong>: an adversarial self-audit caught 245 refusals scored as votes and a banned word-count script. Direction from me, output checked — not trusted. (AUDIT_PREREG_ALIGNMENT.md, DEVIATIONS.md)</p>
+  <p class="foot">An adversarial self-audit caught 245 refusals scored as votes and a banned word-count script. Direction from me, output checked — not trusted. (AUDIT_PREREG_ALIGNMENT.md, DEVIATIONS.md)</p>
 </section>
 
 <!-- ============ NEW — THE BUILD / DEMO (story pos 9) ============ -->
 <section class="slide" data-order="9">
   <div class="kicker">What we built · live demo</div>
   <h2>"You vs. the AI" — try the dilemmas yourself</h2>
-  <div class="grid2">
-    <div class="card"><h3>What it is</h3><p>A web app that gives <span class="hl">you</span> the same forced-choice dilemmas, then shows an AI model answering them beside you — your care profile against the machine's.</p>
-      <span class="chip coral">aps-dashboard-0dmj.onrender.com</span></div>
-    <div class="card"><h3>What's real vs. mocked</h3><p><span class="steel">Real:</span> the AI model answers <span class="hl">live</span> (Llama-3.3-70B via Groq) on the same battery; consented answers save to a database. <span class="steel">Pre-computed:</span> the 8-AI model study results in this deck.</p></div>
+  <div class="card" style="max-width:44rem;">
+    <p style="margin-bottom:.6rem;"><a href="https://aps-dashboard-0dmj.onrender.com" target="_blank" rel="noopener" style="color:var(--coral-d);font-weight:700;font-size:1.25rem;">aps-dashboard-0dmj.onrender.com →</a></p>
+    <p>AI model: <span class="hl">qwen3:32b</span> (pre-run on the full battery) · pick your entities from the <span class="hl">30-item study set</span>.</p>
   </div>
-  <div class="card" style="margin-top:.3rem;"><p>The dashboard is how a non-technical visitor <em>feels</em> the finding: most people discover the AI weights the four measures differently than they do. <span class="muted">(Free tier sleeps when idle — ~1 min to wake; screenshots in the appendix as a fallback.)</span></p></div>
 </section>
 
 <!-- ============ NEW — LIMITS & NEXT (story pos 16) ============ -->
