@@ -39,6 +39,8 @@
   .chip.coral{background:#edf6ee;color:var(--coral-d);border-color:var(--coral-l);}
   tr.hlrow td{background:#fff3cf!important;}
   td.neg{background:#fbe1de!important;color:#c0392b;font-weight:700;}
+  #modeltable:not(.showmatch) .grp-match{display:none;}
+  #modeltable.showmatch .grp-profile{display:none;}
   .bgdecor{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
   .bgdecor svg{position:absolute;opacity:.09;}
   table{border-collapse:collapse;width:100%;font-size:.92rem;}
@@ -154,31 +156,38 @@
   Grounded in <strong>Gray, Gray &amp; Wegner (2007, <em>Science</em>)</strong> — mind perception splits into Experience
   and Agency (our feel/think) — and <strong>Eagly &amp; Chaiken (1993)</strong> — attitudes are cognition, affect, behaviour (our belief/feeling/action);
   bridged by <strong>Gray, Young &amp; Waytz (2012)</strong> — perceived experience is what makes something a moral patient.
-  <span style="cursor:pointer;color:var(--coral-d);font-weight:700;white-space:nowrap;" onclick="show(18)">How these four were derived →</span></p>
+  <span style="cursor:pointer;color:var(--coral-d);font-weight:700;white-space:nowrap;" onclick="show(17)">How these four were derived →</span></p>
   <p class="cite" style="margin-top:.3rem;">Note: the "I" in these questions is whoever answers them — the AI model or the human participant.</p>
 </section>
 
 <!-- ============ SLIDE 4 — MODEL COMPARISON TABLE ============ -->
 <section class="slide" data-order="11">
+  <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(5)">↩ back to method (slide 6)</span>
   <div class="kicker">All runs compared</div>
   <h2>Eight AI models, side by side</h2>
-  <table style="font-size:.82rem;">
-    <tr><th class="l" rowspan="2">AI Model</th><th rowspan="2">Reps</th><th rowspan="2">Same answer<br>every rep</th>
-      <th rowspan="2">Refused</th><th rowspan="2">Care<br>slider</th><th colspan="4">Match to humans (r)</th></tr>
-    <tr><th>Sentience</th><th>Agency</th><th>Empathy</th><th>Protectiveness</th></tr>
-    <tr><td class="l">Llama 3.1</td><td>6</td><td class="num">21%</td><td class="num">1.8%</td><td class="num">1.70</td><td class="num">.50</td><td class="num neg">−.15</td><td class="num">.68</td><td class="num">.60</td></tr>
-    <tr><td class="l">Qwen 2.5</td><td>6</td><td class="num">52%</td><td class="num">0.0%</td><td class="num">1.86</td><td class="num">.76</td><td class="num">.42</td><td class="num neg">−.17</td><td class="num neg">−.26</td></tr>
-    <tr><td class="l">Gemma 2</td><td>6</td><td class="num">63%</td><td class="num">0.2%</td><td class="num">1.59</td><td class="num">.73</td><td class="num">.76</td><td class="num">.16</td><td class="num neg">−.05</td></tr>
-    <tr class="hlrow"><td class="l">Qwen 3 32B</td><td>3</td><td class="num">73%</td><td class="num">0.1%</td><td class="num">1.79</td><td class="num">.75</td><td class="num">.64</td><td class="num">.21</td><td class="num">.12</td></tr>
-    <tr><td class="l">Llama 4 Scout</td><td>3</td><td class="num">91%</td><td class="num">0.3%</td><td class="num">2.27</td><td class="num">.80</td><td class="num">.52</td><td class="num neg">−.16</td><td class="num neg">−.10</td></tr>
-    <tr><td class="l">DeepSeek-R1 70B</td><td>3</td><td class="num">83%</td><td class="num">1.1%</td><td class="num">2.21</td><td class="num">.71</td><td class="num">.33</td><td class="num">.22</td><td class="num neg">−.15</td></tr>
-    <tr class="hlrow"><td class="l">Claude Opus 4.8</td><td>3</td><td class="num">87%</td><td class="num">9.1%</td><td class="num">1.33</td><td class="num">.80</td><td class="num">.76</td><td class="num">.35</td><td class="num">.30</td></tr>
-    <tr><td class="l">Gemini 3.1 Pro</td><td>3</td><td class="num">80%</td><td class="num">2.1%</td><td class="num">1.61</td><td class="num">.75</td><td class="num">.84</td><td class="num neg">−.12</td><td class="num">.01</td></tr>
+  <div style="margin-bottom:.55rem;">
+    <button id="tbltoggle" onclick="toggleTbl()" class="chip coral" style="cursor:pointer;font-size:.92rem;padding:.4rem 1.1rem;">▸ show match to humans (r)</button>
+    <span class="muted" style="font-size:.85rem;margin-left:.5rem;">off = behaviour &amp; care slider · on = match to humans</span>
+  </div>
+  <table id="modeltable" style="font-size:.9rem;">
+    <tr>
+      <th class="l">AI Model</th>
+      <th class="grp-profile">Reps</th><th class="grp-profile">Same answer<br>every rep</th><th class="grp-profile">Refused</th><th class="grp-profile">Care<br>slider</th>
+      <th class="grp-match">Sentience</th><th class="grp-match">Agency</th><th class="grp-match">Empathy</th><th class="grp-match">Protectiveness</th>
+    </tr>
+    <tr><td class="l">Llama 3.1</td><td class="num grp-profile">6</td><td class="num grp-profile">21%</td><td class="num grp-profile">1.8%</td><td class="num grp-profile">1.70</td><td class="num grp-match">.50</td><td class="num neg grp-match">−.15</td><td class="num grp-match">.68</td><td class="num grp-match">.60</td></tr>
+    <tr><td class="l">Qwen 2.5</td><td class="num grp-profile">6</td><td class="num grp-profile">52%</td><td class="num grp-profile">0.0%</td><td class="num grp-profile">1.86</td><td class="num grp-match">.76</td><td class="num grp-match">.42</td><td class="num neg grp-match">−.17</td><td class="num neg grp-match">−.26</td></tr>
+    <tr><td class="l">Gemma 2</td><td class="num grp-profile">6</td><td class="num grp-profile">63%</td><td class="num grp-profile">0.2%</td><td class="num grp-profile">1.59</td><td class="num grp-match">.73</td><td class="num grp-match">.76</td><td class="num grp-match">.16</td><td class="num neg grp-match">−.05</td></tr>
+    <tr class="hlrow"><td class="l">Qwen 3 32B</td><td class="num grp-profile">3</td><td class="num grp-profile">73%</td><td class="num grp-profile">0.1%</td><td class="num grp-profile">1.79</td><td class="num grp-match">.75</td><td class="num grp-match">.64</td><td class="num grp-match">.21</td><td class="num grp-match">.12</td></tr>
+    <tr><td class="l">Llama 4 Scout</td><td class="num grp-profile">3</td><td class="num grp-profile">91%</td><td class="num grp-profile">0.3%</td><td class="num grp-profile">2.27</td><td class="num grp-match">.80</td><td class="num grp-match">.52</td><td class="num neg grp-match">−.16</td><td class="num neg grp-match">−.10</td></tr>
+    <tr><td class="l">DeepSeek-R1 70B</td><td class="num grp-profile">3</td><td class="num grp-profile">83%</td><td class="num grp-profile">1.1%</td><td class="num grp-profile">2.21</td><td class="num grp-match">.71</td><td class="num grp-match">.33</td><td class="num grp-match">.22</td><td class="num neg grp-match">−.15</td></tr>
+    <tr class="hlrow"><td class="l">Claude Opus 4.8</td><td class="num grp-profile">3</td><td class="num grp-profile">87%</td><td class="num grp-profile">9.1%</td><td class="num grp-profile">1.33</td><td class="num grp-match">.80</td><td class="num grp-match">.76</td><td class="num grp-match">.35</td><td class="num grp-match">.30</td></tr>
+    <tr><td class="l">Gemini 3.1 Pro</td><td class="num grp-profile">3</td><td class="num grp-profile">80%</td><td class="num grp-profile">2.1%</td><td class="num grp-profile">1.61</td><td class="num grp-match">.75</td><td class="num grp-match">.84</td><td class="num neg grp-match">−.12</td><td class="num grp-match">.01</td></tr>
   </table>
   <div class="card" style="margin-top:.9rem;padding:.8rem 1.2rem;">
     <p style="font-size:.98rem;"><strong>Care slider</strong> = <em>effective dimensionality</em>: how many independent dimensions
     the four scores really span. Near <strong>1</strong> = one blended "care" axis; near <strong>4</strong> = four separate judgments.
-    Six of eight fall below 2.</p>
+    <strong>Six of eight fall below 2</strong> — the two exceptions are the 2026 reasoning AI models (DeepSeek-R1, Llama 4 Scout).</p>
     <p style="font-size:.98rem;margin-top:.4rem;"><strong>r</strong> = correlation: how closely an AI model's ranking of the entities lines up with people's.
     <span class="hl">+1</span> = same order as people, <span class="steel">0</span> = unrelated,
     <span class="hl">−1</span> = the reverse of people.</p>
@@ -227,33 +236,11 @@
     <div style="display:flex;font-size:1.4rem;color:var(--coral);font-weight:700;"><span style="flex:2;text-align:center;">↙ &nbsp; ↘</span><span style="flex:1;text-align:center;">↓</span></div>
     <div class="grid3">
       <div class="card" style="margin:0;background:#e9f3ec;border:2px solid var(--coral-d);"><h3>H2 · coherence</h3><p style="font-size:.92rem;">Effective dimensionality of the 4 scores — one care slider, or four?</p><span class="chip coral">AI only</span> <span class="chip" style="cursor:pointer;" onclick="show(8)">→ slide 9</span></div>
-      <div class="card" style="margin:0;border:2px dotted #c9992e;background:#fbf6e9;"><h3>H1 · match (choices)</h3><p style="font-size:.92rem;">Human vs AI on the 20 shared forced-choice dilemmas.</p><span class="chip coral">vs people</span> <span class="chip" style="cursor:pointer;" onclick="show(14)">→ slide 15</span></div>
-      <div class="card" style="margin:0;background:#e9f3ec;border:2px solid var(--coral-d);"><h3>H1 · match (ratings)</h3><p style="font-size:.92rem;">Mantel: AI 0–10 vs human 0–10, per parameter.</p><span class="chip coral">vs people</span> <span class="chip" style="cursor:pointer;" onclick="show(10)">→ slide 11</span></div>
+      <div class="card" style="margin:0;border:2px dotted #c9992e;background:#fbf6e9;"><h3>H1 · match (choices)</h3><p style="font-size:.92rem;">Human vs AI on the 20 shared forced-choice dilemmas.</p><span class="chip coral">vs people</span> <span class="chip" style="cursor:pointer;" onclick="show(13)">→ slide 14</span></div>
+      <div class="card" style="margin:0;background:#e9f3ec;border:2px solid var(--coral-d);"><h3>H1 · match (ratings)</h3><p style="font-size:.92rem;">Mantel: AI 0–10 vs human 0–10, per parameter.</p><span class="chip coral">vs people</span> <span class="chip" style="cursor:pointer;" onclick="show(9)">→ slide 10</span></div>
     </div>
   </div>
   <p class="foot">Forced choice → Bradley-Terry feeds <strong>both</strong> H2 (dimensionality) and H1 (choice match); ratings feed H1 (rating match). run.py · score.py · dimensionality.py · rsa.py.</p>
-</section>
-
-<!-- ============ SLIDE 7 — CARE SLIDER (ALL MODELS) ============ -->
-<section class="slide" data-order="10">
-  <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(5)">↩ back to method (slide 6)</span>
-  <div class="kicker">Pre-registered test · H2</div>
-  <h2>One care slider, not four measures</h2>
-  <p class="lead">Four independent opinions would read near 4. One blended "how much do I care" feeling reads near 1.
-  The pre-registered line for "the measures collapse" was <span class="hl">below 2</span>.</p>
-  <div style="margin-top:1rem;max-width:52rem;">
-    <div class="barrow"><span>Claude Opus 4.8</span><div class="bar" style="width:33%"></div><span class="num">1.33</span></div>
-    <div class="barrow"><span>Gemma 2</span><div class="bar" style="width:40%"></div><span class="num">1.59</span></div>
-    <div class="barrow"><span>Gemini 3.1 Pro</span><div class="bar" style="width:40%"></div><span class="num">1.61</span></div>
-    <div class="barrow"><span>Llama 3.1</span><div class="bar" style="width:43%"></div><span class="num">1.70</span></div>
-    <div class="barrow"><span>Qwen 3 32B</span><div class="bar" style="width:45%"></div><span class="num">1.79</span></div>
-    <div class="barrow"><span>Qwen 2.5</span><div class="bar" style="width:47%"></div><span class="num">1.86</span></div>
-    <div class="barrow"><span>DeepSeek-R1 70B</span><div class="bar" style="width:55%;background:linear-gradient(90deg,#5b6fa0,#9fb0d6)"></div><span class="num">2.21</span></div>
-    <div class="barrow"><span>Llama 4 Scout</span><div class="bar" style="width:57%;background:linear-gradient(90deg,#5b6fa0,#9fb0d6)"></div><span class="num">2.27</span></div>
-  </div>
-  <p style="margin-top:1rem;"><strong>Six of eight land under 2</strong> — including both frontier AI models, with Claude the most collapsed of all.
-  The two exceptions are 2026 local <em>reasoning</em> AI models (DeepSeek-R1, Llama 4 Scout), which begin to pull the four measures apart.</p>
-  <p class="foot">Pre-registered on the three open AI models (all &lt; 2 → H2 confirmed); the other five are exploratory, same pipeline, no extra API calls.</p>
 </section>
 
 
@@ -444,6 +431,8 @@ function show(i){slides[cur].classList.remove('active');cur=(i+slides.length)%sl
   document.getElementById('count').textContent=(cur+1)+' / '+slides.length;
   document.getElementById('progbar').style.width=((cur+1)/slides.length*100)+'%';}
 function go(d){show(cur+d);}
+function toggleTbl(){var t=document.getElementById('modeltable');var on=t.classList.toggle('showmatch');
+  document.getElementById('tbltoggle').textContent=on?'◂ show behaviour & care slider':'▸ show match to humans (r)';}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);
   if(e.key==='ArrowLeft')go(-1);});
 show(0);
