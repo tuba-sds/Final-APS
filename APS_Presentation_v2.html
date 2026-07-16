@@ -106,6 +106,15 @@
   .pop-box h3{color:var(--indigo);margin-bottom:.6rem;}
   .pop-x{position:absolute;top:.4rem;right:.75rem;font-size:1.5rem;font-weight:800;color:var(--indigo);cursor:pointer;line-height:1;}
   .navtag{position:absolute;right:.7rem;bottom:-.72rem;background:var(--coral-d);color:#fff;border:1px solid var(--coral-d);cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.15);}
+  @media print{
+    @page{size:1280px 720px;margin:0;}
+    html,body{height:auto;}
+    .deck{height:auto;width:auto;overflow:visible;}
+    .slide{position:relative;inset:auto;display:flex;width:1280px;height:720px;
+      padding:50px 102px 65px;page-break-after:always;break-after:page;animation:none;overflow:hidden;}
+    .progress,.nav,.count{display:none!important;}
+    .pop{display:none!important;}
+  }
 </style>
 </head>
 <body>
@@ -504,6 +513,8 @@
     Repeat for all <strong>4</strong> parameters → <strong>1,200</strong> questions.
     Run the whole set <strong>×6</strong> (run-1) or <strong>×3</strong> (run-2/frontier) → <strong>7,200</strong> or <strong>3,600</strong> per AI model.</p>
   </div>
+
+  <a class="chip coral" href="APS_Presentation_v2.pdf" download style="cursor:pointer;text-decoration:none;margin-top:.8rem;">⬇ Download this deck as PDF — one slide per page</a>
 </section>
 
 <!-- ============ APPENDIX — WHY EXACTLY FOUR (linked from slide 5) ============ -->
