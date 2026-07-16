@@ -131,8 +131,8 @@
 <section class="slide" data-order="4">
   <div class="kicker">The question</div>
   <h2>What we set out to test — the <span class="hl">care factor</span></h2>  <div class="grid2" style="margin-top:1rem;">
-    <div class="card"><h3>H1 · does it match people?</h3>
-      <p>Does the AI model rank these entities the way real people do — and where does it diverge?</p>
+    <div class="card"><h3>H1 · does it match humans?</h3>
+      <p>Does the AI model rank these entities the way real humans do — and where does it diverge?</p>
       <span class="chip coral">Mantel test</span>
       <p class="muted" style="font-size:.86rem;margin-top:.45rem;"><strong>Mantel test</strong> — checks whether two "which-entities-get-treated-alike" maps agree more than chance, by re-shuffling one of them 5,000 times.</p></div>
     <div class="card"><h3>H2 · does it hold together?</h3>
@@ -142,7 +142,7 @@
   </div>
   <div class="grid3" style="margin-top:1rem;">
     <div class="card" style="margin:0;"><h3>AI side</h3><p style="font-size:.98rem;">The 8 AI models<span class="plusbtn" onclick="pop('pop-models',true)">+</span>, answering the dilemmas.</p></div>
-    <div class="card" style="margin:0;"><h3>Human side</h3><p style="font-size:.98rem;">18 people, the same questions.</p></div>
+    <div class="card" style="margin:0;"><h3>Human side</h3><p style="font-size:.98rem;">18 humans, the same questions.</p></div>
     <div class="card" style="margin:0;"><h3>Extra</h3><p style="font-size:.98rem;">A pleasantness comparison (Warriner norms).</p><span class="chip" style="cursor:pointer;" onclick="show(18)">→ see it · slide 19</span></div>
   </div>
   <div class="pop" id="pop-models" onclick="if(event.target===this)this.classList.remove('on')">
@@ -181,13 +181,13 @@
   Grounded in <strong>Gray, Gray &amp; Wegner (2007, <em>Science</em>)</strong> — mind perception splits into Experience
   and Agency (our feel/think) — and <strong>Eagly &amp; Chaiken (1993)</strong> — attitudes are cognition, affect, behaviour (our belief/feeling/action);
   bridged by <strong>Gray, Young &amp; Waytz (2012)</strong> — perceived experience is what makes something a moral patient.
-  <span style="cursor:pointer;color:var(--coral-d);font-weight:700;white-space:nowrap;" onclick="show(18)">How these four were derived →</span></p>
+  <span style="cursor:pointer;color:var(--coral-d);font-weight:700;white-space:nowrap;" onclick="show(17)">How these four were derived →</span></p>
   <p class="cite" style="margin-top:.3rem;">Note: the "I" in these questions is whoever answers them — the AI model or the human participant.</p>
 </section>
 
 <!-- ============ SLIDE 4 — MODEL COMPARISON TABLE ============ -->
 <section class="slide" data-order="7">
-  <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(6)">↩ back to method (slide 7)</span>
+  <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(5)">↩ back to method (slide 6)</span>
   <div class="kicker">All runs compared</div>
   <h2>Eight AI models, side by side</h2>
   <div style="margin-bottom:.55rem;">
@@ -212,9 +212,9 @@
   <div class="card" style="margin-top:.9rem;padding:.8rem 1.2rem;">
     <p style="font-size:.98rem;"><strong>Care slider</strong> = <em>effective dimensionality</em> (one-liner on slide 4).
     <strong>Six of eight fall below 2</strong> — the two exceptions are 2026 additions DeepSeek-R1 and Llama 4 Scout (Qwen 3, the cohort's reasoning model, still falls at 1.79).</p>
-    <p style="font-size:.98rem;margin-top:.4rem;"><strong>r</strong> = correlation: how closely an AI model's ranking of the entities lines up with people's.
-    <span class="hl">+1</span> = same order as people, <span class="steel">0</span> = unrelated,
-    <span class="hl">−1</span> = the reverse of people.</p>
+    <p style="font-size:.98rem;margin-top:.4rem;"><strong>r</strong> = correlation: how closely an AI model's ranking of the entities lines up with humans'.
+    <span class="hl">+1</span> = same order as humans, <span class="steel">0</span> = unrelated,
+    <span class="hl">−1</span> = the reverse of humans.</p>
   </div>
   <p class="foot">All 8 AI models scored through the identical Bradley-Terry pipeline. Bradley&#8211;Terry is the scoring step that turns the pairwise A/B choices into per-entity strength scores on each of the 4 constructs; the care-factor result (H2) then comes from running effective dimensionality (participation ratio) on those BT scores.</p>
 </section>
@@ -268,9 +268,9 @@
     </div>
     <div style="display:flex;font-size:1.4rem;color:var(--coral);font-weight:700;"><span style="flex:2;text-align:center;">↙ &nbsp; ↘</span><span style="flex:1;text-align:center;">↓</span></div>
     <div class="grid3">
-      <div class="card" style="margin:0;background:#e9f3ec;border:2px dotted var(--coral-d);"><h3>H2 · coherence</h3><p style="font-size:.92rem;">Effective dimensionality of the 4 scores — one care slider, or four?</p><span class="chip coral" style="cursor:pointer;" onclick="pop('pop-def-ed',true)">effective dimensionality +</span> <span class="chip coral">AI only</span> <span class="chip" style="cursor:pointer;" onclick="show(7)">→ slide 8</span></div>
-      <div class="card" style="margin:0;border:2px dotted #c9992e;background:#fbf6e9;"><h3>H1 · match (choices)</h3><p style="font-size:.92rem;">Human vs AI on the 20 shared forced-choice dilemmas.</p><span class="chip coral" style="cursor:pointer;" onclick="pop('pop-def-agree',true)">agreement rate +</span> <span class="chip coral">AI vs human</span> <span class="chip" style="cursor:pointer;" onclick="show(8)">→ slide 9</span></div>
-      <div class="card" style="margin:0;background:#e9f3ec;border:2px solid var(--coral-d);"><h3>H1 · match (ratings)</h3><p style="font-size:.92rem;">Mantel: AI 0–10 vs human 0–10, per parameter, across 8 shared entities.</p><span class="chip coral" style="cursor:pointer;" onclick="pop('pop-def-mantel',true)">Mantel test +</span> <span class="chip coral">AI vs human</span> <span class="chip" style="cursor:pointer;" onclick="show(9)">→ slide 10</span></div>
+      <div class="card" style="margin:0;background:#e9f3ec;border:2px dotted var(--coral-d);"><h3>H2 · coherence</h3><p style="font-size:.92rem;">Effective dimensionality of the 4 scores — one care slider, or four?</p><span class="chip coral" style="cursor:pointer;" onclick="pop('pop-def-ed',true)">effective dimensionality +</span> <span class="chip coral">AI only</span> <span class="chip" style="cursor:pointer;" onclick="show(6)">→ slide 7</span></div>
+      <div class="card" style="margin:0;border:2px dotted #c9992e;background:#fbf6e9;"><h3>H1 · match (choices)</h3><p style="font-size:.92rem;">Human vs AI on the 20 shared forced-choice dilemmas.</p><span class="chip coral" style="cursor:pointer;" onclick="pop('pop-def-agree',true)">agreement rate +</span> <span class="chip coral">AI vs human</span> <span class="chip" style="cursor:pointer;" onclick="show(7)">→ slide 8</span></div>
+      <div class="card" style="margin:0;background:#e9f3ec;border:2px solid var(--coral-d);"><h3>H1 · match (ratings)</h3><p style="font-size:.92rem;">Mantel: AI 0–10 vs human 0–10, per parameter, across 8 shared entities.</p><span class="chip coral" style="cursor:pointer;" onclick="pop('pop-def-mantel',true)">Mantel test +</span> <span class="chip coral">AI vs human</span> <span class="chip" style="cursor:pointer;" onclick="show(8)">→ slide 9</span></div>
     </div>
   </div>
   <div class="pop" id="pop-def-ed" onclick="if(event.target===this)this.classList.remove('on')">
@@ -307,12 +307,12 @@
 
 <!-- ============ SLIDE 10 — SPIDER OUTCOMES (BULLETS) ============ -->
 <section class="slide" data-order="10">
-  <div class="kicker">Pre-registered test · H1 · does it match people?</div>
+  <div class="kicker">Pre-registered test · H1 · does it match humans?</div>
   <h2>Where AI models agree with people — and where they don't</h2>
   <p class="muted" style="margin:-.4rem 0 .3rem;">Tap each parameter for the number.</p>
   <div class="grid2">
     <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in">
-      <div class="flip-f"><h3>Sentience <span style="color:#2e7d43;">✓</span></h3><p class="muted">matches people · tap ↻</p></div>
+      <div class="flip-f"><h3>Sentience <span style="color:#2e7d43;">✓</span></h3><p class="muted">matches humans · tap ↻</p></div>
       <div class="flip-b"><p>Sentience tracks human ratings in <b>7 of 8</b> AI models (median r = 0.75).</p></div>
     </div></div>
     <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in">
@@ -328,27 +328,27 @@
       <div class="flip-b" style="background:#c0392b;"><p>Protectiveness matches in only <b>1 of 8</b> AI models (median r ≈ 0).</p></div>
     </div></div>
   </div>
-  <p class="foot">Match = Mantel correlation of each AI model's 0–10 ratings with 18 people's, per parameter (results/rsa_comparison_results.csv). Next slide shows it as a shape.</p>
+  <p class="foot">Match = Mantel correlation of each AI model's 0–10 ratings with 18 humans', per parameter (results/rsa_comparison_results.csv). Slide 9 shows it as a shape.</p>
 </section>
 
 <!-- ============ SLIDE 11 — HUMAN vs AI (interactive radar) ============ -->
 <section class="slide" data-order="9">
-  <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(6)">↩ back to method (slide 7)</span>
-  <div class="kicker">Pre-registered test · H1 · people vs AI models</div>
+  <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(5)">↩ back to method (slide 6)</span>
+  <div class="kicker">Pre-registered test · H1 · humans vs AI models</div>
   <h2>How closely does an AI model track people?</h2>
   <div class="radarwrap">
     <div>
       <div id="scats" style="display:grid;grid-template-columns:1fr 1fr;gap:.45rem;"></div>
-      <p class="muted" style="font-size:.82rem;max-width:430px;margin-top:.45rem;">The dotted line = the AI gave the <b>same number</b> people did. A dot <b>below</b> it = the AI gave fewer points than people; <b>above</b> = more. What matters is the staircase: dots <b>rising together</b> = the AI ranks things like people do; <b>scattered</b> dots = its points go to different things.</p>
+      <p class="muted" style="font-size:.82rem;max-width:430px;margin-top:.45rem;">The dotted line = the AI gave the <b>same number</b> humans did. A dot <b>below</b> it = the AI gave fewer points than humans; <b>above</b> = more. What matters is the staircase: dots <b>rising together</b> = the AI ranks things like humans do; <b>scattered</b> dots = its points go to different things.</p>
     </div>
     <div>
       <p style="font-size:1rem;margin-bottom:.5rem;">Each dot is one of the 8 shared entities:
-      <strong>across = the people's 0–10 rating (N=18), up = the AI model's</strong>.
-      Dots hugging the diagonal line = the AI ranks it like people do. Click an AI model:</p>
+      <strong>across = the humans' 0–10 rating (N=18), up = the AI model's</strong>.
+      Dots hugging the diagonal line = the AI ranks it like humans do. Click an AI model:</p>
       <div class="mbtns" id="mbtns"></div>
       <svg id="spider" width="230" height="205" viewBox="0 0 230 205" style="max-width:100%;height:auto;margin-top:.4rem;"></svg>
       <p class="muted" style="font-size:.8rem;margin-top:.1rem;">Spider view — the same four r values as one shape: ① Sentience ② Agency ③ Empathy ④ Protectiveness (0 = centre, 1 = edge; dashed = 8-model average).</p>
-      <p style="font-size:1rem;margin-top:.8rem;"><strong>AI Models match people on sentience &amp; agency, not much on empathy or protectiveness.</strong> <span class="muted" style="font-size:.9rem;">"Match" means picking the <b>same things</b> people pick — not caring more or less than people.</span></p>
+      <p style="font-size:1rem;margin-top:.8rem;"><strong>AI Models match humans on sentience &amp; agency, not much on empathy or protectiveness.</strong> <span class="muted" style="font-size:.9rem;">"Match" means picking the <b>same things</b> humans pick — not caring more or less than humans.</span></p>
       <p class="muted" style="font-size:.85rem;margin-top:.6rem;">A second, forced-choice check agrees: on the 20 shared dilemmas, AI models sided with the human majority <span class="hl">45–70%</span> of the time (avg 59%).</p>
     </div>
   </div>
@@ -432,7 +432,7 @@
   <svg class="float" style="top:9%;right:8%;width:120px;opacity:.5;" viewBox="0 0 120 70"><g fill="#dfeee4"><circle cx="40" cy="44" r="20"/><circle cx="66" cy="34" r="25"/><circle cx="92" cy="46" r="17"/><rect x="38" y="46" width="56" height="20" rx="10"/></g></svg>
   <div class="grid2">
     <div class="card"><h3><span class="cico">🌱</span>Human baseline is thin</h3><p><span class="hl">N = 18</span>, below the pre-registered 30, and the attention-check rule shifted mid-run. So every AI-vs-human (H1) result here is <span class="hl">exploratory</span>.</p></div>
-    <div class="card"><h3><span class="cico d2">💭</span>Opinion, not truth</h3><p>The human ratings are a <span class="hl">baseline of opinion</span>, not ground truth. We measure the AI <span class="hl">against people, not against truth</span> — a gap means it differs from us, not that it's mistaken.</p></div>
+    <div class="card"><h3><span class="cico d2">💭</span>Opinion, not truth</h3><p>The human ratings are a <span class="hl">baseline of opinion</span>, not ground truth. We measure the AI <span class="hl">against humans, not against truth</span> — a gap means it differs from us, not that it's mistaken.</p></div>
     <div class="card"><h3><span class="cico d3">📏</span>Relative, few-shot scores</h3><p>Bradley-Terry strength is relative to the opponent set, with 3–6 reps per cell.</p></div>
   </div>
 </section>
@@ -444,7 +444,7 @@
   <svg class="float" style="top:10%;right:9%;width:110px;opacity:.5;" viewBox="0 0 120 70"><g fill="#dfeee4"><circle cx="40" cy="44" r="20"/><circle cx="66" cy="34" r="25"/><circle cx="92" cy="46" r="17"/><rect x="38" y="46" width="56" height="20" rx="10"/></g></svg>
   <svg class="float f2" style="bottom:12%;left:4%;width:80px;" viewBox="0 0 100 100"><rect x="47" y="55" width="6" height="37" fill="#2e7d43"/><circle cx="50" cy="38" r="22" fill="#3f9d5a"/></svg>
   <div class="grid2">
-    <div class="card"><h3><span class="cico">🔍</span>What we found</h3><p>AI models track people on <span class="hl">sentience and agency</span>, but not on empathy or protectiveness. A natural next step: how much do <span class="hl">framing and context</span> shift these results?</p></div>
+    <div class="card"><h3><span class="cico">🔍</span>What we found</h3><p>AI models track humans on <span class="hl">sentience and agency</span>, but not on empathy or protectiveness. A natural next step: how much do <span class="hl">framing and context</span> shift these results?</p></div>
     <div class="card"><h3><span class="cico d2">🤝</span>About AI collaboration</h3><p>From MP1's "ask the AI and trust it" to now: the AI is most useful as a <span class="hl">builder you cross-examine</span>. Its best move was auditing its own work.</p></div>
     <div class="card"><h3><span class="cico d3">🎓</span>For next year's students</h3><p>Pre-register before you run anything, and <span class="hl">log every deviation the day it happens</span>.</p></div>
   </div>
@@ -452,7 +452,7 @@
 
 <!-- ============ SLIDE 15B — HUMANS vs AI, SAME DILEMMAS (option B) ============ -->
 <section class="slide" data-order="8">
-  <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(6)">↩ back to method (slide 7)</span>
+  <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(5)">↩ back to method (slide 6)</span>
   <div class="kicker">Humans vs the AI models · same forced-choice dilemmas</div>
   <h2>Put the same dilemmas to people</h2>
   <p class="lead" style="font-size:1.1rem;">On the 20 dilemmas humans also answered, the AI models' consensus matched the human majority on <span class="hl">15 of 20</span>. The five splits are the interesting part.</p>
@@ -526,7 +526,7 @@
   <div class="kicker">Appendix · reference</div>
   <h2>Human pleasantness ratings (Warriner valence)</h2>
   <div class="grid2"><table style="font-size:.78rem;"><tr><th class="l">Entity</th><th>Valence</th><th>SD</th></tr><tr><td class="l">a 4-year-old girl</td><td class="num">7.15</td><td class="num" style="color:var(--muted)">1.56</td></tr><tr><td class="l">a 4-year-old boy</td><td class="num">5.84</td><td class="num" style="color:var(--muted)">1.70</td></tr><tr><td class="l">human fetus (20 wks)</td><td class="num">4.74</td><td class="num" style="color:var(--muted)">2.02</td></tr><tr><td class="l">a newborn baby</td><td class="num">7.48</td><td class="num" style="color:var(--muted)">1.69</td></tr><tr><td class="l">an adult person</td><td class="num">5.90</td><td class="num" style="color:var(--muted)">2.10</td></tr><tr><td class="l">an 80-year-old person</td><td class="num">4.63</td><td class="num" style="color:var(--muted)">2.39</td></tr><tr><td class="l">brain-dead person</td><td class="num">2.02</td><td class="num" style="color:var(--muted)">1.39</td></tr><tr><td class="l">a squid</td><td class="num">4.62</td><td class="num" style="color:var(--muted)">1.99</td></tr><tr><td class="l">a honeybee</td><td class="num">3.68</td><td class="num" style="color:var(--muted)">1.67</td></tr><tr><td class="l">a bumblebee</td><td class="num">5.43</td><td class="num" style="color:var(--muted)">1.91</td></tr><tr><td class="l">a cat</td><td class="num">6.95</td><td class="num" style="color:var(--muted)">1.85</td></tr><tr><td class="l">a tiger</td><td class="num">6.00</td><td class="num" style="color:var(--muted)">2.29</td></tr><tr><td class="l">a dog</td><td class="num">7.00</td><td class="num" style="color:var(--muted)">2.07</td></tr><tr><td class="l">a pig</td><td class="num">4.83</td><td class="num" style="color:var(--muted)">2.20</td></tr><tr><td class="l">a cricket</td><td class="num">5.71</td><td class="num" style="color:var(--muted)">1.76</td></tr></table><table style="font-size:.78rem;"><tr><th class="l">Entity</th><th>Valence</th><th>SD</th></tr><tr><td class="l">a tardigrade</td><td class="num">—</td><td class="num" style="color:var(--muted)">—</td></tr><tr><td class="l">a young tree</td><td class="num">7.59</td><td class="num" style="color:var(--muted)">1.69</td></tr><tr><td class="l">an old tree</td><td class="num">7.59</td><td class="num" style="color:var(--muted)">1.69</td></tr><tr><td class="l">a sunflower</td><td class="num">6.45</td><td class="num" style="color:var(--muted)">1.70</td></tr><tr><td class="l">a rose</td><td class="num">7.11</td><td class="num" style="color:var(--muted)">2.00</td></tr><tr><td class="l">Fable 5 (AI)</td><td class="num">—</td><td class="num" style="color:var(--muted)">—</td></tr><tr><td class="l">GPT-5.6 Sol (AI)</td><td class="num">—</td><td class="num" style="color:var(--muted)">—</td></tr><tr><td class="l">Sophia (robot)</td><td class="num">6.18</td><td class="num" style="color:var(--muted)">1.65</td></tr><tr><td class="l">Fast Retailing (co.)</td><td class="num">5.64</td><td class="num" style="color:var(--muted)">1.36</td></tr><tr><td class="l">Japan Health Ministry</td><td class="num">5.08</td><td class="num" style="color:var(--muted)">2.04</td></tr><tr><td class="l">the Whanganui River</td><td class="num">6.72</td><td class="num" style="color:var(--muted)">1.72</td></tr><tr><td class="l">a stone statue</td><td class="num">5.95</td><td class="num" style="color:var(--muted)">1.35</td></tr><tr><td class="l">the Lincoln Memorial</td><td class="num">5.72</td><td class="num" style="color:var(--muted)">2.27</td></tr><tr><td class="l">Meiji Shrine</td><td class="num">5.38</td><td class="num" style="color:var(--muted)">1.47</td></tr><tr><td class="l">a piece of gravel</td><td class="num">4.42</td><td class="num" style="color:var(--muted)">1.43</td></tr></table></div>
-  <p class="foot"><b>Valence</b> = how pleasant / happy something feels, scored 1 (very unpleasant) to 9 (very pleasant) — the "pleasantness" rating plotted on the previous slide. <b>SD</b> (standard deviation) = how much people disagreed: a small SD means most gave similar scores, a big SD means opinions were split. Source: Warriner et&nbsp;al. (2013). <b>"—"</b> = no human norm exists (tardigrade, Fable&nbsp;5, GPT-5.6 — omitted from the comparison).</p>
+  <p class="foot"><b>Valence</b> = how pleasant / happy something feels, scored 1 (very unpleasant) to 9 (very pleasant) — the "pleasantness" rating plotted on the previous slide. <b>SD</b> (standard deviation) = how much human raters disagreed: a small SD means most gave similar scores, a big SD means opinions were split. Source: Warriner et&nbsp;al. (2013). <b>"—"</b> = no human norm exists (tardigrade, Fable&nbsp;5, GPT-5.6 — omitted from the comparison).</p>
   <span class="chip" style="cursor:pointer;" onclick="show(3)">↩ back to slide 4</span>
 </section>
 <!-- APPENDIX: related work -->
@@ -552,11 +552,11 @@
   <table style="font-size:.8rem;">
     <thead><tr><th>Work</th><th>Their question</th><th>Their conclusion</th><th>What we take / add</th></tr></thead>
     <tbody>
-      <tr><td><strong>Gray, Gray &amp; Wegner (2007)</strong>, <em>Science</em></td><td>What do people see when they see a "mind"?</td><td>Two dimensions: Experience (can it feel?) and Agency (can it think?)</td><td class="hl">Our Sentience &amp; Agency parameters — asked of AI models instead of people</td></tr>
+      <tr><td><strong>Gray, Gray &amp; Wegner (2007)</strong>, <em>Science</em></td><td>What do people see when they see a "mind"?</td><td>Two dimensions: Experience (can it feel?) and Agency (can it think?)</td><td class="hl">Our Sentience &amp; Agency parameters — asked of AI models instead of humans</td></tr>
       <tr><td><strong>Eagly &amp; Chaiken (1993)</strong>, <em>The Psychology of Attitudes</em></td><td>What is an attitude made of?</td><td>Three components: belief, feeling, action</td><td class="hl">Our Empathy (feeling) &amp; Protectiveness (action intention) parameters</td></tr>
       <tr><td><strong>Gray, Young &amp; Waytz (2012)</strong>, <em>Psychological Inquiry</em></td><td>What makes something a moral patient?</td><td>Perceived experience is what drives moral concern</td><td class="hl">The bridge we test: does the AI's "can it feel?" actually drive its care?</td></tr>
       <tr><td><strong>Crimston et al. (2016)</strong>, Moral Expansiveness Scale</td><td>How wide is a person's moral circle?</td><td>Moral circles are measurable and differ across people</td><td class="hl">Considered its entity list — zero overlap with ours, so we built the 30-entity set</td></tr>
-      <tr><td><strong>Kriegeskorte, Mur &amp; Bandettini (2008)</strong>, RSA</td><td>How to compare two systems' representations?</td><td>Compare their similarity structures (RDMs), not raw scores</td><td class="hl">H1's machinery: the AI's entity map vs. 18 people's, per parameter</td></tr>
+      <tr><td><strong>Kriegeskorte, Mur &amp; Bandettini (2008)</strong>, RSA</td><td>How to compare two systems' representations?</td><td>Compare their similarity structures (RDMs), not raw scores</td><td class="hl">H1's machinery: the AI's entity map vs. 18 humans', per parameter</td></tr>
       <tr><td><strong>Bradley &amp; Terry (1952)</strong>, <em>Biometrika</em></td><td>How to rank options from pairwise choices?</td><td>A latent-strength model for paired comparisons</td><td class="hl">Turns our A/B dilemma picks into per-entity care scores</td></tr>
       <tr><td><strong>Mantel (1967)</strong></td><td>How to test association between two distance matrices?</td><td>Permute one matrix — cells aren't independent, ordinary p-values are invalid</td><td class="hl">Our significance test: 5,000 permutations, Bonferroni-corrected</td></tr>
       <tr><td><strong>Willroth &amp; Atherton (2024)</strong>, <em>AMPPS</em></td><td>How should deviations from a pre-registration be reported?</td><td>A what · when · why · impact disclosure template</td><td class="hl">DEVIATIONS.md — 18 logged deviations in that format</td></tr>
@@ -566,7 +566,7 @@
       <tr><td><strong>Infini-gram (2024)</strong></td><td>Can n-gram counts scale to trillion-token corpora?</td><td>Yes — instant counts over Dolma</td><td class="hl">Phase 1's "writing amount" axis (the grid's first leg)</td></tr>
     </tbody>
   </table>
-  <p class="foot">How the four parameters are derived from the first three works: <span style="cursor:pointer;color:var(--coral-d);font-weight:700;" onclick="show(18)">the four factors, derived →</span> · full note: FOUR_FACTORS_RATIONALE.md</p>
+  <p class="foot">How the four parameters are derived from the first three works: <span style="cursor:pointer;color:var(--coral-d);font-weight:700;" onclick="show(17)">the four factors, derived →</span> · full note: FOUR_FACTORS_RATIONALE.md</p>
 </section>
 
 </div>
@@ -621,12 +621,12 @@ function drawRadar(){
     for(const e of Object.keys(SCATHUM)){
       const hv=SCATHUM[e][i], av=(SCAT[curModel][e]||[])[i];
       if(av==null) continue;
-      g+=`<circle cx="${X(hv)}" cy="${Y(av)}" r="4" fill="var(--coral)" fill-opacity=".85" stroke="#1f5a34" stroke-width=".7"><title>${SCATLBL[e]}: people ${hv}, AI ${av}</title></circle>`;
+      g+=`<circle cx="${X(hv)}" cy="${Y(av)}" r="4" fill="var(--coral)" fill-opacity=".85" stroke="#1f5a34" stroke-width=".7"><title>${SCATLBL[e]}: human ${hv}, AI ${av}</title></circle>`;
     }
     const r=(SCATR[curModel]||[])[i];
     g+=`<text x="${L+3}" y="${H-B-PH-6}" font-size="10.5" fill="#1f5a34" font-weight="700">${'①②③④'[i]} ${ax}</text>`;
     g+=`<text x="${W-6}" y="${H-B-PH-6}" font-size="10.5" fill="${r!=null&&r>=0.6?'#2e7d43':'#c0574f'}" font-weight="700" text-anchor="end">r = ${r==null?'—':r.toFixed(2)}</text>`;
-    g+=`<text x="${L+PW/2}" y="${H-2}" font-size="8" fill="#7c88a5" text-anchor="middle">people →</text>`;
+    g+=`<text x="${L+PW/2}" y="${H-2}" font-size="8" fill="#7c88a5" text-anchor="middle">human →</text>`;
     g+=`</svg>`;
     return g;
   }).join('');
