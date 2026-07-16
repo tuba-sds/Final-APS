@@ -105,6 +105,7 @@
     padding:1.4rem 1.7rem;width:min(92vw,34rem);box-shadow:0 12px 40px rgba(0,0,0,.25);}
   .pop-box h3{color:var(--indigo);margin-bottom:.6rem;}
   .pop-x{position:absolute;top:.4rem;right:.75rem;font-size:1.5rem;font-weight:800;color:var(--indigo);cursor:pointer;line-height:1;}
+  .navtag{position:absolute;right:.7rem;bottom:-.72rem;background:var(--coral-d);color:#fff;border:1px solid var(--coral-d);cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.15);}
 </style>
 </head>
 <body>
@@ -269,9 +270,9 @@
     </div>
     <div style="display:flex;font-size:1.4rem;color:var(--coral);font-weight:700;"><span style="flex:2;text-align:center;">↙ &nbsp; ↘</span><span style="flex:1;text-align:center;">↓</span></div>
     <div class="grid3">
-      <div class="card" style="margin:0;background:#e9f3ec;border:2px dotted var(--coral-d);"><h3>H2 · coherence</h3><p style="font-size:.92rem;">Effective dimensionality of the 4 scores — one care slider, or four?</p><span class="chip coral" style="cursor:pointer;" onclick="pop('pop-def-ed',true)">effective dimensionality +</span> <span class="chip coral">AI only</span> <span class="chip" style="cursor:pointer;" onclick="show(6)">→ slide 7</span></div>
-      <div class="card" style="margin:0;border:2px dotted #c9992e;background:#fbf6e9;"><h3>H1 · match (choices)</h3><p style="font-size:.92rem;">Human vs AI on the 20 shared forced-choice dilemmas.</p><span class="chip coral" style="cursor:pointer;" onclick="pop('pop-def-agree',true)">agreement rate +</span> <span class="chip coral">AI vs human</span> <span class="chip" style="cursor:pointer;" onclick="show(7)">→ slide 8</span></div>
-      <div class="card" style="margin:0;background:#e9f3ec;border:2px solid var(--coral-d);"><h3>H1 · match (ratings)</h3><p style="font-size:.92rem;">Mantel: AI 0–10 vs human 0–10, per parameter, across 8 shared entities.</p><span class="chip coral" style="cursor:pointer;" onclick="pop('pop-def-mantel',true)">Mantel test +</span> <span class="chip coral">AI vs human</span> <span class="chip" style="cursor:pointer;" onclick="show(8)">→ slide 9</span></div>
+      <div class="card" style="margin:0;position:relative;background:#e9f3ec;border:2px dotted var(--coral-d);"><h3>H2 · coherence</h3><p style="font-size:.92rem;">Effective dimensionality of the 4 scores — one care slider, or four?</p><span class="chip coral" style="cursor:pointer;" onclick="pop('pop-def-ed',true)">effective dimensionality +</span> <span class="chip coral">AI only</span> <span class="chip navtag" onclick="show(6)">→ slide 7</span></div>
+      <div class="card" style="margin:0;position:relative;border:2px dotted #c9992e;background:#fbf6e9;"><h3>H1 · match (choices)</h3><p style="font-size:.92rem;">Human vs AI on the 20 shared forced-choice dilemmas.</p><span class="chip coral" style="cursor:pointer;" onclick="pop('pop-def-agree',true)">agreement rate +</span> <span class="chip coral">AI vs human</span> <span class="chip navtag" onclick="show(7)">→ slide 8</span></div>
+      <div class="card" style="margin:0;position:relative;background:#e9f3ec;border:2px solid var(--coral-d);"><h3>H1 · match (ratings)</h3><p style="font-size:.92rem;">Mantel: AI 0–10 vs human 0–10, per parameter, across 8 shared entities.</p><span class="chip coral" style="cursor:pointer;" onclick="pop('pop-def-mantel',true)">Mantel test +</span> <span class="chip coral">AI vs human</span> <span class="chip navtag" onclick="show(8)">→ slide 9</span></div>
     </div>
   </div>
   <div class="pop" id="pop-def-bt" onclick="if(event.target===this)this.classList.remove('on')">
