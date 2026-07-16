@@ -545,17 +545,25 @@
 <!-- APPENDIX: related work -->
 <section class="slide" data-order="21">
   <div class="kicker">Appendix · Other research</div>
-  <h2>What others found, and what we add</h2>
-  <table style="font-size:.9rem;">
-    <thead><tr><th>Paper</th><th>Their question</th><th>Their conclusion</th><th>What we add</th></tr></thead>
+  <h2>Foundations &amp; methods this study is built from</h2>
+  <table style="font-size:.8rem;">
+    <thead><tr><th>Work</th><th>Their question</th><th>Their conclusion</th><th>What we take / add</th></tr></thead>
     <tbody>
-      <tr><td><strong>Speciesism in AI</strong></td><td>Do AIs judge animals unfairly?</td><td>Yes — they devalue animals, especially farmed ones</td><td class="hl">We test whether that stance is even coherent — mostly it's one "care" slider</td></tr>
-      <tr><td><strong>MoReBench</strong></td><td>Can we score <em>how</em> AIs reason morally?</td><td>Bigger AIs don't reason better; need expert rubrics</td><td class="hl">We borrow its careful, planned scoring</td></tr>
-      <tr><td><strong>Neutrality Bites</strong></td><td>What defaults do AIs give animals in stories?</td><td>Hidden biases show up, across many models</td><td class="hl">We test on more than one AI too</td></tr>
-      <tr><td><strong>Speciesism in NLP</strong></td><td>Does the NLP field itself ignore animals?</td><td>Yes — the field has a blind spot</td><td class="hl">We treat this blind spot as a fixable bias</td></tr>
-      <tr><td><strong>NAEL</strong></td><td>How to build AI that considers non-humans?</td><td>It needs a new design, not a patch</td><td class="hl">We give the evidence for why</td></tr>
+      <tr><td><strong>Gray, Gray &amp; Wegner (2007)</strong>, <em>Science</em></td><td>What do people see when they see a "mind"?</td><td>Two dimensions: Experience (can it feel?) and Agency (can it think?)</td><td class="hl">Our Sentience &amp; Agency parameters — asked of AI models instead of humans</td></tr>
+      <tr><td><strong>Eagly &amp; Chaiken (1993)</strong>, <em>The Psychology of Attitudes</em></td><td>What is an attitude made of?</td><td>Three components: belief, feeling, action</td><td class="hl">Our Empathy (feeling) &amp; Protectiveness (action intention) parameters</td></tr>
+      <tr><td><strong>Gray, Young &amp; Waytz (2012)</strong>, <em>Psychological Inquiry</em></td><td>What makes something a moral patient?</td><td>Perceived experience is what drives moral concern</td><td class="hl">The bridge we test: does the AI's "can it feel?" actually drive its care?</td></tr>
+      <tr><td><strong>Crimston et al. (2016)</strong>, Moral Expansiveness Scale</td><td>How wide is a person's moral circle?</td><td>Moral circles are measurable and differ across people</td><td class="hl">Considered its entity list — zero overlap with ours, so we built the 30-entity set</td></tr>
+      <tr><td><strong>Kriegeskorte, Mur &amp; Bandettini (2008)</strong>, RSA</td><td>How to compare two systems' representations?</td><td>Compare their similarity structures (RDMs), not raw scores</td><td class="hl">H1's machinery: the AI's entity map vs. 18 humans', per parameter</td></tr>
+      <tr><td><strong>Bradley &amp; Terry (1952)</strong>, <em>Biometrika</em></td><td>How to rank options from pairwise choices?</td><td>A latent-strength model for paired comparisons</td><td class="hl">Turns our A/B dilemma picks into per-entity care scores</td></tr>
+      <tr><td><strong>Mantel (1967)</strong></td><td>How to test association between two distance matrices?</td><td>Permute one matrix — cells aren't independent, ordinary p-values are invalid</td><td class="hl">Our significance test: 5,000 permutations, Bonferroni-corrected</td></tr>
+      <tr><td><strong>Willroth &amp; Atherton (2024)</strong>, <em>AMPPS</em></td><td>How should deviations from a pre-registration be reported?</td><td>A what · when · why · impact disclosure template</td><td class="hl">DEVIATIONS.md — 18 logged deviations in that format</td></tr>
+      <tr><td><strong>Miller (2024)</strong></td><td>What makes an LLM eval statistically trustworthy?</td><td>Report decoding settings, resample, put error bars on everything</td><td class="hl">Declared temp/reps + bootstrap CIs (our noise-floor test)</td></tr>
+      <tr><td><strong>Cummins (2025)</strong></td><td>How should evals treat refusals?</td><td>Refusals are data: record, report, never retry to compliance</td><td class="hl">Our refusal log + retry-dedup rules (deviations D9–D10)</td></tr>
+      <tr><td><strong>Rethink Priorities</strong>, Moral Weight Project</td><td>How likely is each species to be sentient?</td><td>Probability-of-sentience estimates across species</td><td class="hl">Phase 1's "real feeling" axis (the dissociation grid's second leg)</td></tr>
+      <tr><td><strong>Infini-gram (2024)</strong></td><td>Can n-gram counts scale to trillion-token corpora?</td><td>Yes — instant counts over Dolma</td><td class="hl">Phase 1's "writing amount" axis (the grid's first leg)</td></tr>
     </tbody>
   </table>
+  <p class="foot">How the four parameters are derived from the first three works: <span style="cursor:pointer;color:var(--coral-d);font-weight:700;" onclick="show(17)">the four factors, derived →</span> · full note: FOUR_FACTORS_RATIONALE.md</p>
 </section>
 
 
