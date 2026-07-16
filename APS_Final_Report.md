@@ -53,7 +53,7 @@ The turn is the project's answer to "how did your thinking change, and why": a h
 
 The AI (Claude) wrote the scoring pipeline, ran 40,000+ model calls, drafted plots and slides. Direction stayed human: the research question, the grounding literature, and the rule that hypotheses are fixed *before* prompts are written. The collaboration's most valuable move was adversarial: an internal **rigor audit** (2026-07-12; six offline repo-audit agents plus three standards-research agents; 47 findings verified — 37 confirmed, 10 reclassified, 0 refuted) run against the project's own pipeline before final claims. It found three serious bugs:
 
-1. **Loose answer parser** — `run.py` scanned whole replies for an A/B token, so 245 of 32,400 open-model votes (0.76%) were actually refusals scored as votes (e.g. the "A" in "CANNOT"). *Fix (D9):* strict "must lead with A/B" re-parse of runs 1–2; `refusals.csv` regenerated; no ranking or headline flipped (largest shift: `human_fetus_t2` moral index in Llama 3.1, +0.95; H2 participation ratios moved ≤0.14).
+1. **Loose answer parser** — `runners/run.py` scanned whole replies for an A/B token, so 245 of 32,400 open-model votes (0.76%) were actually refusals scored as votes (e.g. the "A" in "CANNOT"). *Fix (D9):* strict "must lead with A/B" re-parse of runs 1–2; `refusals.csv` regenerated; no ranking or headline flipped (largest shift: `human_fetus_t2` moral index in Llama 3.1, +0.95; H2 participation ratios moved ≤0.14).
 2. **Claude retry contamination** — resume logic resubmitted 329 declined items up to three more times (four total attempts), i.e. rejection-sampling toward compliance. *Fix (D10):* dedup to one first-attempt row per key; 287 answered-on-retry keys flagged and excluded from scoring.
 3. **Stale bootstrap** — the CI script still used a banned word-density scorer; the then-current headline ("6 of 90 above the noise floor; the ordinary adult is the only all-model survivor") did not reproduce. *Fix (D11):* bootstrap rewritten to resample A/B trials through the locked BT pipeline; the affected slide was retracted outright.
 
@@ -70,7 +70,7 @@ Every fix is committed with backups of the pre-fix data (`raw_results.backup_pre
 
 ### 4.1 H2 — one care slider (confirmatory; supported)
 
-Participation ratio of the four construct z-scores (max 4 = four independent judgments; 1 = one blended axis), 30 entities, `phase3/results/dimensionality_all.csv`:
+Participation ratio of the four construct z-scores (max 4 = four independent judgments; 1 = one blended axis), 30 entities, `phase3/results/derived/dimensionality_all.csv`:
 
 | Model | Effective dimensions | Status |
 |---|---|---|
@@ -92,9 +92,9 @@ All three confirmatory models fall below the preregistered threshold of 2 — H2
 
 ### 4.2 H1 — the match to humans depends on the instrument (exploratory)
 
-**Preregistered path** (`rsa.py`: Model-RDM from BT scores on trolley pairs vs Human-RDM from 0–10 survey ratings; 8 overlap entities; Bonferroni α = 0.05/12): **0 of 12** model×construct tests match. Best result: Gemma 2 sentience r = 0.266, p = 0.20. Several correlations are negative (Llama 3.1 sentience r = −0.364).
+**Preregistered path** (`analysis/rsa.py`: Model-RDM from BT scores on trolley pairs vs Human-RDM from 0–10 survey ratings; 8 overlap entities; Bonferroni α = 0.05/12): **0 of 12** model×construct tests match. Best result: Gemma 2 sentience r = 0.266, p = 0.20. Several correlations are negative (Llama 3.1 sentience r = −0.364).
 
-**Same-instrument robustness path** (`rsa_comparison.py`: both RDMs built from identical 0–10 rating questions; 8 models × 4 constructs, separate family, α = 0.05/32): the picture inverts for two constructs.
+**Same-instrument robustness path** (`analysis/rsa_comparison.py`: both RDMs built from identical 0–10 rating questions; 8 models × 4 constructs, separate family, α = 0.05/32): the picture inverts for two constructs.
 
 - **Sentience:** r = 0.50–0.80 across nearly all models (median 0.75); Claude r = 0.798, p = 0.0008 — the only test that formally clears its Bonferroni family.
 - **Agency:** broadly positive (median 0.58; Gemini r = 0.845).
@@ -162,15 +162,15 @@ Reproduction: `./run_all.sh` from the repo root regenerates `phase3/results/` en
 | Preregistered design, hypotheses verbatim | `phase3/PREREGISTRATION.md` (initial freeze `af26ebc`; final hypothesis wording `652d802`, both 2026-07-08, before data) |
 | All deviations D1–D18 | `phase3/DEVIATIONS.md` |
 | Rigor audit (47 findings) | `phase3/AUDIT_PREREG_ALIGNMENT.md` |
-| H1 preregistered (0/12) | `phase3/results/rsa_results.csv`, `phase3/rsa.py` |
-| H1 robustness (32 tests) | `phase3/results/rsa_comparison_results.csv`, `phase3/rsa_comparison.py` |
-| H2 participation ratios (8 models) | `phase3/results/dimensionality_all.csv` |
-| Bootstrap 12/90, survivors | `phase3/results/bootstrap_ci.csv`, `phase3/bootstrap.py` |
-| Refusals (198 calls / 83 cells) | `phase3/results/refusals.csv` |
-| Claude premise-rejections (825/995) | `phase3/results/claude_refusal_polarity.csv` |
-| Care ladder | `phase3/results/care_ladder_all8.csv` |
-| Human ratings (N=18) | `phase3/results/human_ratings_summary.csv` |
-| Forced-choice agreement (15/20; 45–70%) | `phase3/results/human_ai_forcedchoice_agreement.csv`, `human_vs_ai_comparison.csv` |
-| Phase-1 text-bottleneck nulls | `phase1/results/rsa_results.csv` |
-| Phase-2 instability | `phase2/results/entity_scores.csv` |
+| H1 preregistered (0/12) | `phase3/results/derived/rsa_results.csv`, `phase3/analysis/analysis/rsa.py` |
+| H1 robustness (32 tests) | `phase3/results/derived/rsa_comparison_results.csv`, `phase3/analysis/analysis/rsa_comparison.py` |
+| H2 participation ratios (8 models) | `phase3/results/derived/dimensionality_all.csv` |
+| Bootstrap 12/90, survivors | `phase3/results/derived/bootstrap_ci.csv`, `phase3/analysis/analysis/bootstrap.py` |
+| Refusals (198 calls / 83 cells) | `phase3/results/derived/refusals.csv` |
+| Claude premise-rejections (825/995) | `phase3/results/derived/claude_refusal_polarity.csv` |
+| Care ladder | `phase3/results/derived/care_ladder_all8.csv` |
+| Human ratings (N=18) | `phase3/results/derived/human_ratings_summary.csv` |
+| Forced-choice agreement (15/20; 45–70%) | `phase3/results/derived/human_ai_forcedchoice_agreement.csv`, `human_vs_ai_comparison.csv` |
+| Phase-1 text-bottleneck nulls | `phase1/results/derived/rsa_results.csv` |
+| Phase-2 instability | `phase2/results/derived/entity_scores.csv` |
 | H1/H2 execution commit | `f2946bb`; audit fixes `4a2f4b6`, `f14d827` |

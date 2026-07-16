@@ -311,7 +311,7 @@
   <div id="l14btns" class="mbtns" style="margin-bottom:.4rem;max-width:100%;"></div>
   <p id="l14cap" class="muted" style="font-size:.92rem;margin:.1rem 0 .35rem;"></p>
   <svg id="ladder" width="980" height="440" viewBox="0 0 980 440" style="max-width:100%;height:auto;"></svg>
-  <p class="foot">Care index = mean of the 4 z-scored Bradley-Terry measures (forced choice). "Average" = mean across all 8 AI models; the per-AI model button also shows that AI model's care slider (effective dimensions). "Humans" is from the 0–10 ratings and covers only 8 entities — a forced-choice human score isn't possible (20 curated pairs, too sparse for Bradley-Terry). Data: results/care_ladder_all8.csv, human_care_index.csv.</p>
+  <p class="foot">Care index = mean of the 4 z-scored Bradley-Terry measures (forced choice). "Average" = mean across all 8 AI models; the per-AI model button also shows that AI model's care slider (effective dimensions). "Humans" is from the 0–10 ratings and covers only 8 entities — a forced-choice human score isn't possible (20 curated pairs, too sparse for Bradley-Terry). Data: results/derived/care_ladder_all8.csv, human_care_index.csv.</p>
 </section>
 
 <!-- ============ SLIDE 10 — SPIDER OUTCOMES (BULLETS) ============ -->
@@ -337,7 +337,7 @@
       <div class="flip-b" style="background:#c0392b;"><p>Protectiveness matches in only <b>1 of 8</b> AI models (median r ≈ 0).</p></div>
     </div></div>
   </div>
-  <p class="foot">Match = Mantel correlation of each AI model's 0–10 ratings with 18 humans', per parameter (results/rsa_comparison_results.csv). Slide 10 shows it as a shape.</p>
+  <p class="foot">Match = Mantel correlation of each AI model's 0–10 ratings with 18 humans', per parameter (results/derived/rsa_comparison_results.csv). Slide 10 shows it as a shape.</p>
 </section>
 
 <!-- ============ SLIDE 11 — HUMAN vs AI (interactive radar) ============ -->
@@ -345,19 +345,12 @@
   <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(6)">↩ back to method (slide 7)</span>
   <div class="kicker">Pre-registered test · H1 · humans vs AI models</div>
   <h2>How closely does an AI model track people?</h2>
-  <div class="radarwrap">
-    <div>
-      <div class="mbtns" style="max-width:none;margin-bottom:.35rem;"><button id="sm-r" class="on" onclick="setSpiderMode('r')">match (r)</button><button id="sm-l" onclick="setSpiderMode('level')">care level · AI vs humans</button></div>
-      <svg id="spider" width="310" height="280" viewBox="0 0 310 280" style="max-width:100%;height:auto;"></svg>
-      <p id="spidercap" class="muted" style="font-size:.82rem;max-width:430px;margin-top:.1rem;"></p>
-      <span class="chip coral" style="cursor:pointer;margin-top:.4rem;" onclick="pop('pop-scats',true);drawRadar();">+ more analysis · the four dotted plots</span>
-    </div>
-    <div>
-      <p style="font-size:1rem;margin-bottom:.5rem;">One shape, four axes — ① Sentience ② Agency ③ Empathy ④ Protectiveness. Click an AI model:</p>
-      <div class="mbtns" id="mbtns"></div>
-      <p style="font-size:1rem;margin-top:.8rem;"><strong>AI Models match humans on sentience &amp; agency, not much on empathy or protectiveness.</strong> <span class="muted" style="font-size:.9rem;">"Match" means picking the <b>same things</b> humans pick — not caring more or less than humans; the <b>care level</b> toggle shows that second, separate question.</span></p>
-      <p class="muted" style="font-size:.85rem;margin-top:.6rem;">A second, forced-choice check agrees: on the 20 shared dilemmas, AI models sided with the human majority <span class="hl">45–70%</span> of the time (avg 59%).</p>
-    </div>
+  <div style="display:flex;flex-direction:column;align-items:flex-start;gap:.3rem;">
+    <div class="mbtns" style="max-width:none;"><button id="sm-r" class="on" onclick="setSpiderMode('r')">match (r)</button><button id="sm-l" onclick="setSpiderMode('level')">care level · AI vs humans</button> <span class="chip coral" style="cursor:pointer;" onclick="pop('pop-scats',true);drawRadar();">+ more analysis · the four dotted plots</span></div>
+    <svg id="spider" width="560" height="312" viewBox="0 0 560 312" style="max-width:100%;height:auto;"></svg>
+    <div class="mbtns" id="mbtns" style="max-width:100%;"></div>
+    <p id="spidercap" class="muted" style="font-size:.82rem;margin:0;"></p>
+    <p style="font-size:1rem;margin-top:.25rem;"><strong>AI Models match humans on sentience &amp; agency, not much on empathy or protectiveness.</strong> <span class="muted" style="font-size:.9rem;">"Match" means picking the <b>same things</b> humans pick — not caring more or less than humans; the <b>care level</b> toggle shows that second, separate question. A second, forced-choice check agrees: on the 20 shared dilemmas, AI models sided with the human majority <span class="hl">45–70%</span> of the time (avg 59%).</span></p>
   </div>
   <div class="pop" id="pop-scats" onclick="if(event.target===this)this.classList.remove('on')">
     <div class="pop-box" style="width:min(94vw,36rem);"><span class="pop-x" onclick="pop('pop-scats',false)">×</span>
@@ -368,7 +361,7 @@
     </div>
   </div>
   <p class="foot">r = Pearson correlation over the 8 shared entities (2 mapped approximately: an AI robot→Sophia, a forest→the mother tree).
-  Exploratory: human N=18, below the pre-registered 30. Data: comparison_raw*.csv, human_ratings_summary.csv.</p>
+  Exploratory: human N=18, below the pre-registered 30. Data: results/raw/comparison_raw*.csv, results/derived/human_ratings_summary.csv.</p>
 </section>
 
 <!-- ============ NEW — HOOK / THE ISSUE (story pos 2) ============ -->
@@ -494,7 +487,7 @@
     <tr class="extra20"><td class="l">4-yr-old girl vs 4-yr-old boy — <em>protectiveness</em></td><td>the girl (67%)</td><td>the girl (57%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
   </table>
   <button id="dilbtn" class="chip coral" style="cursor:pointer;font-size:.88rem;padding:.35rem 1rem;margin-top:.5rem;" onclick="var t=document.getElementById('diltable');var on=t.classList.toggle('showall');this.textContent=on?'– hide the other 12 agreements':'+ show all 20 (the other 12 agreements)';">+ show all 20 (the other 12 agreements)</button>
-  <p class="foot">% = share choosing that side (humans: N=18; AI models: mean across 8 AI models). Agreement = human majority side vs AI model consensus side. Data: results/human_vs_ai_comparison.csv, human_comparison_summary.csv. The splits cluster on <em>agency</em> and fame (statue) — the same places the ratings comparison diverges.</p>
+  <p class="foot">% = share choosing that side (humans: N=18; AI models: mean across 8 AI models). Agreement = human majority side vs AI model consensus side. Data: results/derived/human_vs_ai_comparison.csv, human_comparison_summary.csv. The splits cluster on <em>agency</em> and fame (statue) — the same places the ratings comparison diverges.</p>
 </section>
 
 <!-- ============ APPENDIX DIVIDER ============ -->
@@ -640,7 +633,7 @@ function setSpiderMode(m){spiderMode=m;
   drawSpider();}
 function drawSpider(){
   const el=document.getElementById('spider'); if(!el) return;
-  const CX=155,CY=138,R=96;
+  const CX=280,CY=150,R=104;
   const pt=(i,v)=>{const a=-Math.PI/2+i*Math.PI/2;return [CX+Math.cos(a)*R*v, CY+Math.sin(a)*R*v];};
   const poly=vals=>vals.map((v,i)=>pt(i,Math.max(0,Math.min(1,v))).join(',')).join(' ');
   let g='';
@@ -653,7 +646,7 @@ function drawSpider(){
     const vals=SCATR[curModel]||avg;
     g+=`<polygon points="${poly(vals)}" fill="var(--coral)" fill-opacity=".22" stroke="var(--coral-d)" stroke-width="2"/>`;
     vals.forEach((v,i)=>{const [x,y]=pt(i,Math.max(0,Math.min(1,v)));g+=`<circle cx="${x}" cy="${y}" r="3.2" fill="var(--coral-d)"/>`;});
-    lblv=vals.map((v,i)=>(i===0?'r=':'')+v.toFixed(2));
+    lblv=vals.map(v=>'r='+v.toFixed(2));
   }else{
     const ai=[0,1,2,3].map(i=>meanParam(SCAT[curModel]||SCAT['AI average'],i)/10);
     const hu=[0,1,2,3].map(i=>meanParam(SCATHUM,i)/10);
@@ -662,8 +655,9 @@ function drawSpider(){
     ai.forEach((v,i)=>{const [x,y]=pt(i,Math.max(0,Math.min(1,v)));g+=`<circle cx="${x}" cy="${y}" r="3.2" fill="var(--coral-d)"/>`;});
     lblv=ai.map((v,i)=>(v*10).toFixed(1)+' / '+(hu[i]*10).toFixed(1));
   }
-  const lbl=[[CX,CY-R-8,'middle','① '+lblv[0]],[CX+R+6,CY+3,'start','② '+lblv[1]],[CX,CY+R+13,'middle','③ '+lblv[2]],[CX-R-6,CY+3,'end','④ '+lblv[3]]];
-  for(const [x,y,an,t] of lbl) g+=`<text x="${x}" y="${y}" font-size="10.5" font-weight="700" fill="#1f5a34" text-anchor="${an}">${t}</text>`;
+  const NM=['① Sentience','② Agency','③ Empathy','④ Protectiveness'];
+  const lbl=[[CX,CY-R-12,'middle',0],[CX+R+10,CY+4,'start',1],[CX,CY+R+20,'middle',2],[CX-R-10,CY+4,'end',3]];
+  for(const [x,y,an,i] of lbl) g+=`<text x="${x}" y="${y}" font-size="12.5" font-weight="700" fill="#1f5a34" text-anchor="${an}">${NM[i]} — ${lblv[i]}</text>`;
   el.innerHTML=g;
   const cap=document.getElementById('spidercap');
   if(cap) cap.textContent = spiderMode==='r'
