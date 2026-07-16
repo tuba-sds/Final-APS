@@ -755,10 +755,15 @@ function drawLadder(){
     g+=`<text x="10" y="${yc-2}" font-size="11.5" fill="${b[2]}" font-weight="700">${b[1]}</text>`;
     g+=`<line x1="${L}" y1="${yc}" x2="${R}" y2="${yc}" stroke="${b[2]}" stroke-opacity=".18"/>`;
     const ents=Object.keys(CARE).filter(e=>CARE[e].c===b[0]&&l14val(e)!=null).sort((a,z)=>l14val(a)-l14val(z));
-    ents.forEach((e,i)=>{const v=l14val(e),x=X(v),up=i%2===0,ty=up?yc-11:yc+19;
-      g+=`<line x1="${x}" y1="${yc}" x2="${x}" y2="${up?yc-8:yc+8}" stroke="${b[2]}" stroke-opacity=".4"/>`+
+    const offs=[-11,19,-24,32], ends=offs.map(()=>-1e9);
+    ents.forEach(e=>{const v=l14val(e),x=X(v);
+      const lab=L14LAB[e]||e, w=lab.length*5.6+8;
+      let r=0; while(r<offs.length-1 && x-w/2 < ends[r]+4) r++;
+      ends[r]=x+w/2;
+      const ty=yc+offs[r], up=offs[r]<0;
+      g+=`<line x1="${x}" y1="${yc}" x2="${x}" y2="${up?ty+3:ty-8}" stroke="${b[2]}" stroke-opacity=".4"/>`+
          `<circle cx="${x}" cy="${yc}" r="5" fill="${b[2]}"/>`+
-         `<text x="${x}" y="${ty}" font-size="9.5" fill="#2e3d66" text-anchor="middle">${L14LAB[e]||e}</text>`;});
+         `<text x="${x}" y="${ty}" font-size="9.5" fill="#2e3d66" text-anchor="middle">${lab}</text>`;});
   });
   s.innerHTML=g;
   const cap=document.getElementById('l14cap');
