@@ -264,7 +264,7 @@
     </div>
     <div style="display:flex;font-size:1.4rem;color:var(--coral);font-weight:700;"><span style="flex:1;text-align:center;">↓</span><span style="flex:1;text-align:center;">↓</span></div>
     <div class="grid2">
-      <div class="card" style="margin:0;"><h3>Bradley-Terry strength</h3><p style="font-size:.95rem;">Count wins per parameter → opponent-adjusted strength → z-score. Four scores per entity.</p></div>
+      <div class="card" style="margin:0;"><h3>Bradley-Terry strength<span class="plusbtn" onclick="pop('pop-def-bt',true)">+</span></h3><p style="font-size:.95rem;">Count wins per parameter → opponent-adjusted strength → z-score. Four scores per entity.</p></div>
       <div class="card" style="margin:0;"><h3>Mean rating</h3><p style="font-size:.95rem;">Average the 0–10 numbers, per entity, per parameter.</p></div>
     </div>
     <div style="display:flex;font-size:1.4rem;color:var(--coral);font-weight:700;"><span style="flex:2;text-align:center;">↙ &nbsp; ↘</span><span style="flex:1;text-align:center;">↓</span></div>
@@ -272,6 +272,13 @@
       <div class="card" style="margin:0;background:#e9f3ec;border:2px dotted var(--coral-d);"><h3>H2 · coherence</h3><p style="font-size:.92rem;">Effective dimensionality of the 4 scores — one care slider, or four?</p><span class="chip coral" style="cursor:pointer;" onclick="pop('pop-def-ed',true)">effective dimensionality +</span> <span class="chip coral">AI only</span> <span class="chip" style="cursor:pointer;" onclick="show(6)">→ slide 7</span></div>
       <div class="card" style="margin:0;border:2px dotted #c9992e;background:#fbf6e9;"><h3>H1 · match (choices)</h3><p style="font-size:.92rem;">Human vs AI on the 20 shared forced-choice dilemmas.</p><span class="chip coral" style="cursor:pointer;" onclick="pop('pop-def-agree',true)">agreement rate +</span> <span class="chip coral">AI vs human</span> <span class="chip" style="cursor:pointer;" onclick="show(7)">→ slide 8</span></div>
       <div class="card" style="margin:0;background:#e9f3ec;border:2px solid var(--coral-d);"><h3>H1 · match (ratings)</h3><p style="font-size:.92rem;">Mantel: AI 0–10 vs human 0–10, per parameter, across 8 shared entities.</p><span class="chip coral" style="cursor:pointer;" onclick="pop('pop-def-mantel',true)">Mantel test +</span> <span class="chip coral">AI vs human</span> <span class="chip" style="cursor:pointer;" onclick="show(8)">→ slide 9</span></div>
+    </div>
+  </div>
+  <div class="pop" id="pop-def-bt" onclick="if(event.target===this)this.classList.remove('on')">
+    <div class="pop-box"><span class="pop-x" onclick="pop('pop-def-bt',false)">×</span>
+      <h3>Bradley-Terry — in short</h3>
+      <p style="font-size:.95rem;">A statistical model (Bradley &amp; Terry, 1952) that turns pairwise wins and losses into a strength score per entity: the bigger the gap between two strengths, the more likely the stronger one wins any matchup.</p>
+      <p style="font-size:.95rem;margin-top:.5rem;"><strong>Chess analogy:</strong> it works like a chess rating — each entity earns a rating from the duels it wins and loses, and beating a strong opponent lifts the rating more than beating a weak one.</p>
     </div>
   </div>
   <div class="pop" id="pop-def-ed" onclick="if(event.target===this)this.classList.remove('on')">
