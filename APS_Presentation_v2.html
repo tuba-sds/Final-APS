@@ -305,7 +305,7 @@
 
 
 <!-- ============ SLIDE 9 — CLUSTERS ============ -->
-<section class="slide" data-order="12">
+<section class="slide" data-order="11">
   <div class="kicker">Who the AI model treats alike · care ladder</div>
   <h2>A ladder of care — pick an AI model</h2>
   <div id="l14btns" class="mbtns" style="margin-bottom:.4rem;max-width:100%;"></div>
@@ -315,8 +315,8 @@
 </section>
 
 <!-- ============ SLIDE 10 — SPIDER OUTCOMES (BULLETS) ============ -->
-<section class="slide" data-order="11">
-  <div class="kicker">Pre-registered test · H1 · does it match humans?</div>
+<section class="slide" data-order="17">
+  <div class="kicker">Appendix · robustness check · H1 · does it match humans?</div>
   <h2>Where AI models agree with people — and where they don't</h2>
   <p class="muted" style="margin:-.4rem 0 .3rem;">Tap each parameter for the number.</p>
   <div class="grid2">
@@ -337,13 +337,13 @@
       <div class="flip-b" style="background:#c0392b;"><p>Protectiveness matches in only <b>1 of 8</b> AI models (median r ≈ 0).</p></div>
     </div></div>
   </div>
-  <p class="foot">Match = Mantel correlation of each AI model's 0–10 ratings with 18 humans', per parameter (results/derived/rsa_comparison_results.csv). Slide 10 shows it as a shape.</p>
+  <p class="foot">Match = Mantel correlation of each AI model's 0–10 ratings with 18 humans', per parameter (results/derived/rsa_comparison_results.csv). Slide 10 shows it as a shape. Counts are at p &lt; 0.05, uncorrected — with the family correction (α = 0.05/32) only Claude's sentience formally clears; the preregistered cross-instrument test found 0 of 12 matches.</p>
 </section>
 
 <!-- ============ SLIDE 11 — HUMAN vs AI (interactive radar) ============ -->
 <section class="slide" data-order="10">
   <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(6)">↩ back to method (slide 7)</span>
-  <div class="kicker">Pre-registered test · H1 · humans vs AI models</div>
+  <div class="kicker">Robustness check · H1 · does it match humans?</div>
   <h2>How closely does an AI model track people?</h2>
   <div style="display:flex;flex-direction:column;align-items:flex-start;gap:.3rem;">
     <div class="mbtns" style="max-width:none;"><button id="sm-r" class="on" onclick="setSpiderMode('r')">match (r)</button><button id="sm-l" onclick="setSpiderMode('level')">care level · AI vs humans</button> <span class="chip coral" style="cursor:pointer;" onclick="pop('pop-scats',true);drawRadar();">+ more analysis · the four dotted plots</span></div>
@@ -357,10 +357,10 @@
       <h3>More analysis — the four dotted plots</h3>
       <p class="muted" style="font-size:.85rem;margin-bottom:.5rem;">Each dot is one of the 8 shared entities: <strong>across = the humans' 0–10 rating (N=18), up = the AI model's</strong>. Dots hugging the diagonal = the AI ranks it like humans do.</p>
       <div id="scats" style="display:grid;grid-template-columns:1fr 1fr;gap:.45rem;"></div>
-      <p class="muted" style="font-size:.82rem;margin-top:.45rem;">The dotted line = the AI gave the <b>same number</b> humans did. A dot <b>below</b> it = the AI gave fewer points than humans; <b>above</b> = more. What matters is the staircase: dots <b>rising together</b> = the AI ranks things like humans do; <b>scattered</b> dots = its points go to different things. The Pearson r on each plot describes <b>these dots only</b>; the spider and the next slide use the stricter pre-registered map-match (Mantel) r, so the two numbers differ.</p>
+      <p class="muted" style="font-size:.82rem;margin-top:.45rem;">The dotted line = the AI gave the <b>same number</b> humans did. A dot <b>below</b> it = the AI gave fewer points than humans; <b>above</b> = more. What matters is the staircase: dots <b>rising together</b> = the AI ranks things like humans do; <b>scattered</b> dots = its points go to different things. The Pearson r on each plot describes <b>these dots only</b>; the spider and the appendix match-verdict slide (slide 17) use the stricter map-match (Mantel) r, so the two numbers differ.</p>
     </div>
   </div>
-  <p class="foot">Spider r = map-match (Mantel) per parameter — the same statistic and file as the next slide (results/derived/rsa_comparison_results.csv). The dotted plots' r = plain Pearson on mean 0–10 ratings over the 8 shared entities (2 mapped approximately: an AI robot→Sophia, a forest→the mother tree).
+  <p class="foot">Spider r = map-match (Mantel) per parameter — the same statistic and file as the appendix match-verdict slide (results/derived/rsa_comparison_results.csv). The dotted plots' r = plain Pearson on mean 0–10 ratings over the 8 shared entities (2 mapped approximately: an AI robot→Sophia, a forest→the mother tree).
   Exploratory: human N=18, below the pre-registered 30. Data: results/raw/comparison_raw*.csv, results/derived/human_ratings_summary.csv.</p>
 </section>
 
@@ -399,7 +399,7 @@
 </section>
 
 <!-- ============ NEW — AI COLLABORATION (story pos 8) ============ -->
-<section class="slide" data-order="14">
+<section class="slide" data-order="13">
   <div class="kicker">How we worked with AI</div>
   <h2>AI built it; I steered it</h2>
   <div style="display:flex;align-items:center;justify-content:center;gap:1.6rem;margin:.2rem 0 1.1rem;">
@@ -423,7 +423,7 @@
 </section>
 
 <!-- ============ NEW — THE BUILD / DEMO (story pos 9) ============ -->
-<section class="slide" data-order="13">
+<section class="slide" data-order="12">
   <div class="kicker">What we built · live demo</div>
   <h2>"You vs. the AI" — try the dilemmas yourself</h2>
   <div class="card" style="max-width:44rem;">
@@ -433,7 +433,7 @@
 </section>
 
 <!-- ============ NEW — LIMITS & NEXT (story pos 16) ============ -->
-<section class="slide" data-order="15">
+<section class="slide" data-order="14">
   <div class="kicker">Honest limits</div>
   <h2>What this can't say yet</h2>
   <svg class="float" style="top:9%;right:8%;width:120px;opacity:.5;" viewBox="0 0 120 70"><g fill="#dfeee4"><circle cx="40" cy="44" r="20"/><circle cx="66" cy="34" r="25"/><circle cx="92" cy="46" r="17"/><rect x="38" y="46" width="56" height="20" rx="10"/></g></svg>
@@ -445,7 +445,7 @@
 </section>
 
 <!-- ============ NEW — TAKEAWAYS (story pos 17) ============ -->
-<section class="slide" data-order="16">
+<section class="slide" data-order="15">
   <div class="kicker">Takeaways</div>
   <h2>What six weeks taught us</h2>
   <svg class="float" style="top:10%;right:9%;width:110px;opacity:.5;" viewBox="0 0 120 70"><g fill="#dfeee4"><circle cx="40" cy="44" r="20"/><circle cx="66" cy="34" r="25"/><circle cx="92" cy="46" r="17"/><rect x="38" y="46" width="56" height="20" rx="10"/></g></svg>
@@ -491,7 +491,7 @@
 </section>
 
 <!-- ============ APPENDIX DIVIDER ============ -->
-<section class="slide" data-order="17" style="align-items:center;text-align:center;">
+<section class="slide" data-order="16" style="align-items:center;text-align:center;">
   <svg class="float f3" viewBox="0 0 100 100"><rect x="47" y="55" width="6" height="37" fill="#2e7d43"/><circle cx="50" cy="38" r="23" fill="#3f9d5a"/></svg>
   <h1>Appendix</h1>
   <p class="lead" style="margin:0 auto;">Full result set, per-entity profiles, instability with bootstrap error bars, the text-frequency side-check,
