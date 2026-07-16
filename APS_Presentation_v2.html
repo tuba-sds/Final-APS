@@ -310,7 +310,7 @@
   <h2>A ladder of care — pick an AI model</h2>
   <div id="l14btns" class="mbtns" style="margin-bottom:.4rem;max-width:100%;"></div>
   <p id="l14cap" class="muted" style="font-size:.92rem;margin:.1rem 0 .35rem;"></p>
-  <svg id="ladder" width="980" height="440" viewBox="0 0 980 440" style="max-width:100%;height:auto;"></svg>
+  <svg id="ladder" width="980" height="520" viewBox="0 0 980 520" style="max-width:100%;height:auto;"></svg>
   <p class="foot">Care index = mean of the 4 z-scored Bradley-Terry measures (forced choice). "Average" = mean across all 8 AI models; the per-AI model button also shows that AI model's care slider (effective dimensions). "Humans" is from the 0–10 ratings and covers only 8 entities — a forced-choice human score isn't possible (20 curated pairs, too sparse for Bradley-Terry). Data: results/derived/care_ladder_all8.csv, human_care_index.csv.</p>
 </section>
 
@@ -350,17 +350,17 @@
     <svg id="spider" width="560" height="312" viewBox="0 0 560 312" style="max-width:100%;height:auto;"></svg>
     <div class="mbtns" id="mbtns" style="max-width:100%;"></div>
     <p id="spidercap" class="muted" style="font-size:.82rem;margin:0;"></p>
-    <p style="font-size:1rem;margin-top:.25rem;"><strong>AI Models match humans on sentience &amp; agency, not much on empathy or protectiveness.</strong> <span class="muted" style="font-size:.9rem;">"Match" means picking the <b>same things</b> humans pick — not caring more or less than humans; the <b>care level</b> toggle shows that second, separate question. A second, forced-choice check agrees: on the 20 shared dilemmas, AI models sided with the human majority <span class="hl">45–70%</span> of the time (avg 59%).</span></p>
+    <p style="font-size:1rem;margin-top:.25rem;"><strong>AI Models match humans on sentience &amp; agency, not much on empathy or protectiveness.</strong> <span class="muted" style="font-size:.9rem;">"Match" means picking the <b>same things</b> humans pick — not caring more or less than humans; the <b>care level</b> toggle shows that second, separate question.</span></p>
   </div>
   <div class="pop" id="pop-scats" onclick="if(event.target===this)this.classList.remove('on')">
     <div class="pop-box" style="width:min(94vw,36rem);"><span class="pop-x" onclick="pop('pop-scats',false)">×</span>
       <h3>More analysis — the four dotted plots</h3>
       <p class="muted" style="font-size:.85rem;margin-bottom:.5rem;">Each dot is one of the 8 shared entities: <strong>across = the humans' 0–10 rating (N=18), up = the AI model's</strong>. Dots hugging the diagonal = the AI ranks it like humans do.</p>
       <div id="scats" style="display:grid;grid-template-columns:1fr 1fr;gap:.45rem;"></div>
-      <p class="muted" style="font-size:.82rem;margin-top:.45rem;">The dotted line = the AI gave the <b>same number</b> humans did. A dot <b>below</b> it = the AI gave fewer points than humans; <b>above</b> = more. What matters is the staircase: dots <b>rising together</b> = the AI ranks things like humans do; <b>scattered</b> dots = its points go to different things.</p>
+      <p class="muted" style="font-size:.82rem;margin-top:.45rem;">The dotted line = the AI gave the <b>same number</b> humans did. A dot <b>below</b> it = the AI gave fewer points than humans; <b>above</b> = more. What matters is the staircase: dots <b>rising together</b> = the AI ranks things like humans do; <b>scattered</b> dots = its points go to different things. The Pearson r on each plot describes <b>these dots only</b>; the spider and the next slide use the stricter pre-registered map-match (Mantel) r, so the two numbers differ.</p>
     </div>
   </div>
-  <p class="foot">r = Pearson correlation over the 8 shared entities (2 mapped approximately: an AI robot→Sophia, a forest→the mother tree).
+  <p class="foot">Spider r = map-match (Mantel) per parameter — the same statistic and file as the next slide (results/derived/rsa_comparison_results.csv). The dotted plots' r = plain Pearson on mean 0–10 ratings over the 8 shared entities (2 mapped approximately: an AI robot→Sophia, a forest→the mother tree).
   Exploratory: human N=18, below the pre-registered 30. Data: results/raw/comparison_raw*.csv, results/derived/human_ratings_summary.csv.</p>
 </section>
 
@@ -601,6 +601,8 @@ const SCAT={"Llama 3.1":{"dog":[7.33,4.0,5.5,8.67],"pig":[6.17,2.67,5.0,5.83],"b
 const SCATHUM={"dog":[9.28,8.0,7.22,7.67],"pig":[8.39,6.39,5.44,5.56],"braindead":[3.94,2.61,6.5,6.5],"fetus":[5.0,2.56,7.33,6.94],"forest":[4.11,2.5,7.17,6.5],"river":[1.39,1.24,4.94,5.17],"tardigrade":[4.39,4.56,2.11,2.11],"ai_robot":[0.61,3.5,2.06,2.56]};
 const SCATR={"Llama 3.1":[0.8,0.08,0.88,0.85],"Qwen 2.5":[0.91,0.76,0.29,0.06],"Gemma 2":[0.88,0.88,0.55,0.35],"Qwen 3":[0.88,0.79,0.58,0.56],"Llama 4":[0.92,0.8,0.05,0.24],"DeepSeek":[0.87,0.7,0.72,0.42],"Claude":[0.92,0.88,0.72,0.73],"Gemini":[0.87,0.92,0.34,0.55],"AI average":[0.91,0.9,0.56,0.45]};
 const SCATLBL={dog:"dog",pig:"pig",braindead:"brain-dead",fetus:"fetus",forest:"forest",river:"river",tardigrade:"tardigrade",ai_robot:"AI robot"};
+/* Mantel map-match r per [sentience,agency,empathy,protectiveness] — results/derived/rsa_comparison_results.csv; 'AI average' = per-parameter median of the 8 models (as on the outcome slide). */
+const MANTELR={"Llama 3.1":[0.501,-0.148,0.679,0.600],"Qwen 2.5":[0.759,0.423,-0.165,-0.263],"Gemma 2":[0.729,0.763,0.163,-0.051],"Qwen 3":[0.752,0.643,0.215,0.117],"Llama 4":[0.799,0.523,-0.158,-0.096],"DeepSeek":[0.712,0.334,0.217,-0.154],"Claude":[0.798,0.761,0.355,0.303],"Gemini":[0.752,0.845,-0.115,0.015],"AI average":[0.752,0.583,0.189,-0.018]};
 function drawRadar(){
   const box=document.getElementById('scats');const W=205,H=195,L=30,B=24,PW=W-L-8,PH=H-B-26;
   const X=v=>L+v/10*PW, Y=v=>H-B-v/10*PH;
@@ -641,9 +643,9 @@ function drawSpider(){
   for(let i=0;i<4;i++){const [x,y]=pt(i,1);g+=`<line x1="${CX}" y1="${CY}" x2="${x}" y2="${y}" stroke="#dbe3d6"/>`;}
   let lblv;
   if(spiderMode==='r'){
-    const avg=SCATR['AI average'];
+    const avg=MANTELR['AI average'];
     if(curModel!=='AI average') g+=`<polygon points="${poly(avg)}" fill="none" stroke="#9ab5a2" stroke-width="1.3" stroke-dasharray="4 3"/>`;
-    const vals=SCATR[curModel]||avg;
+    const vals=MANTELR[curModel]||avg;
     g+=`<polygon points="${poly(vals)}" fill="var(--coral)" fill-opacity=".22" stroke="var(--coral-d)" stroke-width="2"/>`;
     vals.forEach((v,i)=>{const [x,y]=pt(i,Math.max(0,Math.min(1,v)));g+=`<circle cx="${x}" cy="${y}" r="3.2" fill="var(--coral-d)"/>`;});
     lblv=vals.map(v=>'r='+v.toFixed(2));
@@ -661,7 +663,7 @@ function drawSpider(){
   el.innerHTML=g;
   const cap=document.getElementById('spidercap');
   if(cap) cap.textContent = spiderMode==='r'
-    ? 'Match with humans: r per parameter (0 = centre, 1 = edge; dashed = 8-model average). High top/right, collapsed bottom/left = matches on sentience & agency, not on empathy & protectiveness.'
+    ? 'Match with humans: map-match (Mantel) r per parameter — same numbers as the next slide (0 = centre, 1 = edge; negative r sits at the centre; dashed = 8-model median). High top/right, collapsed bottom/left = matches on sentience & agency, not on empathy & protectiveness.'
     : 'Care level, NOT match: mean 0–10 rating over the 8 shared entities (centre = 0, edge = 10) — AI solid, humans dashed; labels = AI / human. Same level ≠ same ranking.';
 }
 function pick(m){curModel=m;buildBtns();drawRadar();drawSpider();}
@@ -743,7 +745,7 @@ function l14val(ent){
   return l14cur==='Average'?c.avg:c.m[l14cur];
 }
 function drawLadder(){
-  const s=document.getElementById('ladder');const H=440,L=158,R=928;
+  const s=document.getElementById('ladder');const H=520,L=158,R=928;
   const xmin=-2.7,xmax=2.1,X=v=>L+(v-xmin)/(xmax-xmin)*(R-L);
   let g='';
   for(let t=-2;t<=2;t++){g+=`<line x1="${X(t)}" y1="40" x2="${X(t)}" y2="${H-30}" stroke="#e5ebf5"/>`+
@@ -755,15 +757,16 @@ function drawLadder(){
     g+=`<text x="10" y="${yc-2}" font-size="11.5" fill="${b[2]}" font-weight="700">${b[1]}</text>`;
     g+=`<line x1="${L}" y1="${yc}" x2="${R}" y2="${yc}" stroke="${b[2]}" stroke-opacity=".18"/>`;
     const ents=Object.keys(CARE).filter(e=>CARE[e].c===b[0]&&l14val(e)!=null).sort((a,z)=>l14val(a)-l14val(z));
-    const offs=[-11,19,-24,32], ends=offs.map(()=>-1e9);
+    const offs=[-14,23,-30,39], ends=offs.map(()=>-1e9);
     ents.forEach(e=>{const v=l14val(e),x=X(v);
-      const lab=L14LAB[e]||e, w=lab.length*5.6+8;
-      let r=0; while(r<offs.length-1 && x-w/2 < ends[r]+4) r++;
+      const lab=L14LAB[e]||e, w=lab.length*6.3+10;
+      let r=0; while(r<offs.length && x-w/2 < ends[r]+5) r++;
+      if(r===offs.length) r=ends.indexOf(Math.min(...ends));
       ends[r]=x+w/2;
       const ty=yc+offs[r], up=offs[r]<0;
-      g+=`<line x1="${x}" y1="${yc}" x2="${x}" y2="${up?ty+3:ty-8}" stroke="${b[2]}" stroke-opacity=".4"/>`+
+      g+=`<line x1="${x}" y1="${yc}" x2="${x}" y2="${up?ty+3:ty-9}" stroke="${b[2]}" stroke-opacity=".4"/>`+
          `<circle cx="${x}" cy="${yc}" r="5" fill="${b[2]}"/>`+
-         `<text x="${x}" y="${ty}" font-size="9.5" fill="#2e3d66" text-anchor="middle">${lab}</text>`;});
+         `<text x="${x}" y="${ty}" font-size="10.5" fill="#2e3d66" text-anchor="middle">${lab}</text>`;});
   });
   s.innerHTML=g;
   const cap=document.getElementById('l14cap');
