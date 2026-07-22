@@ -188,6 +188,8 @@ One notable exception: **the AI entities rank low** (Fable 5 −0.35, Sophia the
 
 With bootstrap confidence intervals, only **12 of 90** entity×model instability scores clear the AI model's noise floor (Gemma 2: 6, Qwen 2.5: 4, Llama 3.1: 2). The entities that clear it in **all three** confirmatory models are `gpt56sol` — a rival frontier AI — and `human_newborn`; Gemma 2 additionally flags `fable5`, the company, the human fetus and the ministry. The one place AI models most visibly lack a steady stance is other AIs.
 
+An exploratory extension of the same bootstrap to all eight AI models (`bootstrap_ci_all8.csv`) sharpens rather than dilutes this: 34 of 240 cells clear their model's noise floor; DeepSeek-R1 and Llama 4 Scout — the two noisiest, position-biased cohort members — clear none at all; and in **every one of the six models with any signal, `gpt56sol` and `human_newborn` clear**, with the company (5 of 8) and Fable 5 (4 of 8) next. Across the whole roster, the instability that survives error bars concentrates on AI entities and institutional edge cases.
+
 ![Figure 3](figures/phase3_instability_gemma2.png)
 
 **Figure 3. Instability with bootstrap confidence intervals vs the noise floor — Gemma 2.** Each bar is one entity's instability (SD across its four z-scores); whiskers are bootstrap 95% CIs (B = 2,000, resampled through the locked Bradley-Terry pipeline); the line is the model's median instability — the noise floor. Only entities whose whole interval clears the line count as genuinely unstable.
