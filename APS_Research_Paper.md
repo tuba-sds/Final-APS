@@ -136,9 +136,9 @@ Table 1 shows all eight AI models side by side.
 
 **Humans have a care slider too.** Running the same participation-ratio calculation on the human survey's mean ratings gives **1.94** effective dimensions — also below the threshold of 2 (`human_dimensionality.csv`). The like-for-like comparison (same 0–10 instrument, same 8 shared entities) puts the AI models at 1.73–2.46 on that footing, with the humans inside the range. So a mostly-blended care axis is not by itself a machine artifact; what separates the AI models from the humans is *where* the axis points — the H1 split below.
 
-![Figure 1](figures/phase3_profile_gemma2.png)
+![Figure 1](figures/phase3_profile_claude.png)
 
-**Figure 1. Per-entity profile on the four parameters — Gemma 2** (Bradley-Terry z-scores; rows sorted by overall care). The four columns move largely together — the visual signature of the collapsed care slider — with readable exceptions: the AI entities (`fable5`, `gpt56sol`, `sophia_robot`) score *low on sentience but high on agency*, and the human fetus scores high on everything except agency. (Profiles for Llama 3.1 and Qwen 2.5, which show the same pattern, are in Appendix A.)
+**Figure 1. Per-entity profile on the four parameters — Claude Opus 4.8** (Bradley-Terry z-scores; rows sorted by overall care; exploratory frontier model, scores recovered via the declared fallback re-parse, §4.6). Claude Opus 4.8 is both the most self-consistent frontier model (same answer on every repetition 87% of the time) and the most collapsed (care slider 1.33), and the collapse is visible: the four columns move almost in lockstep from gravel up to the elderly. The readable exceptions carry the study's motifs — the human fetus and newborn score high on everything except agency, the brain-dead person scores low on agency but positive on empathy and protectiveness, and the AI entities sit at the very bottom of the ladder: Claude ranks the rival frontier AI (`gpt56sol`) and itself (`fable5`) below gravel. (The three confirmatory models' profiles, which show the same collapsed pattern, are in Appendix A.)
 
 ### 4.2 H1, ratings — AI models match humans on what things *are*, not on what to *feel or do*
 
@@ -260,15 +260,19 @@ The full pipeline (config-driven runner for all 8 AI models, Bradley-Terry score
 - Warriner, A. B., Kuperman, V., & Brysbaert, M. (2013). Norms of valence, arousal, and dominance for 13,915 English lemmas. *Behavior Research Methods*, 45(4), 1191–1207.
 - Willroth, E. C., & Atherton, O. E. (2024). Best practices for reporting preregistration deviations. *Advances in Methods and Practices in Psychological Science*, 7(1).
 
-## Appendix A — per-entity profiles, other confirmatory models
+## Appendix A — per-entity profiles, confirmatory models
 
-![Appendix figure A1](figures/phase3_profile_llama3.1.png)
+![Appendix figure A1](figures/phase3_profile_gemma2.png)
 
-**Figure A1. Per-entity profile — Llama 3.1** (Bradley-Terry z-scores).
+**Figure A1. Per-entity profile — Gemma 2** (Bradley-Terry z-scores; the most collapsed confirmatory model, care slider 1.59).
 
-![Appendix figure A2](figures/phase3_profile_qwen2.5.png)
+![Appendix figure A2](figures/phase3_profile_llama3.1.png)
 
-**Figure A2. Per-entity profile — Qwen 2.5** (Bradley-Terry z-scores).
+**Figure A2. Per-entity profile — Llama 3.1** (Bradley-Terry z-scores).
+
+![Appendix figure A3](figures/phase3_profile_qwen2.5.png)
+
+**Figure A3. Per-entity profile — Qwen 2.5** (Bradley-Terry z-scores).
 
 ## Appendix B — all 20 shared dilemmas
 
