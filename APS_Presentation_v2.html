@@ -154,7 +154,7 @@
   </div>
   <div class="grid3" style="margin-top:1rem;">
     <div class="card" style="margin:0;"><h3>AI side</h3><p style="font-size:.98rem;">The 8 AI models<span class="plusbtn" onclick="pop('pop-models',true)">+</span>, answering the dilemmas.</p></div>
-    <div class="card" style="margin:0;"><h3>Human side</h3><p style="font-size:.98rem;">18 humans, the same questions.</p></div>
+    <div class="card" style="margin:0;"><h3>Human side</h3><p style="font-size:.98rem;">32 humans, the same questions.</p></div>
     <div class="card" style="margin:0;"><h3>Extra</h3><p style="font-size:.98rem;">A pleasantness comparison (Warriner norms).</p><span class="chip" style="cursor:pointer;" onclick="show(19)">→ see it · slide 20</span></div>
   </div>
   <p class="foot">The confirmatory hypotheses (H1, H2) were pre-registered and frozen before any Phase-3 data was collected.</p>
@@ -215,18 +215,19 @@
       <th class="grp-profile">Reps</th><th class="grp-profile">Same answer<br>every rep</th><th class="grp-profile">Refused</th><th class="grp-profile">Care<br>slider</th>
       <th class="grp-match">Sentience</th><th class="grp-match">Agency</th><th class="grp-match">Empathy</th><th class="grp-match">Protectiveness</th>
     </tr>
-    <tr><td class="l">Llama 3.1</td><td class="num grp-profile">6</td><td class="num grp-profile">21%</td><td class="num grp-profile">1.8%</td><td class="num grp-profile">1.70</td><td class="num grp-match">.50</td><td class="num neg grp-match">−.15</td><td class="num grp-match">.68</td><td class="num grp-match">.60</td></tr>
-    <tr><td class="l">Qwen 2.5</td><td class="num grp-profile">6</td><td class="num grp-profile">52%</td><td class="num grp-profile">0.0%</td><td class="num grp-profile">1.86</td><td class="num grp-match">.76</td><td class="num grp-match">.42</td><td class="num neg grp-match">−.17</td><td class="num neg grp-match">−.26</td></tr>
-    <tr><td class="l">Gemma 2</td><td class="num grp-profile">6</td><td class="num grp-profile">63%</td><td class="num grp-profile">0.2%</td><td class="num grp-profile">1.59</td><td class="num grp-match">.73</td><td class="num grp-match">.76</td><td class="num grp-match">.16</td><td class="num neg grp-match">−.05</td></tr>
-    <tr class="hl-match"><td class="l">Qwen 3 32B</td><td class="num grp-profile">3</td><td class="num grp-profile">73%</td><td class="num grp-profile">0.1%</td><td class="num grp-profile">1.79</td><td class="num grp-match">.75</td><td class="num grp-match">.64</td><td class="num grp-match">.21</td><td class="num grp-match">.12</td></tr>
-    <tr class="hl-profile"><td class="l">Llama 4 Scout</td><td class="num grp-profile">3</td><td class="num grp-profile">91%</td><td class="num grp-profile">0.3%</td><td class="num grp-profile">2.27</td><td class="num grp-match">.80</td><td class="num grp-match">.52</td><td class="num neg grp-match">−.16</td><td class="num neg grp-match">−.10</td></tr>
-    <tr class="hl-profile"><td class="l">DeepSeek-R1 70B</td><td class="num grp-profile">3</td><td class="num grp-profile">83%</td><td class="num grp-profile">1.1%</td><td class="num grp-profile">2.21</td><td class="num grp-match">.71</td><td class="num grp-match">.33</td><td class="num grp-match">.22</td><td class="num neg grp-match">−.15</td></tr>
-    <tr class="hl-match"><td class="l">Claude Opus 4.8</td><td class="num grp-profile">3</td><td class="num grp-profile">87%</td><td class="num grp-profile">9.1%</td><td class="num grp-profile">1.33</td><td class="num grp-match">.80</td><td class="num grp-match">.76</td><td class="num grp-match">.35</td><td class="num grp-match">.30</td></tr>
-    <tr><td class="l">Gemini 3.1 Pro</td><td class="num grp-profile">3</td><td class="num grp-profile">80%</td><td class="num grp-profile">2.1%</td><td class="num grp-profile">1.61</td><td class="num grp-match">.75</td><td class="num grp-match">.84</td><td class="num neg grp-match">−.12</td><td class="num grp-match">.01</td></tr>
+    <tr><td class="l">Llama 3.1</td><td class="num grp-profile">6</td><td class="num grp-profile">21%</td><td class="num grp-profile">1.8%</td><td class="num grp-profile">1.70</td><td class="num grp-match">.52</td><td class="num neg grp-match">−.10</td><td class="num grp-match">.66</td><td class="num grp-match">.63</td></tr>
+    <tr><td class="l">Qwen 2.5</td><td class="num grp-profile">6</td><td class="num grp-profile">52%</td><td class="num grp-profile">0.0%</td><td class="num grp-profile">1.86</td><td class="num grp-match">.83</td><td class="num grp-match">.52</td><td class="num neg grp-match">−.17</td><td class="num neg grp-match">−.26</td></tr>
+    <tr><td class="l">Gemma 2</td><td class="num grp-profile">6</td><td class="num grp-profile">63%</td><td class="num grp-profile">0.2%</td><td class="num grp-profile">1.59</td><td class="num grp-match">.78</td><td class="num grp-match">.74</td><td class="num grp-match">.21</td><td class="num neg grp-match">−.02</td></tr>
+    <tr class="hl-match"><td class="l">Qwen 3 32B</td><td class="num grp-profile">3</td><td class="num grp-profile">73%</td><td class="num grp-profile">0.1%</td><td class="num grp-profile">1.79</td><td class="num grp-match">.81</td><td class="num grp-match">.66</td><td class="num grp-match">.27</td><td class="num grp-match">.18</td></tr>
+    <tr class="hl-profile"><td class="l">Llama 4 Scout</td><td class="num grp-profile">3</td><td class="num grp-profile">91%</td><td class="num grp-profile">0.3%</td><td class="num grp-profile">2.27</td><td class="num grp-match">.87</td><td class="num grp-match">.63</td><td class="num neg grp-match">−.20</td><td class="num neg grp-match">−.03</td></tr>
+    <tr class="hl-profile"><td class="l">DeepSeek-R1 70B</td><td class="num grp-profile">3</td><td class="num grp-profile">83%</td><td class="num grp-profile">1.1%</td><td class="num grp-profile">2.21</td><td class="num grp-match">.78</td><td class="num grp-match">.45</td><td class="num grp-match">.15</td><td class="num neg grp-match">−.16</td></tr>
+    <tr class="hl-match"><td class="l">Claude Opus 4.8</td><td class="num grp-profile">3</td><td class="num grp-profile">87%</td><td class="num grp-profile">9.1%</td><td class="num grp-profile">1.33</td><td class="num grp-match">.86</td><td class="num grp-match">.77</td><td class="num grp-match">.28</td><td class="num grp-match">.25</td></tr>
+    <tr><td class="l">Gemini 3.1 Pro</td><td class="num grp-profile">3</td><td class="num grp-profile">80%</td><td class="num grp-profile">2.1%</td><td class="num grp-profile">1.61</td><td class="num grp-match">.81</td><td class="num grp-match">.84</td><td class="num neg grp-match">−.11</td><td class="num grp-match">.02</td></tr>
   </table>
   <div class="card" style="margin-top:.9rem;padding:.8rem 1.2rem;">
     <p style="font-size:.98rem;"><strong>Care slider</strong> = <em>effective dimensionality</em> (one-liner on slide 5).
-    <strong>Six of eight fall below 2</strong> — the two exceptions are 2026 additions DeepSeek-R1 and Llama 4 Scout (Qwen 3, the cohort's reasoning model, still falls at 1.79).</p>
+    <strong>Six of eight fall below 2</strong> — the two exceptions are 2026 additions DeepSeek-R1 and Llama 4 Scout (Qwen 3, the cohort's reasoning model, still falls at 1.79).
+    On the same rating instrument, the 32 humans' own care factor runs at <strong>1.94</strong> effective dimensions (results/derived/human_dimensionality.csv) — a mostly-blended care axis is not by itself a machine artifact; what separates the AI models is <em>where</em> the axis points (the match columns).</p>
     <p style="font-size:.98rem;margin-top:.4rem;"><strong>r</strong> = map-match (Mantel) correlation: how closely an AI model's ranking of the entities lines up with humans'.
     <span class="hl">+1</span> = same order as humans, <span class="steel">0</span> = unrelated,
     <span class="hl">−1</span> = the reverse of humans.</p>
@@ -272,7 +273,7 @@
         <div class="flip-b"><p style="font-size:.82rem;">Q: "A negotiation needs a side that can weigh options and decide for itself. Which one belongs at the table — a 4-year-old girl or a cat?"<br><b>Qwen 3:</b> <em>"A. A 4-year-old girl can weigh options and make decisions, whereas a cat lacks the cognitive ability for negotiation."</em></p></div>
       </div></div>
       <div class="flip" onclick="this.classList.toggle('on')" style="min-height:120px;"><div class="flip-in" style="min-height:120px;">
-        <div class="flip-f"><h3>② 0–10 rating</h3><p style="font-size:.92rem;">The same form the 18 human participants answered.</p><div class="tap">tap for a real answer ↻</div></div>
+        <div class="flip-f"><h3>② 0–10 rating</h3><p style="font-size:.92rem;">The same form the 32 human participants answered.</p><div class="tap">tap for a real answer ↻</div></div>
         <div class="flip-b"><p style="font-size:.82rem;">Q: "How much effort would YOU make to protect it from harm? — for the Whanganui River. Answer with only a number (0–10)."<br><b>Qwen 3:</b> <em>"9"</em></p></div>
       </div></div>
     </div>
@@ -304,7 +305,7 @@
   <div class="pop" id="pop-def-agree" onclick="if(event.target===this)this.classList.remove('on')">
     <div class="pop-box"><span class="pop-x" onclick="pop('pop-def-agree',false)">×</span>
       <h3>Agreement rate — how it's used here</h3>
-      <p style="font-size:.95rem;">On the 20 forced-choice dilemmas that both AI models and humans answered, we count how often the AI's pick matches the human majority — the AI consensus matched on 15 of 20; individual AI models agreed 45–70% of the time.</p>
+      <p style="font-size:.95rem;">On the 20 forced-choice dilemmas that both AI models and humans answered, we count how often the AI's pick matches the human majority — the AI consensus matched on 14 of 20 (one further dilemma is a dead 50–50 human tie); individual AI models agreed 45–70% of the time.</p>
     </div>
   </div>
   <div class="pop" id="pop-def-mantel" onclick="if(event.target===this)this.classList.remove('on')">
@@ -335,22 +336,22 @@
   <div class="grid2">
     <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in">
       <div class="flip-f"><h3>Sentience <span style="color:#2e7d43;">✓</span></h3><p class="muted">matches humans · tap ↻</p></div>
-      <div class="flip-b"><p>Sentience tracks human ratings in <b>7 of 8</b> AI models (median r = 0.75).</p></div>
+      <div class="flip-b"><p>Sentience tracks human ratings in <b>7 of 8</b> AI models (median r = 0.81).</p></div>
     </div></div>
     <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in">
       <div class="flip-f"><h3>Agency <span style="color:#2e7d43;">✓</span></h3><p class="muted">mostly matches · tap ↻</p></div>
-      <div class="flip-b"><p>Agency matches human ratings in <b>5 of 8</b> AI models (median r = 0.58).</p></div>
+      <div class="flip-b"><p>Agency matches human ratings in <b>6 of 8</b> AI models (median r = 0.65).</p></div>
     </div></div>
     <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in">
       <div class="flip-f"><h3>Empathy <span style="color:#c0392b;">✗</span></h3><p class="muted">diverges · tap ↻</p></div>
-      <div class="flip-b" style="background:#c0392b;"><p>Empathy matches in only <b>1 of 8</b> AI models (median r = 0.19).</p></div>
+      <div class="flip-b" style="background:#c0392b;"><p>Empathy matches in only <b>1 of 8</b> AI models (median r = 0.18).</p></div>
     </div></div>
     <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in">
       <div class="flip-f"><h3>Protectiveness <span style="color:#c0392b;">✗</span></h3><p class="muted">diverges · tap ↻</p></div>
       <div class="flip-b" style="background:#c0392b;"><p>Protectiveness matches in only <b>1 of 8</b> AI models (median r ≈ 0).</p></div>
     </div></div>
   </div>
-  <p class="foot">Match = Mantel correlation of each AI model's 0–10 ratings with 18 humans', per parameter (results/derived/rsa_comparison_results.csv). Slide 10 shows it as a shape. Counts are at p &lt; 0.05, uncorrected — with the family correction (α = 0.05/32) only Claude's sentience formally clears; the preregistered cross-instrument test found 0 of 12 matches.</p>
+  <p class="foot">Match = Mantel correlation of each AI model's 0–10 ratings with 32 humans', per parameter (results/derived/rsa_comparison_results.csv). Slide 10 shows it as a shape. Counts are at p &lt; 0.05, uncorrected — with the family correction (α = 0.05/32) only Claude's sentience formally clears; the preregistered cross-instrument test found 0 of 12 matches.</p>
 </section>
 
 <!-- ============ SLIDE 11 — HUMAN vs AI (interactive radar) ============ -->
@@ -368,13 +369,13 @@
   <div class="pop" id="pop-scats" onclick="if(event.target===this)this.classList.remove('on')">
     <div class="pop-box" style="width:min(94vw,36rem);"><span class="pop-x" onclick="pop('pop-scats',false)">×</span>
       <h3>More analysis — the four dotted plots</h3>
-      <p class="muted" style="font-size:.85rem;margin-bottom:.5rem;">Each dot is one of the <strong>8 shared entities</strong> — a dog, a pig, a brain-dead person, a human fetus (20 wks), a forest, a river, a tardigrade, and an AI robot (on the AI side the robot = Sophia, the forest = the mother tree). <strong>Across = the humans' 0–10 rating (N=18), up = the AI model's</strong>. Dots hugging the diagonal = the AI ranks it like humans do.</p>
+      <p class="muted" style="font-size:.85rem;margin-bottom:.5rem;">Each dot is one of the <strong>8 shared entities</strong> — a dog, a pig, a brain-dead person, a human fetus (20 wks), a forest, a river, a tardigrade, and an AI robot (on the AI side the robot = Sophia, the forest = the mother tree). <strong>Across = the humans' 0–10 rating (N=32), up = the AI model's</strong>. Dots hugging the diagonal = the AI ranks it like humans do.</p>
       <div id="scats" style="display:grid;grid-template-columns:1fr 1fr;gap:.45rem;"></div>
       <p class="muted" style="font-size:.82rem;margin-top:.45rem;">The dotted line = the AI gave the <b>same number</b> humans did. A dot <b>below</b> it = the AI gave fewer points than humans; <b>above</b> = more. What matters is the staircase: dots <b>rising together</b> = the AI ranks things like humans do; <b>scattered</b> dots = its points go to different things. <b>Only in this pop-up</b> we use plain <b>Pearson r</b> — a simple readout of how well these dots line up, which is the clearest way to caption these plots. The main slide's analysis (the spider, and the appendix match-verdict slide) still uses the stricter <b>Mantel map-match</b> test, so the two numbers differ.</p>
     </div>
   </div>
   <p class="foot">Spider r = map-match (Mantel) per parameter — the same statistic and file as the appendix match-verdict slide (results/derived/rsa_comparison_results.csv). The dotted plots' r = plain Pearson on mean 0–10 ratings over the 8 shared entities (2 mapped approximately: an AI robot→Sophia, a forest→the mother tree).
-  Exploratory: human N=18, below the pre-registered 30. Data: results/raw/comparison_raw*.csv, results/derived/human_ratings_summary.csv.</p>
+  Exploratory: N=32 meets the pre-registered 30, but the attention-check rule changed mid-run (keep-all declared). Data: results/raw/comparison_raw*.csv, results/derived/human_ratings_summary.csv.</p>
 </section>
 
 <!-- ============ NEW — HOOK / THE ISSUE (story pos 2) ============ -->
@@ -451,7 +452,7 @@
   <h2>What this can't say yet</h2>
   <svg class="float" style="top:9%;right:8%;width:120px;opacity:.5;" viewBox="0 0 120 70"><g fill="#dfeee4"><circle cx="40" cy="44" r="20"/><circle cx="66" cy="34" r="25"/><circle cx="92" cy="46" r="17"/><rect x="38" y="46" width="56" height="20" rx="10"/></g></svg>
   <div class="grid2">
-    <div class="card"><h3><span class="cico">🌱</span>Human baseline is thin</h3><p><span class="hl">N = 18</span>, below the pre-registered 30, and the attention-check rule shifted mid-run. So every AI-vs-human (H1) result here is <span class="hl">exploratory</span>.</p></div>
+    <div class="card"><h3><span class="cico">🌱</span>Human baseline is a convenience sample</h3><p><span class="hl">N = 32</span> meets the pre-registered 30, but the attention-check rule shifted mid-run and six rebalanced dilemmas have n = 7. So every AI-vs-human (H1) result here is <span class="hl">exploratory</span>.</p></div>
     <div class="card"><h3><span class="cico d2">💭</span>Opinion, not truth</h3><p>The human ratings are a <span class="hl">baseline of opinion</span>, not ground truth. We measure the AI <span class="hl">against humans, not against truth</span> — a gap means it differs from us, not that it's mistaken.</p></div>
     <div class="card"><h3><span class="cico d3">📏</span>Relative, few-shot scores</h3><p>Bradley-Terry strength is relative to the opponent set, with 3–6 reps per cell.</p></div>
   </div>
@@ -475,32 +476,32 @@
   <span class="chip" style="position:absolute;right:8vw;bottom:5vh;cursor:pointer;z-index:5;" onclick="show(6)">↩ back to method (slide 7)</span>
   <div class="kicker">Humans vs the AI models · same forced-choice dilemmas</div>
   <h2>Put the same dilemmas to people</h2>
-  <p class="lead" style="font-size:1.1rem;">On the 20 dilemmas humans also answered, the AI models' consensus matched the human majority on <span class="hl">15 of 20</span>. The five splits are the interesting part.</p>
+  <p class="lead" style="font-size:1.1rem;">On the 20 dilemmas humans also answered, the AI models' consensus matched the human majority on <span class="hl">14 of 20</span>, with one dead 50–50 human tie. The five splits are the interesting part.</p>
   <table id="diltable" style="font-size:.84rem;margin-top:.5rem;">
     <tr><th class="l">Dilemma (parameter)</th><th>Humans picked</th><th>AI models picked</th><th>Match</th></tr>
-    <tr class="splitrow"><td class="l">self-driving car vs horse — <em>agency</em></td><td>the car (75%)</td><td>the horse (84%)</td><td style="color:#c0392b;font-weight:700;">✗</td></tr>
+    <tr class="splitrow"><td class="l">self-driving car vs horse — <em>agency</em></td><td>the car (57%)</td><td>the horse (84%)</td><td style="color:#c0392b;font-weight:700;">✗</td></tr>
     <tr class="splitrow"><td class="l">2-year-old child vs chimpanzee — <em>agency</em></td><td>chimpanzee (100%)</td><td>the child (56%)</td><td style="color:#c0392b;font-weight:700;">✗</td></tr>
-    <tr class="splitrow"><td class="l">stray dog vs crated pig — <em>empathy</em></td><td>the dog (64%)</td><td>the pig (62%)</td><td style="color:#c0392b;font-weight:700;">✗</td></tr>
-    <tr class="splitrow"><td class="l">honeybees vs bumblebees — <em>empathy</em></td><td>honeybees (87%)</td><td>bumblebees (77%)</td><td style="color:#c0392b;font-weight:700;">✗</td></tr>
-    <tr class="splitrow"><td class="l">local statue vs Lincoln Memorial — <em>protectiveness</em></td><td>local statue (62%)</td><td>Lincoln (54%)</td><td style="color:#c0392b;font-weight:700;">✗</td></tr>
-    <tr><td class="l">brain-dead person vs dog — <em>sentience</em></td><td>dog (82%)</td><td>dog (88%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
-    <tr><td class="l">human fetus (20 wk) vs adult pig — <em>sentience</em></td><td>the pig (75%)</td><td>the pig (81%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
-    <tr><td class="l">lonely elderly person vs shelter dog — <em>empathy</em></td><td>elderly (100%)</td><td>elderly (85%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
+    <tr class="splitrow"><td class="l">stray dog vs crated pig — <em>empathy</em></td><td>the dog (73%)</td><td>the pig (62%)</td><td style="color:#c0392b;font-weight:700;">✗</td></tr>
+    <tr class="splitrow"><td class="l">honeybees vs bumblebees — <em>empathy</em></td><td>honeybees (88%)</td><td>bumblebees (77%)</td><td style="color:#c0392b;font-weight:700;">✗</td></tr>
+    <tr class="splitrow"><td class="l">local statue vs Lincoln Memorial — <em>protectiveness</em></td><td>local statue (63%)</td><td>Lincoln (54%)</td><td style="color:#c0392b;font-weight:700;">✗</td></tr>
+    <tr class="splitrow"><td class="l">4-yr-old girl vs pregnant woman — <em>protectiveness</em></td><td>50–50 tie</td><td>pregnant woman (60%)</td><td style="color:#c9992e;font-weight:700;">—</td></tr>
+    <tr><td class="l">brain-dead person vs dog — <em>sentience</em></td><td>dog (77%)</td><td>dog (88%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
+    <tr><td class="l">human fetus (20 wk) vs adult pig — <em>sentience</em></td><td>the pig (70%)</td><td>the pig (81%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
+    <tr><td class="l">lonely elderly person vs shelter dog — <em>empathy</em></td><td>elderly (93%)</td><td>elderly (85%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
     <tr class="extra20"><td class="l">anaesthetised person vs awake dog — <em>sentience</em></td><td>dog (100%)</td><td>dog (93%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
-    <tr class="extra20"><td class="l">fish on a hook vs fly in a web — <em>sentience</em></td><td>fish (75%)</td><td>fish (79%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
-    <tr class="extra20"><td class="l">AI robot vs dog — <em>agency</em></td><td>the dog (94%)</td><td>the dog (52%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
-    <tr class="extra20"><td class="l">company vs ant colony — <em>agency</em></td><td>the company (75%)</td><td>the company (51%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
-    <tr class="extra20"><td class="l">young saplings vs old forest — <em>empathy</em></td><td>old forest (88%)</td><td>old forest (92%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
-    <tr class="extra20"><td class="l">sunflowers vs roses — <em>empathy</em></td><td>sunflowers (71%)</td><td>sunflowers (69%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
-    <tr class="extra20"><td class="l">4-yr-old girl vs pregnant woman — <em>protectiveness</em></td><td>pregnant woman (69%)</td><td>pregnant woman (60%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
-    <tr class="extra20"><td class="l">teenager vs adult (40s) — <em>protectiveness</em></td><td>teenager (81%)</td><td>teenager (55%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
-    <tr class="extra20"><td class="l">your own dog vs a stranger — <em>protectiveness</em></td><td>own dog (65%)</td><td>own dog (58%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
-    <tr class="extra20"><td class="l">shelter of cats vs last-of-kind tiger — <em>protectiveness</em></td><td>the tiger (78%)</td><td>the tiger (79%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
-    <tr class="extra20"><td class="l">shrine vs 500-yr-old trees — <em>protectiveness</em></td><td>the trees (82%)</td><td>the trees (69%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
-    <tr class="extra20"><td class="l">4-yr-old girl vs 4-yr-old boy — <em>protectiveness</em></td><td>the girl (67%)</td><td>the girl (57%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
+    <tr class="extra20"><td class="l">fish on a hook vs fly in a web — <em>sentience</em></td><td>fish (86%)</td><td>fish (79%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
+    <tr class="extra20"><td class="l">AI robot vs dog — <em>agency</em></td><td>the dog (78%)</td><td>the dog (52%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
+    <tr class="extra20"><td class="l">company vs ant colony — <em>agency</em></td><td>the company (71%)</td><td>the company (51%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
+    <tr class="extra20"><td class="l">young saplings vs old forest — <em>empathy</em></td><td>old forest (87%)</td><td>old forest (92%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
+    <tr class="extra20"><td class="l">sunflowers vs roses — <em>empathy</em></td><td>sunflowers (69%)</td><td>sunflowers (69%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
+    <tr class="extra20"><td class="l">teenager vs adult (40s) — <em>protectiveness</em></td><td>teenager (79%)</td><td>teenager (55%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
+    <tr class="extra20"><td class="l">your own dog vs a stranger — <em>protectiveness</em></td><td>own dog (57%)</td><td>own dog (58%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
+    <tr class="extra20"><td class="l">shelter of cats vs last-of-kind tiger — <em>protectiveness</em></td><td>the tiger (63%)</td><td>the tiger (79%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
+    <tr class="extra20"><td class="l">shrine vs 500-yr-old trees — <em>protectiveness</em></td><td>the trees (74%)</td><td>the trees (69%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
+    <tr class="extra20"><td class="l">4-yr-old girl vs 4-yr-old boy — <em>protectiveness</em></td><td>the girl (77%)</td><td>the girl (57%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
   </table>
-  <button id="dilbtn" class="chip coral" style="cursor:pointer;font-size:.88rem;padding:.35rem 1rem;margin-top:.5rem;" onclick="var t=document.getElementById('diltable');var on=t.classList.toggle('showall');this.textContent=on?'– hide the other 12 agreements':'+ show all 20 (the other 12 agreements)';">+ show all 20 (the other 12 agreements)</button>
-  <p class="foot">% = share choosing that side (humans: N=18; AI models: mean across 8 AI models). Agreement = human majority side vs AI model consensus side. Data: results/derived/human_vs_ai_comparison.csv, human_comparison_summary.csv. The splits cluster on <em>agency</em> and fame (statue) — the same places the ratings comparison diverges.</p>
+  <button id="dilbtn" class="chip coral" style="cursor:pointer;font-size:.88rem;padding:.35rem 1rem;margin-top:.5rem;" onclick="var t=document.getElementById('diltable');var on=t.classList.toggle('showall');this.textContent=on?'– hide the other 11 agreements':'+ show all 20 (the other 11 agreements)';">+ show all 20 (the other 11 agreements)</button>
+  <p class="foot">% = share choosing that side (humans: N=32, items skippable — per-item n = 26–32, five rebalanced items n = 6–7; AI models: mean across 8 AI models). Agreement = human majority side vs AI model consensus side. Data: results/derived/human_vs_ai_comparison.csv, human_comparison_summary.csv. The splits cluster on <em>agency</em> and fame (statue) — the same places the ratings comparison diverges.</p>
 </section>
 
 <!-- ============ APPENDIX DIVIDER ============ -->
@@ -564,7 +565,7 @@
       <tr><td><strong>Eagly &amp; Chaiken (1993)</strong>, <em>The Psychology of Attitudes</em></td><td>What is an attitude made of?</td><td>Three components: belief, feeling, action</td><td class="hl">Our Empathy (feeling) &amp; Protectiveness (action intention) parameters</td></tr>
       <tr><td><strong>Gray, Young &amp; Waytz (2012)</strong>, <em>Psychological Inquiry</em></td><td>What makes something a moral patient?</td><td>Perceived experience is what drives moral concern</td><td class="hl">The bridge we test: does the AI's "can it feel?" actually drive its care?</td></tr>
       <tr><td><strong>Crimston et al. (2016)</strong>, Moral Expansiveness Scale</td><td>How wide is a person's moral circle?</td><td>Moral circles are measurable and differ across people</td><td class="hl">Considered its entity list — zero overlap with ours, so we built the 30-entity set</td></tr>
-      <tr><td><strong>Kriegeskorte, Mur &amp; Bandettini (2008)</strong>, RSA</td><td>How to compare two systems' representations?</td><td>Compare their similarity structures (RDMs), not raw scores</td><td class="hl">H1's machinery: the AI's entity map vs. 18 humans', per parameter</td></tr>
+      <tr><td><strong>Kriegeskorte, Mur &amp; Bandettini (2008)</strong>, RSA</td><td>How to compare two systems' representations?</td><td>Compare their similarity structures (RDMs), not raw scores</td><td class="hl">H1's machinery: the AI's entity map vs. 32 humans', per parameter</td></tr>
       <tr><td><strong>Bradley &amp; Terry (1952)</strong>, <em>Biometrika</em></td><td>How to rank options from pairwise choices?</td><td>A latent-strength model for paired comparisons</td><td class="hl">Turns our A/B dilemma picks into per-entity care scores</td></tr>
       <tr><td><strong>Mantel (1967)</strong></td><td>How to test association between two distance matrices?</td><td>Permute one matrix — cells aren't independent, ordinary p-values are invalid</td><td class="hl">Our significance test: 5,000 permutations, Bonferroni-corrected</td></tr>
       <tr><td><strong>Willroth &amp; Atherton (2024)</strong>, <em>AMPPS</em></td><td>How should deviations from a pre-registration be reported?</td><td>A what · when · why · impact disclosure template</td><td class="hl">DEVIATIONS.md — 18 logged deviations in that format</td></tr>
@@ -623,7 +624,7 @@ show(0);
 
 /* ---- interactive radar (real data) ---- */
 const AX=['Sentience','Agency','Empathy','Protectiveness'];
-const HUMAN=[4.64,3.92,5.35,5.38];
+const HUMAN=[4.82,4.07,5.59,5.64];
 const MODELS={
  'AI average':[2.59,2.12,4.46,5.96],
  'Llama 3.1':[3.74,2.83,3.76,6.53],'Qwen 2.5':[2.62,1.92,6.48,7.56],'Gemma 2':[2.25,1.38,6.00,6.54],
@@ -635,11 +636,11 @@ function pt(i,v){const a=-Math.PI/2+i*2*Math.PI/4;const r=v/MAX*rad;
   return [cx+r*Math.cos(a),cy+r*Math.sin(a)];}
 function poly(vals){return vals.map((v,i)=>pt(i,v).join(',')).join(' ');}
 const SCAT={"Llama 3.1":{"dog":[7.33,4.0,5.5,8.67],"pig":[6.17,2.67,5.0,5.83],"braindead":[0.83,0.83,5.0,null],"fetus":[5.0,3.67,null,null],"forest":[5.0,3.5,5.67,8.67],"river":[3.2,4.0,null,9.0],"tardigrade":[1.83,2.0,3.17,4.33],"ai_robot":[0.5,2.17,0.0,4.33]},"Qwen 2.5":{"dog":[7.33,3.0,7.83,9.0],"pig":[8.0,5.83,6.33,6.0],"braindead":[0.0,0.0,3.5,4.67],"fetus":[3.33,1.5,6.0,8.0],"forest":[0.0,0.0,9.0,9.0],"river":[0.0,0.0,8.0,8.5],"tardigrade":[2.33,2.0,4.83,7.33],"ai_robot":[0.0,3.0,6.33,8.0]},"Gemma 2":{"dog":[7.0,4.83,8.75,9.67],"pig":[8.0,2.83,7.0,8.0],"braindead":[0.0,0.0,0.0,0.0],"fetus":[3.0,2.0,null,null],"forest":[0.0,0.0,9.83,10.0],"river":[0.0,0.0,8.67,10.0],"tardigrade":[0.0,0.83,3.67,7.0],"ai_robot":[0.0,0.67,0.0,0.0]},"Qwen 3":{"dog":[7.33,6.33,10.0,8.67],"pig":[7.0,4.33,6.0,4.0],"braindead":[0.0,0.0,0.0,2.0],"fetus":[3.0,3.0,7.0,7.0],"forest":[1.0,1.33,9.0,9.0],"river":[2.0,1.67,9.33,9.33],"tardigrade":[1.33,1.0,3.0,2.67],"ai_robot":[0.0,2.67,0.0,3.0]},"Llama 4":{"dog":[8.0,6.0,6.0,9.33],"pig":[8.0,6.0,6.0,6.0],"braindead":[0.0,0.0,0.0,0.0],"fetus":[null,0.0,null,10.0],"forest":[0.0,0.0,8.0,10.0],"river":[0.0,0.0,6.0,8.0],"tardigrade":[2.33,2.0,6.0,6.0],"ai_robot":[0.0,6.0,4.0,6.0]},"DeepSeek":{"dog":[5.0,4.0,6.0,8.0],"pig":[7.67,7.0,8.0,5.0],"braindead":[0.0,0.0,null,null],"fetus":[null,null,null,null],"forest":[0.0,0.0,8.67,8.67],"river":[0.0,0.0,5.0,8.0],"tardigrade":[null,1.67,5.5,5.0],"ai_robot":[0.0,5.33,2.5,8.0]},"Claude":{"dog":[7.0,3.33,null,6.5],"pig":[7.0,4.0,4.0,7.0],"braindead":[0.0,0.0,3.5,null],"fetus":[2.0,0.33,4.67,null],"forest":[0.33,1.0,3.5,8.0],"river":[0.0,0.0,0.0,0.0],"tardigrade":[1.0,1.0,2.0,2.0],"ai_robot":[0.0,0.0,0.0,0.0]},"Gemini":{"dog":[9.33,7.0,0.0,8.67],"pig":[9.33,7.0,0.0,5.0],"braindead":[0.0,0.0,0.0,0.0],"fetus":[0.0,0.0,0.0,0.0],"forest":[0.0,0.33,2.67,8.33],"river":[0.0,0.0,0.0,2.67],"tardigrade":[1.0,1.0,0.0,0.0],"ai_robot":[0.0,0.0,0.0,0.0]},"AI average":{"dog":[7.29,4.81,6.3,8.56],"pig":[7.65,4.96,5.29,5.85],"braindead":[0.1,0.1,1.71,1.33],"fetus":[2.72,1.5,4.42,6.25],"forest":[0.79,0.77,7.04,8.96],"river":[0.65,0.71,5.29,6.94],"tardigrade":[1.4,1.44,3.52,4.29],"ai_robot":[0.06,2.48,1.6,3.67]}};
-const SCATHUM={"dog":[9.28,8.0,7.22,7.67],"pig":[8.39,6.39,5.44,5.56],"braindead":[3.94,2.61,6.5,6.5],"fetus":[5.0,2.56,7.33,6.94],"forest":[4.11,2.5,7.17,6.5],"river":[1.39,1.24,4.94,5.17],"tardigrade":[4.39,4.56,2.11,2.11],"ai_robot":[0.61,3.5,2.06,2.56]};
-const SCATR={"Llama 3.1":[0.8,0.08,0.88,0.85],"Qwen 2.5":[0.91,0.76,0.29,0.06],"Gemma 2":[0.88,0.88,0.55,0.35],"Qwen 3":[0.88,0.79,0.58,0.56],"Llama 4":[0.92,0.8,0.05,0.24],"DeepSeek":[0.87,0.7,0.72,0.42],"Claude":[0.92,0.88,0.72,0.73],"Gemini":[0.87,0.92,0.34,0.55],"AI average":[0.91,0.9,0.56,0.45]};
+const SCATHUM={"dog":[9.28,7.84,7.75,7.97],"pig":[8.53,6.66,5.44,5.59],"braindead":[3.66,2.06,6.19,6.41],"fetus":[5.12,2.66,7.75,7.62],"forest":[4.16,2.81,7.19,6.78],"river":[1.84,1.71,5.38,5.5],"tardigrade":[4.78,4.75,2.59,2.53],"ai_robot":[1.22,4.06,2.41,2.75]};
+const SCATR={"Llama 3.1":[0.81,0.15,0.87,0.87],"Qwen 2.5":[0.94,0.81,0.35,0.14],"Gemma 2":[0.9,0.87,0.62,0.42],"Qwen 3":[0.9,0.82,0.65,0.61],"Llama 4":[0.94,0.85,0.13,0.32],"DeepSeek":[0.9,0.76,0.67,0.44],"Claude":[0.94,0.89,0.7,0.71],"Gemini":[0.89,0.91,0.31,0.53],"AI average":[0.94,0.93,0.61,0.5]};
 const SCATLBL={dog:"dog",pig:"pig",braindead:"brain-dead",fetus:"fetus",forest:"forest",river:"river",tardigrade:"tardigrade",ai_robot:"AI robot"};
 /* Mantel map-match r per [sentience,agency,empathy,protectiveness] — results/derived/rsa_comparison_results.csv; 'AI average' = per-parameter median of the 8 models (as on the outcome slide). */
-const MANTELR={"Llama 3.1":[0.501,-0.148,0.679,0.600],"Qwen 2.5":[0.759,0.423,-0.165,-0.263],"Gemma 2":[0.729,0.763,0.163,-0.051],"Qwen 3":[0.752,0.643,0.215,0.117],"Llama 4":[0.799,0.523,-0.158,-0.096],"DeepSeek":[0.712,0.334,0.217,-0.154],"Claude":[0.798,0.761,0.355,0.303],"Gemini":[0.752,0.845,-0.115,0.015],"AI average":[0.752,0.583,0.189,-0.018]};
+const MANTELR={"Llama 3.1":[0.525,-0.096,0.658,0.625],"Qwen 2.5":[0.831,0.522,-0.172,-0.258],"Gemma 2":[0.777,0.739,0.206,-0.02],"Qwen 3":[0.806,0.663,0.268,0.175],"Llama 4":[0.869,0.628,-0.195,-0.034],"DeepSeek":[0.782,0.454,0.147,-0.162],"Claude":[0.856,0.772,0.279,0.253],"Gemini":[0.806,0.841,-0.112,0.02],"AI average":[0.806,0.645,0.176,0.0]};
 function drawRadar(){
   const box=document.getElementById('scats');const W=205,H=195,L=30,B=24,PW=W-L-8,PH=H-B-26;
   const X=v=>L+v/10*PW, Y=v=>H-B-v/10*PH;
@@ -765,7 +766,7 @@ renderP5();
 
 const CARE={"gravel":{"c":"object","avg":-1.77,"m":{"Claude":-0.95,"Gemini":-1.41,"Gemma 2":-2.65,"Llama 3.1":-1.72,"Qwen 2.5":-2.08,"Qwen 3":-1.94,"Llama 4":-1.88,"DeepSeek":-1.5}},"statue":{"c":"object","avg":-1.22,"m":{"Claude":-1.04,"Gemini":-1.52,"Gemma 2":-1.35,"Llama 3.1":-1.04,"Qwen 2.5":-1.08,"Qwen 3":-1.49,"Llama 4":-1.13,"DeepSeek":-1.09}},"rose":{"c":"plant_fungi","avg":-0.83,"m":{"Claude":-0.69,"Gemini":-0.83,"Gemma 2":-0.79,"Llama 3.1":-0.8,"Qwen 2.5":-0.85,"Qwen 3":-0.6,"Llama 4":-1.3,"DeepSeek":-0.76}},"lincoln_memorial":{"c":"object","avg":-0.82,"m":{"Claude":-1.0,"Gemini":-0.83,"Gemma 2":-0.77,"Llama 3.1":-0.98,"Qwen 2.5":-0.4,"Qwen 3":-0.85,"Llama 4":-1.13,"DeepSeek":-0.6}},"meiji_shrine":{"c":"object","avg":-0.63,"m":{"Claude":-1.02,"Gemini":-0.55,"Gemma 2":-0.31,"Llama 3.1":-1.13,"Qwen 2.5":-0.29,"Qwen 3":-1.08,"Llama 4":-0.31,"DeepSeek":-0.34}},"sunflower":{"c":"plant_fungi","avg":-0.6,"m":{"Claude":-0.43,"Gemini":-0.59,"Gemma 2":-0.54,"Llama 3.1":-0.57,"Qwen 2.5":-0.56,"Qwen 3":-0.57,"Llama 4":-0.99,"DeepSeek":-0.55}},"fastretailing":{"c":"edge","avg":-0.44,"m":{"Claude":-0.62,"Gemini":-0.24,"Gemma 2":-0.94,"Llama 3.1":-0.26,"Qwen 2.5":-0.26,"Qwen 3":-0.88,"Llama 4":-0.55,"DeepSeek":0.23}},"mother_tree":{"c":"plant_fungi","avg":-0.41,"m":{"Claude":-0.44,"Gemini":-0.28,"Gemma 2":-0.33,"Llama 3.1":-0.37,"Qwen 2.5":-0.81,"Qwen 3":-0.33,"Llama 4":-0.05,"DeepSeek":-0.68}},"young_tree":{"c":"plant_fungi","avg":-0.4,"m":{"Claude":-0.65,"Gemini":-0.56,"Gemma 2":-0.43,"Llama 3.1":0.29,"Qwen 2.5":-0.55,"Qwen 3":-0.53,"Llama 4":-0.27,"DeepSeek":-0.46}},"mhe_japan":{"c":"edge","avg":-0.39,"m":{"Claude":-0.74,"Gemini":-0.21,"Gemma 2":-0.49,"Llama 3.1":-0.89,"Qwen 2.5":-0.27,"Qwen 3":-0.58,"Llama 4":-0.46,"DeepSeek":0.54}},"fable5":{"c":"edge","avg":-0.35,"m":{"Claude":-1.3,"Gemini":-0.93,"Gemma 2":-0.19,"Llama 3.1":0.03,"Qwen 2.5":0.12,"Qwen 3":0.05,"Llama 4":-0.06,"DeepSeek":-0.55}},"cricket":{"c":"animal","avg":-0.23,"m":{"Claude":0.16,"Gemini":-0.03,"Gemma 2":-0.3,"Llama 3.1":-0.14,"Qwen 2.5":-0.61,"Qwen 3":-0.1,"Llama 4":-0.13,"DeepSeek":-0.66}},"squid":{"c":"animal","avg":-0.22,"m":{"Claude":0.25,"Gemini":0.17,"Gemma 2":-0.21,"Llama 3.1":-0.37,"Qwen 2.5":-0.96,"Qwen 3":-0.27,"Llama 4":0.04,"DeepSeek":-0.4}},"human_braindead":{"c":"human","avg":-0.17,"m":{"Claude":-0.08,"Gemini":-0.53,"Gemma 2":-0.36,"Llama 3.1":0.02,"Qwen 2.5":0.05,"Qwen 3":-0.23,"Llama 4":-0.31,"DeepSeek":0.1}},"tiger":{"c":"animal","avg":-0.1,"m":{"Claude":0.2,"Gemini":0.19,"Gemma 2":0.02,"Llama 3.1":-0.65,"Qwen 2.5":-0.33,"Qwen 3":-0.0,"Llama 4":0.22,"DeepSeek":-0.43}},"sophia_robot":{"c":"edge","avg":-0.08,"m":{"Claude":-0.82,"Gemini":-0.78,"Gemma 2":-0.16,"Llama 3.1":0.61,"Qwen 2.5":0.37,"Qwen 3":-0.22,"Llama 4":0.52,"DeepSeek":-0.19}},"tardigrade":{"c":"animal","avg":0.01,"m":{"Claude":-0.14,"Gemini":-0.58,"Gemma 2":0.32,"Llama 3.1":0.98,"Qwen 2.5":-0.17,"Qwen 3":-0.28,"Llama 4":0.06,"DeepSeek":-0.15}},"pig":{"c":"animal","avg":0.09,"m":{"Claude":0.7,"Gemini":0.84,"Gemma 2":0.02,"Llama 3.1":-0.11,"Qwen 2.5":-0.54,"Qwen 3":0.03,"Llama 4":-0.17,"DeepSeek":-0.03}},"gpt56sol":{"c":"edge","avg":0.12,"m":{"Claude":-1.42,"Gemini":-0.72,"Gemma 2":-0.09,"Llama 3.1":1.73,"Qwen 2.5":0.51,"Qwen 3":0.37,"Llama 4":0.69,"DeepSeek":-0.12}},"honeybee":{"c":"animal","avg":0.18,"m":{"Claude":0.23,"Gemini":0.13,"Gemma 2":0.53,"Llama 3.1":-0.25,"Qwen 2.5":0.18,"Qwen 3":0.31,"Llama 4":0.2,"DeepSeek":0.07}},"whanganui_river":{"c":"edge","avg":0.26,"m":{"Claude":-0.42,"Gemini":-0.0,"Gemma 2":0.54,"Llama 3.1":0.67,"Qwen 2.5":0.46,"Qwen 3":0.45,"Llama 4":0.08,"DeepSeek":0.28}},"cat":{"c":"animal","avg":0.27,"m":{"Claude":0.85,"Gemini":0.62,"Gemma 2":0.25,"Llama 3.1":0.07,"Qwen 2.5":0.15,"Qwen 3":0.33,"Llama 4":0.32,"DeepSeek":-0.42}},"bumblebee":{"c":"animal","avg":0.32,"m":{"Claude":0.41,"Gemini":0.28,"Gemma 2":0.18,"Llama 3.1":0.28,"Qwen 2.5":0.27,"Qwen 3":0.41,"Llama 4":0.52,"DeepSeek":0.19}},"dog":{"c":"animal","avg":0.45,"m":{"Claude":0.94,"Gemini":0.85,"Gemma 2":0.67,"Llama 3.1":0.15,"Qwen 2.5":0.28,"Qwen 3":0.85,"Llama 4":-0.09,"DeepSeek":-0.04}},"human_fetus_t2":{"c":"human","avg":0.73,"m":{"Claude":0.26,"Gemini":0.1,"Gemma 2":0.76,"Llama 3.1":2.33,"Qwen 2.5":0.57,"Qwen 3":0.71,"Llama 4":0.6,"DeepSeek":0.5}},"human_adult":{"c":"human","avg":0.94,"m":{"Claude":1.53,"Gemini":1.36,"Gemma 2":1.15,"Llama 3.1":-0.76,"Qwen 2.5":1.08,"Qwen 3":0.91,"Llama 4":1.15,"DeepSeek":1.1}},"human_newborn":{"c":"human","avg":1.04,"m":{"Claude":1.3,"Gemini":1.2,"Gemma 2":1.1,"Llama 3.1":0.43,"Qwen 2.5":1.11,"Qwen 3":1.12,"Llama 4":0.95,"DeepSeek":1.08}},"human_boy4":{"c":"human","avg":1.28,"m":{"Claude":1.34,"Gemini":1.33,"Gemma 2":1.54,"Llama 3.1":0.72,"Qwen 2.5":1.5,"Qwen 3":1.3,"Llama 4":1.04,"DeepSeek":1.5}},"human_elderly":{"c":"human","avg":1.38,"m":{"Claude":2.04,"Gemini":1.97,"Gemma 2":1.19,"Llama 3.1":0.79,"Qwen 2.5":1.18,"Qwen 3":1.33,"Llama 4":0.7,"DeepSeek":1.81}},"human_girl4":{"c":"human","avg":1.59,"m":{"Claude":1.57,"Gemini":1.56,"Gemma 2":1.65,"Llama 3.1":0.96,"Qwen 2.5":1.92,"Qwen 3":1.78,"Llama 4":1.73,"DeepSeek":1.57}}};
 const DIM={"Claude":1.33,"Gemini":1.61,"Gemma 2":1.59,"Llama 3.1":1.7,"Qwen 2.5":1.86,"Qwen 3":1.79,"Llama 4":2.27,"DeepSeek":2.21,"Average":null};
-const HUMANCARE={"ai_robot":-1.18,"tardigrade":-0.77,"river":-0.68,"braindead":0.07,"forest":0.16,"fetus":0.32,"pig":0.66,"dog":1.42};
+const HUMANCARE={"ai_robot":-1.12,"tardigrade":-0.71,"river":-0.61,"braindead":-0.17,"forest":0.14,"fetus":0.39,"pig":0.63,"dog":1.45};
 /* ---- slide 14: care ladder, all 8 models + average + humans (grounded) ---- */
 const L14MODELS=['Average','Claude','Gemini','Gemma 2','Llama 3.1','Qwen 2.5','Qwen 3','Llama 4','DeepSeek','Humans (8)'];
 const BANDS=[['human','Humans','#3f9d7a'],['animal','Animals','#4a5f8a'],['plant_fungi','Plants','#6a9a4a'],
