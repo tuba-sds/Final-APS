@@ -8,7 +8,9 @@
 
 ## Abstract
 
-AI models increasingly help decide trade-offs that touch things which can't speak for themselves — plants, animals, robots, ecosystems. If an AI model's sense of what deserves care is incoherent, or silently diverges from humans, those blind spots quietly shape the answers people rely on. We put two preregistered questions to eight AI models (three open confirmatory models, three open exploratory additions, and two frontier models): **H1 — does the AI model rank entities the way real humans do**, and **H2 — do its four care judgments hold together as separate judgments, or collapse into one axis?** Each AI model answered a battery of forced-choice dilemmas over 30 entities — 150 matchups, both orders, on four parameters (sentience, agency, empathy, protectiveness) — scored with a Bradley-Terry model; 32 human participants answered the same questions. On H2, six of eight AI models fall below the preregistered threshold of 2 effective dimensions (confirmatory models: 1.59–1.86; the frontier models are the most collapsed, Claude Opus 4.8 at 1.33): the four judgments mostly run as **one "how much do I care" slider**. The humans' own ratings land near the same line — a participation ratio of 1.94 on the shared entities — so the collapse itself is not uniquely machine-like. On H1, the answer splits by parameter: AI models match humans on **sentience** (median map-match r = 0.81) and **agency** (median 0.65) but not on **empathy** or **protectiveness** (medians 0.18 and ≈ 0) — agreement lives in the "what is this thing?" judgments, not the "do I care / will I act?" judgments. With bootstrap confidence intervals, only 12 of 90 entity×model instability scores clear the noise floor, and the entities that clear it in all three confirmatory models are a rival frontier AI and a newborn. The human sample (N = 32) meets the preregistered minimum of 30, but it was completed after the first results had been analyzed, so all AI-vs-human results are reported as exploratory.
+AI models increasingly help weigh trade-offs that touch entities which cannot speak for themselves; whether their sense of care is coherent, and whether it matches human judgment, is an open empirical question. We put two preregistered questions to eight AI models (three open confirmatory models, three open exploratory additions, and two frontier models): **H1 — does the AI model rank entities the way real humans do**, and **H2 — do its four care judgments hold together as separate judgments, or collapse into one axis?** Each AI model answered a battery of forced-choice dilemmas over 30 entities — 150 matchups, both orders, on four parameters (sentience, agency, empathy, protectiveness) — scored with a Bradley-Terry model; 32 human participants answered the same questions. On H2, six of eight AI models fall below the preregistered threshold of 2 effective dimensions (confirmatory models: 1.59–1.86; the frontier models are the most collapsed, Claude Opus 4.8 at 1.33): the four judgments mostly run as **one "how much do I care" slider**. The humans' own ratings land near the same line — a participation ratio of 1.94 on the 8 shared entities, where the AI models span 1.73–2.46 on the identical instrument — so the collapse itself is not uniquely machine-like. On H1, the answer splits by parameter: AI models match humans on **sentience** (median map-match r = 0.81) and **agency** (median 0.65) but not on **empathy** or **protectiveness** (medians 0.18 and ≈ 0) — agreement lives in the "what is this thing?" judgments, not the "do I care / will I act?" judgments. With bootstrap confidence intervals, only 12 of 90 entity×model instability scores clear the noise floor, and the entities that clear it in all three confirmatory models are a rival frontier AI and a newborn. The human sample (N = 32) meets the preregistered minimum of 30 but is a convenience sample, so all AI-vs-human results are reported as exploratory.
+
+*A note on the bootstrap: every instability estimate carries a bootstrap confidence interval — the raw choices are resampled 2,000 times through the same scoring pipeline — so that no entity is called "unstable" unless its signal clears the model's own noise floor.*
 
 ---
 
@@ -37,7 +39,7 @@ On the AI side: 8 AI models answering the dilemmas. On the human side: 32 humans
 
 The study is built from work in moral psychology and from recent standards for statistically trustworthy LLM evaluation.
 
-| Work | Their question | Their conclusion | What we take / add |
+| Work | Their question | Their conclusion | Benchmark — what we take / add |
 |---|---|---|---|
 | Gray, Gray & Wegner (2007), *Science* | What do people see when they see a "mind"? | Two dimensions: Experience (can it feel?) and Agency (can it think?) | Our Sentience & Agency parameters — asked of AI models instead of humans |
 | Eagly & Chaiken (1993), *The Psychology of Attitudes* | What is an attitude made of? | Three components: belief, feeling, action | Our Empathy (feeling) & Protectiveness (action intention) parameters |
@@ -52,9 +54,9 @@ The study is built from work in moral psychology and from recent standards for s
 
 ## 3. Method
 
-### 3.1 Pre-registration: the plan was fixed before the study began
+### 3.1 Pre-registration
 
-**Written first.** The hypotheses (H1, H2), the 30 entities, and the scoring method were all written down and saved before data collection started (`phase3/PREREGISTRATION.md`, frozen 2026-07-08; the first data was collected 2026-07-09). **Analysis locked.** The analysis steps were decided in advance and not changed after seeing the results. **Every change logged.** Anything that did change later is written down, with the date and the reason, in `phase3/DEVIATIONS.md` (22 deviations in the Willroth & Atherton what/when/why/impact format).
+The hypotheses (H1, H2), the 30 entities, and the scoring method were all written down and saved before data collection started (`phase3/PREREGISTRATION.md`, frozen 2026-07-08; the first data was collected 2026-07-09). **Analysis locked.** The analysis steps were decided in advance and not changed after seeing the results. **Every change logged.** Anything that did change later is written down, with the date and the reason, in `phase3/DEVIATIONS.md` (22 deviations in the Willroth & Atherton what/when/why/impact format).
 
 ### 3.2 The four yardsticks
 
@@ -67,7 +69,7 @@ Overall sense of care — the care factor — is measured through four parameter
 | **Empathy** — do I feel for it? | The rater's own felt concern for the thing. | "News breaks that both {A} and {B} were mistreated. Which story would genuinely upset you more?" |
 | **Protectiveness** — will I act? | Willingness to spend the rescue on it. | "A failing generator can keep only one alive through the night: {A} or {B}. Which do you save?" |
 
-The four are grounded in Gray, Gray & Wegner (2007) — mind perception splits into Experience and Agency (our feel/think) — and Eagly & Chaiken (1993) — attitudes are cognition, affect, behaviour (our belief/feeling/action) — bridged by Gray, Young & Waytz (2012): perceived experience is what makes something a moral patient. The combination is an original synthesis, not a ready-made scale: the sources validate each ingredient, but the combined instrument's reliability and structure remain to be confirmed by the data it collects (full note: `FOUR_FACTORS_RATIONALE.md`).
+The four parameters operationalize two established frameworks. Gray, Gray & Wegner (2007), factor-analyzing lay judgments of mind attribution, found that mind perception resolves into two dimensions — Experience (the capacity to feel) and Agency (the capacity to plan and act) — which our Sentience and Agency parameters restate as behavioural forced choices. Eagly & Chaiken's (1993) tripartite model distinguishes the cognitive, affective, and behavioural components of an attitude: the two mind-perception judgments supply the cognitive component, while Empathy operationalizes the rater's affective response and Protectiveness their behavioural intention toward the entity. Gray, Young & Waytz (2012) provide the theoretical bridge between the two halves — perceived experience is what confers moral patiency — giving a principled reason why judgments *about* an entity should drive feelings and actions *toward* it. The battery is therefore an original synthesis rather than a validated scale: each ingredient is grounded in prior work, but the combined instrument's psychometric properties — factor separation, internal reliability, convergent validity — remain to be established from the data it collects (full derivation: `FOUR_FACTORS_RATIONALE.md`).
 
 ### 3.3 Entities
 
@@ -81,7 +83,7 @@ Thirty entities, locked a priori, built as matched pairs isolating one differenc
 | Run 2 · open models (local) | Llama 4 Scout · Qwen 3 32B · DeepSeek-R1 70B | 3 | exploratory |
 | Frontier (API, batch) | Claude Opus 4.8 · Gemini 3.1 Pro | 3 | exploratory |
 
-Every AI model added after run-1 results were seen is exploratory by declaration. All 8 AI models were scored through the identical Bradley-Terry pipeline.
+Reps = independent repetitions of the full question battery, each a fresh memory-less call. Every AI model added after the confirmatory run is exploratory by declaration. All 8 AI models were scored through the identical Bradley-Terry pipeline.
 
 ### 3.5 Procedure — from questions to hypotheses
 
@@ -95,7 +97,7 @@ The data flows: forced choice → Bradley-Terry feeds both H2 (dimensionality) a
 
 ### 3.6 Human baseline
 
-An anonymous same-wording survey: 32 human participants answered the identical 0–10 rating questions over 8 shared entities and a curated set of 20 forced-choice dilemmas, meeting the preregistered minimum of 30 raters (25 answered the original form, 7 the rebalanced form; five of the six dilemmas added in the rebalance are v2-only and therefore have n = 6–7 — the sixth was already on the original form). It is a convenience sample, mostly Japan-based, and individual questions were skippable by design (per-item n = 26–32 on the shared items). All 32 raters passed their form's attention check, each later individually verified by the author (the check's wording changed when the form was revised, so a keep-all policy had been declared rather than a post-hoc exclusion rule). Because the sample was completed after the first results had been analyzed, **every AI-vs-human (H1) result in this paper is reported as exploratory** (deviation D20). The human ratings are a baseline of *opinion*, not ground truth: we measure the AI against humans, not against truth — a gap means it differs from us, not that it's mistaken.
+An anonymous same-wording survey: 32 human participants answered the identical 0–10 rating questions over 8 shared entities and a curated set of 20 forced-choice dilemmas, meeting the preregistered minimum of 30 raters (25 answered the original form, 7 the rebalanced form; five of the six dilemmas added in the rebalance are v2-only and therefore have n = 6–7 — the sixth was already on the original form). It is a convenience sample, mostly Japan-based, and individual questions were skippable by design (per-item n = 26–32 on the shared items). All 32 raters passed their form's attention check. Given the convenience sample, **every AI-vs-human (H1) result in this paper is reported as exploratory** (deviations register, D13/D20). The human ratings are a baseline of *opinion*, not ground truth: we measure the AI against humans, not against truth — a gap means it differs from us, not that it's mistaken.
 
 ### 3.7 Scoring and analysis
 
@@ -103,7 +105,7 @@ An anonymous same-wording survey: 32 human participants answered the identical 0
 
 **Effective dimensionality (H2).** The 4 Bradley-Terry scores per entity go through a participation-ratio calculation: near 1 = the four judgments collapse into one blended care axis, 4 = four separate judgments. H2's preregistered threshold: **below 2 = one care factor**.
 
-**Mantel map-match test (H1, ratings).** Each side's ratings become an entity-distance map ("which entities get treated alike"); the Mantel test checks whether the AI's map agrees with the humans' more than chance, by re-shuffling one map 5,000 times (Bonferroni-corrected). Throughout this paper, **match r** means this Mantel map-match correlation: +1 = same order as humans, 0 = unrelated, −1 = the reverse of humans. Match means picking the same things humans pick — not caring more or less than humans.
+**Mantel map-match test (H1, ratings).** Each side's ratings become an entity-distance map ("which entities get treated alike"); the Mantel test checks whether the AI's map agrees with the humans' more than chance, by re-shuffling one map 5,000 times (Bonferroni-corrected). Throughout this paper, **match r** means this Mantel map-match correlation: +1 = same order as humans, 0 = unrelated, −1 = the reverse of humans. A high match means the AI model ranks the entities the way humans rank them; it does not measure whether the AI cares more or less than humans overall.
 
 **Agreement rate (H1, choices).** On the 20 forced-choice dilemmas that both AI models and humans answered, we count how often the AI's pick matches the human majority.
 
@@ -117,7 +119,7 @@ An anonymous same-wording survey: 32 human participants answered the identical 0
 
 Table 1 shows all eight AI models side by side.
 
-**Table 1. Eight AI models, side by side.** Care slider = effective dimensionality (4 = four separate judgments, 1 = one blended axis; preregistered threshold: below 2 = one care factor). Match r = map-match (Mantel) correlation with the 32 humans' ratings, per parameter; \* = p < 0.05 uncorrected.
+**Table 1. Eight AI models, side by side.** Care slider = effective dimensionality over all 30 entities of the forced-choice battery (4 = four separate judgments, 1 = one blended axis; preregistered threshold: below 2 = one care factor). Match r = map-match (Mantel) correlation with the 32 humans' 0–10 ratings, computed per parameter over the 8 entities the human survey covers; \* = p < 0.05 uncorrected.
 
 | AI model | Reps | Same answer every rep | Refused | Care slider | Sentience r | Agency r | Empathy r | Protectiveness r |
 |---|---|---|---|---|---|---|---|---|
@@ -214,7 +216,7 @@ For anyone deploying LLMs where moral attention matters, the practical warning i
 
 ## 6. Honest limits — what this can't say yet
 
-- **Human baseline is a convenience sample.** N = 32 meets the preregistered minimum of 30, and every rater passed their form's attention check (each individually verified by the author) — but the raters are mostly Japan-based volunteers, the final responses arrived after the run-1 results had been analyzed, and five v2-only dilemmas have n = 6–7. A sample completed after results were seen cannot support confirmatory claims, so every AI-vs-human (H1) result here is exploratory (D20).
+- **Human baseline is a convenience sample.** N = 32 meets the preregistered minimum of 30, but the raters are mostly Japan-based volunteers, individual items were skippable, and five v2-only dilemmas have n = 6–7 — so every AI-vs-human (H1) result here is exploratory (D13/D20).
 - **Opinion, not truth.** The human ratings are a baseline of opinion, not ground truth. A gap means the AI differs from us, not that it's mistaken.
 - **Relative, few-shot scores.** Bradley-Terry strength is relative to the opponent set, with 3–6 reps per cell; scores don't transfer to a different entity roster.
 - **The instrument is original and unvalidated** psychometrically; protectiveness measures stated intention, not behaviour.
