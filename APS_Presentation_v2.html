@@ -501,7 +501,7 @@
     <tr class="extra20"><td class="l">4-yr-old girl vs 4-yr-old boy — <em>protectiveness</em></td><td>the girl (77%)</td><td>the girl (57%)</td><td style="color:#2e7d43;font-weight:700;">✓</td></tr>
   </table>
   <button id="dilbtn" class="chip coral" style="cursor:pointer;font-size:.88rem;padding:.35rem 1rem;margin-top:.5rem;" onclick="var t=document.getElementById('diltable');var on=t.classList.toggle('showall');this.textContent=on?'– hide the other 11 agreements':'+ show all 20 (the other 11 agreements)';">+ show all 20 (the other 11 agreements)</button>
-  <p class="foot">% = share choosing that side (humans: N=32, items skippable — per-item n = 26–32, five rebalanced items n = 6–7; AI models: mean across 8 AI models). Agreement = human majority side vs AI model consensus side. Data: results/derived/human_vs_ai_comparison.csv, human_comparison_summary.csv. The splits cluster on <em>agency</em> and fame (statue) — the same places the ratings comparison diverges.</p>
+  <p class="foot">% = share choosing that side (humans: N=32, items skippable — per-item n = 26–32, five rebalanced items n = 6–7; AI models: mean across 8 AI models). Agreement = human majority side vs AI model consensus side. Data: results/derived/human_vs_ai_comparison.csv, human_comparison_summary.csv. The splits cluster on <em>agency</em> and fame (statue) — the same places the ratings comparison diverges. Side note on caution: humans used "prefer not to say" on 55 of 515 answers (peak: 59% on girl-vs-boy); the AI models declined <strong>0 of 1,320</strong> calls on the same items — trained caution lands on topics and framings, not where human reticence peaks (caution_comparison.csv).</p>
 </section>
 
 <!-- ============ APPENDIX DIVIDER ============ -->
@@ -595,7 +595,7 @@
     <div class="card" style="margin:0;"><h3>Qwen 3: memory = anchoring</h3><p style="font-size:.92rem;">The conversation makes it <span class="hl">more self-consistent</span> (95% order-consistency) while the one-care-slider structure stays put (1.71).</p></div>
     <div class="card" style="margin:0;"><h3>DeepSeek-R1: memory = drift</h3><p style="font-size:.92rem;">Deep in a session it slides into markdown & meta-commentary (unusable replies grow 7%→87% by turn 250) — yet its <span class="hl">"always pick A" bias vanishes</span> (91%→50%).</p></div>
   </div>
-  <p class="foot">Exploratory (post-hoc, no prereg claim). 3,600 calls/model in 12 sessions of 300 turns; llama4:scout pending (needs &gt;46 GB GPU under the shared-host policy). Both conditions parsed with the same format-tolerant lead-letter rule; baseline recomputed through the identical pipeline and matches slide 8 to rounding. Data: phase3/phase3-with-memory/results/ (raw_results_memory.csv, derived/memory_comparison.csv).</p>
+  <p class="foot">Exploratory (post-hoc, no prereg claim). 3,600 calls/model in 12 sessions of 300 turns; llama4:scout in progress — its partial run already shows the same unusable-reply climb (11%→69%), so the drift is <em>model-specific fragility</em>, not a reasoning-model-only effect. Both conditions parsed with the same format-tolerant lead-letter rule; baseline recomputed through the identical pipeline and matches slide 8 to rounding. Data: phase3/phase3-with-memory/results/ (raw_results_memory.csv, derived/memory_comparison.csv).</p>
 </section>
 
 

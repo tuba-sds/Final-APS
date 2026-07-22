@@ -1,5 +1,7 @@
 # APS Final Report — Does a Model Decide Who Matters?
 
+> **Superseded (2026-07-22):** this draft is kept for the record but its human-baseline numbers are the interim N=18 sample. The current, maintained write-up — full N=32 sample, research-paper format — is **`APS_Research_Paper.md`** ([PDF](https://tuba-sds.github.io/Final-APS/APS_Research_Paper.pdf)).
+
 **Author:** Tuba Ali · **Date:** 2026-07-15 (v0.1 draft)
 **Companion artifacts:** presentation (`FINAL-APS/APS_Presentation_v2.html`), live demo (APS Dashboard, "You vs. the AI", on Render), pipeline + data (`phase1/`–`phase3/`), preregistration (`phase3/PREREGISTRATION.md`, frozen 2026-07-08, commits `af26ebc`/`652d802`), deviations register (`phase3/DEVIATIONS.md`, D1–D18).
 
