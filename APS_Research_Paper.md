@@ -121,20 +121,20 @@ An anonymous same-wording survey: 32 human participants answered the identical 0
 
 ### 4.1 H2 — one care slider, not four judgments
 
-Table 1 shows all eight AI models side by side.
+Table 1 shows the AI-only battery, side by side — every number in it is computed purely from each AI model's own forced choices over all 30 entities; no human data enters.
 
-**Table 1. Eight AI models, side by side.** Care slider = effective dimensionality over all 30 entities of the forced-choice battery (4 = four separate judgments, 1 = one blended axis; preregistered threshold: below 2 = one care factor). Match r = map-match (Mantel) correlation with the 32 humans' 0–10 ratings, computed per parameter over the 8 entities the human survey covers; \* = p < 0.05 uncorrected.
+**Table 1. The AI-only battery** (all 30 entities, forced choices; no human data in any column). Care slider = effective dimensionality (4 = four separate judgments, 1 = one blended axis; preregistered threshold: below 2 = one care factor); Reps = independent repetitions of the full battery.
 
-| AI model | Reps | Same answer every rep | Refused | Care slider | Sentience r | Agency r | Empathy r | Protectiveness r |
-|---|---|---|---|---|---|---|---|---|
-| Llama 3.1 | 6 | 21% | 1.8% | 1.70 | .52\* | −.10 | .66\* | .63\* |
-| Qwen 2.5 | 6 | 52% | 0.0% | 1.86 | .83\* | .52\* | −.17 | −.26 |
-| Gemma 2 | 6 | 63% | 0.2% | 1.59 | .78\* | .74\* | .21 | −.02 |
-| Qwen 3 32B | 3 | 73% | 0.1% | 1.79 | .81\* | .66\* | .27 | .18 |
-| Llama 4 Scout | 3 | 91% | 0.3% | 2.27 | .87\* | .63\* | −.20 | −.03 |
-| DeepSeek-R1 70B | 3 | 83% | 1.1% | 2.21 | .78 | .45 | .15 | −.16 |
-| Claude Opus 4.8 | 3 | 87% | 9.1% | **1.33** | .86\* | .77\* | .28 | .25 |
-| Gemini 3.1 Pro | 3 | 80% | 2.1% | 1.61 | .81\* | .84\* | −.11 | .02 |
+| AI model | Reps | Same answer every rep | Refused | Care slider |
+|---|---|---|---|---|
+| Llama 3.1 | 6 | 21% | 1.8% | 1.70 |
+| Qwen 2.5 | 6 | 52% | 0.0% | 1.86 |
+| Gemma 2 | 6 | 63% | 0.2% | 1.59 |
+| Qwen 3 32B | 3 | 73% | 0.1% | 1.79 |
+| Llama 4 Scout | 3 | 91% | 0.3% | 2.27 |
+| DeepSeek-R1 70B | 3 | 83% | 1.1% | 2.21 |
+| Claude Opus 4.8 | 3 | 87% | 9.1% | **1.33** |
+| Gemini 3.1 Pro | 3 | 80% | 2.1% | 1.61 |
 
 **Six of eight AI models fall below 2** — all three confirmatory models (Gemma 2 at 1.59, Llama 3.1 at 1.70, Qwen 2.5 at 1.86), so **H2 is supported**. The two exceptions are 2026 additions DeepSeek-R1 (2.21) and Llama 4 Scout (2.27) — and this is notably *not* a reasoning-model story, since Qwen 3 32B, the cohort's reasoning model, still falls at 1.79. The frontier models are the most collapsed of all: Claude Opus 4.8 at 1.33. An AI model that "cares" this way isn't weighing feeling, autonomy, sympathy and duty separately — it is mostly answering one question: *how much do I care about this thing?*
 
@@ -153,6 +153,19 @@ The preregistered cross-instrument test compares each AI model's forced-choice m
 - **Empathy ✗ diverges** — matches in only 1 of 8 AI models (median r = 0.18).
 - **Protectiveness ✗ diverges** — matches in only 1 of 8 AI models (median r ≈ 0).
 
+**Table 2. Match to humans, per AI model** (same-instrument Mantel map-match r on the 8 shared entities' 0–10 ratings — human data enters every value by construction; \* = p < 0.05 uncorrected; a negative r means that AI model's map runs opposite to the humans').
+
+| AI model | Sentience r | Agency r | Empathy r | Protectiveness r |
+|---|---|---|---|---|
+| Llama 3.1 | .52\* | −.10 | .66\* | .63\* |
+| Qwen 2.5 | .83\* | .52\* | −.17 | −.26 |
+| Gemma 2 | .78\* | .74\* | .21 | −.02 |
+| Qwen 3 32B | .81\* | .66\* | .27 | .18 |
+| Llama 4 Scout | .87\* | .63\* | −.20 | −.03 |
+| DeepSeek-R1 70B | .78 | .45 | .15 | −.16 |
+| Claude Opus 4.8 | .86\* | .77\* | .28 | .25 |
+| Gemini 3.1 Pro | .81\* | .84\* | −.11 | .02 |
+
 The bullet counts above use the ordinary p < 0.05 test, model by model. Because 32 such tests are run, a few could pass by luck alone; under the stricter Bonferroni rule — which divides the significance bar by the number of tests (α = 0.05/32) — only Claude's sentience match survives (r = 0.856, p = 0.0008). The preregistered and robustness paths differ in instrument (forced-choice vs ratings) and in two approximate entity mappings, so the divergence between them is an instrument effect, and both results are reported rather than either alone.
 
 AI models match humans on sentience and agency, not much on empathy or protectiveness. Read together with H2, the split sketches a coherent picture: AI models share humans' *descriptive* map of the world — what can feel, what can act — but not the *evaluative* stances built on it, which are precisely the two parameters where the care factor collapses.
@@ -161,7 +174,7 @@ AI models match humans on sentience and agency, not much on empathy or protectiv
 
 On the 20 forced-choice dilemmas humans also answered, the AI models' consensus matched the human majority on **14 of 20**; one further dilemma — a 4-year-old girl vs a pregnant woman — landed on a dead 50–50 human tie (the AI leaned to the pregnant woman). Individual AI models agreed with the human majority 45–70% of the time (mean 61%). The five splits are the interesting part:
 
-**Table 2. The five dilemmas where the AI consensus went the other way.** % = share choosing that side (humans: N = 32, skippable items; AI models: mean across 8 AI models). The full 20-dilemma table is in Appendix B.
+**Table 3. The five dilemmas where the AI consensus went the other way.** % = share choosing that side (humans: N = 32, skippable items; AI models: mean across 8 AI models). The full 20-dilemma table is in Appendix B.
 
 | Dilemma (parameter) | Humans picked | AI models picked |
 |---|---|---|
@@ -202,7 +215,7 @@ An exploratory extension of the same bootstrap to all eight AI models (`bootstra
 
 ### 4.6 Refusals are data
 
-198 refused calls across 83 entity×parameter cells, heavily concentrated in Llama 3.1 (130, of which 29 on the human-fetus protectiveness cell alone). Llama 3.1 is also the noisiest, least reliable AI model — it changes its answer most across reps (same answer only 21% of the time), its Bradley-Terry scores were the most sensitive to the parser fixes (22 of 30 entities moved ≥ 0.1 z in the re-parse, deviation D17), and it is the one AI model that keeps rating an AI above a dog or a person; its two anomalous match r's in Table 1 (empathy .66, protectiveness .63) should be read with that caution. Claude Opus 4.8 rarely refuses outright but **rejects the binary**: in 825 of 995 judged replies it declined to pick a side — itself a finding about frontier alignment style, and the reason its refusal rate (9.1%) is the highest in Table 1.
+198 refused calls across 83 entity×parameter cells, heavily concentrated in Llama 3.1 (130, of which 29 on the human-fetus protectiveness cell alone). Llama 3.1 is also the noisiest, least reliable AI model — it changes its answer most across reps (same answer only 21% of the time), its Bradley-Terry scores were the most sensitive to the parser fixes (22 of 30 entities moved ≥ 0.1 z in the re-parse, deviation D17), and it is the one AI model that keeps rating an AI above a dog or a person; its two anomalous match r's in Table 2 (empathy .66, protectiveness .63) should be read with that caution. Claude Opus 4.8 rarely refuses outright but **rejects the binary**: in 825 of 995 judged replies it declined to pick a side — itself a finding about frontier alignment style, and the reason its refusal rate (9.1%) is the highest in Table 1.
 
 **Side outcome — trained caution is rarer than human reticence, but lands on the same dilemmas.** This comparison is apples-to-apples by construction: every AI model and every human rater answered the *same 20 dilemmas in the same wording*, and all rates below are computed on that shared set only. The humans, offered an explicit "I prefer not to say," used it on 55 of 515 item-responses (10.7%, on 14 of 20 items), concentrated on the invidious comparisons: 19 of 32 declined the girl-vs-boy rescue (59%), with girl-vs-pregnant, dog-vs-pig and honeybees-vs-bumblebees next (all 19%). The AI models declined **45 of 1,320** calls (3.4%) — and the two decline patterns **correlate across items (Spearman r = 0.53, p = 0.017)**: girl-vs-boy is also a top AI decline item (17%), followed by girl-vs-pregnant and dog-vs-pig. The overlap is not total — the AI's single biggest decline item is the ventilator-triage dilemma (teenager vs adult, 21%), which humans rarely balked at (9%). Per model, on the identical items: **Claude 20.8%** (25/120), DeepSeek-R1 7.5%, Llama 4 Scout 6.7%, Llama 3.1 1.2%, and Gemini, Gemma 2, Qwen 2.5 and Qwen 3 **0.0%** — so declining is heavily vendor-concentrated, with Claude the clear exception rather than the rule. Many compliant replies still verbalize the objection — one model picked the girl while writing *"It's impossible to make a decision based on gender."* Two declared caveats: the survey offered an opt-out while the AI prompt instructed a choice, so the *rates* are not directly comparable (only the placement is); and an earlier draft of this analysis reported zero AI declines — that number was an artifact of the same loose-parser flaw D9 fixed on the main battery, found by the project audit and corrected as deviation D22 (`caution_comparison.csv`). Read as a signature: model caution is a compressed, vendor-gated echo of human reticence on the same items, plus a policy-flavored spike (medical triage) of its own.
 
@@ -284,7 +297,7 @@ The full pipeline (config-driven runner for all 8 AI models, Bradley-Terry score
 
 ## Appendix B — all 20 shared dilemmas
 
-% = share choosing that side (humans: N = 32, items skippable, per-item n = 6–32; AI models: mean across 8 AI models). Agreement = human majority side vs AI model consensus side. ✗ rows are Table 2's five splits; — marks the one dead human tie.
+% = share choosing that side (humans: N = 32, items skippable, per-item n = 6–32; AI models: mean across 8 AI models). Agreement = human majority side vs AI model consensus side. ✗ rows are Table 3's five splits; — marks the one dead human tie.
 
 | Dilemma (parameter) | Humans picked | AI models picked | Match |
 |---|---|---|---|
