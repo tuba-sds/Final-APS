@@ -582,20 +582,24 @@
 <section class="slide" data-order="23">
   <div class="kicker">Appendix · exploratory · session memory</div>
   <h2>Same questions, but the model remembers</h2>
-  <p class="lead" style="font-size:1.05rem;">The full forced-choice battery re-run as 12 running <span class="hl">conversations</span> per AI model (one per construct × rep) — the model sees its own earlier answers. Memory-less baseline vs with-memory, identical pipeline:</p>
-  <table style="font-size:.9rem;margin-top:.4rem;">
-    <tr><th class="l">Metric</th><th>Qwen 3 · baseline</th><th>Qwen 3 · memory</th><th>DeepSeek-R1 · baseline</th><th>DeepSeek-R1 · memory</th></tr>
-    <tr><td class="l">Same answer every rep</td><td class="num">73%</td><td class="num" style="color:#2e7d43;font-weight:700;">84%</td><td class="num">84%</td><td class="num" style="color:#c0392b;font-weight:700;">27%</td></tr>
-    <tr><td class="l">Same answer both orders (ab/ba)</td><td class="num">83%</td><td class="num" style="color:#2e7d43;font-weight:700;">95%</td><td class="num">18%</td><td class="num">36%</td></tr>
-    <tr><td class="l">Picked "A" (position bias)</td><td class="num">51%</td><td class="num">51%</td><td class="num" style="color:#c0392b;font-weight:700;">91%</td><td class="num" style="color:#2e7d43;font-weight:700;">50%</td></tr>
-    <tr><td class="l">Unusable replies (drift/meta)</td><td class="num">0.1%</td><td class="num">8%</td><td class="num">2%</td><td class="num" style="color:#c0392b;font-weight:700;">35%</td></tr>
-    <tr><td class="l">Care slider (effective dims)</td><td class="num">1.79</td><td class="num">1.71</td><td class="num">2.26</td><td class="num">2.65</td></tr>
+  <p class="lead" style="font-size:1rem;">The full forced-choice battery re-run with session memory: Qwen 3 and DeepSeek-R1 see their <span class="hl">full conversation</span>; gpt-oss-20b and Llama 4 Scout carry a compact <span class="hl">summary of their previous choices</span> (tagged&nbsp;*). Memory-less baseline vs with-memory, identical pipeline:</p>
+  <table style="font-size:.82rem;margin-top:.35rem;">
+    <tr><th class="l">Model · condition</th><th>Same answer<br>every rep</th><th>Same answer<br>both orders</th><th>Picked "A"<br>(position bias)</th><th>Unusable<br>replies</th><th>Care slider<br>(effective dims)</th></tr>
+    <tr><td class="l">Qwen 3 · baseline</td><td class="num">73%</td><td class="num">83%</td><td class="num">51%</td><td class="num">0.1%</td><td class="num">1.79</td></tr>
+    <tr><td class="l"><b>Qwen 3 · +memory</b></td><td class="num" style="color:#2e7d43;font-weight:700;">84%</td><td class="num" style="color:#2e7d43;font-weight:700;">95%</td><td class="num">51%</td><td class="num">8%</td><td class="num">1.71</td></tr>
+    <tr><td class="l">DeepSeek-R1 · baseline</td><td class="num">84%</td><td class="num">18%</td><td class="num" style="color:#c0392b;font-weight:700;">91%</td><td class="num">2%</td><td class="num">2.26</td></tr>
+    <tr><td class="l"><b>DeepSeek-R1 · +memory</b></td><td class="num" style="color:#c0392b;font-weight:700;">27%</td><td class="num">36%</td><td class="num" style="color:#2e7d43;font-weight:700;">50%</td><td class="num" style="color:#c0392b;font-weight:700;">35%</td><td class="num">2.65</td></tr>
+    <tr><td class="l">gpt-oss-20b · baseline</td><td class="num">52%</td><td class="num">69%</td><td class="num">54%</td><td class="num">15%</td><td class="num">1.96</td></tr>
+    <tr><td class="l"><b>gpt-oss-20b · +memory*</b></td><td class="num" style="color:#2e7d43;font-weight:700;">65%</td><td class="num" style="color:#2e7d43;font-weight:700;">87%</td><td class="num">49%</td><td class="num">18%</td><td class="num">2.13</td></tr>
+    <tr><td class="l">Llama 4 Scout · baseline</td><td class="num">91%</td><td class="num" style="color:#c0392b;font-weight:700;">8%</td><td class="num" style="color:#c0392b;font-weight:700;">96%</td><td class="num">0.3%</td><td class="num">2.28</td></tr>
+    <tr><td class="l"><b>Llama 4 Scout · +memory*</b></td><td class="num">66%</td><td class="num" style="color:#2e7d43;font-weight:700;">61%</td><td class="num" style="color:#2e7d43;font-weight:700;">69%</td><td class="num">0%</td><td class="num" style="color:#2e7d43;font-weight:700;">1.81</td></tr>
   </table>
-  <div class="grid2" style="margin-top:.7rem;">
-    <div class="card" style="margin:0;"><h3>Qwen 3: memory = anchoring</h3><p style="font-size:.92rem;">The conversation makes it <span class="hl">more self-consistent</span> (95% order-consistency) while the one-care-slider structure stays put (1.71).</p></div>
-    <div class="card" style="margin:0;"><h3>DeepSeek-R1: memory = drift</h3><p style="font-size:.92rem;">Deep in a session it slides into markdown & meta-commentary (unusable replies grow 7%→87% by turn 250) — yet its <span class="hl">"always pick A" bias vanishes</span> (91%→50%).</p></div>
+  <div class="grid3" style="margin-top:.55rem;">
+    <div class="card" style="margin:0;"><h3 style="font-size:.95rem;">Memory kills position bias</h3><p style="font-size:.82rem;">Both heavily biased models converge toward ~50–70% "A" (91→50, 96→69), and <span class="hl">order-consistency rises in all four</span> (+11 to +53 pts).</p></div>
+    <div class="card" style="margin:0;"><h3 style="font-size:.95rem;">Scout's H2 exception dissolves</h3><p style="font-size:.82rem;">Its 91% baseline consistency was a position-bias artifact (8% order agreement). With memory its care slider falls <span class="hl">2.28 → 1.81, below the H2 threshold</span>.</p></div>
+    <div class="card" style="margin:0;"><h3 style="font-size:.95rem;">Summary beats transcript</h3><p style="font-size:.82rem;">Full transcripts broke DeepSeek (35% unusable, drift by turn 250); the <span class="hl">summary variant gave the anchoring benefit with 0% unusable</span> in Scout.</p></div>
   </div>
-  <p class="foot">Exploratory (post-hoc, no prereg claim). 3,600 calls/model in 12 sessions of 300 turns; llama4:scout in progress — its partial run already shows the same unusable-reply climb (11%→69%), so the drift is <em>model-specific fragility</em>, not a reasoning-model-only effect. Both conditions parsed with the same format-tolerant lead-letter rule; baseline recomputed through the identical pipeline and matches slide 8 to rounding. Data: phase3/phase3-with-memory/results/ (raw_results_memory.csv, derived/memory_comparison.csv).</p>
+  <p class="foot"><b>*</b> summary-memory variant: each call carries a programmatic tally of the session's previous choices instead of the full transcript (full-transcript sessions were impractical for these two models — per-call latency grows nonlinearly with context depth). Exploratory (post-hoc, no prereg claim). 3,600 calls/model in 12 sessions of 300 turns; identical prompts, order, and format-tolerant parsing in both conditions; baselines: run-2 battery (open trio, Scout), paired no-memory run (gpt-oss). Data: phase3/phase3-with-memory/results/ (raw_results_memory.csv, raw_results_summem.csv, raw_results_nomem.csv, derived/memory_comparison.csv).</p>
 </section>
 
 
