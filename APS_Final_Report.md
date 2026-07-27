@@ -59,7 +59,7 @@ The AI (Claude) wrote the scoring pipeline, ran 40,000+ model calls, drafted plo
 2. **Claude retry contamination** — resume logic resubmitted 329 declined items up to three more times (four total attempts), i.e. rejection-sampling toward compliance. *Fix (D10):* dedup to one first-attempt row per key; 287 answered-on-retry keys flagged and excluded from scoring.
 3. **Stale bootstrap** — the CI script still used a banned word-density scorer; the then-current headline ("6 of 90 above the noise floor; the ordinary adult is the only all-model survivor") did not reproduce. *Fix (D11):* bootstrap rewritten to resample A/B trials through the locked BT pipeline; the affected slide was retracted outright.
 
-Every fix is committed with backups of the pre-fix data (`raw_results.backup_pre_reparse.csv`, `raw_results_claude.dedup.csv`), and every departure from plan is itemized in `phase3/DEVIATIONS.md` (D1–D18, Willroth & Atherton 2024 format: what / when / why / impact).
+Every fix is committed with backups of the pre-fix data (`raw_results.backup_pre_reparse.csv`, `raw_results_claude.dedup.csv`) — with one recorded exception (D16: an in-place recovery whose originals predate the first commit; the script now writes a backup first) — and every departure from plan is itemized in `phase3/DEVIATIONS.md` (D1–D22, Willroth & Atherton 2024 format: what / when / why / impact).
 
 ## 3. What we built
 
@@ -160,7 +160,7 @@ Reproduction: `./run_all.sh` from the repo root regenerates `phase3/results/` en
 | Claim | Source of truth |
 |---|---|
 | Preregistered design, hypotheses verbatim | `phase3/PREREGISTRATION.md` (initial freeze `af26ebc`; final hypothesis wording `652d802`, both 2026-07-08, before data) |
-| All deviations D1–D18 | `phase3/DEVIATIONS.md` |
+| All deviations D1–D22 | `phase3/DEVIATIONS.md` |
 | Rigor audit (47 findings) | `phase3/AUDIT_PREREG_ALIGNMENT.md` |
 | H1 preregistered (0/12) | `phase3/results/derived/rsa_results.csv`, `phase3/analysis/analysis/rsa.py` |
 | H1 robustness (32 tests) | `phase3/results/derived/rsa_comparison_results.csv`, `phase3/analysis/analysis/rsa_comparison.py` |
