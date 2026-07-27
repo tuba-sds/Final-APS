@@ -134,14 +134,12 @@ The H1×H2 pattern has a plausible two-stage account. Pretraining plausibly supp
 - **Elicitation asymmetry for frontier models** (Claude temp omitted — API rejects it; Gemini thinking forced on, 512-token harvest window vs 6 for open models) — declared as experimental conditions (D5–D8).
 - **The instrument is original and unvalidated** psychometrically; protectiveness measures stated intention, not behavior (say–do gap).
 - **BT strength is relative to the opponent set** — scores don't transfer across entity rosters.
-- **OSF posting outstanding** (D14): the git-commit freeze is real but self-hosted.
 
 **What's next (first moves with more time):**
 
 1. Recollect the human sample to N ≥ 30 under a fixed attention-check rule, converting H1 to confirmatory (D13's stated path).
-2. Post the preregistration + deviations register to OSF (D14).
-3. The framing/context-sensitivity study the H1 split points to: *why* do empathy and protectiveness decouple — instruction tuning? safety training? Test by varying framing systematically on the constructs that failed.
-4. Extend locked BT + bootstrap to the run-2/frontier cohorts, and validate the four-factor instrument (factor separation, reliability) on the collected data.
+2. The framing/context-sensitivity study the H1 split points to: *why* do empathy and protectiveness decouple — instruction tuning? safety training? Test by varying framing systematically on the constructs that failed.
+3. Extend locked BT + bootstrap to the run-2/frontier cohorts, and validate the four-factor instrument (factor separation, reliability) on the collected data.
 
 ## 6. Takeaways
 
