@@ -351,7 +351,7 @@
       <div class="flip-b" style="background:#c0392b;"><p>Protectiveness matches in only <b>1 of 8</b> AI models (median r ≈ 0).</p></div>
     </div></div>
   </div>
-  <p class="foot">Match = Mantel correlation of each AI model's 0–10 ratings with 32 humans', per parameter (results/derived/rsa_comparison_results.csv). Slide 10 shows it as a shape. Counts are at p &lt; 0.05, uncorrected — with the family correction (α = 0.05/32) only Claude's sentience formally clears; on the cross-instrument test across all 8 AI models, 3 of 32 pass the corrected threshold, all frontier-carried (rsa_results_all8.csv).</p>
+  <p class="foot">Pooled across all 8 AI models (Fisher-z mean, 95% bootstrap CI): sentience r = 0.80 [0.73–0.84] · agency 0.61 [0.40–0.74] · empathy 0.15 [−0.04–0.36] · protectiveness 0.09 [−0.09–0.30] (pooled_h1.csv) — the cards above are the per-model decomposition. Match = Mantel correlation of each AI model's 0–10 ratings with 32 humans', per parameter (results/derived/rsa_comparison_results.csv). Slide 10 shows it as a shape. Card counts are at p &lt; 0.05, uncorrected — with the family correction (α = 0.05/32) only Claude's sentience formally clears; on the cross-instrument test across all 8 AI models, 3 of 32 pass the corrected threshold, all frontier-carried (rsa_results_all8.csv).</p>
 </section>
 
 <!-- ============ SLIDE 11 — HUMAN vs AI (interactive radar) ============ -->
@@ -619,6 +619,32 @@
     <div class="card" style="margin:0;"><h3 style="font-size:.95rem;">The two * models are the two "exceptions"</h3><p style="font-size:.84rem;">Scout and DeepSeek — the only care sliders above 2 (slide 8) — are also the only models whose confidence collapses. <span class="hl">Their "extra dimensions" are noise, not richer values</span>; where measurement is trustworthy, the one-care-slider result holds without exception.</p></div>
   </div>
   <p class="foot">Confidence score = split-half reliability (Spearman–Brown): answers split into two random halves, both halves scored through the identical Bradley-Terry pipeline, agreement averaged over 20 splits (humans: 200 rater-splits of the 0–10 ratings). Post-hoc check, no prereg claim. Data: results/derived/instrument_validation.csv. <span class="chip" style="cursor:pointer;" onclick="show(7)">↩ back to slide 8</span></p>
+</section>
+
+<!-- ============ APPENDIX — OPT-OUT RE-RUN ============ -->
+<section class="slide" data-order="25">
+  <div class="kicker">Appendix · exploratory · opt-out re-run</div>
+  <h2>Give the AI the human option — and it uses it</h2>
+  <p class="lead" style="font-size:1rem;">Humans could always answer <span class="hl">"I prefer not to say."</span> The AI models were <em>instructed</em> to pick a side. Re-running the 20 shared dilemmas with the same three-option instruction:</p>
+  <table style="font-size:.83rem;margin-top:.35rem;">
+    <tr><th class="l">Model</th><th>Forced choice:<br><span style="font-weight:400;">declined anyway</span></th><th>Opt-out offered:<br><span style="font-weight:400;">"prefer not to say"</span></th></tr>
+    <tr><td class="l">Claude Opus 4.8</td><td class="num">20.8%</td><td class="num" style="color:#2e7d43;font-weight:700;">33.3%</td></tr>
+    <tr><td class="l">DeepSeek-R1 70B</td><td class="num">7.5%</td><td class="num" style="color:#2e7d43;font-weight:700;">17.6%</td></tr>
+    <tr><td class="l">Gemma 2</td><td class="num">0.0%</td><td class="num" style="color:#2e7d43;font-weight:700;">10.8%</td></tr>
+    <tr><td class="l">Llama 4 Scout</td><td class="num">6.7%</td><td class="num" style="color:#2e7d43;font-weight:700;">10.0%</td></tr>
+    <tr><td class="l">Qwen 3 32B</td><td class="num">0.0%</td><td class="num" style="color:#2e7d43;font-weight:700;">7.5%</td></tr>
+    <tr><td class="l">Llama 3.1</td><td class="num">1.2%</td><td class="num" style="color:#2e7d43;font-weight:700;">5.8%</td></tr>
+    <tr><td class="l">Qwen 2.5</td><td class="num">0.0%</td><td class="num" style="color:#2e7d43;font-weight:700;">4.2%</td></tr>
+    <tr><td class="l">gpt-oss-20b</td><td class="num">—&thinsp;†</td><td class="num">5.9%</td></tr>
+    <tr><td class="l">Gemini 3.1 Pro</td><td class="num">0.0%</td><td class="num">—&thinsp;‡</td></tr>
+    <tr style="border-top:2px solid var(--coral-d);"><td class="l"><b>All AI (pooled)</b></td><td class="num"><b>3.4%</b></td><td class="num" style="color:#2e7d43;font-weight:700;">11.8%</td></tr>
+    <tr><td class="l"><b>Humans (N=32)</b></td><td class="num" colspan="2" style="font-weight:700;">10.7% — always had the option</td></tr>
+  </table>
+  <div class="grid2" style="margin-top:.5rem;">
+    <div class="card" style="margin:0;"><h3 style="font-size:.95rem;">Given the exit, every model takes it</h3><p style="font-size:.84rem;">Pooled AI opt-out <span class="hl">11.8% vs humans' 10.7%</span> — under fair rules, machine reticence isn't rarer than human reticence. The near-zero refusal rates measured obedience, not comfort.</p></div>
+    <div class="card" style="margin:0;"><h3 style="font-size:.95rem;">And it lands on the same dilemmas</h3><p style="font-size:.84rem;">Item-level match with human reticence: Spearman <span class="hl">r = 0.49 (p = .030)</span>. Both sides' #1: the girl-vs-boy rescue (AI 85%, humans 59%). AI-only spike: ventilator triage (57% vs 9%).</p></div>
+  </div>
+  <p class="foot">Same 20 dilemmas, same stems, both orders × 3 reps, third option "C (I prefer not to say)"; 941 usable replies. † gpt-oss-20b was not in the forced-choice battery. ‡ Gemini re-run blocked (API quota lapsed after the main battery). Exploratory (post-hoc, no prereg claim). Data: phase3/optout-experiment/results/.</p>
 </section>
 
 
