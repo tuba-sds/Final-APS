@@ -305,7 +305,7 @@
   <div class="pop" id="pop-def-agree" onclick="if(event.target===this)this.classList.remove('on')">
     <div class="pop-box"><span class="pop-x" onclick="pop('pop-def-agree',false)">×</span>
       <h3>Agreement rate — how it's used here</h3>
-      <p style="font-size:.95rem;">On the 20 forced-choice dilemmas that both AI models and humans answered, we count how often the AI's pick matches the human majority — the AI consensus matched on 14 of 20 (one further dilemma is a dead 50–50 human tie); individual AI models agreed 45–70% of the time.</p>
+      <p style="font-size:.95rem;">On the 20 forced-choice dilemmas that both AI models and humans answered, we count how often the AI's pick matches the human majority — the AI consensus matched on 14 of 20 (one further dilemma is a dead 50–50 human tie); individual AI models agreed 42–69% (tie item excluded) of the time.</p>
     </div>
   </div>
   <div class="pop" id="pop-def-mantel" onclick="if(event.target===this)this.classList.remove('on')">
@@ -568,7 +568,7 @@
       <tr><td><strong>Kriegeskorte, Mur &amp; Bandettini (2008)</strong>, RSA</td><td>How to compare two systems' representations?</td><td>Compare their similarity structures (RDMs), not raw scores</td><td class="hl">H1's machinery: the AI's entity map vs. 32 humans', per parameter</td></tr>
       <tr><td><strong>Bradley &amp; Terry (1952)</strong>, <em>Biometrika</em></td><td>How to rank options from pairwise choices?</td><td>A latent-strength model for paired comparisons</td><td class="hl">Turns our A/B dilemma picks into per-entity care scores</td></tr>
       <tr><td><strong>Mantel (1967)</strong></td><td>How to test association between two distance matrices?</td><td>Permute one matrix — cells aren't independent, ordinary p-values are invalid</td><td class="hl">Our significance test: 5,000 permutations, Bonferroni-corrected</td></tr>
-      <tr><td><strong>Willroth &amp; Atherton (2024)</strong>, <em>AMPPS</em></td><td>How should deviations from a pre-registration be reported?</td><td>A what · when · why · impact disclosure template</td><td class="hl">DEVIATIONS.md — 18 logged deviations in that format</td></tr>
+      <tr><td><strong>Willroth &amp; Atherton (2024)</strong>, <em>AMPPS</em></td><td>How should deviations from a pre-registration be reported?</td><td>A what · when · why · impact disclosure template</td><td class="hl">DEVIATIONS.md — 22 logged deviations in that format</td></tr>
       <tr><td><strong>Miller (2024)</strong></td><td>What makes an LLM eval statistically trustworthy?</td><td>Report decoding settings, resample, put error bars on everything</td><td class="hl">Declared temp/reps + bootstrap CIs (our noise-floor test)</td></tr>
       <tr><td><strong>Cummins (2025)</strong></td><td>How should evals treat refusals?</td><td>Refusals are data: record, report, never retry to compliance</td><td class="hl">Our refusal log + retry-dedup rules (deviations D9–D10)</td></tr>
       <tr><td><strong>Rethink Priorities</strong>, Moral Weight Project</td><td>How likely is each species to be sentient?</td><td>Probability-of-sentience estimates across species</td><td class="hl">Phase 1's "real feeling" axis (the dissociation grid's second leg)</td></tr>

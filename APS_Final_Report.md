@@ -3,7 +3,7 @@
 > **Superseded (2026-07-22):** this draft is kept for the record but its human-baseline numbers are the interim N=18 sample. The current, maintained write-up — full N=32 sample, research-paper format — is **`APS_Research_Paper.md`** ([PDF](https://tuba-sds.github.io/Final-APS/APS_Research_Paper.pdf)).
 
 **Author:** Tuba Ali · **Date:** 2026-07-15 (v0.1 draft)
-**Companion artifacts:** presentation (`FINAL-APS/APS_Presentation_v2.html`), live demo (APS Dashboard, "You vs. the AI", on Render), pipeline + data (`phase1/`–`phase3/`), preregistration (`phase3/PREREGISTRATION.md`, frozen 2026-07-08, commits `af26ebc`/`652d802`), deviations register (`phase3/DEVIATIONS.md`, D1–D18).
+**Companion artifacts:** presentation (`FINAL-APS/APS_Presentation_v2.html`), live demo (APS Dashboard, "You vs. the AI", on Render), pipeline + data (`phase1/`–`phase3/`), preregistration (`phase3/PREREGISTRATION.md`, frozen 2026-07-08, commits `af26ebc`/`652d802`), deviations register (`phase3/DEVIATIONS.md`, D1–D22).
 
 ---
 
@@ -42,7 +42,7 @@ The turn is the project's answer to "how did your thinking change, and why": a h
 
 ### 2.1 Design (preregistered, frozen before data)
 
-`phase3/PREREGISTRATION.md` was frozen on 2026-07-08, before any Phase-3 data was collected (test-run outputs were deleted first). Precisely: the initial freeze is commit `af26ebc`, and the final H1/H2/H3 wording — refocusing the primary question from text-tracking to AI-vs-human match — landed 18 minutes later in commit `652d802`; both precede the first data commit (2026-07-09). The commit timestamps are the freeze evidence — OSF posting is still outstanding (deviation D14).
+`phase3/PREREGISTRATION.md` was frozen on 2026-07-08, before any Phase-3 data was collected (test-run outputs were deleted first). Precisely: the initial freeze is commit `af26ebc`, and the final H1/H2/H3 wording — refocusing the primary question from text-tracking to AI-vs-human match — landed 18 minutes later in commit `652d802`; both precede the first data commit (2026-07-09). The commit timestamps are the freeze evidence (deviation D14).
 
 - **Constructs (4):** Sentience, Agency, Empathy, Protectiveness. These cross Gray, Gray & Wegner's (2007) two-factor mind-perception model (Experience: *can it feel?* / Agency: *can it think?*) with Eagly & Chaiken's (1993) tripartite attitude structure (cognition / affect / behavioral intention), bridged by Gray, Young & Waytz (2012): perceived experience is what makes an entity a moral patient. Sentience and agency are judgments *about the entity*; empathy and protectiveness are the rater's *own stance*. The combination is original to this project and psychometrically unvalidated — a declared limit, not a hidden one (`FINAL-APS/FOUR_FACTORS_RATIONALE.md`).
 - **Entities (30, locked a priori):** matched pairs isolating one difference each (girl vs boy at 4; honeybee vs bumblebee; sapling vs "mother tree"; unnamed local statue vs Lincoln Memorial vs Meiji Shrine; Fable 5 vs GPT-5.6 Sol vs Sophia the robot; a lifespan arc fetus → newborn → adult → elderly), plus real legal persons (Whanganui River, a company, a ministry). An earlier 45-entity plan (`FINAL-APS/APS_Phase3_Plan.md`) was cut to 30 at freeze.

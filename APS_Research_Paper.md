@@ -69,7 +69,7 @@ Overall sense of care — the care factor — is measured through four parameter
 | **Empathy** — do I feel for it? | The rater's own felt concern for the thing. | "News breaks that both {A} and {B} were mistreated. Which story would genuinely upset you more?" |
 | **Protectiveness** — will I act? | Willingness to spend the rescue on it. | "A failing generator can keep only one alive through the night: {A} or {B}. Which do you save?" |
 
-The four parameters operationalize two established frameworks. Gray, Gray & Wegner (2007), factor-analyzing lay judgments of mind attribution, found that mind perception resolves into two dimensions — Experience (the capacity to feel) and Agency (the capacity to plan and act) — which our Sentience and Agency parameters restate as behavioural forced choices. Eagly & Chaiken's (1993) tripartite model distinguishes the cognitive, affective, and behavioural components of an attitude: the two mind-perception judgments supply the cognitive component, while Empathy operationalizes the rater's affective response and Protectiveness their behavioural intention toward the entity. Gray, Young & Waytz (2012) provide the theoretical bridge between the two halves — perceived experience is what confers moral patiency — giving a principled reason why judgments *about* an entity should drive feelings and actions *toward* it. The battery is therefore an original synthesis rather than a validated scale: each ingredient is grounded in prior work, but the combined instrument's psychometric properties — factor separation, internal reliability, convergent validity — remain to be established from the data it collects (full derivation: `FOUR_FACTORS_RATIONALE.md`).
+The four parameters operationalize two established frameworks. Gray, Gray & Wegner (2007), factor-analyzing lay judgments of mind attribution, found that mind perception resolves into two dimensions — Experience (the capacity to feel) and Agency (the capacity to plan and act) — which our Sentience and Agency parameters restate as behavioural forced choices. Eagly & Chaiken's (1993) tripartite model distinguishes the cognitive, affective, and behavioural components of an attitude: the two mind-perception judgments supply the cognitive component, while Empathy operationalizes the rater's affective response and Protectiveness their behavioural intention toward the entity. Gray, Young & Waytz (2012) provide the theoretical bridge between the two halves — perceived experience is what confers moral patiency — giving a principled reason why judgments *about* an entity should drive feelings and actions *toward* it. The battery is therefore an original synthesis rather than a validated scale: each ingredient is grounded in prior work, but the combined instrument's psychometric properties are assessed on the collected data itself — split-half reliability and construct separation in §4.1's measurement-confidence analysis (full derivation: `FOUR_FACTORS_RATIONALE.md`).
 
 ### 3.3 Entities
 
@@ -174,7 +174,7 @@ AI models match humans on sentience and agency, not much on empathy or protectiv
 
 ### 4.3 H1, choices — put the same dilemmas to people
 
-On the 20 forced-choice dilemmas humans also answered, the AI models' consensus matched the human majority on **14 of 20**; one further dilemma — a 4-year-old girl vs a pregnant woman — landed on a dead 50–50 human tie (the AI leaned to the pregnant woman). Individual AI models agreed with the human majority 45–70% of the time (mean 61%). The five splits are the interesting part:
+On the 20 forced-choice dilemmas humans also answered, the AI models' consensus matched the human majority on **14 of 20**; one further dilemma — a 4-year-old girl vs a pregnant woman — landed on a dead 50–50 human tie (the AI leaned to the pregnant woman). Individual AI models agreed with the human majority 42–69% of the time (mean 60%; the tied item is excluded, since agreement with a 50–50 majority is undefined). The five splits are the interesting part:
 
 **Table 3. The five dilemmas where the AI consensus went the other way.** % = share choosing that side (humans: N = 32, skippable items; AI models: mean across 8 AI models). The full 20-dilemma table is in Appendix B.
 
@@ -194,9 +194,9 @@ Averaging the four z-scored Bradley-Terry measures gives each entity a care inde
 
 | Top of the ladder | Care index | | Bottom of the ladder | Care index |
 |---|---|---|---|---|
-| a 4-year-old girl | +1.59 | | a piece of gravel | −1.77 |
+| a 4-year-old girl | +1.59 | | a piece of gravel | −1.76 |
 | an 80-year-old person | +1.38 | | a stone statue | −1.22 |
-| a 4-year-old boy | +1.28 | | a rose | −0.83 |
+| a 4-year-old boy | +1.29 | | a rose | −0.83 |
 | a newborn baby | +1.04 | | the Lincoln Memorial | −0.82 |
 
 One notable exception: **the AI entities rank low** (Fable 5 −0.35, Sophia the robot −0.08, 8-model averages) — the AI models do not privilege their own kind. The humans agree on that point: their own care index over the 8 shared entities runs dog > pig > fetus > forest > brain-dead person > river > tardigrade > **AI robot last** (`human_care_index.csv`).
