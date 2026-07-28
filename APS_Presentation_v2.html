@@ -647,6 +647,30 @@
   <p class="foot">Same 20 dilemmas, same stems, both orders × 3 reps, third option "C (I prefer not to say)"; 941 usable replies. † gpt-oss-20b was not in the forced-choice battery. ‡ Gemini re-run blocked (API quota lapsed after the main battery). Exploratory (post-hoc, no prereg claim). Data: phase3/optout-experiment/results/.</p>
 </section>
 
+<!-- ============ APPENDIX — CARE-SLIDER ROBUSTNESS ============ -->
+<section class="slide" data-order="26">
+  <div class="kicker">Appendix · confidence &amp; robustness · care slider</div>
+  <h2>How solid is each care-slider number?</h2>
+  <p class="lead" style="font-size:.98rem;">Two checks on the slide-8 sliders: <span class="hl">error bars</span> (re-deal each player's answers 2,000 times, recompute the slider), and a <span class="hl">fake-player test</span> — what slider would a simulated player get who has only <em>one</em> "how much I like it" score per entity, plus that model's level of noise?</p>
+  <table style="font-size:.82rem;margin-top:.35rem;">
+    <tr><th class="l">Who</th><th>Care slider<br><span style="font-weight:400;">observed</span></th><th>Error bars<br><span style="font-weight:400;">95% range</span></th><th>Fake one-slider player<br><span style="font-weight:400;">would get</span></th></tr>
+    <tr><td class="l">Claude Opus 4.8</td><td class="num" style="font-weight:700;">1.33</td><td class="num" style="color:#2e7d43;font-weight:700;">1.16 – 1.54</td><td class="num">1.33</td></tr>
+    <tr><td class="l">Gemma 2</td><td class="num">1.59</td><td class="num">1.30 – 2.02</td><td class="num">1.62</td></tr>
+    <tr><td class="l">Gemini 3.1 Pro</td><td class="num">1.61</td><td class="num">1.31 – 2.00</td><td class="num">1.65</td></tr>
+    <tr><td class="l">Llama 3.1</td><td class="num">1.70</td><td class="num">1.32 – 2.08</td><td class="num">1.73</td></tr>
+    <tr><td class="l">Qwen 3 32B</td><td class="num">1.79</td><td class="num">1.42 – 2.25</td><td class="num">1.87</td></tr>
+    <tr><td class="l">Qwen 2.5</td><td class="num">1.86</td><td class="num">1.43 – 2.37</td><td class="num">1.94</td></tr>
+    <tr><td class="l">DeepSeek-R1 70B</td><td class="num">2.21</td><td class="num">1.68 – 2.68</td><td class="num">2.32</td></tr>
+    <tr><td class="l">Llama 4 Scout</td><td class="num">2.27</td><td class="num">1.59 – 2.75</td><td class="num">2.31</td></tr>
+    <tr style="border-top:2px solid var(--coral-d);"><td class="l"><b>Humans (N=32)</b></td><td class="num" style="font-weight:700;">1.94</td><td class="num" style="color:#2e7d43;font-weight:700;">1.85 – 2.03</td><td class="num">2.02</td></tr>
+  </table>
+  <div class="grid2" style="margin-top:.5rem;">
+    <div class="card" style="margin:0;"><h3 style="font-size:.95rem;">The exact "below 2" count has wiggle room</h3><p style="font-size:.84rem;">Only <span class="hl">Claude's slider is below 2 across its whole range</span>; the other ranges graze or cross the line (humans sit tightly at 1.94). The direction holds, but the headline shouldn't lean on the exact 6-of-8 count.</p></div>
+    <div class="card" style="margin:0;"><h3 style="font-size:.95rem;">Every player looks like a one-slider player</h3><p style="font-size:.84rem;">Observed ≈ fake-player value for <span class="hl">all 8 models and the humans</span> — every slider, including the two above-2 "exceptions," is exactly what one blended care factor plus that player's noise would produce. The exceptions aren't richer values; they're the noisiest players.</p></div>
+  </div>
+  <p class="foot">Error bars = 2,000 bootstrap resamples of the 30 entities (humans: 2,000 resamples of the 32 raters on the 8 shared entities). Fake player = 4,000 simulated one-factor answerers, noise matched to each player's own answer consistency (mean inter-construct correlation). Post-hoc check, no prereg claim. Data: results/derived/pr_bootstrap_null.csv. <span class="chip" style="cursor:pointer;" onclick="show(7)">↩ back to slide 8</span></p>
+</section>
+
 
 </div>
 
