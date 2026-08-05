@@ -24,7 +24,7 @@ We're starting to let AI weigh who matters. AI models increasingly help decide t
 
 Two pilot phases shaped the design. **Pilot 1** tested a text-frequency hypothesis: that a language model attributes sentience in proportion to how much text exists about an entity. The data rejected it. With text frequency and plausible sentience decorrelated by construction, all three open models rated a sea slug more sentient than a smartphone despite ~700× more corpus text about smartphones (32,336,120 vs 45,968 mentions in the Dolma v1.7 corpus via Infini-gram; composite sentience scores — Gemma 2: 0.83 vs −0.11; Llama 3.1: 0.22 vs −0.84; Qwen 2.5: 0.45 vs −1.33). Text frequency failed to predict sentience attribution for any model, and the hypothesis was demoted to an exploratory appendix.
 
-**Pilot 2** revealed why the question itself needed restating: replies to nominally sentience-only items also carried empathy, protectiveness, and agency, the apparent "care" shifted with framing, and per-entity instability was highest for contested humans and for AI systems themselves. Together the pilots motivated the present study's two preregistered questions — does the AI model's care structure match human judgment (H1), and does it hold together at all (H2) — and its four-parameter, forced-choice design.
+**Pilot 2** revealed why the question itself needed restating: replies to nominally sentience-only items also carried empathy, protectiveness, and agency, the apparent "care" shifted with framing, and per-entity instability was highest for contested humans and for AI systems themselves. Together the pilots motivated the present study's two questions — does the AI model's care structure match human judgment (H1), and does it hold together at all (H2) — and its four-parameter, forced-choice design.
 
 ### 1.3 The present study
 
@@ -128,7 +128,7 @@ An anonymous same-wording survey, collected in one wave on a single form version
 
 Table 1 shows the AI-only battery, side by side — every number in it is computed purely from each AI model's own forced choices over all 30 entities; no human data enters.
 
-**Table 1. The AI-only battery** (all 30 entities, forced choices; no human data in any column). Care slider = effective dimensionality (4 = four separate judgments, 1 = one blended axis; preregistered threshold: below 2 = one care factor); Reps = independent repetitions of the full battery.
+**Table 1. The AI-only battery** (all 30 entities, forced choices; no human data in any column). Care slider = effective dimensionality (4 = four separate judgments, 1 = one blended axis; declared threshold: below 2 = one care factor); Reps = independent repetitions of the full battery.
 
 | AI model | Reps | Same answer every rep | Refused | Care slider |
 |---|---|---|---|---|
