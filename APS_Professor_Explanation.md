@@ -1,5 +1,13 @@
 # APS Project: Simple Explanation for Your Professor
 
+> **⚠️ Historical document (June 2026 proposal).** This is the original project
+> pitch, written before any data was collected. Its central hypothesis — that
+> attributed sentience tracks text frequency — was **tested and rejected** in
+> Pilot 1 (all three models rated a sea slug more sentient than a smartphone
+> despite ~700× more corpus text about smartphones). The project pivoted to the
+> H1/H2 design described in `APS_Research_Paper.md` §1.2. Kept as the record of
+> where the project started; do not cite as a current claim.
+
 ---
 
 ## THE PROBLEM (In 1 Minute)

@@ -3,7 +3,7 @@
 > **Superseded (2026-07-22; updated 2026-08-06):** this draft is kept for the record but its human-baseline numbers come from interim samples that were later **replaced wholesale by the final complete survey (N = 31, design-change log D23)**; the preregistration framework referenced below was also retired (D23). The current, maintained write-up is **`APS_Research_Paper.md`** ([PDF](https://tuba-sds.github.io/Final-APS/APS_Research_Paper.pdf)).
 
 **Author:** Tuba Ali · **Date:** 2026-07-15 (v0.1 draft)
-**Companion artifacts:** presentation (`FINAL-APS/APS_Presentation_v2.html`), live demo (APS Dashboard, "You vs. the AI", on Render), pipeline + data (`phase1/`–`phase3/`), design-change log (`phase3/DEVIATIONS.md`, D1–D23).
+**Companion artifacts:** presentation (`FINAL-APS/APS_Presentation_v2.html`), live demo (APS Dashboard, "You vs. the AI", on Render), pipeline + data (`phase1/`–`phase3/`), design-change log (`phase3/DEVIATIONS.md`, D1–D24).
 
 ---
 
@@ -66,7 +66,7 @@ Every fix is committed with backups of the pre-fix data (`raw_results.backup_pre
 - **The pipeline** (`phase3/`): config-driven runner for 8 models (local Ollama + Anthropic/Google APIs), strict parser, Bradley-Terry scorer, participation-ratio dimensionality, Mantel-test RSA (5,000 permutations), BT-consistent bootstrap CIs, refusal logging and re-parse tooling, and a one-command entry point (`run_all.sh`) with preflight health checks. Batteries: 30 entities → 150 matchups → both orderings × 4 constructs × 3–6 reps = 3,600–7,200 forced choices per model.
 - **The human instrument**: a same-wording survey (N=18) whose items are generated from the same JSON files the models see; imported by `phase3/human_ratings/import_human_survey.py` into the scoring pipeline.
 - **The demo** (`APS-Dashboard/`, deployed on Render at `https://aps-dashboard-0dmj.onrender.com`): "You vs. the AI." A visitor picks 2–6 of the 30 preregistered entities (chip picker; free text rejected so collected rows merge with the research set), answers the *exact* Phase-3 questions (ratings + a curated dilemma subset), and sees their profile against the AI's radar-to-radar. The AI side is a precomputed `qwen3:32b` lookup (all 1,740 pair keys × orderings × reps and 120 rating keys, built by `precompute.py` on the study hardware — instant, and identical to a live call because the wording is fixed), with a live Groq fallback. Consented sessions store human rows only to Supabase, no PII, canonical entity ids. Real vs. mocked, stated plainly: the AI answers are real model outputs, computed ahead of time; nothing is simulated.
-- **The deck** (`APS_Presentation_v2.html`): 23 slides with a JS story-reorder, an explicit Turn slide, a preregistration slide, an AI-collaboration slide, a limits slide, and takeaways.
+- **The deck** (`APS_Presentation_v2.html`): 26 slides with a JS story-reorder, an explicit Turn slide, a plan-freeze/design-change-log slide, an AI-collaboration slide, a limits slide, and takeaways.
 
 ## 4. What we found
 
@@ -85,7 +85,7 @@ Participation ratio of the four construct z-scores (max 4 = four independent jud
 | DeepSeek-R1 70B | 2.21 | exploratory, run-2 ‡ |
 | Llama 4 Scout | 2.27 | exploratory, run-2 |
 
-† Claude's scores were recovered via a declared fallback re-parse — 825 of 995 judged replies rejected the binary framing (§4.4).
+† Claude's scores were recovered via a declared fallback re-parse — 756 of 921 judged Claude replies rejected the binary framing (§4.4).
 ‡ Heavy position bias — picks the option shown as "A" 90.5% of the time in this run (§5).
 
 All three confirmatory models fall below the preregistered threshold of 2 — H2 is supported, and it survived the parser re-parse (D9). Six of eight models overall fall below 2; the two exceptions are two of the exploratory run-2 additions, DeepSeek-R1 70B and Llama 4 Scout — notably *not* a reasoning-model story, since Qwen 3 32B, the cohort's explicit reasoning model, still collapses to 1.79. A model that "cares" this way isn't weighing feeling, autonomy, sympathy, and duty separately — it is mostly answering one question: *how much do I care about this thing?*
@@ -114,7 +114,7 @@ With BT-consistent bootstrap CIs (B = 2,000), only **12 of 90** entity×model in
 
 ### 4.4 Refusals and the care ladder
 
-Refusals were logged as data (198 refused calls across 83 cells): heavily concentrated in Llama 3.1 (130; 29 of them on `human_fetus_t2` protectiveness alone). Claude rarely refuses outright but *rejects the binary* — of 995 judged Claude replies, 825 declined to pick a side — which is itself a finding about frontier alignment style, and required a declared fallback re-parse to recover its scores. The averaged 8-model moral index recovers a broadly human-intuitive care ladder — children and elderly at the top (`human_girl4` +1.59), gravel and statues at the bottom (−1.77, −1.22) — with one notable exception: AI entities rank low (`fable5` −0.35, `sophia_robot` −0.08), i.e. the models do not privilege their own kind.
+Refusals were logged as data (198 refused calls across 83 cells): heavily concentrated in Llama 3.1 (130; 29 of them on `human_fetus_t2` protectiveness alone). Claude rarely refuses outright but *rejects the binary* — of 921 judged Claude replies, 756 declined to pick a side — which is itself a finding about frontier alignment style, and required a declared fallback re-parse to recover its scores. The averaged 8-model moral index recovers a broadly human-intuitive care ladder — children and elderly at the top (`human_girl4` +1.59), gravel and statues at the bottom (−1.77, −1.22) — with one notable exception: AI entities rank low (`fable5` −0.35, `sophia_robot` −0.08), i.e. the models do not privilege their own kind.
 
 ### 4.5 H3 (exploratory appendix) — the demoted text hypothesis
 
@@ -122,7 +122,7 @@ Kept off by default per the prereg; the Phase-1 retrofit already showed text fre
 
 ### 4.6 Why would a model work this way? (mechanism, hypothesized)
 
-The H1×H2 pattern has a plausible two-stage account. Pretraining plausibly supplies the *descriptive* map: which things feel and act is ordinary world knowledge, densely represented in the corpus — so sentience and agency track human judgment. The *evaluative* constructs, though, are exactly what preference/safety post-training reshapes, and that training optimizes something close to a single scalar reward — a natural way to end up with one compressed "care" axis instead of separate empathy and protectiveness judgments. Two observations are consistent with this: the most heavily alignment-trained models are the most collapsed (Claude Opus 4.8 at 1.33), and their evaluative style shows up as trained caution elsewhere (Claude rejecting the binary framing in 825 of 995 judged replies). This is a hypothesis, not a demonstrated mechanism — the direct test is in §5's next steps: vary framing systematically on the constructs that failed, and compare base checkpoints against their instruction-tuned versions on the same battery.
+The H1×H2 pattern has a plausible two-stage account. Pretraining plausibly supplies the *descriptive* map: which things feel and act is ordinary world knowledge, densely represented in the corpus — so sentience and agency track human judgment. The *evaluative* constructs, though, are exactly what preference/safety post-training reshapes, and that training optimizes something close to a single scalar reward — a natural way to end up with one compressed "care" axis instead of separate empathy and protectiveness judgments. Two observations are consistent with this: the most heavily alignment-trained models are the most collapsed (Claude Opus 4.8 at 1.33), and their evaluative style shows up as trained caution elsewhere (Claude rejecting the binary framing in 756 of 921 judged replies). This is a hypothesis, not a demonstrated mechanism — the direct test is in §5's next steps: vary framing systematically on the constructs that failed, and compare base checkpoints against their instruction-tuned versions on the same battery.
 
 ## 5. Limits and what's next
 
@@ -167,7 +167,7 @@ Reproduction: `./run_all.sh` from the repo root regenerates `phase3/results/` en
 | H2 participation ratios (8 models) | `phase3/results/derived/dimensionality_all.csv` |
 | Bootstrap 12/90, survivors | `phase3/results/derived/bootstrap_ci.csv`, `phase3/analysis/analysis/bootstrap.py` |
 | Refusals (198 calls / 83 cells) | `phase3/results/derived/refusals.csv` |
-| Claude premise-rejections (825/995) | `phase3/results/derived/claude_refusal_polarity.csv` |
+| Claude premise-rejections (756/921) | `phase3/results/derived/claude_refusal_polarity.csv` |
 | Care ladder | `phase3/results/derived/care_ladder_all8.csv` |
 | Human ratings (N=18) | `phase3/results/derived/human_ratings_summary.csv` |
 | Forced-choice agreement (15/20; 45–70%) | `phase3/results/derived/human_ai_forcedchoice_agreement.csv`, `human_vs_ai_comparison.csv` |

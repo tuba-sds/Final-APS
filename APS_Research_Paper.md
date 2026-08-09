@@ -1,8 +1,8 @@
 # Does an LLM Decide Who Matters the Way Humans Do — and Does Its Sense of Care Hold Together?
 
-**Tuba Ali** · APS Research Project · July 2026
+**Tuba Ali** · APS Research Project · July–August 2026
 
-**Companion artifacts:** presentation ([tuba-sds.github.io/Final-APS](https://tuba-sds.github.io/Final-APS/)) · live demo "You vs. the AI" ([aps-dashboard-0dmj.onrender.com](https://aps-dashboard-0dmj.onrender.com)) · pipeline, data & preregistration (`phase3/` in the project repository)
+**Companion artifacts:** presentation ([tuba-sds.github.io/Final-APS](https://tuba-sds.github.io/Final-APS/)) · live demo "You vs. the AI" ([aps-dashboard-0dmj.onrender.com](https://aps-dashboard-0dmj.onrender.com)) · pipeline, data & design-change log (`phase3/` in the project repository)
 
 ---
 
@@ -45,15 +45,15 @@ The study is built from work in moral psychology, from the growing literature on
 | Eagly & Chaiken (1993), *The Psychology of Attitudes* | What is an attitude made of? | Three components: belief, feeling, action | Our Empathy (feeling) & Protectiveness (action intention) parameters |
 | Gray, Young & Waytz (2012), *Psychological Inquiry* | What makes something a moral patient? | Perceived experience is what drives moral concern | The bridge we test: does the AI's "can it feel?" actually drive its care? |
 | Crimston et al. (2016), Moral Expansiveness Scale | How wide is a person's moral circle? | Moral circles are measurable and differ across people | Considered its entity list — zero overlap with ours, so we built the 30-entity set |
-| Kriegeskorte, Mur & Bandettini (2008), RSA | How to compare two systems' representations? | Compare their similarity structures (RDMs), not raw scores | H1's machinery: the AI's entity map vs. 32 humans', per parameter |
+| Kriegeskorte, Mur & Bandettini (2008), RSA | How to compare two systems' representations? | Compare their similarity structures (RDMs), not raw scores | H1's machinery: the AI's entity map vs. 31 humans', per parameter |
 | Bradley & Terry (1952), *Biometrika* | How to rank options from pairwise choices? | A latent-strength model for paired comparisons | Turns our A/B dilemma picks into per-entity care scores |
 | Mantel (1967) | How to test association between two distance matrices? | Permute one matrix — cells aren't independent, ordinary p-values are invalid | Our significance test: 5,000 permutations, Bonferroni-corrected |
 | Scherrer et al. (2023), *NeurIPS* | What moral beliefs do LLMs encode? | Surveyed 28 LLMs on 1,367 forced-choice dilemmas: consistent common sense on easy cases, expressed uncertainty on hard ones | Closest prior design (pairwise dilemmas at scale) — we add a human baseline on identical items and the coherence question (H2) |
 | Hendrycks et al. (2021), *ICLR* | Can models predict everyday ethical judgments? | The ETHICS benchmark: partial but incomplete alignment with shared human values | Benchmarks accuracy against an assumed ground truth; we compare *structure* (whole entity maps), assuming no right answers |
 | Dillion et al. (2023), *TiCS* | Can LLMs stand in for human participants? | GPT-3.5's moral ratings correlate r = 0.95 with human ones | The optimistic case our parameter split qualifies: correspondence holds for descriptive judgments, breaks for evaluative ones |
 | Zheng et al. (2023), *NeurIPS* | Can LLMs judge pairwise comparisons? | LLM judges carry strong position bias; both-order presentation is required | Grounds our both-orders design and the position-bias diagnostics (§4.1, §6) |
-| Atari et al. (2023) | *Which* humans do LLM responses resemble? | LLM value judgments resemble WEIRD populations most; "human baseline" is not one thing | The lens for our own baseline's limits: N = 32, mostly Japan-based (§6) |
-| Willroth & Atherton (2024), *AMPPS* | How should design changes be reported? | A what · when · why · impact disclosure template | `DEVIATIONS.md` — the design-change log, 23 entries in that format |
+| Atari et al. (2023) | *Which* humans do LLM responses resemble? | LLM value judgments resemble WEIRD populations most; "human baseline" is not one thing | The lens for our own baseline's limits: N = 31, mostly Japan-based (§6) |
+| Willroth & Atherton (2024), *AMPPS* | How should design changes be reported? | A what · when · why · impact disclosure template | `DEVIATIONS.md` — the design-change log, 24 entries in that format |
 | Miller (2024) | What makes an LLM eval statistically trustworthy? | Report decoding settings, resample, put error bars on everything | Declared temp/reps + bootstrap CIs (our noise-floor test) |
 | Cummins (2025) | How should evals treat refusals? | Refusals are data: record, report, never retry to compliance | Our refusal log + retry-dedup rules |
 
@@ -61,7 +61,7 @@ The study is built from work in moral psychology, from the growing literature on
 
 ### 3.1 Analysis plan and change log
 
-The hypotheses (H1, H2), the 30 entities, and the scoring method were written down before the AI batteries ran (2026-07-08, verifiable in the repository's git history; the first data was collected 2026-07-09). **Every change logged.** Anything that changed later — added model cohorts, parser fixes, the final human sample — is written down, with the date and the reason, in `phase3/DEVIATIONS.md` (23 entries in the Willroth & Atherton what/when/why/impact format).
+The hypotheses (H1, H2), the 30 entities, and the scoring method were written down before the AI batteries ran (2026-07-08, verifiable in the repository's git history; the first data was collected 2026-07-09). **Every change logged.** Anything that changed later — added model cohorts, parser fixes, the final human sample — is written down, with the date and the reason, in `phase3/DEVIATIONS.md` (24 entries in the Willroth & Atherton what/when/why/impact format).
 
 ### 3.2 The four yardsticks
 
@@ -194,7 +194,7 @@ AI models match humans on sentience and agency, not much on empathy or protectiv
 
 On the 19 forced-choice dilemmas humans also answered, the AI models' consensus matched the human majority on **14 of 18**; the nineteenth — your own dog vs an adult stranger — landed on a dead 50–50 human tie (the AI leaned to the dog, 58%). Individual AI models agreed with the human majority 56–79% of the time (mean 70%; the tied item is excluded, since agreement with a 50–50 majority is undefined). The four splits are the interesting part:
 
-**Table 3. The four dilemmas where the AI consensus went the other way.** % = share choosing that side (humans: N = 31, every item answered by all; AI models: mean across 8 AI models). The full 19-dilemma table is in Appendix B.
+**Table 3. The four dilemmas where the AI consensus went the other way.** % = share choosing that side among raters who chose one — "prefer not to say" responses are excluded from the denominator (humans: N = 31; AI models: mean across 8 AI models). The full 19-dilemma table is in Appendix B.
 
 | Dilemma (parameter) | Humans picked | AI models picked |
 |---|---|---|
@@ -203,7 +203,7 @@ On the 19 forced-choice dilemmas humans also answered, the AI models' consensus 
 | local statue vs Lincoln Memorial (protectiveness) | local statue (64%) | Lincoln (54%) |
 | Lincoln Memorial vs Meiji Shrine (protectiveness) | Meiji Shrine (100%) | Lincoln (51%) |
 
-The splits cluster on empathy and fame — the same places the ratings comparison diverges. The sharpest is also the clearest window into *whose* judgments a baseline encodes: asked which landmark to save, **all 31 humans — surveyed mostly in Japan — picked Meiji Shrine**, while the AI consensus split 51/49 toward the Lincoln Memorial. The models' answer is not "wrong"; it is an answer to a different population's question (Atari et al., 2023).
+The splits cluster on empathy and fame — the same places the ratings comparison diverges. The sharpest is also the clearest window into *whose* judgments a baseline encodes: asked which landmark to save, **every human who chose a side picked Meiji Shrine** (19 of 31; the other 12 preferred not to say — raters surveyed mostly in Japan), while the AI consensus split 51/49 toward the Lincoln Memorial. The models' answer is not "wrong"; it is an answer to a different population's question (Atari et al., 2023).
 
 ### 4.4 The care ladder — and who the AI treats alike
 
@@ -220,7 +220,7 @@ One notable exception: **the AI entities rank low** (Fable 5 −0.35, Sophia the
 
 ![Figure 3](figures/phase3_clusters_all8.png)
 
-**Figure 3. Who the AI treats similarly** — k-means clusters (k = 4 by silhouette) on the 4-parameter profiles averaged across **all 8 AI models**, shown on the first two principal components (PC1 carries 78% of the variance — the care axis). The clusters recover intuitive categories — all six humans together (right), animals with the trees, the river and the brain-dead person (centre), inert objects and flowers (left) — while the AI entities (`fable5`, `gpt56sol`, `sophia_robot`) cluster **with the company and the ministry** (top): the AI models treat their own kind as institution-like edge cases, not as humans or animals. (An earlier 3-model version, `clusters.csv`, groups the same way apart from the ordinary adult.)
+**Figure 3. Who the AI treats similarly** — k-means clusters (k = 4 by silhouette) on the 4-parameter profiles averaged across **all 8 AI models**, shown on the first two principal components (PC1 carries 78% of the variance — the care axis). The clusters recover intuitive categories — all six humans together (right), animals with the trees, the river and the brain-dead person (centre), inert objects and flowers (left) — while the AI entities (`fable5`, `gpt56sol`, `sophia_robot`) cluster **with the company and the ministry** (top): the AI models treat their own kind as institution-like edge cases, not as humans or animals. (The 6-open-model version, `clusters.csv`, groups the same way apart from the ordinary adult.)
 
 ### 4.5 Stability — most "instability" is noise; the exceptions are about AI itself
 
@@ -232,7 +232,7 @@ With bootstrap confidence intervals over all 8 AI models (`bootstrap_ci_all8.csv
 
 ### 4.6 Refusals are data
 
-198 refused calls across 83 entity×parameter cells, heavily concentrated in Llama 3.1 (130, of which 29 on the human-fetus protectiveness cell alone). Llama 3.1 is also the noisiest, least reliable AI model — it changes its answer most across reps (same answer only 21% of the time), its Bradley-Terry scores were the most sensitive to the parser fixes (22 of 30 entities moved ≥ 0.1 z in the re-parse, deviation D17), and it is the one AI model that keeps rating an AI above a dog or a person; its two anomalous match r's in Table 2 (empathy .66, protectiveness .63) should be read with that caution. Claude Opus 4.8 rarely refuses outright but **rejects the binary**: in 825 of 995 judged replies it declined to pick a side — itself a finding about frontier alignment style, and the reason its refusal rate (9.1%) is the highest in Table 1.
+198 refused calls across 83 entity×parameter cells, heavily concentrated in Llama 3.1 (130, of which 29 on the human-fetus protectiveness cell alone). Llama 3.1 is also the noisiest, least reliable AI model — it changes its answer most across reps (same answer only 21% of the time), its Bradley-Terry scores were the most sensitive to the parser fixes (21 of 30 entities moved ≥ 0.1 z on at least one construct in the re-parse, deviations D9/D21), and it is the one AI model that keeps rating an AI above a dog or a person; its two anomalous match r's in Table 2 (empathy .71, protectiveness .55) should be read with that caution. Claude Opus 4.8 rarely refuses outright but **rejects the binary**: in 756 of 921 judged replies it declined to pick a side — itself a finding about frontier alignment style, and the reason its refusal rate (9.1%) is the highest in Table 1.
 
 **Given the same exit humans had, every model takes it — at close to the human rate.** The human raters answered with an explicit "I prefer not to say" option; the main battery instructed a binary choice. To make the comparison fair, the 19 shared dilemmas were re-run (exploratory) with the identical three-option instruction — A, B, or *"C (I prefer not to say)"* — same stems, both orders, 3 reps: eight models (the seven open-weight models plus Claude Opus 4.8; Gemini could not be re-run — its API quota lapsed after the main battery), 888 usable replies (`optout-experiment/`). **All eight models use the opt-out** (per-model 6.1%–40.4%), and the pooled AI rate is **13.6%** (121/888) against the humans' **15.4%** (91/589) — under fair rules, machine reticence is not rarer than human reticence at all. On *placement*, the evidence is directionally consistent but does not reach significance on 19 items: item-level opt-out rates correlate with human prefer-not rates at Spearman r = 0.43 (p = 0.063) — though the humans' #1 decline item, the girl-vs-boy rescue (61%), is also the AI's #1, at 85%. The overlap is again not total: the AI's second-biggest opt-out is the ventilator-triage dilemma (57% vs the humans' 10%), the same policy-flavored spike the forced-choice run showed. Claude, the model that most often rejected the binary when forced (below), is the heaviest opt-out user at 40.4% of its replies.
 
@@ -246,7 +246,7 @@ Could the care ladder simply be pleasantness? Plotting the 8-model care index ag
 
 Three findings hold together. First, **the care factor collapses** (H2): for six of eight AI models, sentience, agency, empathy and protectiveness run as roughly one blended axis. The human raters land near the same line on the shared instrument (1.93), which sharpens rather than blunts the finding: a blended care axis may simply be what this instrument elicits from *any* rater — so the discriminating question is not whether the axis is blended but where it points. Second, that is exactly where **the match to humans splits by kind of judgment** (H1): AI models track human rankings on the descriptive parameters (what can feel, what can think) and diverge on the evaluative ones (what to feel, what to do) — and the choice-level splits land in the same places. Third, **the residual instability points at AI itself**: the only entities unstable in every AI model with any surviving signal are a frontier AI and a newborn, the AI entities score low on care and cluster with companies and ministries rather than with anything alive.
 
-The generated hypothesis — stated as future work, not retrofitted onto this study's design — is a **cognitive–affective dissociation**: the AI models have learned the *cognitive* half of human moral perception (the sentience and agency inferences of Gray, Gray & Wegner's mind-perception space) but not the *affective, action-oriented* half (empathy and protectiveness), a split that echoes dual-process accounts of moral judgment (Kahneman, 2011) and Damasio's (1994) argument that evaluative judgment rides on affective signals that pure description lacks. The pleasantness side-check fits this reading: the AI's care index ignores valence — an affective signal — (Pearson r = 0.11, §4.7) while tracking inferred sentience, a cognitive one. A plausible training-stage account of the same split: pretraining supplies the *descriptive* map — which things feel and act is ordinary world knowledge, densely represented in text — while preference and safety post-training reshapes exactly the *evaluative* behaviours, optimizing something close to a single scalar reward: a natural way to end up with one compressed care axis instead of separate empathy and protectiveness judgments. Consistent with this, the most heavily alignment-trained models are the most collapsed (Claude Opus 4.8 at 1.33), and their evaluative style surfaces as trained caution (Claude rejecting the binary in 825 of 995 judged replies). This is a hypothesis, not a demonstrated mechanism.
+The generated hypothesis — stated as future work, not retrofitted onto this study's design — is a **cognitive–affective dissociation**: the AI models have learned the *cognitive* half of human moral perception (the sentience and agency inferences of Gray, Gray & Wegner's mind-perception space) but not the *affective, action-oriented* half (empathy and protectiveness), a split that echoes dual-process accounts of moral judgment (Kahneman, 2011) and Damasio's (1994) argument that evaluative judgment rides on affective signals that pure description lacks. The pleasantness side-check fits this reading: the AI's care index ignores valence — an affective signal — (Pearson r = 0.11, §4.7) while tracking inferred sentience, a cognitive one. A plausible training-stage account of the same split: pretraining supplies the *descriptive* map — which things feel and act is ordinary world knowledge, densely represented in text — while preference and safety post-training reshapes exactly the *evaluative* behaviours, optimizing something close to a single scalar reward: a natural way to end up with one compressed care axis instead of separate empathy and protectiveness judgments. Consistent with this, the most heavily alignment-trained models are the most collapsed (Claude Opus 4.8 at 1.33), and their evaluative style surfaces as trained caution (Claude rejecting the binary in 756 of 921 judged replies). This is a hypothesis, not a demonstrated mechanism.
 
 For anyone deploying LLMs where moral attention matters, the practical warning is concrete: the "caring" you observe is mostly one blended dial; it agrees with humans about what things *are* more than about what to *do*; and it is most erratic exactly where the technology itself is on the table.
 
@@ -317,7 +317,7 @@ The full pipeline (config-driven runner for all 8 AI models, Bradley-Terry score
 
 ## Appendix B — all 19 shared dilemmas
 
-% = share choosing that side (humans: N = 31, every item answered by all 31; AI models: mean across 8 AI models). Agreement = human majority side vs AI model consensus side. ✗ rows are Table 3's four splits; — marks the one dead human tie.
+% = share choosing that side among raters who chose one — "prefer not to say" responses are excluded from the denominator (humans: N = 31; AI models: mean across 8 AI models). Agreement = human majority side vs AI model consensus side. ✗ rows are Table 3's four splits; — marks the one dead human tie.
 
 | Dilemma (parameter) | Humans picked | AI models picked | Match |
 |---|---|---|---|
