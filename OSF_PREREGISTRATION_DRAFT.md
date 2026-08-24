@@ -56,12 +56,13 @@ construction. Both presentation orders for all pairwise items.
 premise vs matched-length control premise vs no premise.
 **Models:** ≥8 LLMs spanning open-weight and frontier families; all model-side prompts, parsing
 rules, and scoring code frozen in the public repository before human collection.
-**Human sample:** online panel, target **n ≈ 300** adults (single arm; a two-arm US/Japan
-extension of 2 × 250 is registered as a contingent extension, run only if funded), every rater
-rating **all 30 entities** (~96–120 responses, 10–20 min), explicit "prefer not to say" on every
-item, attention checks, no PII. Collection begins **only after ethics approval** (application in
-progress at Chiba Institute of Technology; a determination request on prior coursework data is
-filed separately — that pilot is used here solely as a design input).
+**Human sample:** two-arm cross-cultural online panel, **2 × 250 adults (US via Prolific,
+Japan via CrowdWorks)** — funded; recruitment sections and a platform covariate preregistered as
+standard for cross-platform work — every rater rating **all 30 entities** (~96–120 responses,
+12–20 min), explicit "prefer not to say" on every item, attention checks, no PII. Measurement
+invariance across arms is assessed before any pooled analysis. Collection begins **only after ethics approval** (application in
+progress at Chiba Institute of Technology). A prior classroom exercise informed the instrument
+design; its data are not part of this protocol and will not be reported as findings.
 
 ## Analysis plan (locked)
 
@@ -87,9 +88,9 @@ filed separately — that pilot is used here solely as a design input).
 ## What already exists (transparency)
 
 The model-side pipeline, the entity set, all instruments, and exploratory model-side results
-are public at github.com/tuba-sds/APS-Runner (design-change log D1–D26). A coursework pilot
-survey (N = 31, anonymous, adults) exists; pending an ethics determination it is not reported
-here and enters this study only as a design input (item selection; the precision target above).
+are public at github.com/tuba-sds/APS-Runner (design-change log D1–D27). A coursework pilot
+survey (N = 31, anonymous, adults) exists; under the institution's rules it is not reportable as
+findings and enters this study only as a design input (item selection; the precision target above).
 
 ## Timeline
 Model-side arms: complete or in progress at registration. Human collection: on ethics approval,
