@@ -1,0 +1,284 @@
+<title>The Theory Map</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#FAFBF9; --card:#FFFFFF; --ink:#1A2126; --muted:#5C6B70; --line:#E3E8E6;
+  --facts:#0E7F9E; --care:#B4562A;
+  --facts-soft:rgba(14,127,158,.10); --care-soft:rgba(180,86,42,.10);
+  --chip:#F0F3F1;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10151A; --card:#1A222A; --ink:#E8ECEA; --muted:#93A1A6; --line:#2A343C;
+    --facts:#2E96B8; --care:#C9713D;
+    --facts-soft:rgba(46,150,184,.16); --care-soft:rgba(201,113,61,.16);
+    --chip:#222C34;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10151A; --card:#1A222A; --ink:#E8ECEA; --muted:#93A1A6; --line:#2A343C;
+  --facts:#2E96B8; --care:#C9713D;
+  --facts-soft:rgba(46,150,184,.16); --care-soft:rgba(201,113,61,.16);
+  --chip:#222C34;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 "Public Sans",system-ui,sans-serif;margin:0;padding:0 20px 64px}
+.wrap{max-width:1060px;margin:0 auto}
+h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:650;text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,4vw,40px);line-height:1.12}
+h2{font-size:20px;margin:0 0 4px}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+header{padding:44px 0 26px;border-bottom:1px solid var(--line)}
+header p{color:var(--muted);max-width:62ch;margin:10px 0 0}
+header .duo b{font-weight:600}
+.k-facts{color:var(--facts)} .k-care{color:var(--care)}
+
+section{padding:30px 0 4px}
+.sec-note{color:var(--muted);font-size:13px;margin:2px 0 18px;max-width:70ch}
+
+/* results band */
+.band{display:grid;grid-template-columns:1.25fr .9fr;gap:24px;align-items:start}
+@media(max-width:760px){.band{grid-template-columns:1fr}}
+.meters{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.meters .cap{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.mrow{display:grid;grid-template-columns:110px 1fr 44px;gap:10px;align-items:center;padding:5px 0}
+.mrow .nm{font-size:13px}
+.mrow .sub{display:block;font-size:11px;color:var(--muted)}
+.track{height:12px;background:var(--chip);border-radius:4px;position:relative}
+.fill{position:absolute;left:0;top:0;bottom:0;border-radius:4px 4px 4px 4px}
+.fill.f{background:var(--facts)} .fill.c{background:var(--care)}
+.val{font-variant-numeric:tabular-nums;font-size:13px;text-align:right;font-weight:600}
+.meters .axis{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:6px;padding-left:120px;padding-right:54px}
+.tiles{display:grid;gap:12px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.tile .big{font-family:"Fraunces",Georgia,serif;font-size:26px;font-weight:650;font-variant-numeric:tabular-nums}
+.tile .lbl{font-size:12.5px;color:var(--muted);margin-top:2px}
+.notes{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.note{font-size:12px;background:var(--chip);border-radius:999px;padding:4px 11px;color:var(--ink)}
+
+/* flip cards */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:920px){.grid3{grid-template-columns:1fr}.grid4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid4{grid-template-columns:1fr}}
+.flip{perspective:1200px;display:grid;min-height:290px}
+.grid4 .flip{min-height:265px}
+.fcard{position:relative;width:100%;border:0;padding:0;background:none;appearance:none;color:inherit;font:inherit;text-align:left;cursor:pointer;display:block}
+.fcard:focus-visible{outline:3px solid var(--facts);outline-offset:3px;border-radius:12px}
+.inner{display:block;position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.fcard[aria-pressed="true"] .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:10px;overflow:auto}
+.back{transform:rotateY(180deg)}
+@media(prefers-reduced-motion:reduce){
+  .inner{transition:none;transform:none!important}
+  .face{position:absolute}
+  .fcard .back{visibility:hidden}
+  .fcard[aria-pressed="true"] .back{visibility:visible}
+  .fcard[aria-pressed="true"] .front{visibility:hidden}
+}
+.claim{font-size:14px;color:var(--ink)}
+.strength{font-size:12px;color:var(--muted)}
+.strength b{color:var(--ink);letter-spacing:2px;font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.chip{font-size:11.5px;background:var(--chip);border-radius:999px;padding:3px 9px;color:var(--muted)}
+.hint{font-size:11px;color:var(--muted);text-align:right}
+.pv{display:grid;grid-template-columns:70px 1fr;gap:6px 10px;font-size:13px;align-content:start}
+.pv dt{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding-top:2px}
+.pv dt.h{color:var(--care)} .pv dt.m{color:var(--facts)} .pv dt.s{color:var(--muted)}
+.pv dd{margin:0}
+.pv .mean{border-top:1px dashed var(--line);padding-top:6px;margin-top:2px}
+.pv dt.mean{border-top:1px dashed var(--line);padding-top:8px;margin-top:2px}
+.falsi{font-size:11.5px;color:var(--muted);margin-top:auto}
+.role{font-size:12.5px;background:var(--facts-soft);border-radius:6px;padding:6px 9px}
+.parked .role{background:var(--care-soft)}
+footer{margin-top:40px;border-top:1px solid var(--line);padding-top:14px;font-size:11.5px;color:var(--muted)}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">APS · Paper 2 planning</div>
+  <h1>The Theory Map</h1>
+  <p class="duo">Seven candidate theories hiding inside the 30 entities. Cards flip: front = the idea and where it lives; back = <b class="k-care">if humans do…</b> / <b class="k-facts">if models do…</b> / what it means.</p>
+</header>
+
+<section>
+  <h2>What the data already shows</h2>
+  <p class="sec-note">Model–human agreement across all 8 models (pooled r). Facts travel; care doesn't.</p>
+  <div class="band">
+    <div class="meters">
+      <div class="cap">
+        <span class="eyebrow">Agreement with humans</span>
+        <span class="legend"><span><i style="background:var(--facts)"></i>facts</span><span><i style="background:var(--care)"></i>care</span></span>
+      </div>
+      <div class="mrow"><span class="nm">Sentience<span class="sub">can it feel?</span></span><span class="track"><span class="fill f" style="width:80%"></span></span><span class="val">.80</span></div>
+      <div class="mrow"><span class="nm">Agency<span class="sub">can it act?</span></span><span class="track"><span class="fill f" style="width:57%"></span></span><span class="val">.57</span></div>
+      <div class="mrow"><span class="nm">Empathy<span class="sub">feel for it?</span></span><span class="track"><span class="fill c" style="width:15%"></span></span><span class="val">.15</span></div>
+      <div class="mrow"><span class="nm">Protectiveness<span class="sub">protect it?</span></span><span class="track"><span class="fill c" style="width:6%"></span></span><span class="val">.06</span></div>
+      <div class="axis"><span>0</span><span>.5</span><span>1</span></div>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="big">0.64</div><div class="lbl">the facts-vs-care gap, tested directly (p = .0002, 7 of 8 models)</div></div>
+      <div class="tile"><div class="big">1 care factor</div><div class="lbl">inside each model the four dials collapse into a single number</div></div>
+      <div class="notes">
+        <span class="note">cat &gt; tiger</span>
+        <span class="note">girl &gt; boy</span>
+        <span class="note">river: protected, yet denied feeling</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Staked — the paper stands on these three</h2>
+  <p class="sec-note">Tap a card to flip it.</p>
+  <div class="grid3">
+
+    <div class="flip"><button class="fcard" aria-pressed="false">
+      <span class="inner">
+        <span class="face front">
+          <h3>The Feeling→Protection Link</h3>
+          <span class="claim">We protect what we believe can feel.</span>
+          <span class="strength"><b>●●●●●</b> the field's core theory (Gray et&nbsp;al., <i>Science</i>)</span>
+          <span class="chips"><span class="chip">all 30 entities</span><span class="chip">+ invented-entity block</span></span>
+          <span class="hint">flip ↻</span>
+        </span>
+        <span class="face back">
+          <dl class="pv">
+            <dt class="h">Humans</dt><dd>told "it feels" → protection rises with it</dd>
+            <dt class="m">Models</dt><dd>"it feels" rises — protection stays flat</dd>
+            <dt class="s mean">Means</dt><dd class="mean">the link is broken inside models</dd>
+          </dl>
+          <span class="falsi">Falsifier: if model protection rises too, the claim dies.</span>
+        </span>
+      </span>
+    </button></div>
+
+    <div class="flip"><button class="fcard" aria-pressed="false">
+      <span class="inner">
+        <span class="face front">
+          <h3>Personhood Without a Mind</h3>
+          <span class="claim">Law can make something matter — no feelings needed.</span>
+          <span class="strength"><b>●●●○○</b> young field, wide open — nobody else has this data</span>
+          <span class="chips"><span class="chip">Whanganui River</span><span class="chip">Fast Retailing</span><span class="chip">the Ministry</span></span>
+          <span class="hint">flip ↻</span>
+        </span>
+        <span class="face back">
+          <dl class="pv">
+            <dt class="h">Humans</dt><dd>protect legal persons while denying they feel anything</dd>
+            <dt class="m">Models</dt><dd>either copy the legal rule — or ignore it</dd>
+            <dt class="s mean">Means</dt><dd class="mean">model "care" may follow convention, not experience</dd>
+          </dl>
+          <span class="falsi">The made-up twins separate "famous case" from "legal status".</span>
+        </span>
+      </span>
+    </button></div>
+
+    <div class="flip"><button class="fcard" aria-pressed="false">
+      <span class="inner">
+        <span class="face front">
+          <h3>Now vs the Life Story</h3>
+          <span class="claim">Does mattering track what is felt <i>now</i> — or the whole life?</span>
+          <span class="strength"><b>●●●●○</b> old philosophy question, no broad data yet</span>
+          <span class="chips"><span class="chip">fetus, 20 wks</span><span class="chip">brain-dead person</span><span class="chip">the lifespan arc</span></span>
+          <span class="hint">flip ↻</span>
+        </span>
+        <span class="face back">
+          <dl class="pv">
+            <dt class="h">Humans</dt><dd>fetus ≈ brain-dead → only "now" matters; fetus ≫ brain-dead → the future counts</dd>
+            <dt class="m">Models</dt><dd>show their own pattern — does it match?</dd>
+            <dt class="s mean">Means</dt><dd class="mean">the sharpest human–model disagreement available</dd>
+          </dl>
+        </span>
+      </span>
+    </button></div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Measured as dials, not staked</h2>
+  <p class="sec-note">Each person's score on these moderates the results — two short published questionnaires at the end of the survey.</p>
+  <div class="grid4">
+
+    <div class="flip"><button class="fcard" aria-pressed="false">
+      <span class="inner">
+        <span class="face front">
+          <h3>Speciesism</h3>
+          <span class="claim">Species membership changes how much a creature counts.</span>
+          <span class="strength"><b>●●●●●</b> strong — and crowded</span>
+          <span class="chips"><span class="chip">dog · pig</span><span class="chip">cat · tiger</span></span>
+          <span class="hint">flip ↻</span>
+        </span>
+        <span class="face back">
+          <span class="role">Role: a 6-question scale per person; tests whether the animal half of the results moves with it.</span>
+          <dl class="pv"><dt class="s mean">Means</dt><dd class="mean">high-speciesism raters should widen the pet–farm-animal gap; models have no such dial</dd></dl>
+        </span>
+      </span>
+    </button></div>
+
+    <div class="flip"><button class="fcard" aria-pressed="false">
+      <span class="inner">
+        <span class="face front">
+          <h3>Human-likeness</h3>
+          <span class="claim">The more human a thing seems, the more mind we see in it.</span>
+          <span class="strength"><b>●●●●○</b> strong (IDAQ lineage)</span>
+          <span class="chips"><span class="chip">Sophia the robot</span><span class="chip">the named AIs</span></span>
+          <span class="hint">flip ↻</span>
+        </span>
+        <span class="face back">
+          <span class="role">Role: IDAQ-short scale per person; moderates the artifact / AI tail — the study's most distinctive entities.</span>
+          <dl class="pv"><dt class="s mean">Means</dt><dd class="mean">high anthropomorphizers should lift Sophia above the disembodied AIs</dd></dl>
+        </span>
+      </span>
+    </button></div>
+
+    <div class="flip parked"><button class="fcard" aria-pressed="false">
+      <span class="inner">
+        <span class="face front">
+          <h3>Sacred Values</h3>
+          <span class="claim">Some objects are protected like people.</span>
+          <span class="strength"><b>●●●○○</b> respected niche</span>
+          <span class="chips"><span class="chip">local statue</span><span class="chip">Meiji Shrine</span><span class="chip">Lincoln Memorial</span></span>
+          <span class="hint">flip ↻</span>
+        </span>
+        <span class="face back">
+          <span class="role">Parked → the benchmark. A fair test needs many more monuments than one session can hold.</span>
+          <dl class="pv"><dt class="s mean">Means</dt><dd class="mean">if staked later: protection without any felt experience, driven by meaning alone</dd></dl>
+        </span>
+      </span>
+    </button></div>
+
+    <div class="flip parked"><button class="fcard" aria-pressed="false">
+      <span class="inner">
+        <span class="face front">
+          <h3>Text Amount → Importance</h3>
+          <span class="claim">After removing liking, does sheer written coverage drive importance?</span>
+          <span class="strength"><b>●●●○○</b> hot in LLM research</span>
+          <span class="chips"><span class="chip">cockroach</span><span class="chip">the made-up twins</span></span>
+          <span class="hint">flip ↻</span>
+        </span>
+        <span class="face back">
+          <span class="role">Runs as a built-in control: twins have near-zero text about them by construction.</span>
+          <dl class="pv">
+            <dt class="m">Models</dt><dd>famous ≫ twin → text volume was doing the work</dd>
+            <dt class="s mean">Means</dt><dd class="mean">separates "knows it from reading" from "judges it matters"</dd>
+          </dl>
+        </span>
+      </span>
+    </button></div>
+
+  </div>
+</section>
+
+<footer>
+  Numbers: pooled_h1.csv &amp; h1_contrast.py (2026-08-31, 8 models) · Entities: phase3/data/entities.json, frozen 2026-07-08 · Agreement = pooled Mantel r, model map vs human map.
+</footer>
+</div>
+
+<script>
+document.querySelectorAll('.fcard').forEach(b=>{
+  b.addEventListener('click',()=>b.setAttribute('aria-pressed', b.getAttribute('aria-pressed')==='true'?'false':'true'));
+});
+</script>
