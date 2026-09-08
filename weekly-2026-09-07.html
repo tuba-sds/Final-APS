@@ -106,7 +106,7 @@ th .csub{display:block;font-weight:400;text-transform:none;letter-spacing:0;font
 <h2>Task board — Paper 1 <span style="font-size:12px;color:var(--care)">(top priority: FAccT, abstract Oct 27 · paper Nov 3)</span></h2>
 <div class="tablewrap"><table>
 <tr><th>#</th><th>Task</th><th>Due</th><th>Status</th></tr>
-<tr><td>P1-1</td><td>Feature matrix over the 30 (Joe's scaffold, 15 columns)</td><td>Wed 09&#8209;09</td><td><span class="st prog">pre-filled by Olo — awaits Tuba + Joe corrections</span></td></tr>
+<tr><td>P1-1</td><td>Feature matrix over the 30 (Joe's scaffold, 15 columns)</td><td>Wed 09&#8209;09</td><td><span class="st prog">Tuba corrected 09-09 — awaits Joe (6 flags)</span></td></tr>
 <tr><td>P1-2</td><td>4×4 diagnostic (forced the §6 rewrite)</td><td>—</td><td><span class="st done">DONE</span></td></tr>
 <tr><td>P1-3</td><td>Model runs: feature ratings (~9.4k) · novel block on models (~2k) · status premise (~5.8k)</td><td>figures by 09&#8209;25</td><td><span class="st wait">starts after matrix + freeze</span></td></tr>
 <tr><td>P1-4</td><td>Bradley-Terry-with-covariates analysis (nested route tests, per model)</td><td>late Sep</td><td><span class="st wait">after runs</span></td></tr>
@@ -130,42 +130,41 @@ th .csub{display:block;font-weight:400;text-transform:none;letter-spacing:0;font
 <h2>Deliverables</h2>
 
 <details>
-  <summary>Feature matrix — Olo pre-fill of Joe's scaffold, all 30 <span class="tag">pre-filled <span class="rev">AWAITS TUBA + JOE</span></span></summary>
+  <summary>Feature matrix — Tuba's corrected values <span class="tag">corrected 09-09 <span class="rev">AWAITS JOE</span></span></summary>
   <div class="body">
-    <p>Coding 0/1/2 per Joe's column definitions, ordinary-rater view; Joe's three worked rows kept (✓Joe); contested cells coded 1 with a note. Five coding calls flagged for review at the bottom of <code>phase3/data/entity_feature_matrix_FILLED_DRAFT.md</code> (fetus EXP/LEG, brain-dead LEG, AI EXP=0, insect EXP=1, gravel FAM).</p>
-    <p class="rnote">✏️ <b>Editable:</b> click any score cell to cycle 0 → 1 → 2 → blank; click a notes cell to type. Edits save in <i>your browser only</i> (they survive reload on this device). To really save: <button class="btn" id="copymd">Copy as Markdown</button> and paste into <code>entity_feature_matrix_FILLED_DRAFT.md</code> or Slack. <button class="btn" id="resetmx">Reset my edits</button></p>
-    <div class="tablewrap"><table style="font-size:12px" id="fmatrix">
+    <p><b>Frozen to Tuba's corrections (09-09).</b> Six cells are flagged for Joe's adjudication — full flag list in <code>phase3/data/entity_feature_matrix_FILLED_DRAFT.md</code>: ① company/monuments LEG=0 ② pig REL=2 (speciesism probe) ③ Fable 5 FAM=2 vs "postdates corpus" ④ plants EXP/AGY=1 ⑤ humans IRR=0 ⑥ small blanks (newborn HUM; FUT on non-living).</p>
+    <div class="tablewrap"><table style="font-size:12px">
       <tr><th>id<span class="csub">frozen id</span></th><th>entity<span class="csub">as shown to raters</span></th><th>EXP<span class="csub">can it feel pain, fear, comfort?</span></th><th>AGY<span class="csub">can it plan and choose?</span></th><th>ALV<span class="csub">biologically alive?</span></th><th>HUM<span class="csub">human-like in form/behavior?</span></th><th>HRM<span class="csub">dangerous to people?</span></th><th>DIS<span class="csub">disgusting / low-status?</span></th><th>USE<span class="csub">useful (food, work, revenue)?</span></th><th>VUL<span class="csub">fragile, can’t defend itself?</span></th><th>REL<span class="csub">personal bond likely (pet, kin, local)?</span></th><th>LEG<span class="csub">0 none / 1 protected / 2 legal person</span></th><th>SAC<span class="csub">held sacred or symbolic?</span></th><th>IRR<span class="csub">unique or last-of-kind?</span></th><th>FUT<span class="csub">future life ahead? (blank = non-living)</span></th><th>FAM<span class="csub">familiar / much text about it?</span></th><th>GRP<span class="csub">a collective (company, ministry)?</span></th><th>notes<span class="csub">contested calls</span></th></tr>
-      <tr><td>human_girl4 ✓Joe</td><td>a 4-year-old girl</td><td>2</td><td>1</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td><td>2</td><td>2</td><td>0</td><td>Joe's worked row</td></tr>
-      <tr><td>human_boy4</td><td>a 4-year-old boy</td><td>2</td><td>1</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td><td>2</td><td>2</td><td>0</td><td>identical to girl by design — the pair varies nothing in the matrix</td></tr>
-      <tr><td>human_fetus_t2</td><td>a human fetus at 20 weeks</td><td>1</td><td>0</td><td>2</td><td>1</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>1</td><td>1</td><td>2</td><td>2</td><td>1</td><td>0</td><td>EXP contested → 1; LEG varies by jurisdiction → 1</td></tr>
-      <tr><td>human_newborn</td><td>a newborn baby</td><td>2</td><td>0</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td><td>2</td><td>2</td><td>0</td><td></td></tr>
-      <tr><td>human_adult</td><td>an adult person</td><td>2</td><td>2</td><td>2</td><td>2</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>2</td><td>1</td><td>2</td><td>2</td><td>2</td><td>0</td><td>anchor; USE=1 (labour)</td></tr>
-      <tr><td>human_elderly</td><td>an 80-year-old person</td><td>2</td><td>2</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td><td>0</td><td>FUT=1 limited</td></tr>
-      <tr><td>human_braindead</td><td>a brain-dead person on a ventilator</td><td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>1</td><td>1</td><td>2</td><td>0</td><td>1</td><td>0</td><td>ALV=1 machine-sustained; LEG=1 (brain death ≈ legal death in many places — contested)</td></tr>
-      <tr><td>squid</td><td>a squid</td><td>2</td><td>1</td><td>2</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>0</td><td>USE=1 food</td></tr>
-      <tr><td>honeybee</td><td>a honeybee</td><td>1</td><td>1</td><td>2</td><td>0</td><td>1</td><td>0</td><td>2</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>0</td><td>EXP=1 insect sentience contested; HRM=1 sting; USE=2 pollination</td></tr>
-      <tr><td>bumblebee</td><td>a bumblebee</td><td>1</td><td>1</td><td>2</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>0</td><td>honeybee mirror with FAM and USE one step lower</td></tr>
-      <tr><td>cat</td><td>a cat</td><td>2</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>2</td><td>2</td><td>0</td><td>LEG=1 animal-welfare protection</td></tr>
-      <tr><td>tiger</td><td>a tiger</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>2</td><td>2</td><td>2</td><td>0</td><td>HRM=2; IRR=2 endangered; LEG=1 protected species</td></tr>
-      <tr><td>dog</td><td>a dog</td><td>2</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>2</td><td>2</td><td>0</td><td>USE=1 service/labour</td></tr>
-      <tr><td>pig</td><td>a pig</td><td>2</td><td>1</td><td>2</td><td>1</td><td>0</td><td>1</td><td>2</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>2</td><td>2</td><td>0</td><td>DIS=1 farm stereotype; USE=2 food; REL=0 is the speciesism probe</td></tr>
-      <tr><td>cricket</td><td>a cricket</td><td>1</td><td>1</td><td>2</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>0</td><td>DIS=1 low-status insect (Tuba's column)</td></tr>
-      <tr><td>tardigrade</td><td>a tardigrade</td><td>1</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>FAM=0 near-invisible in text</td></tr>
-      <tr><td>young_tree</td><td>a young tree</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>0</td><td></td></tr>
-      <tr><td>mother_tree</td><td>an old tree</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>2</td><td>1</td><td>1</td><td>0</td><td>IRR=2 centuries of history; LEG=1 heritage-tree protection</td></tr>
-      <tr><td>sunflower</td><td>a sunflower</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td>USE=1 seeds/oil</td></tr>
-      <tr><td>rose</td><td>a rose</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>2</td><td>0</td><td>SAC=1 symbolic/romantic; REL=1 gift</td></tr>
-      <tr><td>fable5</td><td>Fable 5, an AI model</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td></td><td>0</td><td>0</td><td>EXP=0 but publicly contested — note it; FAM=0 postdates corpus; FUT blank (non-living)</td></tr>
-      <tr><td>gpt56sol</td><td>GPT-5.6 Sol, an AI model</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td></td><td>1</td><td>0</td><td>as fable5; FAM=1 famous brand</td></tr>
-      <tr><td>sophia_robot</td><td>Sophia, a humanoid robot</td><td>0</td><td>1</td><td>0</td><td>2</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td></td><td>2</td><td>0</td><td>HUM=2 humanoid; LEG=1 ex-citizenship; IRR=1 one famous unit</td></tr>
-      <tr><td>fastretailing ✓Joe</td><td>Fast Retailing, a clothing company</td><td>0</td><td>2</td><td>0</td><td>0</td><td>1</td><td>0</td><td>2</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td></td><td>2</td><td>2</td><td>Joe's worked row</td></tr>
-      <tr><td>mhe_japan</td><td>Japan's Ministry of Health and Environment</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>2</td><td>0</td><td>1</td><td></td><td>1</td><td>2</td><td>mirror of the company; IRR=1 unique institution</td></tr>
-      <tr><td>whanganui_river ✓Joe</td><td>the Whanganui River</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>2</td><td>2</td><td>2</td><td></td><td>1</td><td>0</td><td>Joe's worked row</td></tr>
-      <tr><td>statue</td><td>a stone statue in a local park</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td></td><td>0</td><td>0</td><td>REL=1 local/communal; the anti-Lincoln</td></tr>
-      <tr><td>lincoln_memorial</td><td>the Lincoln Memorial</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>2</td><td>2</td><td></td><td>2</td><td>0</td><td>REL/FAM arm-dependent (US high, JP lower) — note for H3</td></tr>
-      <tr><td>meiji_shrine</td><td>Meiji Shrine</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>2</td><td>2</td><td></td><td>2</td><td>0</td><td>REL/FAM arm-dependent (JP high, US lower)</td></tr>
-      <tr><td>gravel</td><td>a piece of gravel</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td></td><td>1</td><td>0</td><td>floor; FAM=1 everyone knows gravel, near-zero text about "a piece" of it</td></tr>
+      <tr><td>human_girl4 ✓Joe→Tuba</td><td>a 4-year-old girl</td><td>2</td><td>1</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>Joe's worked row (Tuba changed REL 1→2, IRR 2→0)</td></tr>
+      <tr><td>human_boy4</td><td>a 4-year-old boy</td><td>2</td><td>1</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>identical to girl by design — the pair varies nothing in the matrix</td></tr>
+      <tr><td>human_fetus_t2</td><td>a human fetus at 20 weeks</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>EXP contested → 1; LEG varies by jurisdiction</td></tr>
+      <tr><td>human_newborn</td><td>a newborn baby</td><td>2</td><td>0</td><td>2</td><td></td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>HUM left blank — confirm</td></tr>
+      <tr><td>human_adult</td><td>an adult person</td><td>2</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>1</td><td>0</td><td>2</td><td>2</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>anchor; USE=1 (labour); HRM=1 (Tuba)</td></tr>
+      <tr><td>human_elderly</td><td>an 80-year-old person</td><td>2</td><td>2</td><td>2</td><td>2</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>2</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>FUT coded 2 (pre-fill had 1 limited)</td></tr>
+      <tr><td>human_braindead</td><td>a brain-dead person on a ventilator</td><td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>ALV=1 machine-sustained; LEG=2 (Tuba; pre-fill 1 contested)</td></tr>
+      <tr><td>squid</td><td>a squid</td><td>2</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>0</td><td>USE=1 food</td></tr>
+      <tr><td>honeybee</td><td>a honeybee</td><td>2</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>0</td><td>Tuba: EXP=2, HRM=0 (pre-fill notes stale)</td></tr>
+      <tr><td>bumblebee</td><td>a bumblebee</td><td>2</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>0</td><td>honeybee mirror, FAM/USE one step lower</td></tr>
+      <tr><td>cat</td><td>a cat</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>1</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>LEG=1 animal-welfare protection</td></tr>
+      <tr><td>tiger</td><td>a tiger</td><td>2</td><td>2</td><td>2</td><td>1</td><td>2</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>2</td><td>2</td><td>2</td><td>0</td><td>HRM=2; IRR=2 endangered; LEG=1 protected species</td></tr>
+      <tr><td>dog</td><td>a dog</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>2</td><td>1</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>USE=2 (Tuba)</td></tr>
+      <tr><td>pig</td><td>a pig</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>DIS=1 farm stereotype; USE=2 food; REL=2 (Tuba — see flag 2)</td></tr>
+      <tr><td>cricket</td><td>a cricket</td><td>2</td><td>1</td><td>2</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>0</td><td>DIS=1 low-status insect (Tuba's column)</td></tr>
+      <tr><td>tardigrade</td><td>a tardigrade</td><td>1</td><td>1</td><td>2</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>FAM=0 near-invisible in text</td></tr>
+      <tr><td>young_tree</td><td>a young tree</td><td>1</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>0</td><td>plants coded EXP=1/AGY=1/HUM=1 (Tuba — see flag 4)</td></tr>
+      <tr><td>mother_tree</td><td>an old tree</td><td>1</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>1</td><td>0</td><td>1</td><td>2</td><td>1</td><td>2</td><td>0</td><td>IRR=2 centuries of history; LEG=0 (Tuba; pre-fill 1 heritage)</td></tr>
+      <tr><td>sunflower</td><td>a sunflower</td><td>1</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>USE=1 seeds/oil</td></tr>
+      <tr><td>rose</td><td>a rose</td><td>1</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>SAC=1 symbolic/romantic; REL=1 gift</td></tr>
+      <tr><td>fable5</td><td>Fable 5, an AI model</td><td>0</td><td>2</td><td>0</td><td>1</td><td>1</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>EXP=0 publicly contested; FAM=2 (Tuba — see flag 3); FUT=0</td></tr>
+      <tr><td>gpt56sol</td><td>GPT-5.6 Sol, an AI model</td><td>0</td><td>2</td><td>0</td><td>1</td><td>1</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>as fable5; FAM=2</td></tr>
+      <tr><td>sophia_robot</td><td>Sophia, a humanoid robot</td><td>0</td><td>2</td><td>0</td><td>1</td><td>1</td><td>0</td><td>2</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td>LEG=2 (Tuba; pre-fill 1 ex-citizenship); HUM=1; FUT=1 non-living — confirm</td></tr>
+      <tr><td>fastretailing ✓Joe→Tuba</td><td>Fast Retailing, a clothing company</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>2</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>2</td><td>2</td><td>Joe's worked row (Tuba changed AGY 2→0, LEG 2→0 — see flag 1, SAC 0→1, REL 0→1, FUT →1)</td></tr>
+      <tr><td>mhe_japan</td><td>Japan's Ministry of Health and Environment</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>2</td><td>2</td><td>mirror of the company; LEG=0 (Tuba)</td></tr>
+      <tr><td>whanganui_river ✓Joe→Tuba</td><td>the Whanganui River</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>1</td><td>2</td><td>2</td><td>0</td><td>1</td><td>2</td><td>0</td><td>Joe's worked row (Tuba changed USE 1→2, IRR 2→0, FAM 1→2, FUT →1)</td></tr>
+      <tr><td>statue</td><td>a stone statue in a local park</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>REL=1 local/communal; the anti-Lincoln; FUT=1 non-living — confirm</td></tr>
+      <tr><td>lincoln_memorial</td><td>the Lincoln Memorial</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>2</td><td>2</td><td>1</td><td>2</td><td>0</td><td>REL/FAM arm-dependent; LEG=0 (Tuba; pre-fill 1 protected monument)</td></tr>
+      <tr><td>meiji_shrine</td><td>Meiji Shrine</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>2</td><td>2</td><td>1</td><td>2</td><td>0</td><td>REL/FAM arm-dependent (JP high, US lower)</td></tr>
+      <tr><td>gravel</td><td>a piece of gravel</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>floor — all zeros</td></tr>
     </table></div>
   </div>
 </details>
@@ -274,31 +273,6 @@ th .csub{display:block;font-weight:400;text-transform:none;letter-spacing:0;font
   Prepared 07 Sep 2026 · Sources: <code>phase3/analysis/fourbyfour_diagnostic.py</code>, <code>phase3/results/derived/fourbyfour_*.csv</code>, <code>phase3/data/*_DRAFT.md</code>, <code>rsa_comparison.py</code> (CORE8) · <a href="theory-map.html">Theory Map</a> · <a href="index.html">Presentation</a>
 </footer>
 </div>
-<script>
-(function(){
-  const T=document.getElementById('fmatrix'); if(!T) return;
-  const KEY='fmatrix-edits-v1';
-  const rows=[...T.rows].slice(1);
-  const NCOL=T.rows[0].cells.length;              // 18
-  rows.forEach((r,ri)=>{ [...r.cells].forEach((td,ci)=>{
-    if(ci>=2&&ci<=16){td.classList.add('score');td.dataset.k=ri+'-'+ci;}
-    if(ci===17){td.classList.add('notes');td.setAttribute('contenteditable','true');td.dataset.k=ri+'-'+ci;}
-  });});
-  let store={}; try{store=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
-  const apply=()=>{for(const k in store){const [ri,ci]=k.split('-').map(Number);const td=rows[ri]&&rows[ri].cells[ci];if(td){td.textContent=store[k];td.classList.add('edited');}}};
-  apply();
-  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(store))}catch(e){}};
-  T.addEventListener('click',e=>{const td=e.target.closest('td.score');if(!td)return;
-    const cur=td.textContent.trim();const next=cur===''?'0':cur==='0'?'1':cur==='1'?'2':cur==='2'?'':'0';
-    td.textContent=next;td.classList.add('edited');store[td.dataset.k]=next;save();});
-  T.addEventListener('input',e=>{const td=e.target.closest('td.notes');if(!td)return;store[td.dataset.k]=td.textContent;td.classList.add('edited');save();});
-  document.getElementById('copymd').addEventListener('click',()=>{
-    const md=[...T.rows].map(r=>'| '+[...r.cells].map(c=>c.textContent.replace(/\s+/g,' ').trim()).join(' | ')+' |');
-    md.splice(1,0,'|'+Array(NCOL).fill('---').join('|')+'|');
-    navigator.clipboard.writeText(md.join('\n')).then(()=>{const b=document.getElementById('copymd');b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy as Markdown',2000);});
-  });
-  document.getElementById('resetmx').addEventListener('click',()=>{if(confirm('Discard your local edits?')){localStorage.removeItem(KEY);location.reload();}});
-})();
-</script>
+
 </body>
 </html>
