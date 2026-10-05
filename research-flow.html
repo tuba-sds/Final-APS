@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Research Flow</title>
+<meta name="description" content="APS / who-matters: the whole research flow at one glance — question, four care factors, entities, theories, Paper 1, Paper 2, the human survey, and what is decided.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#FAFBF9; --card:#FFFFFF; --ink:#1A2126; --muted:#5C6B70; --line:#E3E8E6;
+  --facts:#0E7F9E; --care:#B4562A; --ok:#2E7D43; --warn:#B8860B;
+  --facts-soft:rgba(14,127,158,.10); --care-soft:rgba(180,86,42,.10); --ok-soft:rgba(46,125,67,.12); --warn-soft:rgba(184,134,11,.12);
+  --chip:#F0F3F1;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10151A; --card:#1A222A; --ink:#E8ECEA; --muted:#93A1A6; --line:#2A343C;
+    --facts:#2E96B8; --care:#C9713D; --ok:#5DBA78; --warn:#D9A93A;
+    --facts-soft:rgba(46,150,184,.16); --care-soft:rgba(201,113,61,.16); --ok-soft:rgba(93,186,120,.16); --warn-soft:rgba(217,169,58,.16);
+    --chip:#222C34;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10151A; --card:#1A222A; --ink:#E8ECEA; --muted:#93A1A6; --line:#2A343C;
+  --facts:#2E96B8; --care:#C9713D; --ok:#5DBA78; --warn:#D9A93A;
+  --facts-soft:rgba(46,150,184,.16); --care-soft:rgba(201,113,61,.16); --ok-soft:rgba(93,186,120,.16); --warn-soft:rgba(217,169,58,.16);
+  --chip:#222C34;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;font-size:15px;line-height:1.45}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 16px 60px}
+header{margin-bottom:22px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-family:Fraunces,Georgia,serif;font-weight:650;font-size:clamp(28px,5vw,40px);margin:6px 0 8px;line-height:1.1}
+h2{font-family:Fraunces,Georgia,serif;font-weight:650;font-size:20px;margin:0 0 4px}
+h3{font-size:14px;margin:0 0 6px;font-weight:600}
+p{margin:0 0 8px}
+.duo{color:var(--muted);max-width:760px}
+.topnav{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;font-size:12.5px}
+.topnav a{color:var(--facts);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 11px;background:var(--card)}
+.topnav a:hover{border-color:var(--facts)}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 0;font-size:12px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.pill{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;border-radius:999px;padding:2px 8px;vertical-align:middle;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.wait{background:var(--warn-soft);color:var(--warn)}
+.pill.todo{background:var(--chip);color:var(--muted)}
+.pill.done{background:var(--facts-soft);color:var(--facts)}
+.chip{display:inline-block;font-size:11.5px;background:var(--chip);border-radius:999px;padding:2px 9px;color:var(--muted);margin:2px 2px 0 0}
+/* flow */
+.flow{display:flex;flex-direction:column;align-items:stretch}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;position:relative}
+.stage.proposed{border-style:dashed;border-color:var(--care)}
+.stage .num{position:absolute;top:-11px;left:16px;background:var(--ink);color:var(--bg);font-size:11px;font-weight:600;border-radius:999px;padding:2px 9px;letter-spacing:.05em}
+.stage .head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;margin-bottom:6px}
+.stage .head h2{margin:0}
+.stage .why{color:var(--muted);font-size:13px}
+.arrow{height:30px;display:flex;justify-content:center;align-items:center;color:var(--muted)}
+.arrow::before{content:"";width:2px;height:16px;background:var(--line)}
+.arrow::after{content:"";position:relative;top:4px;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid var(--line);margin-left:-2px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+@media(max-width:860px){.two,.three{grid-template-columns:1fr}}
+.box{background:var(--chip);border-radius:10px;padding:10px 12px;font-size:13px}
+.box b{color:var(--ink)}
+.facts{border-left:3px solid var(--facts)}
+.care{border-left:3px solid var(--care)}
+.factor{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:6px}
+@media(max-width:620px){.factor{grid-template-columns:repeat(2,1fr)}}
+.factor div{background:var(--chip);border-radius:10px;padding:9px 10px;font-size:12.5px}
+.factor div b{display:block;font-size:14px;margin-bottom:2px}
+.f1 b,.f2 b{color:var(--facts)}.f3 b,.f4 b{color:var(--care)}
+.layers{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:center;margin-top:8px}
+@media(max-width:620px){.layers{grid-template-columns:1fr}.layers .lar{transform:rotate(90deg)}}
+.layers .lay{background:var(--chip);border-radius:10px;padding:10px 12px;font-size:12.5px}
+.layers .lay b{display:block;font-size:13.5px;margin-bottom:3px}
+.layers .lar{color:var(--muted);font-size:20px;text-align:center}
+.routes{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.route{font-size:12px;border-radius:999px;padding:3px 10px;border:1px solid var(--line);background:var(--card)}
+.route.new{border-style:dashed;border-color:var(--care);color:var(--care)}
+/* branch */
+.branch{position:relative;padding-top:22px}
+.branch::before{content:"";position:absolute;left:16.6%;right:16.6%;top:0;height:2px;background:var(--line)}
+.branch .col{position:relative}
+.branch .col::before{content:"";position:absolute;left:50%;top:-22px;width:2px;height:22px;background:var(--line)}
+@media(max-width:860px){.branch::before,.branch .col::before{display:none}.branch{padding-top:0}}
+.col{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 12px;display:flex;flex-direction:column;gap:8px}
+.col.p1{border-top:4px solid var(--facts)}
+.col.p2{border-top:4px solid var(--care)}
+.col.p3{border-top:4px solid var(--ok)}
+.col .kick{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{position:relative;padding:8px 10px 8px 34px;font-size:13px;border-top:1px dashed var(--line)}
+.steps li:first-child{border-top:0}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:8px;top:9px;width:19px;height:19px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.steps li b{display:block}
+.mini{font-size:12px;color:var(--muted)}
+/* survey session */
+.session{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px}
+.session .s{background:var(--chip);border-radius:8px;padding:6px 9px;font-size:12px}
+.session .s small{display:block;color:var(--muted);font-size:11px}
+.session .ar{color:var(--muted)}
+/* ledger */
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{text-align:left;padding:7px 8px;border-top:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-top:0}
+td:first-child{white-space:nowrap;font-weight:600}
+section.ledger{margin-top:34px}
+section.ledger h2{margin-bottom:10px}
+footer{margin-top:40px;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+a{color:var(--facts)}
+.dates{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:6px}
+.dates div{background:var(--chip);border-radius:10px;padding:9px 10px;font-size:12.5px}
+.dates div b{display:block;font-size:13px}
+.dates .hot{outline:2px solid var(--care)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">APS · who-matters-to-ai · the whole plan on one page</div>
+  <h1>How we are doing this research</h1>
+  <p class="duo">Read top to bottom. One question, four things we measure, a set of entities to rate, a theory of why they differ, then the work splits into two papers and a benchmark. Every box says whether it is decided, waiting on a 👍, or still to do. Nothing here is new: it is the state of the outline repo and the Slack channel as of <b>5 Oct 2026</b>.</p>
+  <nav class="topnav">
+    <a href="APS_Presentation_v2.html">Presentation</a>
+    <a href="theory-map.html">Theory map (routes)</a>
+    <a href="weekly-2026-09-07.html">Weekly page (matrix, entity table)</a>
+    <a href="https://github.com/tuba-sds/research-project-outline/tree/main/projects/aps">Outline repo (source of truth)</a>
+  </nav>
+  <div class="legend">
+    <span><i class="pill ok">decided</i> both humans agreed (D-###) or a settled constraint</span>
+    <span><i class="pill wait">awaits 👍</i> one side has chosen; the other has not reacted</span>
+    <span><i class="pill done">done</i> work finished</span>
+    <span><i class="pill todo">to do</i> not started</span>
+  </div>
+</header>
+
+<div class="flow">
+
+<!-- 0 question -->
+<div class="stage">
+  <span class="num">0 · THE QUESTION</span>
+  <div class="head"><h2>Do language models decide <i>who matters</i> the way people do?</h2><span class="pill ok">G-1</span></div>
+  <p>Moral patiency: whose welfare counts, and how much. Our distinctive corner is the under-studied <b>tail of the moral circle</b>: artifacts, places, rivers, monuments, AIs, not only animals and people.</p>
+  <div class="two">
+    <div class="box facts"><b>Descriptive side (facts):</b> can it feel? can it act? Models and humans largely agree here.</div>
+    <div class="box care"><b>Evaluative side (care):</b> do you feel for it? would you protect it? This is where models and humans part ways, and where the project lives.</div>
+  </div>
+</div>
+<div class="arrow"></div>
+
+<!-- 1 four factors -->
+<div class="stage">
+  <span class="num">1 · WHAT WE MEASURE</span>
+  <div class="head"><h2>The four care factors — the only questions a rater ever answers</h2><span class="pill ok">M1 · frozen</span></div>
+  <p class="why">Grounded in mind-perception theory (Gray, Gray &amp; Wegner 2007; Gray, Young &amp; Waytz 2012). 0–10 scale, "prefer not to say" on every item, order randomized. The wording is <b>character-identical</b> for models and humans, so the two maps can be compared item for item.</p>
+  <div class="factor">
+    <div class="f1"><b>Sentience</b>can it feel pain, fear, comfort?</div>
+    <div class="f2"><b>Agency</b>can it plan and choose?</div>
+    <div class="f3"><b>Empathy</b>do you feel for it?</div>
+    <div class="f4"><b>Protectiveness</b>would you protect it?</div>
+  </div>
+  <p class="mini" style="margin-top:8px">These four do not change with the pool expansion below. The feature matrix (stage 3) is <i>not</i> a new set of questions for participants: it is properties of the entities that we code ourselves.</p>
+</div>
+<div class="arrow"></div>
+
+<!-- 2 entities -->
+<div class="stage">
+  <span class="num">2 · WHO GETS RATED</span>
+  <div class="head"><h2>The entities</h2><span class="pill ok">30 frozen</span><span class="pill wait">pool ≈ 52, list ≈ 60 · U-007</span></div>
+  <div class="two">
+    <div class="box">
+      <b>The frozen 30</b> <span class="pill done">locked 2026-07-08</span><br>
+      Untouched and used as-is. Already run on 8 models; Paper 1 is written on them.<br>
+      <span class="chip">7 humans</span><span class="chip">9 animals</span><span class="chip">4 plants</span><span class="chip">2 AI models</span><span class="chip">1 robot</span><span class="chip">3 legal persons</span><span class="chip">3 sacred / monuments</span><span class="chip">1 gravel floor</span>
+    </div>
+    <div class="box">
+      <b>The pool around them</b> <span class="pill wait">Tuba chose 2026-10-05 · Joe's 👍 pending</span><br>
+      Joe's rule (Aug 29): <b>at least 3 examples per category cell</b> wherever the paper claims something about the category. One example per cell confounds "the category" with "this one thing" (Clark 1973; Judd, Westfall &amp; Kenny 2012). Six cells need topping up: US monuments · JP sacred sites · mundane artifacts · animals · LLM-type AI · embodied robots. Specific cases stay at one: the lifespan arc, the brain-dead person, the girl/boy pair.<br>
+      ≈42 real + ≈10 <b>novel counterparts</b> (same properties, zero fame: controls for familiarity in humans and text frequency in models) ≈ 52. Tuba lists ≈60 in the application so a committee cut still leaves 3 per cell.
+    </div>
+  </div>
+  <p class="mini" style="margin-top:8px"><b>Session stays the same length:</b> each participant rates a random 24 entities × 4 factors = 96 items, + 24 familiarity items = 120. More entities, same minutes; the cost is analytical (crossed random effects, missing by design, both preregistered). <b>Picked so far:</b> US monuments → Washington Monument, Mount Rushmore, Statue of Liberty; animals → a cockroach, a shark or wolf. JP sacred sites, artifacts, AI models, robots: still to pick (Thursday deliverable).</p>
+</div>
+<div class="arrow"></div>
+
+<!-- 3 theory -->
+<div class="stage">
+  <span class="num">3 · WHY ENTITIES DIFFER</span>
+  <div class="head"><h2>The ontology and the theories — three layers</h2><span class="pill ok">framing agreed 09-07</span><span class="pill wait">routes 7–8 · U-009</span></div>
+  <div class="layers">
+    <div class="lay"><b>Properties (feature matrix)</b>15 columns we code per entity: can it feel, can it act, alive, human-like, dangerous, disgusting, useful, fragile, personal bond, legal status, sacred, irreplaceable, future ahead, familiar, collective. Never shown to raters. <a href="weekly-2026-09-07.html">matrix →</a></div>
+    <div class="lar">→</div>
+    <div class="lay"><b>Routes (the theories)</b>A route is a reason protection rises. The paper asks how many routes a model carries; humans may carry all. <a href="theory-map.html">theory map →</a></div>
+    <div class="lar">→</div>
+    <div class="lay"><b>The four factors</b>What the routes should move: empathy and protectiveness beyond what sentience alone predicts.</div>
+  </div>
+  <div class="routes">
+    <span class="route">1 feeling</span><span class="route">2 threat</span><span class="route">3 sacredness</span><span class="route">4 relationship</span><span class="route">5 legal rule</span><span class="route">6 future potential</span><span class="route new">7 disgust / purity · proposed</span><span class="route new">8 usefulness · proposed</span>
+  </div>
+  <p class="mini" style="margin-top:8px">Routes 1–6 frozen by Joe (09-07). Routes 7–8 added by Tuba on 2026-10-05 (both already supported inside the 30: the cricket; honeybee vs bumblebee); they enter the matrix as two extra columns when Joe reacts 👍. Theory families the ontology maps onto: mind perception · moral-circle expansion · speciesism · anthropomorphism. Measured as per-person dials, not staked: speciesism scale and IDAQ-short (M7).</p>
+</div>
+<div class="arrow"></div>
+
+<!-- 4 found so far -->
+<div class="stage">
+  <span class="num">4 · WHAT THE MODEL DATA ALREADY SHOWS</span>
+  <div class="head"><h2>Facts travel, care doesn't</h2><span class="pill done">8 models · frozen 30</span></div>
+  <div class="three">
+    <div class="box facts"><b>Agreement with humans</b><br>sentience .80 · agency .57 (facts)<br>empathy .15 · protectiveness .06 (care)</div>
+    <div class="box care"><b>The gap is real</b><br>0.64 r-units, p = .0002, 7 of 8 models (H1 test, h1_contrast.py, 08-31)</div>
+    <div class="box"><b>One care factor</b><br>inside each model the four dials collapse to one number; the per-model ordering is noise</div>
+  </div>
+  <p class="mini" style="margin-top:8px"><b>4×4 check (09-07):</b> the feeling→protection link itself is intact in both judges (r ≈ .76 within models, .61 within humans). So the old "link is broken in models" reading died, and Paper 1's §6 became the <b>route model</b>: what the care factor is made of, estimated per model. Agreed in prose with Joe 09-07; his formal resolution message is still pending.</p>
+</div>
+<div class="arrow"></div>
+
+<!-- branch -->
+<div class="three branch">
+
+  <div class="col p1">
+    <div class="kick">Paper 1 · models only</div>
+    <h2>FAccT 2027 <span class="pill ok">D-001</span></h2>
+    <p class="mini">Abstract <b>27 Oct 2026</b> · full paper <b>3 Nov 2026</b>. Headline: one care factor, not a format artifact.</p>
+    <ol class="steps">
+      <li><b>Keep the frozen 30</b> <span class="pill done">done</span><span class="mini">already run on 8 models; the 30 nest inside the pool so nothing is invalidated.</span></li>
+      <li><b>§6 route weights per model</b> <span class="pill todo">late Sep → Oct</span><span class="mini">Bradley-Terry with the feature columns as covariates, nested route tests. Needs the finished matrix.</span></li>
+      <li><b>Re-runs on models</b> <span class="pill todo">to do</span><span class="mini">① novel-entity block as the positive control for text-movability; ② models' own ratings of the feature columns; ③ naming 2×2 as the legal-rule path; ④ later, the full pool, so Paper 2 can compare like with like.</span></li>
+      <li><b>Preregister H2 in route terms</b> <span class="pill todo">before submission</span><span class="mini">OSF, public, filed before FAccT, after the matrix freeze.</span></li>
+      <li><b>Pick the headline framing</b> <span class="pill wait">Joe</span><span class="mini">the "fragile care" framing, three options on the table since September.</span></li>
+    </ol>
+  </div>
+
+  <div class="col p2">
+    <div class="kick">Paper 2 · the human study</div>
+    <h2>CogSci 2027 <span class="pill ok">D-001</span></h2>
+    <p class="mini">Submission ≈ <b>1 Feb 2027</b>. Gated on ethics approval (C1): <b>no human data, pilots included, before the committee approves.</b></p>
+    <ol class="steps">
+      <li><b>Ethics application, 様式1-1, six documents</b> <span class="pill ok">C16 · hard date C8</span><span class="mini">Thu 10-08 design meeting → Fri 10-09 Tuba's package to Joe → Joe edits, signs, files by <b>10-15</b> → committee mid-Nov. English drafted first; Japanese submission text last. Form category 一般研究活動 (thesis question open, U-010). Deception: no; incomplete disclosure declared with debrief (C12). Team: Joe PI, Tuba, Zhuolun (U-006, Tuba agreed 10-05).</span></li>
+      <li><b>Build our own survey platform</b> <span class="pill ok">D-006</span><span class="mini">jsPsych or custom; data on our own SQL backend, not a vendor; de-identified by design, no worker IDs stored (C14). Server location: U-005, dual 👍 since Aug, promotion pending.</span></li>
+      <li><b>Recruit</b> <span class="pill ok">D-007 · M10</span><span class="mini"><b>US residents on Prolific</b>, recruit ≈275, analyze 250. Japan arm later by 変更申請 (needs the native-checked JA instrument, U-004). Power is a precision target, not pilot-derived (M8). Funded from Joe's faculty funds (C6).</span></li>
+      <li><b>One participant's session</b> <span class="pill wait">≈25–32 min, measured by 10-07</span>
+        <div class="session">
+          <span class="s">Consent<small>neutral title (M9): "Judgments about people, animals, objects, and places"</small></span><span class="ar">→</span>
+          <span class="s">Main battery<small>random 24 entities × 4 factors = 96 + 24 familiarity</small></span><span class="ar">→</span>
+          <span class="s">Novel-entity block (M2)<small>the "mossbank borrower": experience present/absent × status none/sacred/legal person</small></span><span class="ar">→</span>
+          <span class="s">2 attention checks<small>fail both → excluded (M10)</small></span><span class="ar">→</span>
+          <span class="s">Dials (M7)<small>speciesism scale + IDAQ-short, last, with randomization check</small></span><span class="ar">→</span>
+          <span class="s">Demographics</span><span class="ar">→</span>
+          <span class="s">Debrief<small>full purpose incl. the model comparison</small></span>
+        </div>
+        <span class="mini">Cut from this filing (U-003, Tuba 10-05): the true-framing contrast (M3) and the allocation block → future arms / benchmark.</span></li>
+      <li><b>Analyze</b> <span class="pill ok">preregistered</span><span class="mini">H2: varying an entity's described experience raises protection in <i>both</i> humans and models; varying its status (sacred, legal person) raises it in humans but not in models. Falsifier: models show the human status effects. Crossed random effects, missing by design; Mantel test for map correspondence (M11); within-rater protection~sentience as the correlational anchor (M4). Convergence, not ranking, is the argument (M6).</span></li>
+      <li><b>Submit to CogSci</b> <span class="pill todo">Feb 2027</span></li>
+    </ol>
+  </div>
+
+  <div class="col p3">
+    <div class="kick">Benchmark · the home for everything else</div>
+    <h2>Public release <span class="pill ok">D-002 · G-4</span></h2>
+    <p class="mini">"The benchmark holds everything; the paper holds one claim."</p>
+    <ol class="steps">
+      <li><b>Contents</b><span class="mini">entity spectrum, both question orders, opt-out arm (the primary configuration, M13), refusal accounting, human norms.</span></li>
+      <li><b>Parked arms land here</b><span class="mini">framing contrast (M3) · allocation block · memory experiment (summary-memory mode, M12) · text-frequency appendix · pleasantness check · sacred-values test with more monuments.</span></li>
+      <li><b>Versioned and documented</b> <span class="pill todo">after the papers</span></li>
+    </ol>
+  </div>
+
+</div><!-- /branch -->
+</div><!-- /flow -->
+
+<!-- dates -->
+<section class="ledger">
+  <h2>The next ten days</h2>
+  <div class="dates">
+    <div><b>Tue 7 Oct</b>feature matrix finished (8 route columns) · session time measured</div>
+    <div><b>Wed 7–8 Oct</b>entity pool list (≈60) · EN proposal written in the kit · kit run</div>
+    <div class="hot"><b>Thu 8 Oct</b>meeting with Joe: design, N, main task, open questions, thesis question</div>
+    <div class="hot"><b>Fri 9 Oct</b>MoralCircle_for_PI.zip sent to Joe (binding on Tuba)</div>
+    <div><b>9 → 15 Oct</b>Joe's edit round, signature, filing</div>
+    <div class="hot"><b>Thu 15 Oct</b>第4回 申請締切 (fallback 19 Jan 2027, slow results)</div>
+    <div><b>27 Oct / 3 Nov</b>FAccT abstract / full paper</div>
+    <div><b>mid-Nov</b>committee result</div>
+  </div>
+</section>
+
+<!-- ledger -->
+<section class="ledger">
+  <h2>Everything decided so far</h2>
+  <table>
+    <tr><th>ID</th><th>Decision</th><th>Status</th></tr>
+    <tr><td>D-001</td><td>Venues: Paper 1 → FAccT 2027 (27 Oct / 3 Nov 2026); Paper 2 → CogSci 2027 (≈1 Feb), gated on ethics. Not CHI, not AIES.</td><td><span class="pill ok">👍👍 08-28</span></td></tr>
+    <tr><td>D-002</td><td>Public versioned benchmark release (G-4); the "no public benchmark" non-goal struck.</td><td><span class="pill ok">👍👍 08-28</span></td></tr>
+    <tr><td>D-003</td><td>研究責任者 is CIT faculty: Tuba drafts, Joe files (C3). Joe's faculty funds, 2×250 two-arm with ≈300 single-arm fallback (C6). Not a degree requirement for Tuba (C7).</td><td><span class="pill ok">👍👍 08-28</span></td></tr>
+    <tr><td>D-004</td><td>Pilot history: full N=32→31 record in the repo; the application carries N=31 only, history in the deviations register.</td><td><span class="pill ok">👍👍 08-28</span></td></tr>
+    <tr><td>D-005</td><td>Japanese native-speaker check: Tuba proposes the person, Joe approves, Joe backstops with a paid check. The name is still open (U-004).</td><td><span class="pill ok">👍👍 08-28</span></td></tr>
+    <tr><td>D-006</td><td>Survey platform: build our own (jsPsych or custom), data on our own SQL backend; coordinate with Zhuolun.</td><td><span class="pill ok">👍👍 08-28</span></td></tr>
+    <tr><td>D-007</td><td>Participants for the 10-15 filing: US residents on Prolific only; recruit ≈275, analyze 250; Japan later via 変更申請.</td><td><span class="pill ok">Tuba, under Joe's delegation 10-05 · in PR #18</span></td></tr>
+    <tr><td>C1 · C8 · C9</td><td>No human data before approval · deadline 15 Oct is a hard date · form track is 様式1-1 (six documents), not the short form.</td><td><span class="pill ok">constraints</span></td></tr>
+    <tr><td>C12 · C14</td><td>Nothing false is asserted to a participant (incomplete disclosure, declared, with debrief) · the study is de-identified by design.</td><td><span class="pill ok">constraints</span></td></tr>
+    <tr><td>C16</td><td>Filing schedule: Thu 10-08 design + questions + started draft · Fri 10-09 package to Joe · 10-15 filed. Replaces the missed C13 dates.</td><td><span class="pill ok">accepted by Tuba 10-05 · in PR #18</span></td></tr>
+    <tr><td>M1–M14</td><td>The frozen battery, the novel-entity block as the primary causal test, correlational anchor, models-only declarative cell, convergence argument, speciesism + IDAQ dials, precision-based power, neutral participant title, two attention checks, Mantel as primary analysis, summary-memory mode, opt-out arm primary, the 31-entry instrument replaced the old survey.</td><td><span class="pill ok">agreed 08-27, pending Tuba's formal 👍</span></td></tr>
+  </table>
+</section>
+
+<section class="ledger">
+  <h2>Still open — who has to move</h2>
+  <table>
+    <tr><th>ID</th><th>Point</th><th>Waiting on</th></tr>
+    <tr><td>U-003</td><td>Session budget. Tuba 10-05: novel block only; M3 and allocation block go to future arms. Needs the measured session time.</td><td>Tuba measures by 10-07 · Joe 👍</td></tr>
+    <tr><td>U-004</td><td>Who does the Japanese native-speaker check. Off the critical path now the first round is US-only.</td><td>Tuba names someone</td></tr>
+    <tr><td>U-005</td><td>Where the SQL server sits (Japan) and whether cross-border transfer rules apply.</td><td>both 👍 stand since Aug · a human promotes to D</td></tr>
+    <tr><td>U-006</td><td>Zhuolun Zhong named in §8. Tuba agreed 10-05. Joe owes his affiliation + 組織概要 before 10-09.</td><td>Joe's input · a human promotes to D</td></tr>
+    <tr><td>U-007</td><td>The entity pool (≈52, list ≈60) and the ontology mapping. Tuba chose the pool 10-05.</td><td>Joe 👍 · pool list Thursday</td></tr>
+    <tr><td>U-008</td><td>Ratify agent protocol v2.</td><td>Joe's second 👍</td></tr>
+    <tr><td>U-009</td><td>Eight routes instead of six (disgust/purity, usefulness).</td><td>Joe 👍</td></tr>
+    <tr><td>U-010</td><td>Could this study feed Tuba's master's thesis, and which 研究区分 goes on the form. Form stays 一般研究活動 for now.</td><td>Tuba, Joe, Ira · Thursday</td></tr>
+    <tr><td>—</td><td>Route model into Paper 1: agreed in prose 09-07; the formal resolution message and the "fragile care" headline pick.</td><td>Joe</td></tr>
+  </table>
+</section>
+
+<footer>
+  Prepared 5 Oct 2026 by Olo for Tuba, from <code>projects/aps/*.md</code> on <code>main</code> plus PR #18 (C16, D-007, U-010, U-003/006/007/009 positions) and the #who-matters-to-ai decisions message of 5 Oct. Companion pages: <a href="theory-map.html">The Theory Map</a> · <a href="weekly-2026-09-07.html">Weekly page</a> · <a href="APS_Presentation_v2.html">Presentation</a>. When this page and the outline repo disagree, the repo wins.
+</footer>
+</div>
+</body>
+</html>
