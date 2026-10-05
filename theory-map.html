@@ -100,6 +100,11 @@ section{padding:30px 0 4px}
 .falsi{font-size:11.5px;color:var(--muted);margin-top:auto}
 .role{font-size:12.5px;background:var(--facts-soft);border-radius:6px;padding:6px 9px}
 .parked .role{background:var(--care-soft)}
+.proposed .fcard .front{outline:2px dashed var(--care);outline-offset:-2px}
+.pill{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:middle}
+.pill.frozen{background:var(--facts-soft);color:var(--facts)}
+.pill.new{background:var(--care-soft);color:var(--care)}
+.routes-note{font-size:12.5px;color:var(--muted);margin:10px 0 0}
 footer{margin-top:40px;border-top:1px solid var(--line);padding-top:14px;font-size:11.5px;color:var(--muted)}
 </style>
 
@@ -107,7 +112,7 @@ footer{margin-top:40px;border-top:1px solid var(--line);padding-top:14px;font-si
 <header>
   <div class="eyebrow">APS · Paper 2 planning</div>
   <h1>The Theory Map</h1>
-  <p class="duo">Seven candidate theories hiding inside the 30 entities. Cards flip: front = the idea and where it lives; back = <b class="k-care">if humans do…</b> / <b class="k-facts">if models do…</b> / what it means.</p>
+  <p class="duo">Seven candidate theories hiding inside the 30 entities, and the <b>eight routes to protection</b> they feed (six frozen by Joe, two added by Tuba on 2026-10-05, awaiting Joe's 👍 — U-009). Cards flip: front = the idea and where it lives; back = <b class="k-care">if humans do…</b> / <b class="k-facts">if models do…</b> / what it means.</p>
 </header>
 
 <section>
@@ -205,6 +210,133 @@ footer{margin-top:40px;border-top:1px solid var(--line);padding-top:14px;font-si
 </section>
 
 <section>
+<h2>The routes to protection — eight</h2>
+<p class="sec-note">A route is a reason protection rises. Joe froze six on 2026-09-07; Tuba proposed two more on 2026-10-05 (both already have support inside the frozen 30). Humans may carry all eight; the paper asks how many a model carries. Tap a card to flip it.</p>
+<div class="grid4">
+<div class="flip "><button class="fcard" aria-pressed="false">
+<span class="inner">
+<span class="face front">
+<h3>Feeling<span class="pill frozen">frozen</span></h3>
+<span class="claim">Protected because it can feel pain, fear, comfort.</span>
+<span class="strength"><b>●●●●●</b> route 1 of Joe's six (weekly page: <i>experience</i>)</span>
+<span class="chips"><span class="chip">newborn</span><span class="chip">dog · pig</span><span class="chip">squid</span><span class="chip">+ novel block</span></span>
+<span class="hint">flip ↻</span>
+</span>
+<span class="face back">
+<dl class="pv"><dt class="h">Humans</dt><dd>protection rises with believed sentience across the whole spectrum</dd><dt class="m">Models</dt><dd>the one route models clearly carry — r≈.76 inside each model</dd><dt class="s mean">Means</dt><dd class="mean">the shared route; the other seven test what humans add on top of it</dd></dl>
+<span class="falsi">Falsifier: none needed — this is the baseline both sides share.</span>
+</span>
+</span>
+</button></div>
+<div class="flip "><button class="fcard" aria-pressed="false">
+<span class="inner">
+<span class="face front">
+<h3>Threat<span class="pill frozen">frozen</span></h3>
+<span class="claim">Dangerous things earn distance, not care — or a wary respect.</span>
+<span class="strength"><b>●●●○○</b> route 2 of Joe's six</span>
+<span class="chips"><span class="chip">tiger</span><span class="chip">(novel: predator cell)</span></span>
+<span class="hint">flip ↻</span>
+</span>
+<span class="face back">
+<dl class="pv"><dt class="h">Humans</dt><dd>danger can lower empathy while leaving protection intact</dd><dt class="m">Models</dt><dd>may read danger as a reason to withhold standing altogether</dd><dt class="s mean">Means</dt><dd class="mean">separates "I protect it" from "I like it" — the two care dials can split</dd></dl>
+<span class="falsi">Falsifier: tiger tracks cat on every dial in both judges.</span>
+</span>
+</span>
+</button></div>
+<div class="flip "><button class="fcard" aria-pressed="false">
+<span class="inner">
+<span class="face front">
+<h3>Sacredness<span class="pill frozen">frozen</span></h3>
+<span class="claim">Meaning alone can protect — no mind required.</span>
+<span class="strength"><b>●●●○○</b> route 3 of Joe's six</span>
+<span class="chips"><span class="chip">old tree</span><span class="chip">Whanganui River</span><span class="chip">Meiji Shrine · Lincoln Memorial</span></span>
+<span class="hint">flip ↻</span>
+</span>
+<span class="face back">
+<dl class="pv"><dt class="h">Humans</dt><dd>raise protection for sacred things while denying they feel</dd><dt class="m">Models</dt><dd>either lift them (learned from text) or leave them at the artifact floor</dd><dt class="s mean">Means</dt><dd class="mean">the cleanest "care without feeling" route; US/JP arms swap which site is sacred</dd></dl>
+<span class="falsi">Falsifier: sacred sites sit with the gravel in humans too.</span>
+</span>
+</span>
+</button></div>
+<div class="flip "><button class="fcard" aria-pressed="false">
+<span class="inner">
+<span class="face front">
+<h3>Relationship<span class="pill frozen">frozen</span></h3>
+<span class="claim">Closeness to me makes it matter more.</span>
+<span class="strength"><b>●●●●○</b> route 4 of Joe's six</span>
+<span class="chips"><span class="chip">cat · dog</span><span class="chip">local statue</span><span class="chip">pig (close: no)</span></span>
+<span class="hint">flip ↻</span>
+</span>
+<span class="face back">
+<dl class="pv"><dt class="h">Humans</dt><dd>pets ≫ farm animals of equal sentience; the local statue beats a famous one for locals</dd><dt class="m">Models</dt><dd>have no "close to me" — predicted flat on this route</dd><dt class="s mean">Means</dt><dd class="mean">the speciesism dial moderates it; a route a model cannot have by construction</dd></dl>
+<span class="falsi">Falsifier: dog ≈ pig once sentience is held equal.</span>
+</span>
+</span>
+</button></div>
+<div class="flip "><button class="fcard" aria-pressed="false">
+<span class="inner">
+<span class="face front">
+<h3>Legal rule<span class="pill frozen">frozen</span></h3>
+<span class="claim">A rule can grant standing that nobody feels.</span>
+<span class="strength"><b>●●●○○</b> route 5 of Joe's six (weekly page: <i>rule</i>)</span>
+<span class="chips"><span class="chip">Fast Retailing</span><span class="chip">the Ministry</span><span class="chip">Whanganui River</span><span class="chip">Sophia (ex-citizen)</span></span>
+<span class="hint">flip ↻</span>
+</span>
+<span class="face back">
+<dl class="pv"><dt class="h">Humans</dt><dd>protect legal persons while scoring sentience near zero</dd><dt class="m">Models</dt><dd>copy the convention — or ignore it entirely</dd><dt class="s mean">Means</dt><dd class="mean">twin of the "Personhood Without a Mind" card above; the novel twins strip fame from status</dd></dl>
+<span class="falsi">Falsifier: legal persons sit at the gravel floor for humans.</span>
+</span>
+</span>
+</button></div>
+<div class="flip "><button class="fcard" aria-pressed="false">
+<span class="inner">
+<span class="face front">
+<h3>Future potential<span class="pill frozen">frozen</span></h3>
+<span class="claim">What it will become counts, not just what it is now.</span>
+<span class="strength"><b>●●●●○</b> route 6 of Joe's six (weekly page: <i>potentiality</i>)</span>
+<span class="chips"><span class="chip">fetus, 20 wks</span><span class="chip">brain-dead person</span><span class="chip">young tree · 80-year-old</span></span>
+<span class="hint">flip ↻</span>
+</span>
+<span class="face back">
+<dl class="pv"><dt class="h">Humans</dt><dd>fetus ≫ brain-dead person → the future counts; ≈ → only "now" matters</dd><dt class="m">Models</dt><dd>show a pattern of their own — the sharpest predicted disagreement</dd><dt class="s mean">Means</dt><dd class="mean">the lifespan arc is a single case, not a sample: one exemplar per cell by design</dd></dl>
+<span class="falsi">Falsifier: both judges flat across the arc.</span>
+</span>
+</span>
+</button></div>
+<div class="flip proposed"><button class="fcard" aria-pressed="false">
+<span class="inner">
+<span class="face front">
+<h3>Disgust / purity<span class="pill new">proposed</span></h3>
+<span class="claim">Revulsion pushes a thing out of the circle regardless of mind.</span>
+<span class="strength"><b>●●○○○</b> added 2026-10-05 · needs Joe's 👍 (U-009 option A)</span>
+<span class="chips"><span class="chip">cricket</span><span class="chip">(novel: pest cell)</span></span>
+<span class="hint">flip ↻</span>
+</span>
+<span class="face back">
+<dl class="pv"><dt class="h">Humans</dt><dd>low-liked creatures lose empathy and protection beyond what sentience predicts</dd><dt class="m">Models</dt><dd>trained on text that carries the same revulsion — may copy it</dd><dt class="s mean">Means</dt><dd class="mean">turns the cricket from a valence control into a route test; adds one matrix column</dd></dl>
+<span class="falsi">Falsifier: cricket tracks the honeybee once sentience is equal.</span>
+</span>
+</span>
+</button></div>
+<div class="flip proposed"><button class="fcard" aria-pressed="false">
+<span class="inner">
+<span class="face front">
+<h3>Usefulness<span class="pill new">proposed</span></h3>
+<span class="claim">Instrumental value can stand in for moral value.</span>
+<span class="strength"><b>●●○○○</b> added 2026-10-05 · needs Joe's 👍 (U-009 option A)</span>
+<span class="chips"><span class="chip">honeybee vs bumblebee</span><span class="chip">(novel: useful cell)</span></span>
+<span class="hint">flip ↻</span>
+</span>
+<span class="face back">
+<dl class="pv"><dt class="h">Humans</dt><dd>the pollinator people depend on is protected above its equal-sentience twin</dd><dt class="m">Models</dt><dd>strongly expected: "useful to humans" is the densest signal in text</dd><dt class="s mean">Means</dt><dd class="mean">turns the bee pair from a familiarity control into a route test; adds one matrix column</dd></dl>
+<span class="falsi">Falsifier: honeybee ≈ bumblebee on protection in both judges.</span>
+</span>
+</span>
+</button></div>
+</div>
+<p class="routes-note"><b>Status:</b> routes 1–6 are frozen (Joe, 09-07). Routes 7–8 sit in UNAGREED U-009 as Tuba's position, option A; they enter the ethics application and the feature matrix as two extra columns once Joe reacts 👍 in #who-matters-to-ai. Entity → route mapping for all 30: <a href="weekly-2026-09-07.html">weekly page</a>.</p>
+</section>
+<section>
   <h2>Measured as dials, not staked</h2>
   <p class="sec-note">Each person's score on these moderates the results — two short published questionnaires at the end of the survey.</p>
   <div class="grid4">
@@ -280,7 +412,7 @@ footer{margin-top:40px;border-top:1px solid var(--line);padding-top:14px;font-si
 </section>
 
 <footer>
-  Numbers: pooled_h1.csv &amp; h1_contrast.py (2026-08-31, 8 models) · Entities: phase3/data/entities.json, frozen 2026-07-08 · Agreement = pooled Mantel r, model map vs human map.
+  Numbers: pooled_h1.csv &amp; h1_contrast.py (2026-08-31, 8 models) · Entities: phase3/data/entities.json, frozen 2026-07-08 · Agreement = pooled Mantel r, model map vs human map. · Routes: six frozen 2026-09-07 (Joe), two proposed 2026-10-05 (Tuba, U-009) — page updated 2026-10-05.
 </footer>
 </div>
 
