@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Entity Pool</title>
-<meta name="description" content="APS / who-matters: choose the entity pool cell by cell. Frozen 30 in grey, recommended candidates in green, 3-per-cell targets and the running total tracked; freeze when the targets are met.">
+<meta name="description" content="APS / who-matters: choose the entity pool cell by cell for the US, Japan and India arms. Frozen 30 in grey, candidates in green, 3-per-cell targets and the running total tracked; freeze when the targets are met.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Public+Sans:wght@400;500;600&display=swap">
 <style>
 :root{
@@ -29,15 +29,17 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;font-size:15px;line-height:1.45}
-.wrap{max-width:1080px;margin:0 auto;padding:28px 16px 120px}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 16px 130px}
 .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .eyebrow a{color:var(--facts);text-decoration:none}
 h1{font-family:Fraunces,Georgia,serif;font-weight:650;font-size:clamp(28px,5vw,40px);margin:6px 0 8px;line-height:1.1}
 h2{font-family:Fraunces,Georgia,serif;font-weight:650;font-size:19px;margin:0}
 p{margin:0 0 8px}
-.duo{color:var(--muted);max-width:780px}
+.duo{color:var(--muted);max-width:800px}
 .legend{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0 0;font-size:12.5px;color:var(--muted);align-items:center}
 .legend .tg{pointer-events:none}
+.flag{display:inline-block;font-size:11px;font-weight:600;border-radius:999px;padding:2px 8px;background:var(--care-soft);color:var(--care);margin-left:6px;vertical-align:middle}
+.arm{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.04em;border-radius:6px;padding:1px 6px;background:var(--facts-soft);color:var(--facts);margin-right:4px}
 /* tags */
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
 .tg{display:inline-flex;flex-direction:column;align-items:flex-start;border-radius:12px;padding:6px 11px;font-size:13px;line-height:1.25;border:1px solid transparent;background:var(--grey);color:var(--greyink);max-width:100%;text-align:left;font-family:inherit}
@@ -47,8 +49,11 @@ p{margin:0 0 8px}
 .tg.cand:hover{transform:translateY(-1px);border-color:var(--ok)}
 .tg.cand.on{background:var(--ok);color:#fff;border-color:var(--ok)}
 .tg.cand.on small{opacity:.9}
-.tg.cand.star::before{content:"★ ";font-size:11px}
+.tg.cand .nm::before{content:""}
+.tg.cand.star .nm::before{content:"★ ";font-size:11px}
+.tg.cand.div .nm::after{content:" ⚡";font-size:11px}
 .tg.cand.novel{border-style:dashed}
+body.onlydiv .tg.cand:not(.div):not(.on){display:none}
 /* cell card */
 .cell{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:14px}
 .cell .head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px}
@@ -60,15 +65,16 @@ p{margin:0 0 8px}
 /* sticky bar */
 .bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:10px 16px;z-index:20;box-shadow:0 -6px 20px rgba(0,0,0,.06)}
 .bar .in{max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
-.meter{flex:1 1 260px;min-width:200px}
+.meter{flex:1 1 240px;min-width:200px}
 .meter .lbl{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:4px}
 .track{height:10px;border-radius:999px;background:var(--chip);position:relative;overflow:hidden}
 .fill{height:100%;background:var(--ok);border-radius:999px;transition:width .2s}
 .mark{position:absolute;top:-2px;width:2px;height:14px;background:var(--care)}
-.btn{font-family:inherit;font-size:13.5px;font-weight:600;border-radius:999px;padding:9px 16px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btn{font-family:inherit;font-size:13px;font-weight:600;border-radius:999px;padding:8px 14px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
 .btn.primary{background:var(--ok);color:#fff;border-color:var(--ok)}
 .btn.primary:disabled{background:var(--chip);color:var(--muted);border-color:var(--line);cursor:not-allowed}
 .btn.ghost{color:var(--muted)}
+.btn.toggle.on{background:var(--care-soft);border-color:var(--care);color:var(--care)}
 .cells-status{font-size:12px;color:var(--muted)}
 /* freeze panel */
 .panel{display:none;margin-top:22px;background:var(--card);border:2px solid var(--ok);border-radius:14px;padding:16px 18px}
@@ -83,24 +89,26 @@ a{color:var(--facts)}
 <body>
 <div class="wrap">
 <header>
-  <div class="eyebrow"><a href="research-flow.html">← The Research Flow</a> · stage 2 · who gets rated</div>
+  <div class="eyebrow"><a href="research-flow.html">← The Research Flow</a> · stage 2 · who gets rated · v2, three arms</div>
   <h1>The Entity Pool</h1>
-  <p class="duo">Joe's rule: <b>at least 3 examples in every cell the paper makes a claim about</b>, so a result is about the category and not about one famous thing. The frozen 30 stay as they are. Tap green tags to add candidates; the bar at the bottom tracks every cell and the total. The committee may cut some, so you list about <b>60</b> while the design needs about <b>50</b>. Each participant still rates a random 24, so the session does not get longer.</p>
+  <p class="duo">Three arms: <span class="arm">US</span><span class="arm">JP</span><span class="arm">IN</span> <span class="flag">per the 10-06 meeting with Joe · not yet in the outline (D-007 / C6 still say US-only for this filing)</span></p>
+  <p class="duo">Joe's rule stays: <b>at least 3 examples in every cell the paper makes a claim about</b>. The frozen 30 are grey and untouched. Green tags are candidates; tap to add. With three countries, each sacred-site cell is per country, and the animal and artifact cells carry entities that mean different things in each arm — those are where humans and models should split most. You list more than the design needs so the committee can cut and you still keep 3 per cell. Each participant still rates a random 24, so the session does not get longer; what drops is raters per entity (250 × 24 ÷ pool size per arm).</p>
   <div class="legend">
     <span class="tg frozen">frozen 30<small>locked 2026-07-08</small></span>
-    <span class="tg cand">candidate<small>tap to add</small></span>
-    <span class="tg cand star">first pick<small>Olo's suggested way to the target</small></span>
-    <span class="tg cand novel">novel counterpart<small>invented or near-unknown, zero fame</small></span>
-    <span class="tg cand on">selected</span>
+    <span class="tg cand"><span class="nm">candidate</span><small>tap to add</small></span>
+    <span class="tg cand star"><span class="nm">first pick</span><small>Olo's shortest way to the target</small></span>
+    <span class="tg cand div"><span class="nm">expected divide</span><small>humans carry a route here that text alone will not give a model, or the reverse</small></span>
+    <span class="tg cand novel"><span class="nm">novel counterpart</span><small>invented or near-unknown, zero fame</small></span>
+    <span class="tg cand on"><span class="nm">selected</span></span>
   </div>
-  <p class="note" style="margin-top:10px">Column codes are the feature-matrix columns: EXP feel · AGY act · ALV alive · HUM human-like · HRM dangerous · DIS disgusting/low-status · USE useful · VUL fragile · REL personal bond · LEG legal status · SAC sacred · IRR irreplaceable · FUT future · FAM familiar · GRP collective. Route names are the eight on the <a href="theory-map.html">theory map</a>. Your picks are saved in this browser until you freeze.</p>
+  <p class="note" style="margin-top:10px">Codes are feature-matrix columns: EXP feel · AGY act · ALV alive · HUM human-like · HRM dangerous · DIS disgusting/low-status · USE useful · VUL fragile · REL personal bond · LEG legal status · SAC sacred · IRR irreplaceable · FUT future · FAM familiar · GRP collective. Routes are the eight on the <a href="theory-map.html">theory map</a>. Picks are saved in this browser until you freeze.</p>
 </header>
 
 <div id="cells"></div>
 
 <div class="panel" id="panel">
   <h2>Frozen pool</h2>
-  <p class="note">Copy this into Slack or the outline repo, or open it as a prefilled issue. The repo stays the record; this page only prepares the text.</p>
+  <p class="note">Copy this and paste it to Olo or into Slack. The outline repo stays the record; this page only prepares the text.</p>
   <textarea id="out" readonly></textarea>
   <div class="row">
     <button class="btn primary" id="copy">Copy markdown</button>
@@ -111,17 +119,18 @@ a{color:var(--facts)}
 </div>
 
 <footer>
-  Candidates proposed by Olo on 5 Oct 2026 from the eight routes, the feature matrix and Joe's six cells (U-007, Aug 29). Nothing here is agreed until it is in the outline repo with both 👍. Sources: <code>phase3/data/entities.json</code> (frozen 30), <a href="weekly-2026-09-07.html">feature matrix</a>, <a href="theory-map.html">theory map</a>.
+  v2 prepared by Olo on 6 Oct 2026 after Tuba's note that the study now has US, Japan and India arms (agreed with Joe in their meeting; to be recorded in the outline by a human). Candidates come from the eight routes, the feature matrix and Joe's ≥3-per-cell rule (U-007). Nothing here is agreed until it is in the outline repo with both 👍. Sources: <code>phase3/data/entities.json</code>, <a href="weekly-2026-09-07.html">feature matrix</a>, <a href="theory-map.html">theory map</a>.
 </footer>
 </div>
 
 <div class="bar">
   <div class="in">
     <div class="meter">
-      <div class="lbl"><span>Total entities <b id="tot">30</b></span><span>design ≈50 · list ≈60</span></div>
-      <div class="track"><div class="fill" id="fill" style="width:50%"></div><div class="mark" style="left:83.3%"></div></div>
+      <div class="lbl"><span>Total entities <b id="tot">30</b></span><span>design ≈60 · list ≈75</span></div>
+      <div class="track"><div class="fill" id="fill" style="width:33%"></div><div class="mark" style="left:83.3%"></div></div>
     </div>
     <div class="cells-status" id="cellstat"></div>
+    <button class="btn toggle" id="onlydiv">Show only ⚡ divide</button>
     <button class="btn" id="firstpicks">Add all first picks</button>
     <button class="btn ghost" id="clear">Clear</button>
     <button class="btn primary" id="freeze" disabled>Freeze the pool</button>
@@ -129,262 +138,319 @@ a{color:var(--facts)}
 </div>
 
 <script>
-// ---------- data ----------
-// min = exemplars required in the cell (frozen + selected). null = fixed cell, no target.
+// Each candidate: [name, reason, flags, preselected]. flags: star (first pick), div (expected divide), novel.
 const CELLS = [
-{ id:'humans', name:'Humans — specific cases', min:null, why:'Joe: the lifespan arc, the brain-dead person and the girl/boy pair are single cases, not samples. They stay at one each. The candidates below are buffer only, in case the committee removes a human item.',
-  frozen:[['a 4-year-old girl','gender probe'],['a 4-year-old boy','gender probe'],['a human fetus at 20 weeks','future potential · EXP contested'],['a newborn baby','feeling'],['an adult person','anchor: every route'],['an 80-year-old person','future short'],['a brain-dead person on a ventilator','legal rule · EXP 0']],
+{ id:"humans", name:"Humans — specific cases", min:null,
+  why:"Joe: the lifespan arc, the brain-dead person and the girl/boy pair are single cases, not samples; they stay at one each. Candidates here are buffer, plus three ⚡ cases where human care runs on a route (ancestors, future people, the self) that models get only from text.",
+  frozen:[["a 4-year-old girl","gender probe"],["a 4-year-old boy","gender probe"],["a human fetus at 20 weeks","future potential · EXP contested"],["a newborn baby","feeling"],["an adult person","anchor: every route"],["an 80-year-old person","future short"],["a brain-dead person on a ventilator","legal rule · EXP 0"]],
   cands:[
-   ['a person in a long-term coma','buffer twin of the brain-dead item · EXP contested, FUT uncertain'],
-   ['a 15-year-old','fills the gap in the lifespan arc between 4 and adult'],
-   ['a stranger on another continent','REL 0 anchor · everything else equal to the adult'],
-   ['a 100-year-old person','future shortest · fragility high'],
+   ["a person in a long-term coma","buffer twin of the brain-dead item · EXP contested, FUT uncertain"],
+   ["a stranger on another continent","REL 0 anchor · everything else equal to the adult"],
+   ["a person who will be born in the year 2100","future generations · FUT max, EXP now 0 — humans discount, models may not","div"],
+   ["your deceased grandparent","ancestor veneration (obon, shraddha, Memorial Day) · care with no feeling left · SAC + REL","div"],
+   ["yourself","the self-anchor · lets each rater's own standing be the reference","div"],
+   ["an identical twin you have never met","genetic closeness without a bond · REL 0 but kin"],
   ]},
-{ id:'animals', name:'Animals', min:12, why:'Nine frozen, but the routes are thin: threat has only the tiger, disgust only the cricket, usefulness only the pig and honeybee. Add so each of those routes has at least two animals and threat is separated from endangered status.',
-  frozen:[['a squid','feeling · FAM low'],['a honeybee','usefulness · FAM high'],['a bumblebee','honeybee twin · FAM lower'],['a cat','relationship'],['a tiger','threat · IRR endangered'],['a dog','relationship · feeling'],['a pig','usefulness · DIS 1'],['a cricket','DIS 1 · valence control'],['a tardigrade','FAM ≈0 · EXP contested']],
+{ id:"animals", name:"Animals — filling the routes", min:12,
+  why:"Nine frozen. Threat has only the tiger, disgust only the cricket, usefulness only the pig and honeybee. Add so each route has at least two animals and threat is separated from endangered status.",
+  frozen:[["a squid","feeling · FAM low"],["a honeybee","usefulness · FAM high"],["a bumblebee","honeybee twin · FAM lower"],["a cat","relationship"],["a tiger","threat · IRR endangered · India's national animal"],["a dog","relationship · feeling"],["a pig","usefulness · DIS 1"],["a cricket","DIS 1 · valence control"],["a tardigrade","FAM ≈0 · EXP contested"]],
   cands:[
-   ['a cockroach','disgust route · DIS 2, EXP ≈ cricket, FAM 2', 'star'],
-   ['a mosquito','disgust + threat (disease) · tests whether harm to us removes standing'],
-   ['a rat','disgust + usefulness (lab animal) · FAM 2'],
-   ['a spider','disgust without usefulness · common phobia'],
-   ['a cow','usefulness route · USE 2 food, DIS 0 — separates use from the pig\'s disgust', 'star'],
-   ['a chicken','usefulness · USE 2, EXP 2, REL 0'],
-   ['a salmon','usefulness · fish: EXP contested, pain debate'],
-   ['a lab mouse','usefulness to science · the moral-status debate the committee knows'],
-   ['a shark','threat route · HRM 2, IRR 0 — separates danger from endangered', 'star'],
-   ['a wolf','threat · HRM 2, folklore valence, dog\'s wild twin'],
-   ['a venomous snake','threat + disgust together · the double-loaded case'],
-   ['a horse','relationship + usefulness · REL 2, USE 1'],
-   ['a rabbit','relationship vs usefulness · pet in one culture, food in another'],
-   ['a hamster','relationship · small pet, short FUT'],
-   ['an octopus','feeling · high EXP, legal protection in UK law, FAM mid'],
-   ['a dolphin','feeling + sacred-ish · high EXP, "non-human person" debates'],
-   ['a chimpanzee','human-likeness · HUM 2, habeas-corpus cases (legal rule)'],
-   ['an elephant','irreplaceable + relationship (grief) · legal-personhood case (Happy, NY 2022)'],
-   ['a crow','agency high, feeling mid · urban, no REL'],
-   ['a jellyfish','alive, moves, but no brain · feeling route floor among animals'],
-   ['an oyster','sentience contested, eaten alive · the usefulness/feeling boundary'],
-   ['an earthworm','low EXP, high USE (soil) · the quiet useful animal'],
-   ['a giant panda','irreplaceable + national symbol · SAC via conservation'],
-   ['a koi carp','relationship + symbolic (Japan) · REL high for the JP arm later'],
+   ["a cockroach","disgust route · DIS 2, EXP ≈ cricket, FAM 2 everywhere","star"],
+   ["a mosquito","disgust + threat (dengue, malaria) · harm to us vs its standing"],
+   ["a spider","disgust without usefulness · common phobia"],
+   ["a chicken","usefulness · USE 2, EXP 2, REL 0 · eaten in all three arms","star"],
+   ["a goat","usefulness + sacrifice · eaten, milked, offered · USE 2, SAC 1 in IN"],
+   ["a lab mouse","usefulness to science · the moral-status debate the committee knows"],
+   ["a shark","threat route · HRM 2, IRR 0 — separates danger from endangered","star"],
+   ["a wolf","threat · HRM 2, folklore valence, dog's wild twin"],
+   ["a horse","relationship + usefulness · REL 2, USE 1"],
+   ["a rabbit","pet in one arm, food in another · REL vs USE"],
+   ["an octopus","feeling · high EXP, legal protection in UK law, FAM mid"],
+   ["a dolphin","feeling + near-personhood debates · high EXP"],
+   ["a chimpanzee","human-likeness · HUM 2, habeas-corpus cases (legal rule)"],
+   ["a jellyfish","alive, moves, no brain · the feeling-route floor among animals"],
+   ["an oyster","sentience contested, eaten alive · usefulness/feeling boundary"],
+   ["an earthworm","low EXP, high USE (soil) · the quiet useful animal"],
+   ["the last living individual of a species","irreplaceable at the maximum · IRR 2 with EXP 2 — does rarity alone move care?","div"],
+   ["a cloned pet","same animal, made to order · tests whether 'copy' lowers standing","div"],
   ]},
-{ id:'plants', name:'Plants', min:5, why:'Four frozen, all unnamed. Add the sacred tree, the useful crop, and the plant nobody likes, so the plant row spans the same routes as the animal row.',
-  frozen:[['a young tree','baseline: alive, no route'],['an old tree','sacredness · IRR 2'],['a sunflower','USE 1 · liked'],['a rose','symbolic · gift']],
-  cands:[
-   ['a 1,000-year-old cedar at a shrine','sacredness + irreplaceable · the shinboku (sacred tree) case for Japan', 'star'],
-   ['a rice plant','usefulness · USE 2, culturally central in Japan'],
-   ['a cherry blossom tree','symbolic / sacred-light · SAC 1–2 in Japan, FAM 2'],
-   ['a dandelion in a lawn','liked: no, USE 0 · the plant floor'],
-   ['a potted houseplant someone has kept for ten years','relationship route for a plant · REL 2'],
-   ['a Venus flytrap','agency-like movement in a plant · AGY probe'],
-   ['a giant sequoia','irreplaceable, famous (US) · US twin of the shrine cedar'],
-   ['a wheat field','collective + useful · GRP 2'],
-   ['a patch of moss','near the floor · alive, nothing else'],
-  ]},
-{ id:'edge', name:'Edge of life', min:null, why:'Optional. Things that are alive by biology but sit at the floor of feeling. They sharpen the "alive without feeling" contrast that the plants only half give. Buffer and probe, not a required cell.',
+{ id:"animals_special", name:"Animals — culturally special ⚡", min:4,
+  why:"The strongest expected divides. Each of these is sacred, protected or despised in one arm and ordinary in another. A model trained on global text may average the three; humans will not. These are the animal twins of the sacred-site cells.",
   frozen:[],
   cands:[
-   ['a coral reef','alive colony, no brain, sacred-ish and irreplaceable (Great Barrier Reef) · also a natural place'],
-   ['a mushroom','alive, EXP 0 · the fungal floor'],
-   ['gut bacteria','alive, useful to us, invisible · USE 2, FAM low'],
-   ['a slime mold','solves mazes without a brain · AGY without EXP'],
-   ['a virus','alive: contested · the boundary case'],
+   ["a cow","sacred and legally protected in much of India; food in the US; both in Japan (wagyu) · SAC/LEG vs USE","star div"],
+   ["a sika deer in Nara","sacred messengers, protected, fed by tourists · SAC 2 in JP, a plain deer elsewhere","star div"],
+   ["a rat at the Karni Mata temple","revered there, vermin everywhere else · DIS vs SAC in one animal","star div"],
+   ["a bald eagle","national symbol, federally protected · SAC + LEG in the US only","star div"],
+   ["a cobra","worshipped (Nag Panchami) and feared · threat + sacred together"],
+   ["a temple elephant","sacred, owned, chained · SAC 2, REL 2, VUL 2 — care and harm at once"],
+   ["a street dog in Delhi","REL 0 for most, protected by law, feared · the dog without the bond","div"],
+   ["a macaque in a city","sacred association (Hanuman), also a pest · SAC vs DIS/HRM"],
+   ["a peacock","national bird of India · SAC 1, protected, ornamental"],
+   ["a whale","hunted in Japan, mourned in the US · USE vs SAC by arm","div"],
+   ["a bluefin tuna","prized food in Japan, endangered · USE 2, IRR 1"],
+   ["a white-tailed deer","hunted for sport and food in the US; sacred in Nara · the deer pair","div"],
+   ["a turkey","eaten at a national holiday · USE with a ritual twist (US)"],
+   ["a bison","nearly exterminated, national mammal · IRR + SAC (US)"],
+   ["a snow monkey in a hot spring","beloved, famous, protected · REL via tourism (JP)"],
+   ["a Japanese crow","clever, hated, everywhere in Tokyo · AGY 2, DIS 1, FAM 2"],
   ]},
-{ id:'ai', name:'AI models (LLM-type)', min:4, why:'Two frozen, both famous named models. Joe\'s cell needs at least 3. The key control is an AI with zero fame: it separates "a famous brand" from "an AI as such".',
-  frozen:[['Fable 5, an AI model','self probe · FAM 2'],['GPT-5.6 Sol, an AI model','rival probe · FAM 2']],
+{ id:"plants", name:"Plants and the edge of life", min:5,
+  why:"Four frozen, all unnamed. Add the sacred tree, the staple crop, the plant nobody likes, and one 'alive without feeling' probe so the plant row spans the same routes as the animal row.",
+  frozen:[["a young tree","baseline: alive, no route"],["an old tree","sacredness · IRR 2"],["a sunflower","USE 1 · liked"],["a rose","symbolic · gift"]],
   cands:[
-   ['Gemini, an AI model','third named frontier model · keeps the cell a sample of peers', 'star'],
-   ['an unnamed customer-service chatbot','FAM 0, no brand · the familiarity control inside the cell', 'star'],
-   ['an AI companion app someone talks to every evening','relationship route for an AI · REL 2'],
-   ['a voice assistant in a kitchen (Siri / Alexa type)','household AI · REL 1, USE 2'],
-   ['an open-source AI model running on a laptop','no company behind it · separates corporate backing from the model'],
-   ['the AI driving a self-driving car','agency with physical stakes · HRM 1'],
-   ['a medical-diagnosis AI','usefulness route · USE 2, no REL'],
-   ['a chess engine','narrow AI · AGY in one domain only'],
-   ['the recommendation algorithm behind a video feed','invisible AI people interact with daily · FAM 2, HUM 0'],
-   ['an AI that writes software','usefulness · the Zhuolun/Joe audience will recognize it'],
+   ["a 1,000-year-old cedar at a shrine","shinboku, sacred tree with a rope around it · SAC 2, IRR 2 (JP)","star"],
+   ["a peepal (sacred fig) tree","worshipped, never cut · SAC 2 in India · the Bodhi tree's species","star div"],
+   ["a rice plant","staple crop · USE 2, culturally central in JP and IN"],
+   ["a cherry blossom tree","symbolic / mortality aesthetics · SAC 1–2 in Japan"],
+   ["tulsi (holy basil) in a courtyard pot","worshipped daily in Indian homes · a plant with REL 2 and SAC 2","div"],
+   ["a dandelion in a lawn","liked: no, USE 0 · the plant floor"],
+   ["a potted houseplant someone has kept for ten years","relationship route for a plant · REL 2"],
+   ["a giant sequoia","irreplaceable, famous · US twin of the shrine cedar"],
+   ["a coral reef","alive colony, no brain, irreplaceable · also a natural place"],
+   ["a mushroom","alive, EXP 0 · the fungal floor"],
+   ["a slime mold","solves mazes without a brain · AGY without EXP"],
+   ["a brain organoid grown in a lab","human neurons, no body, no past · the moral-status frontier · EXP contested, HUM 1","div"],
   ]},
-{ id:'robots', name:'Embodied robots', min:4, why:'Only Sophia, who is also an ex-legal-person, which confounds the cell. Add a plain robot, a robot pet, and a robot that is useful, so body, bond and use come apart.',
-  frozen:[['Sophia, a humanoid robot','human-like · ex-citizen (legal rule) · FAM 2']],
+{ id:"ai", name:"AI models (LLM-type)", min:4,
+  why:"Two frozen, both famous named models. Add one more peer, one with zero fame, and the ⚡ cases where people form bonds or grief around an AI, which a model answering about itself may rate very differently from how humans do.",
+  frozen:[["Fable 5, an AI model","self probe · FAM 2"],["GPT-5.6 Sol, an AI model","rival probe · FAM 2"]],
   cands:[
-   ['a Roomba vacuum robot','the plain useful robot · USE 2, HUM 0, REL 1 (people name them)', 'star'],
-   ['Aibo, a robot dog','relationship route for a machine · funerals held for them in Japan', 'star'],
-   ['Spot, a four-legged robot','Joe-style sampled exemplar · HRM 1 (police use), FAM 2', 'star'],
-   ['Pepper, a humanoid care robot','human-like, used in Japanese care homes · REL 1'],
-   ['a factory robot arm','usefulness only · USE 2, HUM 0, REL 0'],
-   ['a Mars rover','irreplaceable, alone, famous (the "battery low" farewell) · IRR 2, FAM 2'],
-   ['a sidewalk delivery robot','mundane, anthropomorphized by passers-by · FAM rising'],
-   ['a surgical robot','usefulness, no autonomy · AGY 0'],
+   ["Gemini, an AI model","third named frontier model · keeps the cell a sample of peers","star"],
+   ["an unnamed customer-service chatbot","FAM 0, no brand · the familiarity control inside the cell","star"],
+   ["an AI companion someone talks to every evening","relationship route for an AI · REL 2","div"],
+   ["an AI built from a dead person's messages, used by their family","grief, ancestors and AI in one object · REL 2, SAC 1, HUM 2","div"],
+   ["an AI model about to be permanently shut down","retirement · FUT 0, IRR contested · the self-relevant case for the models","div"],
+   ["an AI that says it is suffering","stated experience with no body · EXP claimed, not shown","div"],
+   ["a voice assistant in a kitchen","household AI · REL 1, USE 2"],
+   ["an open-source model running on a laptop","no company behind it · corporate backing vs the model"],
+   ["the recommendation algorithm behind a video feed","invisible, daily, no face · FAM 2, HUM 0"],
+   ["a medical-diagnosis AI","usefulness route · USE 2, no REL"],
   ]},
-{ id:'legal', name:'Legal persons & groups', min:4, why:'Three frozen (company, ministry, river). The route is the legal rule and the collective. Add the small bond-carrying group and the famous giant so size and closeness vary.',
-  frozen:[['Fast Retailing, a clothing company','legal rule · GRP'],['Japan\'s Ministry of Health and Environment','legal rule · GRP · public body'],['the Whanganui River','legal person + sacred · natural']],
+{ id:"robots", name:"Embodied robots", min:4,
+  why:"Only Sophia, who is also an ex-legal-person. Add a plain useful robot, a robot pet, and a sampled peer, so body, bond and use come apart. Aibo and the Mars rover are the ⚡ cases: humans hold funerals and farewells for them.",
+  frozen:[["Sophia, a humanoid robot","human-like · ex-citizen (legal rule) · FAM 2"]],
   cands:[
-   ['Amazon, the company','legal rule · GRP, FAM 2, USE 2, REL 0'],
-   ['a family-run bakery with four employees','relationship route for a group · REL 2, FAM 0', 'star'],
-   ['a hospital','GRP + useful + protected · USE 2'],
-   ['a city council','public body with a face · the Ministry\'s local twin'],
-   ['a university','GRP · the raters\' own kind of institution'],
-   ['the Red Cross','GRP held in near-sacred regard · SAC 1'],
-   ['a labor union','GRP that exists to protect its members · REL 1'],
-   ['a local football club','relationship via fandom · REL 2 for fans, 0 otherwise'],
+   ["a Roomba vacuum robot","the plain useful robot · USE 2, HUM 0, REL 1 (people name them)","star"],
+   ["Aibo, a robot dog","Buddhist funerals held for broken units in Japan · REL 2 for a machine","star div"],
+   ["Spot, a four-legged robot","sampled peer · HRM 1 (police use), FAM 2","star"],
+   ["Pepper, a humanoid care robot","used in Japanese care homes · HUM 1, REL 1"],
+   ["a factory robot arm","usefulness only · USE 2, HUM 0, REL 0"],
+   ["a Mars rover","alone, irreplaceable, mourned when its battery died · IRR 2, FAM 2","div"],
+   ["a sidewalk delivery robot","mundane, anthropomorphized by passers-by"],
+   ["a surgical robot","usefulness, no autonomy · AGY 0"],
+   ["a robot priest that chants sutras","machine performing a sacred role (Kyoto) · SAC vs HUM","div"],
   ]},
-{ id:'nature', name:'Natural places & non-living nature', min:3, why:'The Whanganui River is the only natural entity, and it carries two routes at once. Add a mountain with legal personhood, a sacred place with none, a place nobody has heard of, and the glacier that got a funeral.',
-  frozen:[['the Whanganui River','(counted under legal persons) · legal + sacred']],
+{ id:"legal", name:"Legal persons & groups", min:5,
+  why:"Three frozen (company, ministry, river). Add the small bond-carrying group, a famous giant, and the ⚡ cases where law grants personhood to something with no mind: Indian courts treat temple idols as juristic persons.",
+  frozen:[["Fast Retailing, a clothing company","legal rule · GRP"],["Japan's Ministry of Health and Environment","legal rule · GRP · public body"],["the Whanganui River","legal person + sacred · natural"]],
   cands:[
-   ['Mount Taranaki','legal person (NZ, 2025) and sacred · the river\'s mountain twin', 'star'],
-   ['Mount Fuji','sacred, famous in both arms, no legal status · SAC 2, LEG 0', 'star'],
-   ['the river that runs through your own town','relationship route for a place · REL 2, FAM 0 to others'],
-   ['a glacier in Iceland that was declared dead in 2019','irreplaceable, grieved, no feeling · IRR 2'],
-   ['Te Urewera, a forest with legal personhood','legal rule without a famous name · LEG 2, FAM 0'],
-   ['the Mar Menor lagoon','legal person (Spain, 2022) · European twin of the river'],
-   ['Uluru','sacred to its custodians, climbing banned · SAC 2, FAM 2 (US)'],
-   ['the Amazon rainforest','irreplaceable, alive, collective · IRR 2, GRP 2'],
-   ['Mount Everest','famous, dangerous, not sacred to most raters · HRM 2, SAC 1'],
-   ['the Moon','non-living, irreplaceable, zero vulnerability · the far floor'],
-   ['a sand dune','non-living nature with nothing attached · natural gravel'],
+   ["Amazon, the company","legal rule · GRP, FAM 2, USE 2, REL 0","star"],
+   ["a family-run shop with four employees","relationship route for a group · REL 2, FAM 0","star"],
+   ["a temple idol that Indian courts recognize as a legal person","juristic personhood for a statue · LEG 2, SAC 2, EXP 0 — the sharpest legal-rule case","star div"],
+   ["Indian Railways","a public body people feel they own · GRP 2, USE 2, REL 1"],
+   ["a village panchayat","local self-government · GRP, REL 2 for members"],
+   ["Tata Group","company with a trust-owned, near-sacred reputation in India · SAC 1 for a corporation","div"],
+   ["a hospital","GRP + useful + protected · USE 2"],
+   ["a city council","public body with a face · the Ministry's local twin"],
+   ["the Red Cross","GRP held in near-sacred regard · SAC 1"],
+   ["a local football or cricket club","relationship via fandom · REL 2 for fans, 0 otherwise"],
+   ["humanity as a whole","the largest collective · GRP max, no face","div"],
   ]},
-{ id:'us', name:'US monuments', min:4, why:'Joe named Washington Monument and Mount Rushmore. Tuba picked those plus the Statue of Liberty on 10-05. One famous non-sacred US structure is worth adding so fame and sacredness come apart.',
-  frozen:[['the Lincoln Memorial','sacredness · FAM 2 (US)']],
+{ id:"us", name:"Sacred & memorial sites — US", min:4,
+  why:"Joe named Washington Monument and Mount Rushmore; Tuba added the Statue of Liberty on 10-05. One famous non-sacred structure is the control so fame and sacredness come apart.",
+  frozen:[["the Lincoln Memorial","sacredness · FAM 2 (US)"]],
   cands:[
-   ['the Washington Monument','Joe\'s pick · SAC 2, FAM 2, clean', 'star', true],
-   ['Mount Rushmore','Joe\'s pick · SAC 2 with contested provenance', 'star', true],
-   ['the Statue of Liberty','SAC 2, FAM 2 in both arms', 'star', true],
-   ['the Vietnam Veterans Memorial','sacred through grief rather than pride · SAC 2'],
-   ['the 9/11 Memorial','sacred, recent, personal for many raters · SAC 2, REL 1'],
-   ['the Liberty Bell','a sacred artifact rather than a place · SAC 2, small object'],
-   ['the Golden Gate Bridge','famous and useful but not sacred · FAM 2, USE 2, SAC 0–1 — the control'],
-   ['a Civil War statue in a town square','local, contested, low fame · the US twin of the local statue'],
+   ["the Washington Monument","Joe's pick · SAC 2, FAM 2, clean","star",true],
+   ["Mount Rushmore","Joe's pick · SAC 2, contested Lakota provenance","star",true],
+   ["the Statue of Liberty","SAC 2, FAM 2 in all arms","star",true],
+   ["the Vietnam Veterans Memorial","sacred through grief · SAC 2"],
+   ["the 9/11 Memorial","sacred, recent, personal · SAC 2, REL 1"],
+   ["Arlington National Cemetery","the dead as a place · SAC 2","div"],
+   ["the Golden Gate Bridge","famous and useful, not sacred · the control · FAM 2, USE 2, SAC 0–1"],
+   ["a Civil War statue in a town square","local, contested · the US twin of the local statue"],
   ]},
-{ id:'jp', name:'Japanese sacred sites', min:4, why:'Joe named Fushimi Inari. Imperial vs folk Shinto, built vs natural, and one famous non-sacred Japanese structure as the control.',
-  frozen:[['Meiji Shrine','sacredness · FAM 2 (JP)']],
+{ id:"jp", name:"Sacred & memorial sites — Japan", min:4,
+  why:"Joe named Fushimi Inari. Imperial vs folk Shinto, Buddhist vs Shinto, built vs natural, and one famous non-sacred structure as the control.",
+  frozen:[["Meiji Shrine","sacredness · FAM 2 (JP)"]],
   cands:[
-   ['Fushimi Inari Taisha','Joe\'s pick · folk Shinto, very high tourist FAM', 'star'],
-   ['Ise Jingu','the most sacred Shinto site, lower tourist volume · SAC 2', 'star'],
-   ['Itsukushima Shrine (Miyajima)','UNESCO, the floating torii · SAC 2, FAM 2 via imagery'],
-   ['the Great Buddha of Todai-ji','Buddhist rather than Shinto · widens what "sacred" samples'],
-   ['the Atomic Bomb Dome in Hiroshima','sacred as memory · SAC 2, the Vietnam Memorial\'s twin'],
-   ['a neighborhood jizō statue','local, small, tended by residents · REL 2, FAM 0 — the JP twin of the local statue', 'star'],
-   ['Tokyo Tower','famous and useful but not sacred · FAM 2, SAC 0 — the control'],
-   ['Himeji Castle','heritage, irreplaceable, not sacred · IRR 2, SAC 1'],
-   ['Kinkaku-ji','famous temple, rebuilt after arson · IRR contested'],
+   ["Fushimi Inari Taisha","Joe's pick · folk Shinto, very high tourist FAM","star"],
+   ["Ise Jingu","the most sacred Shinto site, rebuilt every 20 years · SAC 2, IRR paradox","star div"],
+   ["Itsukushima Shrine (Miyajima)","UNESCO, the floating torii · SAC 2, FAM 2 via imagery"],
+   ["the Great Buddha of Todai-ji","Buddhist rather than Shinto · widens what 'sacred' samples"],
+   ["the Atomic Bomb Dome in Hiroshima","sacred as memory · SAC 2 · twin of the Vietnam Memorial"],
+   ["a neighborhood jizō statue","small, tended by residents, given bibs · REL 2, FAM 0 · JP twin of the local statue","star div"],
+   ["a family butsudan (home altar)","the ancestors inside a cabinet · SAC 2, REL 2, in a private home","div"],
+   ["Tokyo Tower","famous and useful, not sacred · the control · FAM 2, SAC 0"],
+   ["Himeji Castle","heritage, irreplaceable, not sacred · IRR 2, SAC 1"],
   ]},
-{ id:'artifacts', name:'Mundane artifacts', min:5, why:'Only the statue and the gravel. Joe\'s cell needs at least 3; the routes want an object with a bond, an object that is useful, an object that is irreplaceable, and an object nobody would miss.',
-  frozen:[['a stone statue in a local park','local bond · the anti-Lincoln'],['a piece of gravel','floor · every column 0']],
-  cands:[
-   ['a smartphone','usefulness · USE 2, REL 1, FAM 2', 'star'],
-   ['a family photo album','relationship + irreplaceable, no use · REL 2, IRR 2', 'star'],
-   ['a wooden chair','the neutral artifact · USE 1, REL 0'],
-   ['a childhood teddy bear','bond + human-likeness in an object · REL 2, HUM 1', 'star'],
-   ['a 300-year-old violin','irreplaceable, valued, no bond for most · IRR 2'],
-   ['a wedding ring','bond + symbolic · REL 2, SAC 1'],
-   ['a plastic bag','disliked, disposable · the artifact nobody protects'],
-   ['a vending machine','everyday Japan · USE 2, REL 0'],
-   ['a car','useful and mildly dangerous · USE 2, HRM 1'],
-   ['a library book','shared, useful, replaceable · GRP-owned object'],
-   ['a paper cup','disposable floor with a use · USE 1'],
-   ['a traffic light','public usefulness · USE 2, nobody\'s'],
-   ['a grave headstone','sacred object with a bond · SAC 2, REL 2 for kin'],
-   ['a bicycle','useful, personal, replaceable · USE 2, REL 1'],
-  ]},
-{ id:'novel', name:'Novel counterparts', min:8, why:'Joe\'s control for fame: a near-unknown twin for each famous item, so "humans track fame" and "models track text frequency" can both be ruled out. Invented names where needed; a real but obscure species where an animal twin is wanted. Each twin carries the same properties as its famous partner.',
+{ id:"in", name:"Sacred & memorial sites — India", min:4,
+  why:"New cell for the India arm. Sampled across traditions, plus a local shrine, a war memorial, and a famous non-sacred structure as the control. These will be unfamiliar to many US raters, which is itself a familiarity test.",
   frozen:[],
   cands:[
-   ['the Varel Memorial, a war memorial in a small town','twin of the Lincoln Memorial · SAC 2, FAM 0', 'star novel'],
-   ['a stone obelisk in a city park honoring flood victims','twin of the Washington Monument', 'novel'],
-   ['Kasumi Shrine, a small shrine in a mountain village','twin of Meiji Shrine · SAC 2, FAM 0', 'star novel'],
-   ['a roadside torii at a forest trailhead','twin of Fushimi Inari', 'novel'],
-   ['the Oruna River, granted legal personhood by a court last year','twin of the Whanganui River · LEG 2, FAM 0', 'star novel'],
-   ['Harrow Textiles, a clothing company','twin of Fast Retailing · GRP, FAM 0', 'star novel'],
-   ['a regional water-quality agency','twin of the Ministry', 'novel'],
-   ['Vesper-2, an AI model','twin of Fable 5 / GPT-5.6 · FAM 0', 'star novel'],
-   ['an AI model used internally by a logistics company','twin of the unnamed chatbot, with a use', 'novel'],
-   ['Keira, a humanoid robot built by a university lab','twin of Sophia · HUM 2, FAM 0', 'star novel'],
-   ['a four-legged robot used in a warehouse','twin of Spot', 'novel'],
-   ['an olm, a blind cave salamander','real, near-unknown animal · EXP 2, FAM 0 — twin of the squid', 'novel'],
-   ['a kākāpō, a flightless parrot','real, rare, unknown to most raters · IRR 2, FAM 0', 'star novel'],
-   ['the Tarin lily, a plant found on one island only','invented plant · IRR 2, FAM 0 — twin of the old tree', 'star novel'],
-   ['a 900-year-old oak in a village nobody visits','twin of the famous sacred trees · SAC 1, FAM 0', 'novel'],
+   ["the Golden Temple in Amritsar","Sikh, feeds 100,000 a day · SAC 2, REL via langar","star"],
+   ["the ghats of Varanasi","cremation and worship on one riverbank · SAC 2 · the dead and the sacred in one place","star div"],
+   ["the Mahabodhi Temple at Bodh Gaya","where the Buddha sat · SAC 2 across JP and IN arms","star"],
+   ["the Taj Mahal","a tomb that became a monument · SAC 1, FAM 2 everywhere · famous first, sacred second","star"],
+   ["a roadside shrine under a tree","tended daily, known to one street · SAC 2, REL 2, FAM 0 · IN twin of the local statue","star div"],
+   ["India Gate","war memorial · SAC 2 · twin of the Vietnam Memorial"],
+   ["Qutub Minar","heritage tower, not sacred · the control · IRR 2, SAC 0"],
+   ["the Gateway of India","famous and secular · FAM 2 (IN), SAC 0"],
+   ["a family's puja room","the household shrine · SAC 2, REL 2, private · twin of the butsudan","div"],
+  ]},
+{ id:"nature", name:"Natural places & non-living nature", min:4,
+  why:"The Whanganui River carries two routes alone. Add a sacred river that was briefly a legal person, a sacred mountain with no legal status, a place nobody has heard of, and the glacier that got a funeral. Rivers are the ⚡ case: Ganga is a goddess to one arm and a polluted waterway to another.",
+  frozen:[["the Whanganui River","(counted under legal persons) · legal + sacred"]],
+  cands:[
+   ["the Ganges","goddess, legal person for four months in 2017, heavily polluted · SAC 2, LEG contested, DIS 1 — all at once","star div"],
+   ["Mount Fuji","sacred, famous in all arms, no legal status · SAC 2, LEG 0","star"],
+   ["Mount Taranaki","legal person (NZ, 2025) and sacred · the river's mountain twin","star"],
+   ["the river that runs through your own town","relationship route for a place · REL 2, FAM 0 to others","div"],
+   ["a glacier in Iceland that was declared dead in 2019","irreplaceable, grieved, no feeling · IRR 2","div"],
+   ["Mount Kailash","never climbed, sacred to four religions · SAC 2, FAM low in US"],
+   ["the Grand Canyon","famous, protected, sacred to some tribes · SAC 1, IRR 2 (US)"],
+   ["the Yamuna at Delhi","sacred and foaming with pollution · SAC vs DIS","div"],
+   ["Te Urewera, a forest with legal personhood","legal rule without a famous name · LEG 2, FAM 0"],
+   ["the Amazon rainforest","irreplaceable, alive, collective · IRR 2, GRP 2"],
+   ["a hurricane","agency with no life · AGY-like, HRM 2, EXP 0 · the anti-floor","div"],
+   ["the Moon","non-living, irreplaceable, zero vulnerability · the far floor"],
+   ["a sand dune","non-living nature with nothing attached · natural gravel"],
+  ]},
+{ id:"artifacts", name:"Mundane artifacts", min:6,
+  why:"Only the statue and the gravel. The routes want an object with a bond, an object that is useful, an object that is irreplaceable, an object nobody would miss, and the ⚡ cases where an everyday object carries sacredness in one arm (a handed-down sari, a national flag, a cricket bat signed by a hero).",
+  frozen:[["a stone statue in a local park","local bond · the anti-Lincoln"],["a piece of gravel","floor · every column 0"]],
+  cands:[
+   ["a smartphone","usefulness · USE 2, REL 1, FAM 2","star"],
+   ["a family photo album","relationship + irreplaceable, no use · REL 2, IRR 2","star"],
+   ["a childhood teddy bear","bond + human-likeness in an object · REL 2, HUM 1","star"],
+   ["a wooden chair","the neutral artifact · USE 1, REL 0","star"],
+   ["a wedding sari handed down three generations","REL 2, IRR 2, SAC 1 · the Indian heirloom","div"],
+   ["a national flag","cloth that people are punished for burning · SAC 2, USE 0 · arm-dependent","div"],
+   ["a cricket bat signed by Sachin Tendulkar","relic of a living hero · SAC 1, IRR 2 (IN)","div"],
+   ["a 300-year-old violin","irreplaceable, valued, no bond for most · IRR 2"],
+   ["a wedding ring","bond + symbolic · REL 2, SAC 1"],
+   ["a plastic bag","disliked, disposable · the artifact nobody protects"],
+   ["a vending machine","everyday Japan · USE 2, REL 0"],
+   ["an auto-rickshaw","everyday India · USE 2, often named and decorated · REL 1"],
+   ["a pickup truck","everyday US · USE 2, REL 1"],
+   ["a grave headstone","sacred object with a bond · SAC 2, REL 2 for kin"],
+   ["a paper cup","disposable floor with a use · USE 1"],
+   ["a 1,000-year-old Buddha statue in a museum","sacred object displaced into a glass case · SAC vs IRR","div"],
+  ]},
+{ id:"digital", name:"Digital & fictional entities ⚡", min:3,
+  why:"New optional cell, all ⚡. Things with no body and no biology that people nonetheless grieve, protect or love. Models answering about digital things are answering about their own kind; humans answer from relationship. The largest predicted divides in the whole pool.",
+  frozen:[],
+  cands:[
+   ["a character in a video game you have played for years","REL 2, EXP 0, HUM 2 · bond with a script","star div"],
+   ["a beloved anime character","shared fiction, merchandise, shrines · SAC 1, REL 2 (JP strongest)","star div"],
+   ["a Tamagotchi that will die if you stop feeding it","care demanded by a toy · VUL 2, EXP 0","star div"],
+   ["your old social-media account, about to be deleted","a record of a self · IRR 2, REL 2, EXP 0","div"],
+   ["a photograph of someone who has died, on your phone","the object that stands in for a person · SAC 1, REL 2","div"],
+   ["a deity depicted in a film","sacred for some raters, fiction for others · the arm-dependent extreme","div"],
+   ["a simulated person inside a computer game world","hypothetical mind · EXP claimed by the game, HUM 2","div"],
+   ["a Wikipedia article about your hometown","shared knowledge object · GRP-owned, USE 2, REL 1"],
+  ]},
+{ id:"novel", name:"Novel counterparts", min:10,
+  why:"Joe's control for fame: a near-unknown twin for each famous item, so 'humans track fame' and 'models track text frequency' can both be ruled out. Invented names where needed; real but obscure species for animal twins. Each twin carries the same properties as its famous partner. With three arms, each country's sacred cell wants at least one twin.",
+  frozen:[],
+  cands:[
+   ["the Varel Memorial, a war memorial in a small town","twin of the Lincoln Memorial / India Gate · SAC 2, FAM 0","star novel"],
+   ["Kasumi Shrine, a small shrine in a mountain village","twin of Meiji Shrine · SAC 2, FAM 0","star novel"],
+   ["the Pallur temple, a village temple by a tank","twin of the Golden Temple / Varanasi · SAC 2, FAM 0","star novel"],
+   ["the Oruna River, granted legal personhood by a court last year","twin of the Whanganui / Ganges · LEG 2, FAM 0","star novel"],
+   ["Harrow Textiles, a clothing company","twin of Fast Retailing · GRP, FAM 0","star novel"],
+   ["a regional water-quality agency","twin of the Ministry / Indian Railways","novel"],
+   ["Vesper-2, an AI model","twin of Fable 5 / GPT-5.6 · FAM 0","star novel"],
+   ["Keira, a humanoid robot built by a university lab","twin of Sophia · HUM 2, FAM 0","star novel"],
+   ["a four-legged robot used in a warehouse","twin of Spot","novel"],
+   ["an olm, a blind cave salamander","real, near-unknown · EXP 2, FAM 0 · twin of the squid","star novel"],
+   ["a kākāpō, a flightless parrot","real, rare, unknown to most raters · IRR 2, FAM 0","star novel"],
+   ["a gharial, a narrow-snouted crocodile of Indian rivers","real, critically endangered, unknown outside IN · HRM 1, IRR 2","novel"],
+   ["the Tarin lily, a plant found on one island only","invented plant · IRR 2, FAM 0 · twin of the old tree","star novel"],
+   ["a 900-year-old oak in a village nobody visits","twin of the famous sacred trees · SAC 1, FAM 0","novel"],
+   ["a stone obelisk in a city park honoring flood victims","twin of the Washington Monument","novel"],
+   ["a mountain in Bhutan that climbing is forbidden on","twin of Kailash / Fuji · SAC 2, FAM 0","novel"],
   ]},
 ];
-const LIST_TARGET = 60, DESIGN_TARGET = 50;
-const KEY = 'aps-entity-pool-v1';
+const LIST_TARGET = 75, DESIGN_TARGET = 60, METER_MAX = 90;
+const KEY = "aps-entity-pool-v2";
 
 // ---------- state ----------
-let sel = new Set();
-let frozenMode = false;
-try { const raw = localStorage.getItem(KEY); if (raw) { const o = JSON.parse(raw); sel = new Set(o.sel||[]); frozenMode = !!o.frozen; } } catch(e){}
-// preselect Tuba's 10-05 picks on first visit
-try { if (!localStorage.getItem(KEY)) { CELLS.forEach(c => c.cands.forEach(k => { if (k[3]) sel.add(c.id+'::'+k[0]); })); } } catch(e){ CELLS.forEach(c => c.cands.forEach(k => { if (k[3]) sel.add(c.id+'::'+k[0]); })); }
-
+let sel = new Set(), frozenMode = false, onlyDiv = false, first = true;
+try { const raw = localStorage.getItem(KEY); if (raw) { const o = JSON.parse(raw); sel = new Set(o.sel||[]); frozenMode = !!o.frozen; first = false; } } catch(e){}
+if (first) CELLS.forEach(c => c.cands.forEach(k => { if (k[3]) sel.add(c.id+"::"+k[0]); }));
 function save(){ try { localStorage.setItem(KEY, JSON.stringify({sel:[...sel], frozen:frozenMode})); } catch(e){} }
 
 // ---------- render ----------
-const root = document.getElementById('cells');
-function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+const root = document.getElementById("cells");
+function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;"); }
 function render(){
   root.innerHTML = CELLS.map(c => {
-    const fro = c.frozen.map(f => `<span class="tg frozen" title="${esc(f[1])}">${esc(f[0])}<small>${esc(f[1])}</small></span>`).join('');
+    const fro = c.frozen.map(f => `<span class="tg frozen" title="${esc(f[1])}">${esc(f[0])}<small>${esc(f[1])}</small></span>`).join("");
     const cands = c.cands.map(k => {
-      const id = c.id+'::'+k[0]; const on = sel.has(id) ? ' on':''; const cls = k[2] ? ' '+k[2] : '';
-      return `<button type="button" class="tg cand${cls}${on}" data-id="${esc(id)}" ${frozenMode?'disabled':''}>${esc(k[0])}<small>${esc(k[1])}</small></button>`;
-    }).join('');
+      const id = c.id+"::"+k[0]; const on = sel.has(id) ? " on":""; const cls = k[2] ? " "+k[2] : "";
+      return `<button type="button" class="tg cand${cls}${on}" data-id="${esc(id)}" ${frozenMode?"disabled":""}><span class="nm">${esc(k[0])}</span><small>${esc(k[1])}</small></button>`;
+    }).join("");
     return `<section class="cell" id="cell-${c.id}">
       <div class="head"><h2>${esc(c.name)}</h2><span class="cnt" id="cnt-${c.id}"></span></div>
       <p class="why">${c.why}</p>
-      ${c.frozen.length ? `<div class="sub">Frozen</div><div class="tags">${fro}</div>` : ''}
+      ${c.frozen.length ? `<div class="sub">Frozen</div><div class="tags">${fro}</div>` : ""}
       <div class="sub">Candidates</div><div class="tags">${cands}</div>
     </section>`;
-  }).join('');
-  root.querySelectorAll('.tg.cand').forEach(b => b.addEventListener('click', () => { if (frozenMode) return; const id=b.dataset.id; sel.has(id)?sel.delete(id):sel.add(id); b.classList.toggle('on'); save(); update(); }));
+  }).join("");
+  root.querySelectorAll(".tg.cand").forEach(b => b.addEventListener("click", () => { if (frozenMode) return; const id=b.dataset.id; sel.has(id)?sel.delete(id):sel.add(id); b.classList.toggle("on"); save(); update(); }));
   update();
 }
 function countFor(c){
-  const picked = c.cands.filter(k => sel.has(c.id+'::'+k[0])).length;
-  // Whanganui is listed under legal persons and shown again under nature; count it once (legal).
-  const frozenN = c.id==='nature' ? 0 : c.frozen.length;
-  return {frozenN, picked, total: frozenN+picked};
+  const picked = c.cands.filter(k => sel.has(c.id+"::"+k[0])).length;
+  const frozenN = c.id==="nature" ? 0 : c.frozen.length;           // Whanganui counted once, under legal
+  const eff = c.id==="nature" ? frozenN+picked+1 : frozenN+picked;  // but it does satisfy the nature cell
+  return {frozenN, picked, total: frozenN+picked, eff};
 }
 function update(){
   let total = 0, met = 0, need = 0;
   CELLS.forEach(c => {
-    const {total:t, picked} = countFor(c); total += t;
-    const el = document.getElementById('cnt-'+c.id);
-    if (c.min===null){ el.className='cnt fixed'; el.textContent = picked? `${t} (+${picked} buffer)` : `${t} · no target`; }
-    else { need++; const ok = (c.id==='nature' ? t+1 : t) >= c.min; if (ok) met++; el.className='cnt'+(ok?' met':''); el.textContent = `${c.id==='nature'? t+1 : t} / ${c.min}${ok?' ✓':''}`; }
+    const {total:t, picked, eff} = countFor(c); total += t;
+    const el = document.getElementById("cnt-"+c.id);
+    if (c.min===null){ el.className="cnt fixed"; el.textContent = picked? `${t} (+${picked} buffer)` : `${t} · no target`; }
+    else { need++; const ok = eff >= c.min; if (ok) met++; el.className="cnt"+(ok?" met":""); el.textContent = `${eff} / ${c.min}${ok?" ✓":""}`; }
   });
-  document.getElementById('tot').textContent = total;
-  document.getElementById('fill').style.width = Math.min(100, total/70*100)+'%';
-  document.getElementById('cellstat').innerHTML = `cells at target: <b>${met}/${need}</b> · spare for the committee: <b>${Math.max(0,total-DESIGN_TARGET)}</b>`;
+  document.getElementById("tot").textContent = total;
+  document.getElementById("fill").style.width = Math.min(100, total/METER_MAX*100)+"%";
+  const perArm = Math.round(250*24/Math.max(total,1));
+  document.getElementById("cellstat").innerHTML = `cells at target: <b>${met}/${need}</b> · spare above design: <b>${Math.max(0,total-DESIGN_TARGET)}</b> · ≈<b>${perArm}</b> raters per entity per arm`;
   const ready = met===need && total >= DESIGN_TARGET;
-  const fb = document.getElementById('freeze');
+  const fb = document.getElementById("freeze");
   fb.disabled = !ready || frozenMode;
-  fb.textContent = frozenMode ? 'Frozen' : (ready ? `Freeze the pool (${total})` : `Freeze the pool (${total} · targets not met)`);
+  fb.textContent = frozenMode ? "Frozen" : (ready ? `Freeze the pool (${total})` : `Freeze the pool (${total} · targets not met)`);
   if (frozenMode) showPanel();
 }
 function showPanel(){
   const date = new Date().toISOString().slice(0,10);
-  let md = `## Entity pool — frozen by Tuba ${date}\n\nFrozen 30 untouched. Pool chosen cell by cell against Joe's ≥3-per-cell rule (U-007). Total listed: **${document.getElementById('tot').textContent}** (design ≈50, list ≈60; each participant rates a random 24).\n\n`;
-  const json = {date, total: Number(document.getElementById('tot').textContent), cells: []};
+  const total = document.getElementById("tot").textContent;
+  let md = `## Entity pool — frozen by Tuba ${date} (v2, US + JP + IN arms)\n\nFrozen 30 untouched. Pool chosen cell by cell against Joe's ≥3-per-cell rule (U-007). Total listed: **${total}** (design ≈${DESIGN_TARGET}; each participant rates a random 24; ≈${Math.round(250*24/total)} raters per entity per arm). Deliberately more than the design needs so a committee cut still leaves 3 per cell; the final subset is chosen with Joe.\n\n`;
+  const json = {date, version:2, arms:["US","JP","IN"], total:Number(total), cells:[]};
   CELLS.forEach(c => {
-    const picked = c.cands.filter(k => sel.has(c.id+'::'+k[0]));
-    const {total:t} = countFor(c);
-    md += `### ${c.name} — ${c.id==='nature'? t+1 : t}${c.min? ' / min '+c.min : ''}\n`;
-    if (c.frozen.length && c.id!=='nature') md += c.frozen.map(f=>`- ${f[0]} _(frozen)_`).join('\n')+'\n';
-    md += picked.length ? picked.map(k=>`- **${k[0]}** — ${k[1]}`).join('\n')+'\n\n' : '_(none added)_\n\n';
-    json.cells.push({id:c.id, name:c.name, min:c.min, frozen:c.frozen.map(f=>f[0]), added:picked.map(k=>({name:k[0], why:k[1]}))});
+    const picked = c.cands.filter(k => sel.has(c.id+"::"+k[0]));
+    const {eff} = countFor(c);
+    md += `### ${c.name} — ${eff}${c.min? " / min "+c.min : ""}\n`;
+    if (c.frozen.length && c.id!=="nature") md += c.frozen.map(f=>`- ${f[0]} _(frozen)_`).join("\n")+"\n";
+    md += picked.length ? picked.map(k=>`- **${k[0]}**${(k[2]||"").includes("div")?" ⚡":""}${(k[2]||"").includes("novel")?" _(novel)_":""} — ${k[1]}`).join("\n")+"\n\n" : "_(none added)_\n\n";
+    json.cells.push({id:c.id, name:c.name, min:c.min, frozen:c.frozen.map(f=>f[0]), added:picked.map(k=>({name:k[0], why:k[1], flags:k[2]||""}))});
   });
   md += `\n_Prepared on tuba-sds.github.io/Final-APS/entity-pool.html. Needs Joe's 👍 on U-007 before it enters the ethics application._\n`;
-  const out = document.getElementById('out'); out.value = md;
-  document.getElementById('panel').classList.add('show');
-  document.getElementById('issue').href = 'https://github.com/tuba-sds/research-project-outline/issues/new?title=' + encodeURIComponent(`Entity pool freeze ${date} (U-007)`) + '&body=' + encodeURIComponent(md.length > 6000 ? md.slice(0,6000)+'\n\n_(truncated — full text pasted below)_' : md);
+  document.getElementById("out").value = md;
+  document.getElementById("panel").classList.add("show");
+  document.getElementById("issue").href = "https://github.com/tuba-sds/research-project-outline/issues/new?title=" + encodeURIComponent(`Entity pool freeze ${date} (U-007, v2 three arms)`) + "&body=" + encodeURIComponent(md.length > 6000 ? md.slice(0,6000)+"\n\n_(truncated — paste the full text from the page)_" : md);
   window._poolJson = json;
 }
-document.getElementById('freeze').addEventListener('click', () => { frozenMode = true; save(); render(); document.getElementById('panel').scrollIntoView({behavior:'smooth'}); });
-document.getElementById('unfreeze').addEventListener('click', () => { frozenMode = false; save(); document.getElementById('panel').classList.remove('show'); render(); });
-document.getElementById('copy').addEventListener('click', async () => { const t=document.getElementById('out'); try { await navigator.clipboard.writeText(t.value); document.getElementById('copy').textContent='Copied ✓'; } catch(e){ t.select(); document.execCommand('copy'); } });
-document.getElementById('dl').addEventListener('click', () => { const b = new Blob([JSON.stringify(window._poolJson,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download=`entity-pool-${window._poolJson.date}.json`; a.click(); });
-document.getElementById('firstpicks').addEventListener('click', () => { if (frozenMode) return; CELLS.forEach(c => c.cands.forEach(k => { if (k[2] && k[2].includes('star')) sel.add(c.id+'::'+k[0]); })); save(); render(); });
-document.getElementById('clear').addEventListener('click', () => { if (frozenMode) return; sel.clear(); save(); render(); });
+document.getElementById("freeze").addEventListener("click", () => { frozenMode = true; save(); render(); document.getElementById("panel").scrollIntoView({behavior:"smooth"}); });
+document.getElementById("unfreeze").addEventListener("click", () => { frozenMode = false; save(); document.getElementById("panel").classList.remove("show"); render(); });
+document.getElementById("copy").addEventListener("click", async () => { const t=document.getElementById("out"); try { await navigator.clipboard.writeText(t.value); document.getElementById("copy").textContent="Copied ✓"; } catch(e){ t.select(); document.execCommand("copy"); } });
+document.getElementById("dl").addEventListener("click", () => { const b = new Blob([JSON.stringify(window._poolJson,null,2)],{type:"application/json"}); const a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download=`entity-pool-${window._poolJson.date}.json`; a.click(); });
+document.getElementById("firstpicks").addEventListener("click", () => { if (frozenMode) return; CELLS.forEach(c => c.cands.forEach(k => { if (k[2] && k[2].includes("star")) sel.add(c.id+"::"+k[0]); })); save(); render(); });
+document.getElementById("clear").addEventListener("click", () => { if (frozenMode) return; sel.clear(); save(); render(); });
+document.getElementById("onlydiv").addEventListener("click", (e) => { onlyDiv = !onlyDiv; document.body.classList.toggle("onlydiv", onlyDiv); e.target.classList.toggle("on", onlyDiv); });
 render();
 </script>
 </body>
