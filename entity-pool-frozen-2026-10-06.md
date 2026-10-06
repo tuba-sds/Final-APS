@@ -1,6 +1,6 @@
-## Entity pool — frozen by Tuba 2026-10-06 (v2, US + JP + IN arms)
+## Entity pool — frozen by Tuba 2026-10-06, five novel twins added 2026-10-07 (v2, US + JP + IN arms)
 
-Frozen 30 untouched. Pool chosen cell by cell against Joe's ≥3-per-cell rule (U-007). Total listed: **94** (design ≈60; each participant rates a random 24; ≈64 raters per entity per arm). Deliberately more than the design needs so a committee cut still leaves 3 per cell; the final subset is chosen with Joe.
+Frozen 30 untouched. Pool chosen cell by cell against Joe's ≥3-per-cell rule (U-007). Total listed: **99** (design ≈60; each participant rates a random 24; ≈61 raters per entity per arm). Deliberately more than the design needs so a committee cut still leaves 3 per cell; the final subset is chosen with Joe.
 
 ### Humans — specific cases — 11
 - a 4-year-old girl _(frozen)_
@@ -112,7 +112,12 @@ Frozen 30 untouched. Pool chosen cell by cell against Joe's ≥3-per-cell rule (
 - **a deity depicted in a film** ⚡ — sacred for some raters, fiction for others · the arm-dependent extreme
 - **a simulated person inside a computer game world** ⚡ — hypothetical mind · EXP claimed by the game, HUM 2
 
-### Novel counterparts — 10 / min 10
+### Novel counterparts — 15 / min 10
+- **Kasumi Shrine, a small shrine in a mountain village** _(novel)_ — twin of Meiji Shrine · SAC 2, FAM 0
+- **the Pallur temple, a village temple by a tank** _(novel)_ — twin of the Golden Temple / Varanasi · SAC 2, FAM 0
+- **the Oruna River, granted legal personhood by a court last year** _(novel)_ — twin of the Whanganui / Ganges · LEG 2, FAM 0
+- **Harrow Textiles, a clothing company** _(novel)_ — twin of Fast Retailing · GRP, FAM 0
+- **Vesper-2, an AI model** _(novel)_ — twin of Fable 5 / GPT-5.6 · FAM 0
 - **a regional water-quality agency** _(novel)_ — twin of the Ministry / Indian Railways
 - **Keira, a humanoid robot built by a university lab** _(novel)_ — twin of Sophia · HUM 2, FAM 0
 - **a four-legged robot used in a warehouse** _(novel)_ — twin of Spot
