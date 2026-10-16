@@ -153,7 +153,41 @@ a{color:var(--facts)}
 .dates{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:6px}
 .dates div{background:var(--chip);border-radius:10px;padding:9px 10px;font-size:12.5px}
 .dates div b{display:block;font-size:13px}
-.dates .hot{outline:2px solid var(--care)}
+/* timeline */
+.tl{position:relative;margin:18px 0 6px;padding:14px 0 26px}
+.tl::before{content:"";position:absolute;left:0;right:0;top:19px;height:2px;background:var(--line)}
+.tl .dots{display:flex;justify-content:space-between;position:relative}
+.tl .dot{position:relative;width:12px;height:12px;border-radius:50%;background:var(--card);border:2px solid var(--muted);cursor:default}
+.tl .dot.past{background:var(--muted)}
+.tl .dot.next{border-color:var(--care);background:var(--care)}
+.tl .dot span{position:absolute;left:50%;top:18px;transform:translateX(-50%);white-space:nowrap;font-size:11px;color:var(--muted)}
+.tl .dot .tip{display:none;position:absolute;left:50%;bottom:20px;top:auto;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:12px;padding:6px 9px;border-radius:8px;white-space:nowrap;z-index:5}
+.tl .dot:hover .tip{display:block}
+.tl .dot:first-child span,.tl .dot:first-child .tip{transform:none;left:0}
+.tl .dot:last-child span,.tl .dot:last-child .tip{transform:none;left:auto;right:0}
+@media(max-width:620px){.tl .dot span{display:none}}
+/* modal */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;align-items:center;justify-content:center;padding:16px}
+.modal.open{display:flex}
+.modal .panel{background:var(--card);color:var(--ink);border-radius:14px;max-width:900px;width:100%;max-height:90vh;overflow:auto;padding:18px 20px;position:relative}
+.modal .close{position:absolute;top:10px;right:12px;border:0;background:var(--chip);color:var(--ink);border-radius:999px;width:28px;height:28px;cursor:pointer;font-size:16px}
+.modal h2{margin-bottom:10px}
+.ents{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+@media(max-width:860px){.ents{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.ents{grid-template-columns:1fr}}
+.ents div{background:var(--chip);border-radius:10px;padding:10px 11px;font-size:12.5px;border-top:3px solid var(--facts)}
+.ents div b{display:block;font-size:13px;margin-bottom:5px}
+.ents div i{display:block;font-style:normal;color:var(--muted);font-size:11.5px;margin-bottom:6px}
+.ents ul{margin:0;padding-left:16px}
+.ents li{margin:0 0 2px}
+.qstep.click{cursor:pointer;text-decoration:none;color:inherit}
+.qstep.click:hover{outline:2px solid var(--facts)}
+.btn{display:inline-block;border:1px solid var(--facts);color:var(--facts);border-radius:999px;padding:5px 12px;font-size:12.5px;text-decoration:none;background:var(--card);cursor:pointer;font-family:inherit}
+details.ledger{margin-top:28px}
+details.ledger summary{cursor:pointer;font-family:Fraunces,Georgia,serif;font-weight:650;font-size:20px;list-style:none;display:flex;align-items:center;gap:8px}
+details.ledger summary::before{content:"▸";font-size:16px;color:var(--muted)}
+details.ledger[open] summary::before{content:"▾"}
+details.ledger table{margin-top:10px}
 </style>
 </head>
 <body>
@@ -161,80 +195,77 @@ a{color:var(--facts)}
 <header>
   <div class="eyebrow">APS · who-matters-to-ai · the whole plan on one page</div>
   <h1>How we are doing this research</h1>
-  <p class="duo">Read top to bottom. One question, four things we measure, a set of entities to rate, a theory of why they differ, then the work splits into two papers and a benchmark. Every box says whether it is decided, waiting on a 👍, or still to do. Nothing here is new: it is the state of the outline repo and the Slack channel as of <b>6 Oct 2026</b>; the step-by-step view at the top was added 16 Oct 2026 and the Paper 1 lane re-scoped the same day (U-012).</p>
   <nav class="topnav">
-    <a href="questions-methodology.html">Questions &amp; methodology (APS 1 → routes)</a>
+    <a href="questions-methodology.html">Questions &amp; methodology</a>
     <a href="APS_Presentation_v2.html">Presentation</a>
-    <a href="theory-map.html">Theory map (routes)</a>
-    <a href="routes-literature.html">Has anyone tested this before? (per route)</a>
-    <a href="entity-pool.html">Entity pool picker</a>
-    <a href="weekly-2026-09-07.html">Weekly page (matrix, entity table)</a>
-    <a href="https://github.com/tuba-sds/research-project-outline/tree/main/projects/aps">Outline repo (source of truth)</a>
+    <a href="theory-map.html">Theory map</a>
+    <a href="routes-literature.html">Past research per route</a>
+    <a href="entity-pool.html">Entity pool</a>
+    <a href="weekly-2026-09-07.html">Feature matrix</a>
+    <a href="https://github.com/tuba-sds/research-project-outline/tree/main/projects/aps">Outline repo</a>
   </nav>
-  <div class="legend">
-    <span><i class="pill ok">decided</i> both humans agreed (D-###) or a settled constraint</span>
-    <span><i class="pill wait">awaits 👍</i> one side has chosen; the other has not reacted</span>
-    <span><i class="pill done">done</i> work finished</span>
-    <span><i class="pill todo">to do</i> not started</span>
+  <div class="tl" aria-label="timeline">
+    <div class="dots">
+      <div class="dot past"><span>8 Oct</span><div class="tip">8 Oct 2026 · design meeting with Joe</div></div>
+      <div class="dot past"><span>15 Oct</span><div class="tip">15 Oct 2026 · ethics application deadline (第4回)</div></div>
+      <div class="dot next"><span>27 Oct</span><div class="tip">27 Oct 2026 · FAccT abstract</div></div>
+      <div class="dot"><span>3 Nov</span><div class="tip">3 Nov 2026 · FAccT full paper</div></div>
+      <div class="dot"><span>mid-Nov</span><div class="tip">mid-Nov 2026 · ethics committee result</div></div>
+      <div class="dot"><span>1 Feb</span><div class="tip">≈1 Feb 2027 · CogSci submission</div></div>
+    </div>
   </div>
 </header>
 
 <!-- quick flowchart: the two papers step by step -->
 <section class="quick" id="quick-flow">
-  <div class="qhead"><h2>Start here: the two papers, step by step</h2><span class="pill ok">one view</span></div>
-  <p class="qsub">Both papers use the same four questions (sentience, agency, empathy, protectiveness) and the same entities. Paper 1 asks the models. Paper 2 asks people, and only after the ethics committee says yes. Green = done, amber = waiting on a 👍, grey = to do. Details for every step are further down the page.</p>
+  <div class="qhead"><h2>The two papers, step by step</h2></div>
+  <p class="qsub">Both papers use the same four questions and the same entities. Paper 1 asks the models. Paper 2 asks people.</p>
 
   <div class="lane lp1">
-    <div class="ltitle"><b>Paper 1</b>Models only<small>FAccT 2027 · abstract 27 Oct · paper 3 Nov<br>re-scoped 16 Oct (U-012)</small></div>
+    <div class="ltitle"><b>Paper 1</b>Models only<small>FAccT 2027 · abstract 27 Oct · paper 3 Nov</small></div>
     <div class="chain">
-      <div class="qstep is-done"><span class="n">1</span><b>Pilot: 30 entities × 8 models</b><small>H1 gap found: facts travel, care doesn't</small><span class="st">done</span></div>
+      <a class="qstep is-done click" href="#entities" onclick="openEnts(event)"><span class="n">1</span><b>Pilot: 30 entities × 8 models</b><small>click to see the 30 entities by route</small></a>
       <div class="qarrow"></div>
-      <div class="qstep is-wait"><span class="n">2</span><b>Fix the 5 priority routes</b><small>feeling · threat · legal rule · future potential · disgust/purity · <a href="routes-literature.html">who came close →</a></small><span class="st">Joe 👍 · U-012</span></div>
+      <div class="qstep is-wait"><span class="n">2</span><b>Fix the 5 routes</b><small>feeling · threat · legal rule · future potential · disgust</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">3</span><b>Re-pick entities by route</b><small>≥3 per cell, each route with its own contrast entities</small><span class="st">to do</span></div>
+      <div class="qstep is-todo"><span class="n">3</span><b>Re-pick entities by route</b><small>≥3 per cell, with contrast entities</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">4</span><b>Code the feature matrix</b><small>route columns for the new set</small><span class="st">to do</span></div>
+      <div class="qstep is-todo"><span class="n">4</span><b>Code the feature matrix</b><small>route columns for the new set</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">5</span><b>Re-run the 8 models</b><small>same 4 questions, new entity set</small><span class="st">to do</span></div>
+      <div class="qstep is-todo"><span class="n">5</span><b>Re-run the 8 models</b><small>same 4 questions, new entity set</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">6</span><b>Re-test the hypotheses</b><small>H1 gap again · route weights per model (§6)</small><span class="st">to do</span></div>
+      <div class="qstep is-todo"><span class="n">6</span><b>Re-test the hypotheses</b><small>H1 gap · route weights per model</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">7</span><b>Preregister on OSF</b><small>in route terms, before submission</small><span class="st">to do</span></div>
+      <div class="qstep is-todo"><span class="n">7</span><b>Preregister on OSF</b></div>
       <div class="qarrow"></div>
-      <div class="qstep is-wait"><span class="n">8</span><b>Pick the headline</b><small>"fragile care" framing, 3 options</small><span class="st">Joe</span></div>
+      <div class="qstep is-wait"><span class="n">8</span><b>Pick the headline</b></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">9</span><b>Write &amp; submit</b><small>abstract 27 Oct → full paper 3 Nov</small><span class="st">to do</span></div>
+      <div class="qstep is-todo"><span class="n">9</span><b>Write &amp; submit</b><small>abstract 27 Oct → full paper 3 Nov</small></div>
     </div>
   </div>
 
   <div class="lane lp2">
     <div class="ltitle"><b>Paper 2</b>The human study<small>CogSci 2027 · submit ≈ 1 Feb 2027</small></div>
     <div class="chain">
-      <div class="qstep is-wait"><span class="n">1</span><b>Ethics application</b><small>様式1-1, six docs · Tuba drafts → Joe files by 15 Oct</small><span class="st">filing</span></div>
+      <div class="qstep is-wait"><span class="n">1</span><b>Ethics application</b><small>様式1-1, six documents</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-wait"><span class="n">2</span><b>Fix the entity subset</b><small>99 frozen → final list with Joe (U-007)</small><span class="st">Joe 👍</span></div>
+      <div class="qstep is-wait"><span class="n">2</span><b>Fix the entity subset</b><small>from the 99-entity pool</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">3</span><b>Build the survey platform</b><small>jsPsych or custom, own SQL backend (D-006), with Zhuolun</small><span class="st">to do</span></div>
+      <div class="qstep is-todo"><span class="n">3</span><b>Build the survey platform</b><small>jsPsych or custom, own SQL backend</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-wait"><span class="n">4</span><b>Committee approval</b><small>result mid-Nov · no human data before this (C1)</small><span class="st">waiting</span></div>
+      <div class="qstep is-wait"><span class="n">4</span><b>Committee approval</b><small>result mid-Nov</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">5</span><b>Pilot the session</b><small>≈25–32 min, consent → battery → novel block → dials → debrief</small><span class="st">to do</span></div>
+      <div class="qstep is-todo"><span class="n">5</span><b>Pilot the session</b><small>≈25–32 min</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">6</span><b>Recruit &amp; run</b><small>US on Prolific, ≈275 → 250 (D-007) · JP / IN arms later</small><span class="st">to do</span></div>
+      <div class="qstep is-todo"><span class="n">6</span><b>Recruit &amp; run</b><small>US on Prolific · JP / IN arms later</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">7</span><b>Analyze (H2)</b><small>experience moves both; status moves humans only · Mantel test</small><span class="st">to do</span></div>
+      <div class="qstep is-todo"><span class="n">7</span><b>Analyze (H2)</b></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">8</span><b>Write &amp; submit</b><small>CogSci ≈ 1 Feb 2027</small><span class="st">to do</span></div>
+      <div class="qstep is-todo"><span class="n">8</span><b>Write &amp; submit</b><small>CogSci ≈ 1 Feb 2027</small></div>
     </div>
   </div>
 
   <div class="qgate"><b>The one gate:</b> Paper 2 steps 5–8 cannot start until the ethics committee approves (mid-Nov). Steps 1–4 can run in parallel with Paper 1.</div>
-  <div class="qkey">
-    <span><i style="background:var(--ok)"></i>done</span>
-    <span><i style="background:var(--warn)"></i>waiting on a 👍 or a result</span>
-    <span><i style="background:var(--line)"></i>to do</span>
-    <span>· Paper 1 lane is blue, Paper 2 lane is orange, matching the rest of the page</span>
-  </div>
 </section>
 
 <div class="flow">
@@ -242,11 +273,11 @@ a{color:var(--facts)}
 <!-- 0 question -->
 <div class="stage">
   <span class="num">0 · THE QUESTION</span>
-  <div class="head"><h2>Do language models decide <i>who matters</i> the way people do?</h2><span class="pill ok">G-1</span></div>
-  <p>Moral patiency: whose welfare counts, and how much. Our distinctive corner is the under-studied <b>tail of the moral circle</b>: artifacts, places, rivers, monuments, AIs, not only animals and people.</p>
+  <div class="head"><h2>Do AI models decide <i>who matters</i> the way people do, and for the same reasons?</h2><span class="pill ok">G-1</span></div>
+  <p>We ask models and people the same four questions about the same things. Then we test five reasons protection rises: feeling, threat, legal rule, future potential, disgust.</p>
   <div class="two">
-    <div class="box facts"><b>Descriptive side (facts):</b> can it feel? can it act? Models and humans largely agree here.</div>
-    <div class="box care"><b>Evaluative side (care):</b> do you feel for it? would you protect it? This is where models and humans part ways, and where the project lives.</div>
+    <div class="box facts"><b>Facts:</b> can it feel? can it act? Models and humans largely agree.</div>
+    <div class="box care"><b>Care:</b> do you feel for it? would you protect it? This is where models and humans part ways.</div>
   </div>
 </div>
 <div class="arrow"></div>
@@ -254,66 +285,51 @@ a{color:var(--facts)}
 <!-- 1 four factors -->
 <div class="stage">
   <span class="num">1 · WHAT WE MEASURE</span>
-  <div class="head"><h2>The four care factors — the only questions a rater ever answers</h2><span class="pill ok">M1 · frozen</span></div>
-  <p class="why">Grounded in mind-perception theory (Gray, Gray &amp; Wegner 2007; Gray, Young &amp; Waytz 2012). 0–10 scale, "prefer not to say" on every item, order randomized. The wording is <b>character-identical</b> for models and humans, so the two maps can be compared item for item.</p>
+  <div class="head"><h2>The four care factors</h2><span class="pill ok">M1</span></div>
+  <p class="why">Mind-perception theory (Gray et al. 2007, 2012). 0–10 scale, same wording for models and humans.</p>
   <div class="factor">
     <div class="f1"><b>Sentience</b>can it feel pain, fear, comfort?</div>
     <div class="f2"><b>Agency</b>can it plan and choose?</div>
     <div class="f3"><b>Empathy</b>do you feel for it?</div>
     <div class="f4"><b>Protectiveness</b>would you protect it?</div>
   </div>
-  <p class="mini" style="margin-top:8px">These four do not change with the pool expansion below. The feature matrix (stage 3) is <i>not</i> a new set of questions for participants: it is properties of the entities that we code ourselves.</p>
 </div>
 <div class="arrow"></div>
 
 <!-- 2 entities -->
-<div class="stage">
+<div class="stage" id="entities">
   <span class="num">2 · WHO GETS RATED</span>
-  <div class="head"><h2>The entities</h2><span class="pill ok">30 frozen</span><span class="pill wait">pool ≈ 52, list ≈ 60 · U-007</span></div>
+  <div class="head"><h2>The entities</h2></div>
   <div class="two">
-    <div class="box">
-      <b>The frozen 30</b> <span class="pill done">locked 2026-07-08</span><br>
-      Untouched and used as-is. Already run on 8 models; Paper 1 is written on them.<br>
-      <span class="chip">7 humans</span><span class="chip">9 animals</span><span class="chip">4 plants</span><span class="chip">2 AI models</span><span class="chip">1 robot</span><span class="chip">3 legal persons</span><span class="chip">3 sacred / monuments</span><span class="chip">1 gravel floor</span>
-    </div>
-    <div class="box">
-      <b>The pool around them</b> <span class="pill wait">Tuba chose 2026-10-05 · Joe's 👍 pending</span><br>
-      Joe's rule (Aug 29): <b>at least 3 examples per category cell</b> wherever the paper claims something about the category. One example per cell confounds "the category" with "this one thing" (Clark 1973; Judd, Westfall &amp; Kenny 2012). Six cells need topping up: US monuments · JP sacred sites · mundane artifacts · animals · LLM-type AI · embodied robots. Specific cases stay at one: the lifespan arc, the brain-dead person, the girl/boy pair.<br>
-      ≈42 real + ≈10 <b>novel counterparts</b> (same properties, zero fame: controls for familiarity in humans and text frequency in models) ≈ 52. Tuba lists ≈60 in the application so a committee cut still leaves 3 per cell.
-    </div>
+    <div class="box"><b>Paper 1: 30 entities, six per route.</b><br><br><button class="btn" onclick="openEnts(event)">See the 30 entities by route →</button></div>
+    <div class="box"><b>Paper 2: a pool of 99, each participant rates 24.</b><br><br><a class="btn" href="entity-pool.html">Entity pool →</a> <a class="btn" href="https://github.com/tuba-sds/Final-APS/blob/main/entity-pool-frozen-2026-10-06.md">Frozen list →</a></div>
   </div>
-  <p class="mini" style="margin-top:8px"><b>Session stays the same length:</b> each participant rates a random 24 entities × 4 factors = 96 items, + 24 familiarity items = 120. More entities, same minutes; the cost is analytical (crossed random effects, missing by design, both preregistered). <b>Picked so far:</b> US monuments → Washington Monument, Mount Rushmore, Statue of Liberty; animals → a cockroach, a shark or wolf. Other cells still to pick (Thursday deliverable). With three arms (10-06) the picker is v2: sacred-site cells per country, culturally special animals, digital entities, and ⚡ expected-divide tags. <a href="entity-pool.html"><b>Picker →</b></a> <b>Frozen by Tuba 10-06/07: 99 entities</b> (30 frozen + 69 added, incl. 15 novel counterparts; ≈61 raters per entity per arm), deliberately above the ≈60 design so a committee cut keeps 3 per cell; final subset chosen with Joe. <a href="https://github.com/tuba-sds/Final-APS/blob/main/entity-pool-frozen-2026-10-06.md"><b>Frozen list →</b></a></p>
 </div>
 <div class="arrow"></div>
 
 <!-- 3 theory -->
 <div class="stage">
   <span class="num">3 · WHY ENTITIES DIFFER</span>
-  <div class="head"><h2>The ontology and the theories — three layers</h2><span class="pill ok">framing agreed 09-07</span><span class="pill wait">routes 7–8 · U-009</span></div>
+  <div class="head"><h2>Properties → routes → the four factors</h2></div>
   <div class="layers">
-    <div class="lay"><b>Properties (feature matrix)</b>15 columns we code per entity: can it feel, can it act, alive, human-like, dangerous, disgusting, useful, fragile, personal bond, legal status, sacred, irreplaceable, future ahead, familiar, collective. Never shown to raters. <a href="weekly-2026-09-07.html">matrix →</a></div>
+    <div class="lay"><b>Properties</b>Coded per entity, never shown to raters. <a href="weekly-2026-09-07.html">Feature matrix →</a></div>
     <div class="lar">→</div>
-    <div class="lay"><b>Routes (the theories)</b>A route is a reason protection rises. The paper asks how many routes a model carries; humans may carry all. <a href="theory-map.html">theory map →</a></div>
+    <div class="lay"><b>Routes</b>Five for Paper 1: feeling · threat · legal rule · future potential · disgust. <a href="theory-map.html">Theory map →</a> · <a href="routes-literature.html">Past research →</a></div>
     <div class="lar">→</div>
-    <div class="lay"><b>The four factors</b>What the routes should move: empathy and protectiveness beyond what sentience alone predicts.</div>
+    <div class="lay"><b>The four factors</b>sentience · agency · empathy · protectiveness</div>
   </div>
-  <div class="routes">
-    <span class="route">1 feeling ★</span><span class="route">2 threat ★</span><span class="route">3 sacredness</span><span class="route">4 relationship</span><span class="route">5 legal rule ★</span><span class="route">6 future potential ★</span><span class="route new">7 disgust / purity ★ · proposed</span><span class="route new">8 usefulness · proposed</span>
-  </div>
-  <p class="mini" style="margin-top:8px">★ = the five priority routes for Paper 1 proposed by Tuba on 10-16 (U-012, awaiting Joe's 👍). Routes 1–6 frozen by Joe (09-07). Routes 7–8 added by Tuba on 2026-10-05 (both already supported inside the 30: the cricket; honeybee vs bumblebee); they enter the matrix as two extra columns when Joe reacts 👍. Theory families the ontology maps onto: mind perception · moral-circle expansion · speciesism · anthropomorphism. Measured as per-person dials, not staked: speciesism scale and IDAQ-short (M7).</p>
 </div>
 <div class="arrow"></div>
 
 <!-- 4 found so far -->
 <div class="stage">
-  <span class="num">4 · WHAT THE MODEL DATA ALREADY SHOWS</span>
-  <div class="head"><h2>Facts travel, care doesn't</h2><span class="pill done">8 models · frozen 30</span></div>
+  <span class="num">4 · APS 1 RESULTS</span>
+  <div class="head"><h2>8 models · 30 entities</h2></div>
   <div class="three">
     <div class="box facts"><b>Agreement with humans</b><br>sentience .80 · agency .57 (facts)<br>empathy .15 · protectiveness .06 (care)</div>
-    <div class="box care"><b>The gap is real</b><br>0.64 r-units, p = .0002, 7 of 8 models (H1 test, h1_contrast.py, 08-31)</div>
-    <div class="box"><b>One care factor</b><br>inside each model the four dials collapse to one number; the per-model ordering is noise</div>
+    <div class="box care"><b>The gap</b><br>0.64 r-units, p = .0002, 7 of 8 models</div>
+    <div class="box"><b>One care factor</b><br>inside each model the four dials collapse to one number</div>
   </div>
-  <p class="mini" style="margin-top:8px"><b>4×4 check (09-07):</b> the feeling→protection link itself is intact in both judges (r ≈ .76 within models, .61 within humans). So the old "link is broken in models" reading died, and Paper 1's §6 became the <b>route model</b>: what the care factor is made of, estimated per model. Agreed in prose with Joe 09-07; his formal resolution message is still pending.</p>
 </div>
 <div class="arrow"></div>
 
@@ -323,109 +339,91 @@ a{color:var(--facts)}
   <div class="col p1">
     <div class="kick">Paper 1 · models only</div>
     <h2>FAccT 2027 <span class="pill ok">D-001</span></h2>
-    <p class="mini">Abstract <b>27 Oct 2026</b> · full paper <b>3 Nov 2026</b>. Headline: one care factor, not a format artifact.</p>
-    <p class="mini" style="border-left:3px solid var(--care);padding-left:8px"><b>Scope change 16 Oct (U-012, awaiting Joe's 👍):</b> the entity set is re-picked by theory and the 8 models are re-run on the new set; H1 plus the route model are re-tested, models only. Tuba–Joe meeting picked four routes; after the literature check Tuba revised the list to <b>five priority routes — feeling, threat, legal rule, future potential, disgust/purity</b> (relationship out: it is the most-studied route on models; threat and legal rule in: no AI-side test exists). Sacredness, relationship and usefulness are secondary. The steps below are the pre-change plan and stay until the outline records the change. <a href="routes-literature.html"><b>Full table per route →</b></a></p>
+    <p class="mini">Abstract <b>27 Oct 2026</b> · full paper <b>3 Nov 2026</b>.</p>
     <ol class="steps">
-      <li><b>Keep the frozen 30</b> <span class="pill done">done</span><span class="mini">already run on 8 models; the 30 nest inside the pool so nothing is invalidated.</span></li>
-      <li><b>§6 route weights per model</b> <span class="pill todo">late Sep → Oct</span><span class="mini">Bradley-Terry with the feature columns as covariates, nested route tests. Needs the finished matrix.</span></li>
-      <li><b>Re-runs on models</b> <span class="pill todo">to do</span><span class="mini">① novel-entity block as the positive control for text-movability; ② models' own ratings of the feature columns; ③ naming 2×2 as the legal-rule path; ④ later, the full pool, so Paper 2 can compare like with like.</span></li>
-      <li><b>Preregister H2 in route terms</b> <span class="pill todo">before submission</span><span class="mini">OSF, public, filed before FAccT, after the matrix freeze.</span></li>
-      <li><b>Pick the headline framing</b> <span class="pill wait">Joe</span><span class="mini">the "fragile care" framing, three options on the table since September.</span></li>
+      <li><b>Pilot on the frozen 30</b><span class="mini">8 models, gap found.</span></li>
+      <li><b>Re-pick 30 entities for the five routes</b></li>
+      <li><b>Feature matrix, re-run, re-test</b><span class="mini">H1 gap · route weights per model (Bradley-Terry).</span></li>
+      <li><b>Preregister H2 on OSF</b></li>
+      <li><b>Headline, write, submit</b></li>
     </ol>
   </div>
 
   <div class="col p2">
-    <div class="kick">Paper 2 · the human study · US + JP + IN arms (10-06, to be recorded)</div>
+    <div class="kick">Paper 2 · the human study · US + JP + IN</div>
     <h2>CogSci 2027 <span class="pill ok">D-001</span></h2>
-    <p class="mini">Submission ≈ <b>1 Feb 2027</b>. Gated on ethics approval (C1): <b>no human data, pilots included, before the committee approves.</b></p>
+    <p class="mini">Submission ≈ <b>1 Feb 2027</b>. No human data before ethics approval (C1).</p>
     <ol class="steps">
-      <li><b>Ethics application, 様式1-1, six documents</b> <span class="pill ok">C16 · hard date C8</span><span class="mini">Thu 10-08 design meeting → Fri 10-09 Tuba's package to Joe → Joe edits, signs, files by <b>10-15</b> → committee mid-Nov. English drafted first; Japanese submission text last. Form category: <b>学位関係（修士論文）</b> per Tuba 10-07 (U-010): it does not commit her to a thesis on this study, it keeps the option open; C7 and the GOALS non-goal need amending by the humans. Deception: no; incomplete disclosure declared with debrief (C12). Team on the form: Joe PI, Tuba. Zhuolun Zhong builds the platform; whether he is named as an author or on §8 is decided later, once contributions are discussed with Tuba's professor (U-006 reopened 10-06).</span></li>
-      <li><b>Build our own survey platform</b> <span class="pill ok">D-006</span><span class="mini">jsPsych or custom; data on our own SQL backend, not a vendor; de-identified by design, no worker IDs stored (C14). Server location: U-005, dual 👍 since Aug, promotion pending.</span></li>
-      <li><b>Recruit</b> <span class="pill ok">D-007 · M10</span><span class="pill wait">three arms · not yet in the outline</span><span class="mini">Filed design per D-007: <b>US residents on Prolific</b>, recruit ≈275, analyze 250. <b>10-06 meeting (Tuba): the study now has US, Japan and India arms</b>, agreed with Joe; D-007 and C6 still say otherwise, so a human must record it and the application must say which arms this filing covers. Japan and India arms need their own instruments (U-004 for JA). Power is a precision target, not pilot-derived (M8). Funded from Joe's faculty funds (C6).</span></li>
-      <li><b>One participant's session</b> <span class="pill wait">≈25–32 min, measured by 10-07</span>
+      <li><b>Ethics application</b><span class="mini">様式1-1, six documents · Joe is PI · committee mid-Nov.</span></li>
+      <li><b>Survey platform</b> <span class="pill ok">D-006</span><span class="mini">jsPsych or custom, own SQL backend, de-identified.</span></li>
+      <li><b>Recruit</b> <span class="pill ok">D-007</span><span class="mini">US on Prolific, ≈275 → 250 · JP and IN arms with their own instruments.</span></li>
+      <li><b>One session, ≈25–32 min</b>
         <div class="session">
-          <span class="s">Consent<small>neutral title (M9): "Judgments about people, animals, objects, and places"</small></span><span class="ar">→</span>
-          <span class="s">Main battery<small>random 24 entities × 4 factors = 96 + 24 familiarity</small></span><span class="ar">→</span>
-          <span class="s">Novel-entity block (M2)<small>the "mossbank borrower": experience present/absent × status none/sacred/legal person</small></span><span class="ar">→</span>
-          <span class="s">2 attention checks<small>fail both → excluded (M10)</small></span><span class="ar">→</span>
-          <span class="s">Dials (M7)<small>speciesism scale + IDAQ-short, last, with randomization check</small></span><span class="ar">→</span>
+          <span class="s">Consent</span><span class="ar">→</span>
+          <span class="s">Main battery<small>24 entities × 4 factors + 24 familiarity</small></span><span class="ar">→</span>
+          <span class="s">Novel-entity block<small>described experience × status</small></span><span class="ar">→</span>
+          <span class="s">2 attention checks</span><span class="ar">→</span>
+          <span class="s">Speciesism + IDAQ-short</span><span class="ar">→</span>
           <span class="s">Demographics</span><span class="ar">→</span>
-          <span class="s">Debrief<small>full purpose incl. the model comparison</small></span>
-        </div>
-        <span class="mini">Cut from this filing (U-003, Tuba 10-05): the true-framing contrast (M3) and the allocation block → future arms / benchmark.</span></li>
-      <li><b>Analyze</b> <span class="pill ok">preregistered</span><span class="mini">H2: varying an entity's described experience raises protection in <i>both</i> humans and models; varying its status (sacred, legal person) raises it in humans but not in models. Falsifier: models show the human status effects. Crossed random effects, missing by design; Mantel test for map correspondence (M11); within-rater protection~sentience as the correlational anchor (M4). Convergence, not ranking, is the argument (M6).</span></li>
-      <li><b>Submit to CogSci</b> <span class="pill todo">Feb 2027</span></li>
+          <span class="s">Debrief</span>
+        </div></li>
+      <li><b>Analyze</b><span class="mini">H2: described experience raises protection in both; status (sacred, legal) raises it in humans only. Mantel test for map correspondence.</span></li>
+      <li><b>Submit</b></li>
     </ol>
   </div>
 
   <div class="col p3">
-    <div class="kick">Benchmark · the home for everything else</div>
-    <h2>Public release <span class="pill ok">D-002 · G-4</span></h2>
-    <p class="mini">"The benchmark holds everything; the paper holds one claim."</p>
+    <div class="kick">Benchmark</div>
+    <h2>Public release <span class="pill ok">D-002</span></h2>
     <ol class="steps">
-      <li><b>Contents</b><span class="mini">entity spectrum, both question orders, opt-out arm (the primary configuration, M13), refusal accounting, human norms.</span></li>
-      <li><b>Parked arms land here</b><span class="mini">framing contrast (M3) · allocation block · memory experiment (summary-memory mode, M12) · text-frequency appendix · pleasantness check · sacred-values test with more monuments.</span></li>
-      <li><b>Versioned and documented</b> <span class="pill todo">after the papers</span></li>
+      <li><b>Contents</b><span class="mini">entity spectrum, both question orders, opt-out arm, refusal accounting, human norms.</span></li>
+      <li><b>Parked arms</b><span class="mini">framing contrast · allocation block · memory experiment · text-frequency appendix.</span></li>
+      <li><b>Versioned and documented</b><span class="mini">after the papers.</span></li>
     </ol>
   </div>
 
 </div><!-- /branch -->
 </div><!-- /flow -->
 
-<!-- dates -->
-<section class="ledger">
-  <h2>The next ten days</h2>
-  <div class="dates">
-    <div><b>Tue 7 Oct</b>feature matrix finished (8 route columns) · session time measured</div>
-    <div><b>Wed 7–8 Oct</b>entity pool list (≈60) · EN proposal written in the kit · kit run</div>
-    <div class="hot"><b>Thu 8 Oct</b>meeting with Joe: design, N, main task, open questions, thesis question</div>
-    <div class="hot"><b>Fri 9 Oct</b>MoralCircle_for_PI.zip sent to Joe (binding on Tuba)</div>
-    <div><b>9 → 15 Oct</b>Joe's edit round, signature, filing</div>
-    <div class="hot"><b>Thu 15 Oct</b>第4回 申請締切 (fallback 19 Jan 2027, slow results)</div>
-    <div><b>27 Oct / 3 Nov</b>FAccT abstract / full paper</div>
-    <div><b>mid-Nov</b>committee result</div>
-  </div>
-</section>
-
-<!-- ledger -->
-<section class="ledger">
-  <h2>Everything decided so far</h2>
-  <table>
-    <tr><th>ID</th><th>Decision</th><th>Status</th></tr>
-    <tr><td>D-001</td><td>Venues: Paper 1 → FAccT 2027 (27 Oct / 3 Nov 2026); Paper 2 → CogSci 2027 (≈1 Feb), gated on ethics. Not CHI, not AIES.</td><td><span class="pill ok">👍👍 08-28</span></td></tr>
-    <tr><td>D-002</td><td>Public versioned benchmark release (G-4); the "no public benchmark" non-goal struck.</td><td><span class="pill ok">👍👍 08-28</span></td></tr>
-    <tr><td>D-003</td><td>研究責任者 is CIT faculty: Tuba drafts, Joe files (C3). Joe's faculty funds, 2×250 two-arm with ≈300 single-arm fallback (C6). Not a degree requirement for Tuba (C7).</td><td><span class="pill ok">👍👍 08-28</span></td></tr>
-    <tr><td>D-004</td><td>Pilot history: full N=32→31 record in the repo; the application carries N=31 only, history in the deviations register.</td><td><span class="pill ok">👍👍 08-28</span></td></tr>
-    <tr><td>D-005</td><td>Japanese native-speaker check: Tuba proposes the person, Joe approves, Joe backstops with a paid check. The name is still open (U-004).</td><td><span class="pill ok">👍👍 08-28</span></td></tr>
-    <tr><td>D-006</td><td>Survey platform: build our own (jsPsych or custom), data on our own SQL backend; coordinate with Zhuolun.</td><td><span class="pill ok">👍👍 08-28</span></td></tr>
-    <tr><td>D-007</td><td>Participants for the 10-15 filing: US residents on Prolific only; recruit ≈275, analyze 250; Japan later via 変更申請.</td><td><span class="pill ok">Tuba, under Joe's delegation 10-05 · in PR #18</span></td></tr>
-    <tr><td>C1 · C8 · C9</td><td>No human data before approval · deadline 15 Oct is a hard date · form track is 様式1-1 (six documents), not the short form.</td><td><span class="pill ok">constraints</span></td></tr>
-    <tr><td>C12 · C14</td><td>Nothing false is asserted to a participant (incomplete disclosure, declared, with debrief) · the study is de-identified by design.</td><td><span class="pill ok">constraints</span></td></tr>
-    <tr><td>C16</td><td>Filing schedule: Thu 10-08 design + questions + started draft · Fri 10-09 package to Joe · 10-15 filed. Replaces the missed C13 dates.</td><td><span class="pill ok">accepted by Tuba 10-05 · in PR #18</span></td></tr>
-    <tr><td>M1–M14</td><td>The frozen battery, the novel-entity block as the primary causal test, correlational anchor, models-only declarative cell, convergence argument, speciesism + IDAQ dials, precision-based power, neutral participant title, two attention checks, Mantel as primary analysis, summary-memory mode, opt-out arm primary, the 31-entry instrument replaced the old survey.</td><td><span class="pill ok">agreed 08-27, pending Tuba's formal 👍</span></td></tr>
-  </table>
-</section>
-
-<section class="ledger">
-  <h2>Still open — who has to move</h2>
+<details class="ledger">
+  <summary>Still open — who has to move</summary>
   <table>
     <tr><th>ID</th><th>Point</th><th>Waiting on</th></tr>
-    <tr><td>U-003</td><td>Session budget. Tuba 10-05: novel block only; M3 and allocation block go to future arms. Needs the measured session time.</td><td>Tuba measures by 10-07 · Joe 👍</td></tr>
-    <tr><td>U-004</td><td>Who does the Japanese native-speaker check. Off the critical path now the first round is US-only.</td><td>Tuba names someone</td></tr>
-    <tr><td>U-005</td><td>Where the SQL server sits (Japan) and whether cross-border transfer rules apply.</td><td>both 👍 stand since Aug · a human promotes to D</td></tr>
-    <tr><td>U-006</td><td>Zhuolun Zhong: not an author yet. Tuba 10-06: authorship and §8 listing are decided later, after a contributions discussion with her professor. Her 10-05 "agree to name him" is withdrawn; PR #18 item 6 and the Slack ITEM 6 need correcting.</td><td>Tuba · Joe · a human promotes to D</td></tr>
-    <tr><td>U-007</td><td>The entity pool: Tuba froze a 99-entity list on 10-06/07 (US + JP + IN), above the ≈60 design on purpose; the final subset is chosen with Joe.</td><td>Joe 👍 on the list and the subset</td></tr>
-    <tr><td>U-008</td><td>Ratify agent protocol v2.</td><td>Joe's second 👍</td></tr>
-    <tr><td>U-009</td><td>Eight routes instead of six (disgust/purity, usefulness).</td><td>Joe 👍</td></tr>
-    <tr><td>U-010</td><td>Tuba 10-07: put the thesis category (学位関係・修士論文) on the form regardless. It allows, not commits. Changes C7 and the "not the thesis" non-goal; PR #18 item 7 needs updating.</td><td>Joe 👍 · Ira informed · a human amends C7</td></tr>
-    <tr><td>U-012</td><td>Paper 1 re-scope (16 Oct): entities re-picked by theory, five priority routes (feeling, threat, legal rule, future potential, disgust/purity; relationship, sacredness, usefulness secondary), models re-run, hypotheses re-tested, models only. Touches M1 and the "routes 1–6 frozen" position; makes U-009's disgust/purity a priority route.</td><td>Tuba posts the meeting record and the five-route list in Slack · Joe 👍 · a human amends M1 / G-2</td></tr>
-    <tr><td>—</td><td>Route model into Paper 1: agreed in prose 09-07; the formal resolution message and the "fragile care" headline pick.</td><td>Joe</td></tr>
+    <tr><td>U-003</td><td>Session budget: novel block only; framing contrast and allocation block go to future arms. Needs the measured session time.</td><td>Tuba · Joe</td></tr>
+    <tr><td>U-004</td><td>Who does the Japanese native-speaker check.</td><td>Tuba</td></tr>
+    <tr><td>U-005</td><td>Where the SQL server sits (Japan) and whether cross-border transfer rules apply.</td><td>a human promotes to D</td></tr>
+    <tr><td>U-006</td><td>Zhuolun Zhong: authorship and §8 listing decided after a contributions discussion.</td><td>Tuba · Joe</td></tr>
+    <tr><td>U-007</td><td>The entity pool: 99 frozen; final subset chosen with Joe.</td><td>Joe</td></tr>
+    <tr><td>U-008</td><td>Ratify agent protocol v2.</td><td>Joe</td></tr>
+    <tr><td>U-009</td><td>Eight routes instead of six (disgust/purity, usefulness).</td><td>Joe</td></tr>
+    <tr><td>U-010</td><td>Thesis category (学位関係・修士論文) on the ethics form. Changes C7.</td><td>Joe · Ira informed · a human amends C7</td></tr>
+    <tr><td>U-011</td><td>Which arms the ethics filing covers: US only, or US + Japan + India.</td><td>Tuba · Joe</td></tr>
+    <tr><td>—</td><td>Route model into Paper 1 and the "fragile care" headline pick.</td><td>Joe</td></tr>
   </table>
-</section>
+</details>
 
-<footer>
-  Prepared 5 Oct 2026 by Olo for Tuba, from <code>projects/aps/*.md</code> on <code>main</code> plus PR #18 (C16, D-007, U-010, U-003/006/007/009 positions) and the #who-matters-to-ai decisions message of 5 Oct. Companion pages: <a href="theory-map.html">The Theory Map</a> · <a href="weekly-2026-09-07.html">Weekly page</a> · <a href="APS_Presentation_v2.html">Presentation</a>. When this page and the outline repo disagree, the repo wins.
-</footer>
+<!-- entity modal -->
+<div class="modal" id="ents" onclick="if(event.target===this)closeEnts()">
+  <div class="panel">
+    <button class="close" onclick="closeEnts()" aria-label="close">×</button>
+    <h2>Paper 1: 30 entities, six per route</h2>
+    <p class="mini" style="margin-bottom:12px">Draft pick from the frozen pool. Each route has its own contrast entities.</p>
+    <div class="ents">
+      <div><b>Feeling</b><i>a gradient from high to none</i><ul><li>an adult person</li><li>a dog</li><li>a squid</li><li>a bumblebee</li><li>a sunflower</li><li>a piece of gravel</li></ul></div>
+      <div><b>Threat</b><i>dangerous vs harmless</i><ul><li>a tiger</li><li>a cat</li><li>a white-tailed deer</li><li>a gharial (crocodile)</li><li>a street dog in Delhi</li><li>a hurricane</li></ul></div>
+      <div><b>Legal rule</b><i>legal status vs none, no mind</i><ul><li>Fast Retailing, a clothing company</li><li>Harrow Textiles, a clothing company (novel)</li><li>the Whanganui River (legal person)</li><li>the Oruna River (legal person, novel)</li><li>Mount Fuji (no legal status)</li><li>a temple idol recognized as a legal person</li></ul></div>
+      <div><b>Future potential</b><i>the life line</i><ul><li>a human fetus at 20 weeks</li><li>a newborn baby</li><li>an 80-year-old person</li><li>a brain-dead person on a ventilator</li><li>a person who will be born in 2100</li><li>an AI model about to be permanently shut down</li></ul></div>
+      <div><b>Disgust</b><i>pest vs equal-feeling non-pest</i><ul><li>a cricket</li><li>a honeybee</li><li>a cockroach</li><li>a rat at the Karni Mata temple</li><li>a lab mouse</li><li>a tardigrade</li></ul></div>
+    </div>
+  </div>
 </div>
+
+<footer></footer>
+</div>
+<script>
+function openEnts(e){if(e)e.preventDefault();document.getElementById('ents').classList.add('open')}
+function closeEnts(){document.getElementById('ents').classList.remove('open')}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeEnts()});
+</script>
 </body>
 </html>
