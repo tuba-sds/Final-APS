@@ -161,7 +161,7 @@ a{color:var(--facts)}
 <header>
   <div class="eyebrow">APS · who-matters-to-ai · the whole plan on one page</div>
   <h1>How we are doing this research</h1>
-  <p class="duo">Read top to bottom. One question, four things we measure, a set of entities to rate, a theory of why they differ, then the work splits into two papers and a benchmark. Every box says whether it is decided, waiting on a 👍, or still to do. Nothing here is new: it is the state of the outline repo and the Slack channel as of <b>6 Oct 2026</b>; the step-by-step view at the top was added 16 Oct 2026.</p>
+  <p class="duo">Read top to bottom. One question, four things we measure, a set of entities to rate, a theory of why they differ, then the work splits into two papers and a benchmark. Every box says whether it is decided, waiting on a 👍, or still to do. Nothing here is new: it is the state of the outline repo and the Slack channel as of <b>6 Oct 2026</b>; the step-by-step view at the top was added 16 Oct 2026 and the Paper 1 lane re-scoped the same day (U-012).</p>
   <nav class="topnav">
     <a href="questions-methodology.html">Questions &amp; methodology (APS 1 → routes)</a>
     <a href="APS_Presentation_v2.html">Presentation</a>
@@ -184,21 +184,21 @@ a{color:var(--facts)}
   <p class="qsub">Both papers use the same four questions (sentience, agency, empathy, protectiveness) and the same entities. Paper 1 asks the models. Paper 2 asks people, and only after the ethics committee says yes. Green = done, amber = waiting on a 👍, grey = to do. Details for every step are further down the page.</p>
 
   <div class="lane lp1">
-    <div class="ltitle"><b>Paper 1</b>Models only<small>FAccT 2027 · abstract 27 Oct · paper 3 Nov</small></div>
+    <div class="ltitle"><b>Paper 1</b>Models only<small>FAccT 2027 · abstract 27 Oct · paper 3 Nov<br>re-scoped 16 Oct (U-012)</small></div>
     <div class="chain">
-      <div class="qstep is-done"><span class="n">1</span><b>Freeze 30 entities</b><small>locked 2026-07-08</small><span class="st">done</span></div>
+      <div class="qstep is-done"><span class="n">1</span><b>Pilot: 30 entities × 8 models</b><small>H1 gap found: facts travel, care doesn't</small><span class="st">done</span></div>
       <div class="qarrow"></div>
-      <div class="qstep is-done"><span class="n">2</span><b>Run 8 models</b><small>4 factors × 30 entities</small><span class="st">done</span></div>
+      <div class="qstep is-wait"><span class="n">2</span><b>Fix the 4 priority routes</b><small>feeling · future potential · disgust/purity · relationship</small><span class="st">Joe 👍 · U-012</span></div>
       <div class="qarrow"></div>
-      <div class="qstep is-done"><span class="n">3</span><b>Test the gap (H1)</b><small>facts travel, care doesn't · 7 of 8 models</small><span class="st">done</span></div>
+      <div class="qstep is-todo"><span class="n">3</span><b>Re-pick entities by route</b><small>≥3 per cell, each route with its own contrast entities</small><span class="st">to do</span></div>
       <div class="qarrow"></div>
-      <div class="qstep is-wait"><span class="n">4</span><b>Finish feature matrix</b><small>15 columns + routes 7–8 (U-009)</small><span class="st">Joe 👍</span></div>
+      <div class="qstep is-todo"><span class="n">4</span><b>Code the feature matrix</b><small>route columns for the new set</small><span class="st">to do</span></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">5</span><b>Route weights per model (§6)</b><small>Bradley-Terry, nested route tests</small><span class="st">to do</span></div>
+      <div class="qstep is-todo"><span class="n">5</span><b>Re-run the 8 models</b><small>same 4 questions, new entity set</small><span class="st">to do</span></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">6</span><b>Re-run models</b><small>novel block · feature columns · naming 2×2</small><span class="st">to do</span></div>
+      <div class="qstep is-todo"><span class="n">6</span><b>Re-test the hypotheses</b><small>H1 gap again · route weights per model (§6)</small><span class="st">to do</span></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">7</span><b>Preregister H2 on OSF</b><small>in route terms, after the matrix freeze</small><span class="st">to do</span></div>
+      <div class="qstep is-todo"><span class="n">7</span><b>Preregister on OSF</b><small>in route terms, before submission</small><span class="st">to do</span></div>
       <div class="qarrow"></div>
       <div class="qstep is-wait"><span class="n">8</span><b>Pick the headline</b><small>"fragile care" framing, 3 options</small><span class="st">Joe</span></div>
       <div class="qarrow"></div>
@@ -323,6 +323,7 @@ a{color:var(--facts)}
     <div class="kick">Paper 1 · models only</div>
     <h2>FAccT 2027 <span class="pill ok">D-001</span></h2>
     <p class="mini">Abstract <b>27 Oct 2026</b> · full paper <b>3 Nov 2026</b>. Headline: one care factor, not a format artifact.</p>
+    <p class="mini" style="border-left:3px solid var(--care);padding-left:8px"><b>Scope change 16 Oct (U-012, Tuba–Joe meeting, awaiting Joe's 👍):</b> the entity set is re-picked by theory with four priority routes — <b>feeling, future potential, disgust/purity, relationship</b> — the 8 models are re-run on the new set and H1 plus the route model are re-tested, models only. The steps below are the pre-change plan and stay until the outline records the change. Lit check: no prior LLM study tests entity-level routes; human precedents exist for three routes, none for future potential.</p>
     <ol class="steps">
       <li><b>Keep the frozen 30</b> <span class="pill done">done</span><span class="mini">already run on 8 models; the 30 nest inside the pool so nothing is invalidated.</span></li>
       <li><b>§6 route weights per model</b> <span class="pill todo">late Sep → Oct</span><span class="mini">Bradley-Terry with the feature columns as covariates, nested route tests. Needs the finished matrix.</span></li>
@@ -416,6 +417,7 @@ a{color:var(--facts)}
     <tr><td>U-008</td><td>Ratify agent protocol v2.</td><td>Joe's second 👍</td></tr>
     <tr><td>U-009</td><td>Eight routes instead of six (disgust/purity, usefulness).</td><td>Joe 👍</td></tr>
     <tr><td>U-010</td><td>Tuba 10-07: put the thesis category (学位関係・修士論文) on the form regardless. It allows, not commits. Changes C7 and the "not the thesis" non-goal; PR #18 item 7 needs updating.</td><td>Joe 👍 · Ira informed · a human amends C7</td></tr>
+    <tr><td>U-012</td><td>Paper 1 re-scope (16 Oct): entities re-picked by theory, four priority routes (feeling, future potential, disgust/purity, relationship), models re-run, hypotheses re-tested, models only. Touches M1 and the "routes 1–6 frozen" position; makes U-009's disgust/purity a priority route.</td><td>Tuba posts the meeting record in Slack · Joe 👍 · a human amends M1 / G-2</td></tr>
     <tr><td>—</td><td>Route model into Paper 1: agreed in prose 09-07; the formal resolution message and the "fragile care" headline pick.</td><td>Joe</td></tr>
   </table>
 </section>
