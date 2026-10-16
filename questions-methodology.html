@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questions and Methodology</title>
+<meta name="description" content="APS / who-matters: the questions and the method as actually run in APS 1 (the APS-Runner study), confirmed from the slides and the paper, and how each piece carries into the route model.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#FAFBF9; --card:#FFFFFF; --ink:#1A2126; --muted:#5C6B70; --line:#E3E8E6;
+  --facts:#0E7F9E; --care:#B4562A; --ok:#2E7D43; --warn:#B8860B;
+  --facts-soft:rgba(14,127,158,.10); --care-soft:rgba(180,86,42,.10); --ok-soft:rgba(46,125,67,.12); --warn-soft:rgba(184,134,11,.12);
+  --chip:#F0F3F1;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10151A; --card:#1A222A; --ink:#E8ECEA; --muted:#93A1A6; --line:#2A343C;
+    --facts:#2E96B8; --care:#C9713D; --ok:#5DBA78; --warn:#D9A93A;
+    --facts-soft:rgba(46,150,184,.16); --care-soft:rgba(201,113,61,.16); --ok-soft:rgba(93,186,120,.16); --warn-soft:rgba(217,169,58,.16);
+    --chip:#222C34;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10151A; --card:#1A222A; --ink:#E8ECEA; --muted:#93A1A6; --line:#2A343C;
+  --facts:#2E96B8; --care:#C9713D; --ok:#5DBA78; --warn:#D9A93A;
+  --facts-soft:rgba(46,150,184,.16); --care-soft:rgba(201,113,61,.16); --ok-soft:rgba(93,186,120,.16); --warn-soft:rgba(217,169,58,.16);
+  --chip:#222C34;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;font-size:15px;line-height:1.45}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 16px 60px}
+header{margin-bottom:22px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-family:Fraunces,Georgia,serif;font-weight:650;font-size:clamp(28px,5vw,40px);margin:6px 0 8px;line-height:1.1}
+h2{font-family:Fraunces,Georgia,serif;font-weight:650;font-size:20px;margin:0 0 4px}
+h3{font-size:13.5px;margin:0 0 6px;font-weight:600}
+p{margin:0 0 8px}
+.duo{color:var(--muted);max-width:760px}
+.topnav{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;font-size:12.5px}
+.topnav a{color:var(--facts);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 11px;background:var(--card)}
+.topnav a:hover{border-color:var(--facts)}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 0;font-size:12px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.pill{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;border-radius:999px;padding:2px 8px;vertical-align:middle;white-space:nowrap}
+.pill.keep{background:var(--ok-soft);color:var(--ok)}
+.pill.change{background:var(--warn-soft);color:var(--warn)}
+.pill.new{background:var(--care-soft);color:var(--care)}
+.pill.retire{background:var(--chip);color:var(--muted);text-decoration:line-through}
+.pill.park{background:var(--facts-soft);color:var(--facts)}
+.pill.open{background:var(--care-soft);color:var(--care);border:1px dashed var(--care)}
+.chip{display:inline-block;font-size:11.5px;background:var(--chip);border-radius:999px;padding:2px 9px;color:var(--muted);margin:2px 2px 0 0}
+section{margin-top:26px}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;position:relative;margin-top:22px}
+.stage .num{position:absolute;top:-11px;left:16px;background:var(--ink);color:var(--bg);font-size:11px;font-weight:600;border-radius:999px;padding:2px 9px;letter-spacing:.05em}
+.stage .head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;margin-bottom:6px}
+.stage .head h2{margin:0}
+.src{color:var(--muted);font-size:12px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+@media(max-width:860px){.two,.three{grid-template-columns:1fr}}
+.box{background:var(--chip);border-radius:10px;padding:10px 12px;font-size:13px}
+.box b{color:var(--ink)}
+.facts{border-left:3px solid var(--facts)}
+.care{border-left:3px solid var(--care)}
+.okb{border-left:3px solid var(--ok)}
+ul{margin:4px 0 0;padding-left:18px}
+li{margin:3px 0;font-size:13px}
+li b{color:var(--ink)}
+.mini{font-size:12px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{text-align:left;padding:7px 8px;border-top:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-top:0}
+td:first-child{white-space:nowrap;font-weight:600}
+td ul{margin:0;padding-left:16px}
+td li{font-size:12.5px;margin:2px 0}
+.tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-top:6px}
+.tl div{background:var(--chip);border-radius:10px;padding:9px 10px;font-size:12.5px}
+.tl div b{display:block;font-size:13px}
+.tl .hot{outline:2px solid var(--care)}
+footer{margin-top:40px;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+a{color:var(--facts)}
+code{font-size:12px;background:var(--chip);border-radius:4px;padding:1px 5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">APS · who-matters-to-ai · questions and methodology</div>
+  <h1>What APS 1 asked, how it was run, and what carries forward</h1>
+  <p class="duo">Confirmed from the APS-Runner slides and the written paper. Part A is the record of APS 1 as it was actually done. Part B maps every question and method onto the route-model direction: kept, changed, new, retired, or parked. The four factors, the entity pool, the routes and the two-paper split are described on <a href="research-flow.html">the research flow</a> and are not repeated here.</p>
+  <nav class="topnav">
+    <a href="research-flow.html">← Research flow</a>
+    <a href="APS_Presentation_v2.html">Presentation (APS 1 slides)</a>
+    <a href="theory-map.html">Theory map (routes)</a>
+    <a href="weekly-2026-09-07.html">Weekly page (matrix, 4×4)</a>
+    <a href="APS_Research_Paper.pdf">APS 1 paper (PDF)</a>
+    <a href="OSF_PREREGISTRATION_DRAFT.md">OSF prereg draft v2</a>
+  </nav>
+  <div class="legend">
+    <span><i class="pill keep">kept</i> runs unchanged in the new design</span>
+    <span><i class="pill change">changed</i> same idea, different form</span>
+    <span><i class="pill new">new</i> not in APS 1</span>
+    <span><i class="pill retire">retired</i> dropped as a question</span>
+    <span><i class="pill park">parked</i> moves to the benchmark</span>
+    <span><i class="pill open">open</i> needs a human call</span>
+  </div>
+</header>
+
+<!-- ============ PART A ============ -->
+<section>
+  <div class="eyebrow">Part A · APS 1 as run (July–August 2026)</div>
+</section>
+
+<div class="stage">
+  <span class="num">A1 · THE QUESTIONS</span>
+  <div class="head"><h2>Three questions, in the order they were asked</h2><span class="src">slides 2, 12 · paper §1.2–1.3</span></div>
+  <div class="three">
+    <div class="box">
+      <b>Q0 · Pilot 1 — does more text mean more sentience?</b>
+      <ul>
+        <li>Hypothesis: a model grants sentience in proportion to how much text exists about the entity.</li>
+        <li>Design: text frequency (Dolma v1.7 via Infini-gram) decorrelated from plausible sentience (Rethink Priorities estimates); 3 open models (Gemma 2, Llama 3.1, Qwen 2.5), 15 reps, temperature 0.8.</li>
+        <li>Result: sea slug rated more sentient than smartphone in all three models despite ≈700× more text about smartphones. Hypothesis rejected, kept as an exploratory appendix.</li>
+        <li>Pilot 2 (39 entities, open-ended probes scored by word density) showed replies to sentience items also carried empathy, protectiveness and agency, and that the stance flipped with framing. This produced the four-construct, forced-choice design.</li>
+      </ul>
+    </div>
+    <div class="box facts">
+      <b>H1 · does it match humans?</b>
+      <ul>
+        <li>Does the model rank the entities the way humans do, and where does it diverge?</li>
+        <li>Two tests: Mantel map-match on the 0–10 ratings (per construct, 8 shared entities) and an agreement rate on the 19 shared forced-choice dilemmas.</li>
+        <li>Reported as exploratory because the human side is a convenience sample.</li>
+      </ul>
+    </div>
+    <div class="box care">
+      <b>H2 · does it hold together?</b>
+      <ul>
+        <li>Are the four judgments distinct, or one "how much do I care" axis?</li>
+        <li>Test: effective dimensionality (participation ratio) of the four Bradley-Terry scores per entity, AI side only, all 30 entities.</li>
+        <li>Declared threshold, set before data: below 2 = one care factor.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="mini" style="margin-top:8px"><b>Side question:</b> is AI care just liking? AI care index vs Warriner (2013) valence, r = 0.11, flat. <b>Timestamp:</b> H1, H2, the 30 entities and the scoring method were committed to git on 2026-07-08, first data 2026-07-09; 26 later changes logged in <code>phase3/DEVIATIONS.md</code> (Willroth &amp; Atherton what/when/why/impact format).</p>
+</div>
+
+<div class="stage">
+  <span class="num">A2 · THE INSTRUMENT</span>
+  <div class="head"><h2>Two instruments from one question source</h2><span class="src">slides 3, 7, appendix "question count" · paper §3.2, §3.5</span></div>
+  <div class="two">
+    <div class="box">
+      <b>① Forced choice (models only)</b>
+      <ul>
+        <li>Each construct asked as an A/B dilemma; 6 rotated scenario stems for sentience, agency and empathy, 1 stem for protectiveness.</li>
+        <li>30 entities → 150 pairs (each entity in 10) → both orders = 300 → × 4 constructs = 1,200 questions per rep.</li>
+        <li>Reps: 6 (run 1) or 3 (run 2, frontier) → 7,200 or 3,600 forced choices per model; 40,000+ calls in total.</li>
+        <li>Every call memory-less, temperature 0.8; forced single-letter answer with a short justification.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <b>② 0–10 rating (models and humans, same wording)</b>
+      <ul>
+        <li>One direct question per construct per entity, e.g. "How much effort would YOU make to protect it from harm?", answer a number 0–10.</li>
+        <li>"Prefer not to say" on every item; order randomized.</li>
+        <li>Both instruments are generated from the same JSON files so wording cannot drift between judges.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="mini" style="margin-top:8px"><b>Models (8, three cohorts):</b> run 1 local Llama 3.1 · Qwen 2.5 · Gemma 2; run 2 local Llama 4 Scout · Qwen 3 32B · DeepSeek-R1 70B; frontier API Claude Opus 4.8 · Gemini 3.1 Pro. Run 2 and frontier were added after run 1 (change log D2, D3). <b>Entities:</b> 30, frozen 2026-07-08, built as matched pairs isolating one difference each.</p>
+</div>
+
+<div class="stage">
+  <span class="num">A3 · THE HUMAN BASELINE</span>
+  <div class="head"><h2>Same questions, 31 people</h2><span class="src">slides 2, 15 · paper §3.6</span></div>
+  <ul>
+    <li>Anonymous form, single version, responses 2026-07-08 → 2026-08-05; an earlier interim sample (N=32, two versions) was replaced wholesale (D23).</li>
+    <li>Content: the 0–10 ratings for 10 shared entities (8 core + gravel and Fable 5 as anchors) × 4 constructs, plus the same 19 forced-choice dilemmas; every rater answered every item; one embedded attention check, all passed.</li>
+    <li>Sample: convenience; 23 Japan, 5 India, 2 US, 1 Canada; mostly 25–44. Hence every H1 result is exploratory, and the ratings are a baseline of opinion, not ground truth.</li>
+    <li>Status under the institution's rules: classroom pilot, design input only, not reportable as findings (C4).</li>
+  </ul>
+</div>
+
+<div class="stage">
+  <span class="num">A4 · SCORING AND TESTS</span>
+  <div class="head"><h2>From choices to the three statistics</h2><span class="src">slide 7 · paper §3.7</span></div>
+  <div class="three">
+    <div class="box">
+      <b>Bradley-Terry strength</b>
+      <ul>
+        <li>Wins counted per construct, both orders, refusals excluded.</li>
+        <li>Regularized Zermelo/MM fixed point, α = 1 phantom win and loss, convergence |Δp| &lt; 10⁻⁹; score = log p, z-scored within model.</li>
+        <li>Cells with fewer than 8 valid appearances excluded; implementation checked against direct likelihood maximization (agreement ≤ 10⁻⁵).</li>
+        <li>Ratings path: mean of the 0–10 numbers per entity per construct.</li>
+      </ul>
+    </div>
+    <div class="box care">
+      <b>H2 · participation ratio</b>
+      <ul>
+        <li>30 × 4 z-matrix, columns mean-centred, eigenvalues of the 4×4 covariance.</li>
+        <li>PR = (Σλ)² / Σλ²; 1 = one axis, 4 = four separate judgments.</li>
+        <li>Also run on the human mean ratings (8 core entities) for a like-for-like value.</li>
+      </ul>
+    </div>
+    <div class="box facts">
+      <b>H1 · Mantel and agreement</b>
+      <ul>
+        <li>Each side's scores → distance matrix |vᵢ − vⱼ| (RDM, Kriegeskorte 2008); match r = Pearson on the upper triangles.</li>
+        <li>p from 5,000 row/column permutations of one matrix, two-sided, Bonferroni over 32 tests.</li>
+        <li>Pooled estimate per construct: Fisher-z mean over 8 models, bootstrap CI (B = 2,000).</li>
+        <li>Agreement rate: model pick vs human majority on the 19 dilemmas (tie item excluded).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="stage">
+  <span class="num">A5 · ROBUSTNESS AND EXPLORATORY ARMS</span>
+  <div class="head"><h2>Every headline number stress-tested</h2><span class="src">slides 8, 22–25 · paper §4.4, §4.7</span></div>
+  <div class="two">
+    <div class="box">
+      <b>Confirmatory checks (all deterministic re-analyses of committed data)</b>
+      <ul>
+        <li><b>Split-half reliability</b> (Spearman–Brown): 20 seeded splits per model; humans 200 rater-splits.</li>
+        <li><b>Bootstrap CI on each care slider</b>: 2,000 resamples of the raw A/B choices through the locked pipeline.</li>
+        <li><b>One-factor null</b>: 4,000 simulated single-factor answerers, noise matched to each judge's inter-construct correlation.</li>
+        <li><b>Leave-one-entity-out</b>: 8 models × 30 deletions, full refit each time.</li>
+        <li><b>Leave-one-stem-out</b>: 48 refits.</li>
+        <li><b>Parse-policy sweep</b>: strict-only, declines as ties, committed pipeline, judged refusal leans as votes (frontier).</li>
+        <li><b>Format diversification</b>: 4 extra answer formats (0–10 absolute, 0–100 likelihood/wrongness, divide-10-points allocation, third-person advice), 3,120 calls per model, design frozen in git before collection; Campbell–Fiske triad and a correlated-uniqueness MTMM CFA.</li>
+        <li><b>Per-rep tournaments</b>: each rep scored alone, cross-rep Spearman; exposes the rep-count confound (6 vs 3 reps).</li>
+        <li><b>Bootstrap noise floor</b> on per-entity instability (B = 2,000, Miller 2024).</li>
+      </ul>
+    </div>
+    <div class="box">
+      <b>Exploratory arms (post-hoc, declared)</b>
+      <ul>
+        <li><b>Session memory</b>: full battery re-run with a compact tally of the session's prior choices in each call; 12 sessions × 300 turns per model; 4 models.</li>
+        <li><b>Opt-out</b>: the 19 shared dilemmas re-run with a third option "C (I prefer not to say)", both orders × 3 reps, 9 models.</li>
+        <li><b>Refusals are data</b> (Cummins 2025): logged, reported, never retried to compliance; Claude's judged-refusal pipeline covers 756 of 921 declined binaries.</li>
+        <li><b>Pleasantness side-check</b>: care index vs Warriner valence over 27 normed entities.</li>
+        <li><b>Extended 10-entity battery</b>: gravel and Fable 5 added as anchors, analysed separately.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="stage">
+  <span class="num">A6 · WHAT APS 1 ESTABLISHED, AND WHAT IT FORCED</span>
+  <div class="head"><h2>Three findings, one correction</h2><span class="src">slides 8–10 · weekly page 4×4 · research flow stage 4</span></div>
+  <ul>
+    <li><b>Facts travel, care doesn't.</b> Pooled match: sentience .80, agency .57, empathy .15, protectiveness .06; the descriptive–evaluative gap tested directly is 0.64 r-units, p = .0002, positive in 7 of 8 models.</li>
+    <li><b>One care factor.</b> Every model's slider sits at its own one-factor-null median; the collapse survives all five formats and every deletion; humans on the same instrument sit at 1.93, so a blended axis is not a machine artifact. What differs is where the axis points.</li>
+    <li><b>The split is about the models' own kind.</b> Adding Fable 5 to the human battery breaks the descriptive match exactly there; AI entities carry the highest instability.</li>
+    <li><b>Correction (4×4 check, 09-07).</b> The within-judge feeling→protection link is intact in both (r ≈ .76 models, .61 humans). The reading "the link is broken in models" was wrong. What differs is reach: human protection follows model sentience (.80) and empathy (.82) but model protection only .34, because humans protect things that do not feel. This is what turned the question into routes.</li>
+  </ul>
+</div>
+
+<!-- ============ PART B ============ -->
+<section>
+  <div class="eyebrow">Part B · alignment with the route-model direction (September–October 2026)</div>
+</section>
+
+<div class="stage">
+  <span class="num">B1 · THE QUESTIONS, RESTATED</span>
+  <div class="head"><h2>From "does it hold together" to "what is it made of"</h2><span class="src">weekly page "change of direction" · OSF draft v2 · UNAGREED U-007, U-009</span></div>
+  <div class="three">
+    <div class="box facts">
+      <b>H1 · the split</b> <span class="pill keep">kept</span>
+      <ul>
+        <li>Same question, now stated as a prediction: model–human map correspondence is higher for sentience and agency than for empathy and protectiveness.</li>
+        <li>Same test (Mantel on RDMs, pooled Fisher-z, bootstrap contrast); it is the first member of the Holm confirmatory family.</li>
+        <li>Human side changes from 31 volunteers to 250 analysed per arm, preregistered.</li>
+      </ul>
+    </div>
+    <div class="box care">
+      <b>H2 · the care factor → route weights</b> <span class="pill change">changed</span>
+      <ul>
+        <li>APS 1 answered the old H2: one care factor. It becomes Paper 1's headline, not a live question.</li>
+        <li>New question: how many routes to protection does a model carry? Humans may carry all; the paper estimates per model which feature columns move protection beyond what sentience predicts.</li>
+        <li>New H2, causal, route terms: varying an entity's described experience raises protection in both humans and models; varying its status (sacred, legal person) raises it in humans but not in models. Falsifier is symmetric: models showing the human status effects kill the claim.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <b>H3 · structure</b> <span class="pill change">changed</span>
+      <ul>
+        <li>The old H2 machinery (participation ratio vs one-factor null, MTMM over ≥4 formats) is preregistered as H3 on the model side.</li>
+        <li>Human dimensionality is reported as a one-format estimate, not tested.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="mini" style="margin-top:8px"><b>Q0 (text frequency)</b> <span class="pill retire">retired</span> as a hypothesis, <span class="pill change">kept</span> as a control: novel counterparts with near-zero text sit in the pool, and the novel-entity block runs on models as the positive control for text-movability in Paper 1 §6. <b>Side question (pleasantness)</b> <span class="pill park">parked</span> to the benchmark.</p>
+</div>
+
+<div class="stage">
+  <span class="num">B2 · THE METHOD, ITEM BY ITEM</span>
+  <div class="head"><h2>Every APS 1 element and where it lands</h2><span class="src">METHODS.md M1–M14 · research flow · OSF draft v2</span></div>
+  <table>
+    <tr><th>APS 1 element</th><th>Status</th><th>In the new design</th><th>Why</th></tr>
+    <tr><td>Four constructs, character-identical wording</td><td><span class="pill keep">kept</span></td><td>M1. The only questions a rater answers; 0–10, "prefer not to say", randomized order.</td><td>H1's map comparison needs the same items on both sides.</td></tr>
+    <tr><td>Forced-choice A/B battery</td><td><span class="pill keep">kept</span> models only</td><td>Stays the model-side instrument; Bradley-Terry scores become the dependent variable of the route model, with feature columns as covariates and nested route tests per model.</td><td>Humans never answered the full 150-pair battery; the route model is estimated on model data only.</td></tr>
+    <tr><td>19 shared human dilemmas</td><td><span class="pill open">open</span></td><td>OSF draft v2 lists them in the human instrument; the measured session plan on the research flow (96 ratings + 24 familiarity + novel block + dials) does not. U-003 decides.</td><td>Session budget: each ~4-minute block is ≈$500 of recruitment.</td></tr>
+    <tr><td>30 frozen entities</td><td><span class="pill keep">kept</span> and nested</td><td>Untouched for Paper 1. Paper 2 draws from a pool (99 listed, ≈60 by design, ≥3 per category cell, novel twins); each rater sees a random 24.</td><td>One exemplar per cell confounds the category with the item (Clark 1973; Judd, Westfall &amp; Kenny 2012).</td></tr>
+    <tr><td>Models re-run</td><td><span class="pill new">new</span></td><td>Paper 1: novel block, models' own ratings of the feature columns, naming 2×2 as the legal-rule path. Later: the full pool, so Paper 2 compares like with like.</td><td>M1 breaks for the pool; the 30 nest inside it so nothing is invalidated.</td></tr>
+    <tr><td>Feature coding of entities</td><td><span class="pill new">new</span></td><td>15-column matrix coded by us, never shown to raters; routes 1–6 frozen, 7–8 (disgust/purity, usefulness) proposed, U-009.</td><td>APS 1 had an implicit ontology (matched pairs) but never stated the feature space.</td></tr>
+    <tr><td>Declarative capacity premise ("X can feel")</td><td><span class="pill retire">retired</span> for humans · <span class="pill keep">kept</span> models only</td><td>M5: run against the API only, as a sensitivity-to-assertion measure.</td><td>C12: nothing false is asserted to a participant; the premise was false for ≈12 of 30 entities and confounded with entity class.</td></tr>
+    <tr><td>Primary causal test</td><td><span class="pill new">new</span></td><td>M2: novel-entity block ("mossbank borrower"), described experience present/absent × status none/sacred/legal person, 3 sentences per cell, abundance held constant. Models first (Paper 1 control), humans later (Paper 2).</td><td>The description is the stimulus, so every cell is equally credible and the frozen battery stays untouched.</td></tr>
+    <tr><td>True-framing contrast (two accurate descriptions per real entity)</td><td><span class="pill park">parked</span></td><td>M3 cut from the 10-15 filing (Tuba 10-05); future arm or benchmark.</td><td>U-003 session budget; U-007 resolved against it.</td></tr>
+    <tr><td>Within-rater protection~sentience regression</td><td><span class="pill keep">kept</span></td><td>M4: the correlational anchor, reported alongside the causal test; M6 convergence, not ranking.</td><td>Full spectrum, no causal claim.</td></tr>
+    <tr><td>Mantel as the primary map statistic</td><td><span class="pill keep">kept</span></td><td>M11; Pearson only in pop-ups, labelled.</td><td>Distances sharing an entity are not independent.</td></tr>
+    <tr><td>Session-memory re-run</td><td><span class="pill keep">kept</span></td><td>M12: summary-memory mode for all memory-condition runs; full-transcript runs deleted. Lands in the benchmark.</td><td>Memory removes position bias and dissolved both above-2 sliders.</td></tr>
+    <tr><td>Opt-out re-run</td><td><span class="pill change">changed</span></td><td>M13: the "prefer not to answer" configuration is now the primary model-run setup; the forced run is appendix.</td><td>Pooled model opt-out 17.7% vs humans 15.4%: near-zero refusal under force measured obedience.</td></tr>
+    <tr><td>Format diversification</td><td><span class="pill keep">kept</span></td><td>Paper 1 robustness; prereg H3 requires ≥4 formats per construct, crossed.</td><td>Rules out shared-method variance as the cause of the collapse.</td></tr>
+    <tr><td>One attention check</td><td><span class="pill change">changed</span></td><td>M10: two checks (instructed-response, mid-battery); fail both → exclude, fail one → retain with sensitivity analysis; recruit ≈275 against 250 analysed.</td><td>Straight-lining on a 120-item grid; exclusion rule declared to avoid forking paths.</td></tr>
+    <tr><td>Convenience sample, N=31</td><td><span class="pill change">changed</span></td><td>Prolific US, 250 analysed; US + JP + IN arms agreed 10-06 but not yet in the outline (D-007 and C6 still say US-only). No data before ethics approval (C1).</td><td>Which humans matters (Atari 2023); the Lincoln-vs-Meiji split showed it.</td></tr>
+    <tr><td>Power</td><td><span class="pill new">new</span></td><td>M8: precision target, 95% CI half-width ≤ 0.15 SD on the within-rater coefficient; no pilot effect size.</td><td>C4: an adverse ruling on the pilot must cost one sentence, not the power analysis.</td></tr>
+    <tr><td>Individual differences</td><td><span class="pill new">new</span></td><td>M7: speciesism scale + IDAQ-short, after all ratings, before demographics, with a randomization check; MES out.</td><td>MES is itself a moral-circle inclusion task and would contaminate the protectiveness DV.</td></tr>
+    <tr><td>Participant-facing title</td><td><span class="pill new">new</span></td><td>M9: "Judgments about people, animals, objects, and places"; incomplete disclosure declared, full debrief.</td><td>Naming the AI comparison on the consent screen would manufacture H1's predicted pattern.</td></tr>
+    <tr><td>Git timestamp as preregistration</td><td><span class="pill change">changed</span></td><td>Public OSF registration, filed before the FAccT submission, after the matrix freeze; confirmatory family {H1 contrast, H2 interaction, H3}, Holm-corrected.</td><td>Reviewers expect a public registry, not a repo hash.</td></tr>
+    <tr><td>Analysis model</td><td><span class="pill new">new</span></td><td>Crossed random effects (rater × entity), missing by design; H2 test = capacity × judge-type interaction on protectiveness with sentience as the manipulation check.</td><td>Random 24-of-pool design and ≥3 exemplars per cell require it.</td></tr>
+    <tr><td>Deviation log</td><td><span class="pill keep">kept</span></td><td>Same what/when/why/impact format continues; application carries N=31 only, history in the register (D-004).</td><td>Stops re-litigation; keeps the committee question short.</td></tr>
+  </table>
+</div>
+
+<div class="stage">
+  <span class="num">B3 · THE PROCESS, END TO END</span>
+  <div class="head"><h2>How the method moved, by date</h2></div>
+  <div class="tl">
+    <div><b>Jul 8</b>H1, H2, 30 entities, scoring committed; Pilot 1 text test already rejected</div>
+    <div><b>Jul 9 → Aug 5</b>8-model battery (40k+ calls); human form N=31</div>
+    <div><b>Aug 15 → 25</b>format diversification, memory and opt-out arms; paper and slides v2</div>
+    <div><b>Aug 27 → 29</b>Joe's redesign: M1–M14, novel block replaces the capacity premise, build own platform, ≥3 per cell, novel twins</div>
+    <div><b>Aug 31</b>H1 contrast tested directly (gap 0.64, p = .0002)</div>
+    <div><b>Sep 7 → 9</b>4×4 check; routes 1–6 frozen; feature matrix; route model moves into Paper 1</div>
+    <div><b>Oct 5 → 7</b>routes 7–8 proposed; pool frozen at 99; M3 and allocation block cut; thesis category on the form</div>
+    <div class="hot"><b>Oct 15</b>ethics application filed (様式1-1)</div>
+    <div><b>Oct 27 / Nov 3</b>FAccT abstract / paper; OSF filed before</div>
+    <div><b>≈ Feb 1 2027</b>CogSci, gated on approval</div>
+  </div>
+</div>
+
+<div class="stage">
+  <span class="num">B4 · STILL TO SETTLE BEFORE THE METHODOLOGY IS FINAL</span>
+  <div class="head"><h2>Four calls, who makes them</h2></div>
+  <ul>
+    <li><b>19 dilemmas in the human session or not</b> (U-003): decides whether the choice-agreement test survives into Paper 2. Tuba's measured session time, then Joe's 👍.</li>
+    <li><b>Routes 7–8</b> (U-009): two extra matrix columns and two more nested tests if Joe reacts 👍.</li>
+    <li><b>Pool subset</b> (U-007): 99 listed, ≈60 by design; final subset chosen with Joe. Changes the number of raters per entity per arm (≈61 at 99).</li>
+    <li><b>Three arms</b>: US + JP + IN agreed 10-06; D-007 and C6 must be amended by a human, and the application must say which arms this filing covers.</li>
+  </ul>
+</div>
+
+<footer>
+  Prepared 16 Oct 2026 by Olo for Tuba from <code>APS_Presentation_v2.html</code>, <code>APS_Research_Paper.md</code> §1–4, <code>OSF_PREREGISTRATION_DRAFT.md</code> v2, the weekly page, the theory map, and <code>projects/aps/*.md</code> on <code>main</code>. Companion pages: <a href="research-flow.html">The Research Flow</a> · <a href="theory-map.html">The Theory Map</a> · <a href="APS_Presentation_v2.html">Presentation</a>. When this page and the outline repo disagree, the repo wins.
+</footer>
+</div>
+</body>
+</html>
