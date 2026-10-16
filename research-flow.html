@@ -48,6 +48,46 @@ p{margin:0 0 8px}
 .pill.todo{background:var(--chip);color:var(--muted)}
 .pill.done{background:var(--facts-soft);color:var(--facts)}
 .chip{display:inline-block;font-size:11.5px;background:var(--chip);border-radius:999px;padding:2px 9px;color:var(--muted);margin:2px 2px 0 0}
+/* quick flowchart (top of page) */
+.quick{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px;margin-bottom:26px}
+.quick .qhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin-bottom:4px}
+.quick .qhead h2{font-size:22px}
+.quick .qsub{color:var(--muted);font-size:13px;margin:0 0 12px}
+.lane{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:start;padding:12px 0;border-top:1px dashed var(--line)}
+.lane:first-of-type{border-top:0}
+.lane .ltitle{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--muted);padding-top:6px}
+.lane .ltitle b{display:block;font-family:Fraunces,Georgia,serif;font-size:17px;letter-spacing:0;text-transform:none;color:var(--ink);margin-bottom:2px}
+.lane.lp1 .ltitle b{color:var(--facts)}
+.lane.lp2 .ltitle b{color:var(--care)}
+.lane .ltitle small{display:block;font-weight:500;letter-spacing:0;text-transform:none;font-size:12px;margin-top:3px}
+.chain{display:flex;flex-wrap:wrap;gap:6px 0;align-items:stretch}
+.qstep{position:relative;flex:0 0 calc((100% - 110px)/5);background:var(--chip);border-radius:10px;padding:9px 10px 8px 10px;font-size:12.5px;line-height:1.3;border-top:3px solid var(--line)}
+.lp1 .qstep{border-top-color:var(--facts)}
+.lp2 .qstep{border-top-color:var(--care)}
+.qstep.is-done{background:var(--ok-soft);border-top-color:var(--ok)}
+.qstep.is-wait{background:var(--warn-soft);border-top-color:var(--warn)}
+.qstep .n{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:10.5px;font-weight:600;margin-right:5px;vertical-align:middle}
+.qstep.is-done .n{background:var(--ok)}
+.qstep b{display:inline;font-size:13px}
+.qstep small{display:block;color:var(--muted);font-size:11.5px;margin-top:3px}
+.qstep .st{display:block;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-top:4px}
+.qstep.is-done .st{color:var(--ok)}
+.qstep.is-wait .st{color:var(--warn)}
+.qstep.is-todo .st{color:var(--muted)}
+.qarrow{flex:0 0 22px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:18px}
+.qarrow::before{content:"→"}
+.qgate{display:flex;align-items:center;gap:10px;margin-top:10px;padding:9px 12px;border-radius:10px;background:var(--care-soft);font-size:12.5px}
+.qgate b{color:var(--care)}
+.qkey{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:11.5px;color:var(--muted)}
+.qkey span{display:inline-flex;align-items:center;gap:5px}
+.qkey i{width:12px;height:12px;border-radius:3px;display:inline-block}
+@media(max-width:860px){
+  .lane{grid-template-columns:1fr;gap:6px}
+  .chain{flex-direction:column}
+  .qstep{max-width:none;flex:none}
+  .qarrow{flex:none;height:18px}
+  .qarrow::before{content:"↓"}
+}
 /* flow */
 .flow{display:flex;flex-direction:column;align-items:stretch}
 .stage{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;position:relative}
@@ -121,7 +161,7 @@ a{color:var(--facts)}
 <header>
   <div class="eyebrow">APS · who-matters-to-ai · the whole plan on one page</div>
   <h1>How we are doing this research</h1>
-  <p class="duo">Read top to bottom. One question, four things we measure, a set of entities to rate, a theory of why they differ, then the work splits into two papers and a benchmark. Every box says whether it is decided, waiting on a 👍, or still to do. Nothing here is new: it is the state of the outline repo and the Slack channel as of <b>6 Oct 2026</b>.</p>
+  <p class="duo">Read top to bottom. One question, four things we measure, a set of entities to rate, a theory of why they differ, then the work splits into two papers and a benchmark. Every box says whether it is decided, waiting on a 👍, or still to do. Nothing here is new: it is the state of the outline repo and the Slack channel as of <b>6 Oct 2026</b>; the step-by-step view at the top was added 16 Oct 2026.</p>
   <nav class="topnav">
     <a href="questions-methodology.html">Questions &amp; methodology (APS 1 → routes)</a>
     <a href="APS_Presentation_v2.html">Presentation</a>
@@ -137,6 +177,64 @@ a{color:var(--facts)}
     <span><i class="pill todo">to do</i> not started</span>
   </div>
 </header>
+
+<!-- quick flowchart: the two papers step by step -->
+<section class="quick" id="quick-flow">
+  <div class="qhead"><h2>Start here: the two papers, step by step</h2><span class="pill ok">one view</span></div>
+  <p class="qsub">Both papers use the same four questions (sentience, agency, empathy, protectiveness) and the same entities. Paper 1 asks the models. Paper 2 asks people, and only after the ethics committee says yes. Green = done, amber = waiting on a 👍, grey = to do. Details for every step are further down the page.</p>
+
+  <div class="lane lp1">
+    <div class="ltitle"><b>Paper 1</b>Models only<small>FAccT 2027 · abstract 27 Oct · paper 3 Nov</small></div>
+    <div class="chain">
+      <div class="qstep is-done"><span class="n">1</span><b>Freeze 30 entities</b><small>locked 2026-07-08</small><span class="st">done</span></div>
+      <div class="qarrow"></div>
+      <div class="qstep is-done"><span class="n">2</span><b>Run 8 models</b><small>4 factors × 30 entities</small><span class="st">done</span></div>
+      <div class="qarrow"></div>
+      <div class="qstep is-done"><span class="n">3</span><b>Test the gap (H1)</b><small>facts travel, care doesn't · 7 of 8 models</small><span class="st">done</span></div>
+      <div class="qarrow"></div>
+      <div class="qstep is-wait"><span class="n">4</span><b>Finish feature matrix</b><small>15 columns + routes 7–8 (U-009)</small><span class="st">Joe 👍</span></div>
+      <div class="qarrow"></div>
+      <div class="qstep is-todo"><span class="n">5</span><b>Route weights per model (§6)</b><small>Bradley-Terry, nested route tests</small><span class="st">to do</span></div>
+      <div class="qarrow"></div>
+      <div class="qstep is-todo"><span class="n">6</span><b>Re-run models</b><small>novel block · feature columns · naming 2×2</small><span class="st">to do</span></div>
+      <div class="qarrow"></div>
+      <div class="qstep is-todo"><span class="n">7</span><b>Preregister H2 on OSF</b><small>in route terms, after the matrix freeze</small><span class="st">to do</span></div>
+      <div class="qarrow"></div>
+      <div class="qstep is-wait"><span class="n">8</span><b>Pick the headline</b><small>"fragile care" framing, 3 options</small><span class="st">Joe</span></div>
+      <div class="qarrow"></div>
+      <div class="qstep is-todo"><span class="n">9</span><b>Write &amp; submit</b><small>abstract 27 Oct → full paper 3 Nov</small><span class="st">to do</span></div>
+    </div>
+  </div>
+
+  <div class="lane lp2">
+    <div class="ltitle"><b>Paper 2</b>The human study<small>CogSci 2027 · submit ≈ 1 Feb 2027</small></div>
+    <div class="chain">
+      <div class="qstep is-wait"><span class="n">1</span><b>Ethics application</b><small>様式1-1, six docs · Tuba drafts → Joe files by 15 Oct</small><span class="st">filing</span></div>
+      <div class="qarrow"></div>
+      <div class="qstep is-wait"><span class="n">2</span><b>Fix the entity subset</b><small>99 frozen → final list with Joe (U-007)</small><span class="st">Joe 👍</span></div>
+      <div class="qarrow"></div>
+      <div class="qstep is-todo"><span class="n">3</span><b>Build the survey platform</b><small>jsPsych or custom, own SQL backend (D-006), with Zhuolun</small><span class="st">to do</span></div>
+      <div class="qarrow"></div>
+      <div class="qstep is-wait"><span class="n">4</span><b>Committee approval</b><small>result mid-Nov · no human data before this (C1)</small><span class="st">waiting</span></div>
+      <div class="qarrow"></div>
+      <div class="qstep is-todo"><span class="n">5</span><b>Pilot the session</b><small>≈25–32 min, consent → battery → novel block → dials → debrief</small><span class="st">to do</span></div>
+      <div class="qarrow"></div>
+      <div class="qstep is-todo"><span class="n">6</span><b>Recruit &amp; run</b><small>US on Prolific, ≈275 → 250 (D-007) · JP / IN arms later</small><span class="st">to do</span></div>
+      <div class="qarrow"></div>
+      <div class="qstep is-todo"><span class="n">7</span><b>Analyze (H2)</b><small>experience moves both; status moves humans only · Mantel test</small><span class="st">to do</span></div>
+      <div class="qarrow"></div>
+      <div class="qstep is-todo"><span class="n">8</span><b>Write &amp; submit</b><small>CogSci ≈ 1 Feb 2027</small><span class="st">to do</span></div>
+    </div>
+  </div>
+
+  <div class="qgate"><b>The one gate:</b> Paper 2 steps 5–8 cannot start until the ethics committee approves (mid-Nov). Steps 1–4 can run in parallel with Paper 1.</div>
+  <div class="qkey">
+    <span><i style="background:var(--ok)"></i>done</span>
+    <span><i style="background:var(--warn)"></i>waiting on a 👍 or a result</span>
+    <span><i style="background:var(--line)"></i>to do</span>
+    <span>· Paper 1 lane is blue, Paper 2 lane is orange, matching the rest of the page</span>
+  </div>
+</section>
 
 <div class="flow">
 
