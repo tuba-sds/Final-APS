@@ -26,6 +26,13 @@ p{margin:0 0 8px}
 .topnav{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;font-size:12.5px}
 .topnav a{color:var(--facts);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 11px;background:var(--card)}
 .topnav a:hover{border-color:var(--facts)}
+.topnav .dd{position:relative}
+.topnav .dd summary{list-style:none;cursor:pointer;color:var(--facts);border:1px solid var(--line);border-radius:999px;padding:4px 11px;background:var(--card);font-size:12.5px}
+.topnav .dd summary::-webkit-details-marker{display:none}
+.topnav .dd[open] summary{border-color:var(--facts)}
+.topnav .dd .menu{position:absolute;left:0;top:calc(100% + 6px);z-index:20;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px;display:flex;flex-direction:column;gap:4px;min-width:220px;box-shadow:0 6px 18px rgba(30,43,36,.08)}
+.topnav .dd .menu a{border:0;border-radius:8px;padding:6px 10px}
+.topnav .dd .menu a:hover{background:var(--chip)}
 .legend{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 0;font-size:12px;color:var(--muted)}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .pill{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;border-radius:999px;padding:2px 8px;vertical-align:middle;white-space:nowrap}
@@ -192,11 +199,16 @@ details.ledger table{margin-top:10px}
   <div class="eyebrow">APS · who-matters-to-ai · the whole plan on one page</div>
   <h1>How we are doing this research</h1>
   <nav class="topnav">
-    <a href="questions-methodology.html">APS1 · Questions &amp; methodology</a>
-    <a href="APS_Presentation_v2.html">APS1 · Presentation</a>
+    <details class="dd">
+      <summary>APS1 ▾</summary>
+      <div class="menu">
+        <a href="https://github.com/tuba-sds/research-project-outline/tree/main/projects/aps">Outline repo</a>
+        <a href="questions-methodology.html">Questions &amp; methodology</a>
+        <a href="APS_Presentation_v2.html">Presentation</a>
+      </div>
+    </details>
     <a href="routes-literature.html">Past research per route</a>
     <a href="#matrix" onclick="openModal('matrix',event)">Feature matrix</a>
-    <a href="https://github.com/tuba-sds/research-project-outline/tree/main/projects/aps">Outline repo</a>
   </nav>
   <div class="tl" aria-label="timeline">
     <div class="dots">
@@ -462,6 +474,7 @@ details.ledger table{margin-top:10px}
 function openModal(id,e){if(e)e.preventDefault();closeModal();document.getElementById(id).classList.add('open')}
 function closeModal(){document.querySelectorAll('.modal.open').forEach(function(m){m.classList.remove('open')})}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
+document.addEventListener('click',function(e){document.querySelectorAll('.topnav .dd[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')})});
 </script>
 </body>
 </html>
