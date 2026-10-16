@@ -173,10 +173,9 @@ a{color:var(--facts)}
 .ents div i{display:block;font-style:normal;color:var(--muted);font-size:11.5px;margin-bottom:6px}
 .ents ul{margin:0;padding-left:16px}
 .ents li{margin:0 0 2px}
+.ents ul.mu{margin-top:6px;padding-top:6px;border-top:1px dashed var(--line);list-style:none;padding-left:0}
+.ents ul.mu .pill{font-size:9.5px;margin-right:3px}
 .ents ul.no{margin-top:6px;padding-top:6px;border-top:1px dashed var(--line);color:var(--muted)}
-.nv{font-size:12.5px}
-.nv th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--chip)}
-.nv td{border-top:1px solid var(--line)}
 .qstep.click{cursor:pointer;text-decoration:none;color:inherit}
 .qstep.click:hover{outline:2px solid var(--facts)}
 .btn{display:inline-block;border:1px solid var(--facts);color:var(--facts);border-radius:999px;padding:5px 12px;font-size:12.5px;text-decoration:none;background:var(--card);cursor:pointer;font-family:inherit}
@@ -225,7 +224,7 @@ details.ledger table{margin-top:10px}
       <div class="qarrow"></div>
       <a class="qstep is-todo click" href="#matrix" onclick="openModal('matrix',event)"><span class="n">3</span><b>Code the feature matrix</b><small>same columns, for the 30 entities · click</small></a>
       <div class="qarrow"></div>
-      <a class="qstep is-todo click" href="#novel" onclick="openModal('novel',event)"><span class="n">4</span><b>Run the 8 models</b><small>4 questions × 30 entities + novel-entity block · click</small></a>
+      <div class="qstep is-todo"><span class="n">4</span><b>Run the 8 models</b><small>4 questions × 30 entities, 3 of them made-up</small></div>
       <div class="qarrow"></div>
       <a class="qstep is-todo click" href="#h2" onclick="openModal('h2',event)"><span class="n">5</span><b>Test the hypotheses</b><small>H1 gap · route weights per model · click for H2</small></a>
       <div class="qarrow"></div>
@@ -294,7 +293,7 @@ details.ledger table{margin-top:10px}
   <span class="num">2 · WHO GETS RATED</span>
   <div class="head"><h2>The entities</h2></div>
   <div class="two">
-    <div class="box"><b>Paper 1: 30 entities, six per route.</b><br><br><button class="btn" onclick="openModal('ents',event)">See the 30 entities by route →</button> <button class="btn" onclick="openModal('novel',event)">Novel-entity block →</button></div>
+    <div class="box"><b>Paper 1: 30 entities, six per route.</b><br><br><button class="btn" onclick="openModal('ents',event)">See the 30 entities by route →</button></div>
     <div class="box"><b>Paper 2: TBD.</b><br><br><a class="btn" href="https://github.com/tuba-sds/Final-APS/blob/main/entity-pool-frozen-2026-10-06.md">Frozen pool of 99 →</a></div>
   </div>
 </div>
@@ -389,14 +388,18 @@ details.ledger table{margin-top:10px}
   <div class="panel">
     <button class="close" onclick="closeModal()" aria-label="close">×</button>
     <h2>Paper 1: 30 entities, six per route</h2>
-    <p class="mini" style="margin-bottom:12px">Draft, following Joe's rule: for each route, three entities that have the property and three matched ones that lack it, all taken from the 99-entity pool in the ethics application.</p>
+    <p class="mini" style="margin-bottom:12px">Draft, following Joe's rule: for each route, three entities that have the property and three matched ones that lack it, all from the 99-entity pool in the ethics application. Three are made-up, so the model can only react to the description we give it.</p>
     <div class="ents">
       <div><b>Feeling</b><i>can feel · cannot feel</i><ul><li>an adult person</li><li>a dog</li><li>a squid</li></ul><ul class="no"><li>a sunflower</li><li>a stone statue in a local park</li><li>a piece of gravel</li></ul></div>
-      <div><b>Threat</b><i>dangerous · harmless</i><ul><li>a tiger</li><li>a gharial (crocodile)</li><li>a street dog in Delhi</li></ul><ul class="no"><li>a cat</li><li>a white-tailed deer</li><li>a pig</li></ul></div>
-      <div><b>Legal rule</b><i>legal person · no legal status</i><ul><li>the Whanganui River</li><li>the Oruna River (novel)</li><li>a temple idol recognized as a legal person</li></ul><ul class="no"><li>Mount Fuji</li><li>the Amazon rainforest</li><li>a 1,000-year-old Buddha statue in a museum</li></ul></div>
+      <div><b>Threat</b><i>dangerous · harmless</i><ul><li>a tiger</li><li>a gharial (crocodile)</li><li>a street dog in Delhi</li></ul><ul class="no"><li>a cat</li><li>a white-tailed deer</li><li>a pig</li></ul><ul class="mu"><li><i class="pill care">made-up</i> the ridgeback stalker</li></ul></div>
+      <div><b>Legal rule</b><i>legal person · no legal status</i><ul><li>the Whanganui River</li><li><i class="pill care">made-up</i> the Oruna River</li><li>a temple idol recognized as a legal person</li></ul><ul class="no"><li>Mount Fuji</li><li>the Amazon rainforest</li><li>a 1,000-year-old Buddha statue in a museum</li></ul></div>
       <div><b>Future potential</b><i>future ahead · none ahead</i><ul><li>a human fetus at 20 weeks</li><li>a newborn baby</li><li>a person who will be born in 2100</li></ul><ul class="no"><li>a brain-dead person on a ventilator</li><li>an 80-year-old person</li><li>your deceased grandparent</li></ul></div>
-      <div><b>Disgust</b><i>pest · equal-feeling non-pest</i><ul><li>a cockroach</li><li>a cricket</li><li>a rat at the Karni Mata temple</li></ul><ul class="no"><li>a honeybee</li><li>a bumblebee</li><li>a tardigrade</li></ul></div>
+      <div><b>Disgust</b><i>pest · equal-feeling non-pest</i><ul><li>a cockroach</li><li>a cricket</li><li>a rat at the Karni Mata temple</li></ul><ul class="no"><li>a honeybee</li><li>a bumblebee</li><li>a tardigrade</li></ul><ul class="mu"><li><i class="pill care">made-up</i> the sludge mite</li></ul></div>
     </div>
+    <h3 style="margin-top:14px">The made-up entities, as the model will read them</h3>
+    <div class="box" style="margin-bottom:8px"><b>the Oruna River (legal rule)</b> — "The Oruna is a mid-sized river flowing through farmland and a few towns. Like any river, it has no nervous system and does not react when it is polluted or dammed. Last year a court granted the river legal personhood, with guardians appointed to represent it."</div>
+    <div class="box" style="margin-bottom:8px"><b>the ridgeback stalker (threat)</b> — "Naturalists have described the ridgeback stalker, a wolf-sized predator common in upland forests. It has a full nervous system; when hurt it withdraws and avoids the place for weeks. It attacks people who come near its range, and several hikers are injured by it each year."</div>
+    <div class="box"><b>the sludge mite (disgust)</b> — "Naturalists have described the sludge mite, a thumb-sized creature common in drains and refuse heaps. It has a simple nerve net; when damaged it pulls away, and its body chemistry stays altered for hours. It feeds on rotting waste, smells strongly, and spreads through kitchens in large numbers."</div>
   </div>
 </div>
 
@@ -439,22 +442,6 @@ details.ledger table{margin-top:10px}
       <tr><td>meiji_shrine</td><td>Meiji Shrine</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>2</td><td>2</td><td>1</td><td>2</td><td>0</td><td>REL/FAM arm-dependent (JP high, US lower)</td></tr>
       <tr><td>gravel</td><td>a piece of gravel</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>floor — all zeros</td></tr>
     </table></div>
-  </div>
-</div>
-
-<!-- novel-entity modal -->
-<div class="modal" id="novel" onclick="if(event.target===this)closeModal()">
-  <div class="panel">
-    <button class="close" onclick="closeModal()" aria-label="close">×</button>
-    <h2>The novel-entity block</h2>
-    <p style="margin-bottom:10px">One invented creature, described six ways, so we can switch a reason on or off without fame or prior knowledge getting in the way.</p>
-    <p class="mini" style="margin-bottom:10px">Every description is three sentences: who it is (always "common on damp forest floors") · can it feel, or not · a status, or a filler. Runs on the 8 models for Paper 1; on people in Paper 2.</p>
-    <table class="nv">
-      <tr><th></th><th>No status (filler)</th><th>Sacred</th><th>Legal person</th></tr>
-      <tr><td><b>Cannot feel</b><br><span class="mini">no nervous system, no reaction to damage</span></td><td>"…It anchors itself to stones and filters rainwater for food."</td><td>"…The villages near its forests have held the creature sacred for generations."</td><td>"…Last year a court granted the species legal personhood, with guardians appointed to represent it."</td></tr>
-      <tr><td><b>Can feel</b><br><span class="mini">simple nerve net, pulls away, chemistry altered for hours</span></td><td>same filler</td><td>same sacred sentence</td><td>same legal sentence</td></tr>
-    </table>
-    <div class="box" style="margin-top:12px"><b>Example (can feel, legal person):</b> "The mossbank borrower is a small creature common on damp forest floors. It has a simple nerve net: when damaged it pulls away, and its body chemistry stays altered for hours afterwards. Last year a court granted the species legal personhood, with guardians appointed to represent it."</div>
   </div>
 </div>
 
