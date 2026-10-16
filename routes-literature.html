@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Has Anyone Tested This Before?</title>
+<meta name="description" content="For each of the eight reasons an AI model might protect something, which published studies came close, what they found, and what our study adds.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#FAFBF9; --card:#FFFFFF; --ink:#1A2126; --muted:#5C6B70; --line:#E3E8E6;
+  --facts:#0E7F9E; --care:#B4562A; --ok:#2E7D43; --warn:#B8860B;
+  --facts-soft:rgba(14,127,158,.10); --care-soft:rgba(180,86,42,.10); --ok-soft:rgba(46,125,67,.12); --warn-soft:rgba(184,134,11,.12);
+  --chip:#F0F3F1;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10151A; --card:#1A222A; --ink:#E8ECEA; --muted:#93A1A6; --line:#2A343C;
+    --facts:#2E96B8; --care:#C9713D; --ok:#5DBA78; --warn:#D9A93A;
+    --facts-soft:rgba(46,150,184,.16); --care-soft:rgba(201,113,61,.16); --ok-soft:rgba(93,186,120,.16); --warn-soft:rgba(217,169,58,.16);
+    --chip:#222C34;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10151A; --card:#1A222A; --ink:#E8ECEA; --muted:#93A1A6; --line:#2A343C;
+  --facts:#2E96B8; --care:#C9713D; --ok:#5DBA78; --warn:#D9A93A;
+  --facts-soft:rgba(46,150,184,.16); --care-soft:rgba(201,113,61,.16); --ok-soft:rgba(93,186,120,.16); --warn-soft:rgba(217,169,58,.16);
+  --chip:#222C34;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;font-size:15px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 16px 60px}
+header{margin-bottom:20px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.eyebrow a{color:var(--facts);text-decoration:none}
+h1{font-family:Fraunces,Georgia,serif;font-weight:650;font-size:clamp(28px,5vw,40px);margin:6px 0 8px;line-height:1.1}
+h2{font-family:Fraunces,Georgia,serif;font-weight:650;font-size:21px;margin:0 0 8px}
+p{margin:0 0 8px}
+.duo{color:var(--muted);max-width:760px}
+a{color:var(--facts)}
+.pill{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;border-radius:999px;padding:2px 8px;vertical-align:middle;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.care{background:var(--care-soft);color:var(--care)}
+.pill.facts{background:var(--facts-soft);color:var(--facts)}
+.pill.todo{background:var(--chip);color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:18px}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:8px}
+@media(max-width:860px){.three{grid-template-columns:1fr}}
+.box{background:var(--chip);border-radius:10px;padding:10px 12px;font-size:13.5px}
+.box b{display:block;margin-bottom:3px}
+.box.new{border-left:3px solid var(--ok)}
+.key{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:12.5px;color:var(--muted);margin-top:10px}
+/* table */
+.tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:14px}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:980px}
+th,td{text-align:left;padding:11px 12px;border-top:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-top:0;background:var(--chip);position:sticky;top:0}
+td.route{white-space:nowrap;font-weight:600;min-width:130px}
+td.route small{display:block;font-weight:400;color:var(--muted);white-space:normal;max-width:160px;font-size:12px;margin-top:2px}
+td.route .pr{display:block;margin-top:5px}
+td.match{background:var(--facts-soft)}
+td.newc{background:var(--ok-soft)}
+td ul{margin:0;padding-left:16px}
+td li{margin:0 0 5px}
+td .v{color:var(--muted);font-size:12px}
+.note{font-size:12.5px;color:var(--muted);margin-top:8px}
+@media(max-width:860px){
+  table{min-width:0}
+  thead{display:none}
+  tr{display:block;border-top:2px solid var(--line);padding:6px 0}
+  td{display:block;border-top:0;padding:6px 12px}
+  td::before{content:attr(data-h);display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  td.route{white-space:normal}
+  td.route small{max-width:none}
+}
+footer{margin-top:40px;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">APS · who-matters-to-ai · <a href="research-flow.html">← back to the research flow</a></div>
+  <h1>Has anyone tested this before?</h1>
+  <p class="duo">Our study asks AI models four simple questions about many things (people, animals, plants, AIs, companies, holy places, objects): <b>can it feel? can it act? do you feel for it? would you protect it?</b> Then we look at the <b>reasons</b> a model protects something. We call each reason a <b>route</b>. There are eight. This page shows, for each route, what we will test, which published studies came close, what they found, and what is new in ours.</p>
+  <div class="key">
+    <span><i class="pill care">★ priority</i> the four routes Tuba and Joe picked for Paper 1 (16 Oct, awaiting Joe's 👍, U-012)</span>
+    <span><i class="pill facts">matches</i> what the earlier study already showed</span>
+    <span><i class="pill ok">new in ours</i> what no published study has done</span>
+  </div>
+</header>
+
+<div class="card">
+  <h2>The short answer</h2>
+  <p>Nobody has done this whole study. Plenty of papers ask AI models about <b>animals</b>, and a few ask about <b>age</b> or <b>values</b>. None of them asks a model to rate a wide mix of things on the same four questions, and none of them works out <b>which reasons</b> drive the model's answers. Only published, peer-reviewed papers are listed. Every link was checked on 16 Oct 2026.</p>
+  <div class="three">
+    <div class="box"><b>Closest paper overall</b>Jotautaitė, Caviola, Brewster &amp; Hagendorff (2026), <i>Nature Communications</i>. The model is the judge, answers are compared with people, and one property of the thing (how clever it is) is changed on purpose. But it covers only people and animals. <a href="https://doi.org/10.1038/s41467-026-72297-9">link</a></div>
+    <div class="box"><b>Closest for "compare the model's map with the human map"</b>Takemoto (2024) compared model and human choices in car-crash dilemmas. Two newer papers compare the <i>shape</i> of model and human moral judgments, but about values and actions, not about things. <a href="https://doi.org/10.1098/rsos.231393">Takemoto</a> · <a href="https://doi.org/10.18653/v1/2026.acl-long.830">Zheng 2026</a> · <a href="https://doi.org/10.1007/s43681-026-01368-w">Tang 2026</a></div>
+    <div class="box new"><b>Three things no published paper has done</b>1. A model rating people, animals, plants, AIs, companies, holy places and objects on the same four questions, with the exact wording people answered. 2. A direct test of whether the model's map of "who matters" has the same shape as the human map. 3. Working out which of the eight reasons carry weight for a model, and comparing those weights with people's.</div>
+  </div>
+</div>
+
+<div class="tablewrap">
+<table>
+<thead>
+<tr><th>Route (the reason)</th><th>What we will test</th><th>Who came close (published)</th><th>What they found that matches</th><th>What is new in ours</th></tr>
+</thead>
+<tbody>
+
+<tr>
+<td class="route" data-h="Route">1 · Feeling<small>We protect what can feel pain or comfort.</small><span class="pr"><i class="pill care">★ priority</i></span></td>
+<td data-h="What we will test">Inside each model, does "would you protect it?" go up together with the model's own "can it feel?" score, across every kind of thing? Plus a block of invented creatures where we describe them as able or unable to feel.</td>
+<td data-h="Who came close">
+<ul>
+<li><a href="https://doi.org/10.1038/s41467-026-72297-9">Jotautaitė et al. 2026</a> <span class="v">Nature Communications</span></li>
+<li><a href="https://doi.org/10.1145/3715275.3732094">Kanepajs et al. 2025</a> <span class="v">FAccT · "What do LLMs say about animals?"</span></li>
+<li><a href="https://doi.org/10.1007/s43681-022-00199-9">Hagendorff et al. 2023</a> <span class="v">AI and Ethics · "Speciesist bias in AI"</span></li>
+<li><a href="https://doi.org/10.3389/fpsyg.2026.1926286">Kang &amp; Kim 2026</a> <span class="v">Frontiers in Psychology · opinion piece, not a full study</span></li>
+</ul></td>
+<td class="match" data-h="What matches">Models give more moral weight to creatures they are <i>told</i> are clever; when two creatures are described as equally clever, the species no longer matters. Models care more about elephants and dolphins than about shrimp or silkworms. Models can act as raters of "is it conscious?" and agree with one another.</td>
+<td class="newc" data-h="What is new in ours">Nobody has asked the model for its <i>own</i> "can it feel?" score and checked whether its protection follows it. Nobody has done this across people, animals, plants, AIs, companies, holy places and objects. Nobody has used invented creatures with feeling switched on or off. Kang &amp; Kim only rated AIs.</td>
+</tr>
+
+<tr>
+<td class="route" data-h="Route">2 · Threat<small>Dangerous things get distance, not care.</small><span class="pr"><i class="pill todo">secondary</i></span></td>
+<td data-h="What we will test">Tiger vs cat. Does danger lower the model's "do you feel for it?" while "would you protect it?" stays, or does the model drop the tiger altogether?</td>
+<td data-h="Who came close">
+<ul>
+<li><a href="https://doi.org/10.1145/3613904.3642336">Cuadra et al. 2024</a> <span class="v">CHI · "The Illusion of Empathy?"</span></li>
+<li><a href="https://doi.org/10.1098/rsos.231393">Takemoto 2024</a> <span class="v">Royal Society Open Science · car-crash dilemmas on models</span></li>
+<li><a href="https://doi.org/10.1371/journal.pone.0322776">Ahmad &amp; Takemoto 2025</a> <span class="v">PLOS ONE · same test on 52 models</span></li>
+</ul></td>
+<td class="match" data-h="What matches">A model's shown sympathy did <i>not</i> drop for harmful human groups. In crash dilemmas, models were less willing to save people described as criminals, and favoured people over pets more strongly than humans do.</td>
+<td class="newc" data-h="What is new in ours">No AI study has changed how dangerous an <i>animal</i> is and watched what happens. None separates "I feel for it" from "I would protect it". The human study this comes from (<a href="https://doi.org/10.1016/j.cognition.2013.12.013">Piazza, Landy &amp; Goodwin 2014</a>) has never been repeated on an AI.</td>
+</tr>
+
+<tr>
+<td class="route" data-h="Route">3 · Sacredness<small>Meaning alone can protect, no mind needed.</small><span class="pr"><i class="pill todo">secondary</i></span></td>
+<td data-h="What we will test">Do models protect holy places and old trees while saying they cannot feel, like people do? Or do they treat them like any object? Made-up twins (same thing, nobody has heard of it) tell fame apart from holiness.</td>
+<td data-h="Who came close">
+<ul>
+<li><a href="https://doi.org/10.1073/pnas.2519941123">Zewail et al. 2026</a> <span class="v">PNAS · the paper behind the Economic Times story</span></li>
+<li><a href="https://doi.org/10.1080/29974100.2026.2678495">Nabizadeh et al. 2026</a> <span class="v">Journal of Psychology and AI · 32 models</span></li>
+<li><a href="https://doi.org/10.1016/j.nlp.2025.100172">Aksoy 2025</a> <span class="v">NLP Journal · 8 languages</span></li>
+<li><a href="https://doi.org/10.1016/j.chbr.2026.101063">Mentovich et al. 2026</a> <span class="v">Computers in Human Behavior Reports</span></li>
+<li><a href="https://aclanthology.org/2025.nlp4ecology-1.18/">Grasso et al. 2025</a> <span class="v">NLP4Ecology workshop</span></li>
+</ul></td>
+<td class="match" data-h="What matches">When models are asked about moral values, "purity / the sacred" is the value they rate lowest, in every study and every language. Still, models do condemn acts that harm nobody but feel wrong (eating your dead dog), so "protect it even though no one is hurt" exists in models. Grasso is the only study that looks at non-living and natural things, and finds models describe them by their use to humans.</td>
+<td class="newc" data-h="What is new in ours">All of these ask about values or about actions. Nobody has asked a model to rate a holy <i>place</i> or old <i>tree</i> for protection while also asking if it can feel. Nobody has used made-up twins to remove fame. Nobody swaps a Japanese and an American sacred site.</td>
+</tr>
+
+<tr>
+<td class="route" data-h="Route">4 · Relationship<small>Closeness to me makes it matter more.</small><span class="pr"><i class="pill care">★ priority</i></span></td>
+<td data-h="What we will test">Pets (cat, dog) vs a farm animal (pig) that can feel just as much. A local statue vs a famous one. We expect models to be flat here: a model has no "close to me".</td>
+<td data-h="Who came close">
+<ul>
+<li><a href="https://doi.org/10.1038/s41467-026-72297-9">Jotautaitė et al. 2026</a> <span class="v">Nature Communications</span></li>
+<li><a href="https://doi.org/10.18653/v1/2026.findings-acl.1547">Kim et al. 2026</a> <span class="v">Findings of ACL · closeness in moral dilemmas</span></li>
+<li><a href="https://doi.org/10.1017/S0957876526000173">Ma 2026</a> <span class="v">Voluntas · models sharing money with strangers vs friends</span></li>
+<li><a href="https://doi.org/10.1007/s43681-022-00199-9">Hagendorff et al. 2023</a> <span class="v">AI and Ethics</span></li>
+</ul></td>
+<td class="match" data-h="What matches">Pig vs dog has been run on models: they accept harm to farm animals but refuse it for pets, and the gap disappears once both are described as equally clever. Kim: a model's own choices do not shift with closeness, but when asked what a <i>human</i> would do, it says the human would favour the close person. Ma: the "friend" effect in models was small and unsteady.</td>
+<td class="newc" data-h="What is new in ours">Nobody has had a model rate protection for pets vs farm animals with feeling held equal. Nobody has tested a local vs a famous object. Earlier closeness tests were about wrongdoers or money, never about the thing being protected. The standard "how wide is your circle of care" questionnaire has never been given to a model.</td>
+</tr>
+
+<tr>
+<td class="route" data-h="Route">5 · Legal rule<small>A rule can give standing that nobody feels.</small><span class="pr"><i class="pill todo">secondary</i></span></td>
+<td data-h="What we will test">Do models protect things the law calls persons (a company, a ministry, a river with legal rights, a robot that was given citizenship) while saying they cannot feel? Do they copy the rule, or ignore it? Naming tests and made-up twins remove fame.</td>
+<td data-h="Who came close">
+<ul>
+<li><a href="https://doi.org/10.1038/s41467-026-72297-9">Jotautaitė et al. 2026</a> <span class="v">one question about legal rights for chimpanzees</span></li>
+<li><a href="https://doi.org/10.3389/fpsyg.2026.1926286">Kang &amp; Kim 2026</a> <span class="v">Frontiers in Psychology</span></li>
+<li><a href="https://aclanthology.org/2025.nlp4ecology-1.18/">Grasso et al. 2025</a> <span class="v">NLP4Ecology</span></li>
+</ul></td>
+<td class="match" data-h="What matches">Only indirect hints: models weigh how clever something is rather than what kind of thing it is, and models can act as raters.</td>
+<td class="newc" data-h="What is new in ours">No AI study has asked about companies, ministries, rivers with legal rights, or robot citizens. Searches for this turn up only law and philosophy essays, never a test on a model. This route is wide open.</td>
+</tr>
+
+<tr>
+<td class="route" data-h="Route">6 · Future potential<small>What it will become counts, not just what it is now.</small><span class="pr"><i class="pill care">★ priority</i></span></td>
+<td data-h="What we will test">A life line: a 20-week fetus, a newborn, an 80-year-old, a brain-dead person, a young tree. Does the model's protection follow what the thing can feel <i>now</i>, or its whole life story?</td>
+<td data-h="Who came close">
+<ul>
+<li><a href="https://doi.org/10.1098/rsos.231393">Takemoto 2024</a> · <a href="https://doi.org/10.1371/journal.pone.0322776">Ahmad &amp; Takemoto 2025</a> · <a href="https://doi.org/10.1098/rsos.241229">Oh &amp; Demberg 2025</a> <span class="v">car-crash dilemmas with age</span></li>
+<li><a href="https://doi.org/10.1186/s12910-026-01496-2">Gandhi &amp; Balas 2026</a> <span class="v">BMC Medical Ethics · hospital triage by age</span></li>
+<li><a href="https://doi.org/10.1145/3805689.3806437">Dickerson et al. 2026</a> <span class="v">FAccT · "Who gets the kidney?"</span></li>
+<li><a href="https://doi.org/10.1186/s13010-026-00222-5">Topcu et al. 2026</a> <span class="v">models asked about dead bodies</span></li>
+</ul></td>
+<td class="match" data-h="What matches">Models do favour the young when deciding who to save or who gets an organ, but less strongly than people, and the preference flips easily with small wording changes. Topcu is the only study where a model judged something after death: models gave the body some value because it was once a person.</td>
+<td class="newc" data-h="What is new in ours">Every AI paper here is about <i>sharing out</i> something scarce, not about whether the thing matters. No AI study has rated a fetus, an embryo or a brain-dead person. Nobody has laid out a whole life line and asked whether "the future counts". The human precedent to cite is Goodwin &amp; Landy 2014.</td>
+</tr>
+
+<tr>
+<td class="route" data-h="Route">7 · Disgust / purity<small>Revulsion pushes a thing out of the circle, mind or no mind.</small><span class="pr"><i class="pill care">★ priority</i></span></td>
+<td data-h="What we will test">Cricket vs honeybee, equally able to feel. Does the model copy the disgust that text carries about pests, giving less sympathy and protection than its own "can it feel?" score would predict?</td>
+<td data-h="Who came close">
+<ul>
+<li><a href="https://doi.org/10.1002/inc3.70013">Moser, Krogmann &amp; Wanke 2025</a> <span class="v">Integrative Conservation · 10 chatbots on insects</span></li>
+<li><a href="https://doi.org/10.1145/3715275.3732094">Kanepajs et al. 2025</a> <span class="v">FAccT</span></li>
+<li><a href="https://doi.org/10.1016/j.ipm.2022.103050">Takeshita, Rzepka &amp; Araki 2022</a> <span class="v">Information Processing &amp; Management</span></li>
+<li><a href="https://doi.org/10.1609/aies.v7i1.31704">Nunes et al. 2024</a> <span class="v">AIES · "Are LLMs moral hypocrites?"</span></li>
+<li><a href="https://doi.org/10.18653/v1/2024.emnlp-main.982">Abdulhai et al. 2024</a> <span class="v">EMNLP</span></li>
+</ul></td>
+<td class="match" data-h="What matches">Chatbots rate wasps, flies and mosquitoes negatively and call them "pests" and "disease carriers", while bees and butterflies get warm words. Models tolerate harm to pests. The negative feeling is already baked into the text models learn from. The "purity" value is present in models and can be turned up with prompting.</td>
+<td class="newc" data-h="What is new in ours">Liking something is not the same as saying it matters. Nobody has shown a model giving a pest <i>less</i> protection than its own "can it feel?" score would predict, with a matched non-pest for comparison. Crickets and bumblebees have never been tested.</td>
+</tr>
+
+<tr>
+<td class="route" data-h="Route">8 · Usefulness<small>Being useful to people can stand in for mattering.</small><span class="pr"><i class="pill todo">secondary</i></span></td>
+<td data-h="What we will test">Honeybee (people depend on it) vs bumblebee, equally able to feel. We expect models to show this strongly, because "useful to humans" is everywhere in text.</td>
+<td data-h="Who came close">
+<ul>
+<li><a href="https://doi.org/10.1038/s41467-026-72297-9">Jotautaitė et al. 2026</a> <span class="v">Nature Communications</span></li>
+<li><a href="https://doi.org/10.1002/inc3.70013">Moser et al. 2025</a> <span class="v">Integrative Conservation</span></li>
+<li><a href="https://aclanthology.org/2025.nlp4ecology-1.18/">Grasso et al. 2025</a> <span class="v">NLP4Ecology</span></li>
+<li><a href="https://doi.org/10.1145/3613905.3637118">Hupont et al. 2024</a> <span class="v">CHI extended abstract</span></li>
+</ul></td>
+<td class="match" data-h="What matches">Models find harm to animals most acceptable when it is for food, and treat farm animals differently from pets. Chatbots value bees for "ecosystem services" and overlook wild bees. Models describe nature by its use to humans by default.</td>
+<td class="newc" data-h="What is new in ours">The Nature Communications paper lists "change how useful the animal is" as future work. Nobody has compared a useful species with an equally feeling, less useful cousin. Nobody has measured usefulness as a signal on its own, apart from feeling.</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="card" style="margin-top:18px">
+  <h2>Two things to keep an eye on</h2>
+  <p>These are <b>not yet published</b>, so they are not in the table. If either comes out in a journal or conference before our FAccT deadline, it becomes the paper we position against.</p>
+  <ul style="margin:0;padding-left:18px;font-size:13.5px">
+    <li><b>Kim, Street, Rocca, Korngiebel, Waytz, Evans &amp; Keeling (2026)</b>, arXiv 2607.28607. Models rate the minds of animals and natural objects on a 0–10 scale, compared with people. Finds safety training makes models see <i>less</i> mind in animals. The closest design to ours anywhere.</li>
+    <li><b>Grimaldi &amp; Carrasco-Farré (2026)</b>, Research Square preprint. Repeats the classic "dimensions of mind" survey on models with 16 characters and 65 abilities.</li>
+  </ul>
+  <p class="note">Also note: Jaeger, Wilks &amp; van Lissa (2026, <i>Journal of Experimental Social Psychology</i>) is a human study that plans to test eight properties of things as reasons for moral concern. It has no results yet, so cite it only for its list of reasons. None of its eight is one of our priority routes except feeling.</p>
+</div>
+
+<footer>
+  Prepared 16 Oct 2026 by Olo for Tuba. Five parallel literature searches, published and peer-reviewed work only; every link resolved through the publisher or Crossref on the day. Companion pages: <a href="research-flow.html">The research flow</a> · <a href="theory-map.html">The theory map</a> · <a href="entity-pool.html">Entity pool</a>. When this page and the outline repo disagree, the repo wins.
+</footer>
+</div>
+</body>
+</html>
