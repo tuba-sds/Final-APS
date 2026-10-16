@@ -219,23 +219,21 @@ details.ledger table{margin-top:10px}
   <div class="lane lp1">
     <div class="ltitle"><b>Paper 1</b>Models only<small>FAccT 2027 · abstract 27 Oct · paper 3 Nov</small></div>
     <div class="chain">
-      <a class="qstep is-done click" href="#ents" onclick="openModal('ents',event)"><span class="n">1</span><b>Pilot: 30 entities × 8 models</b><small>click to see the 30 entities by route</small></a>
+      <div class="qstep is-wait"><span class="n">1</span><b>Fix the 5 routes</b><small>feeling · threat · legal rule · future potential · disgust</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-wait"><span class="n">2</span><b>Fix the 5 routes</b><small>feeling · threat · legal rule · future potential · disgust</small></div>
+      <a class="qstep is-todo click" href="#ents" onclick="openModal('ents',event)"><span class="n">2</span><b>Pick 30 entities by route</b><small>3 with, 3 without, per route · click to see the list</small></a>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">3</span><b>Re-pick entities by route</b><small>≥3 per cell, with contrast entities</small></div>
+      <div class="qstep is-todo"><span class="n">3</span><b>Code the feature matrix</b><small>route columns for the new set</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">4</span><b>Code the feature matrix</b><small>route columns for the new set</small></div>
+      <a class="qstep is-todo click" href="#novel" onclick="openModal('novel',event)"><span class="n">4</span><b>Re-run the 8 models</b><small>same 4 questions, new entity set + novel-entity block · click</small></a>
       <div class="qarrow"></div>
-      <a class="qstep is-todo click" href="#novel" onclick="openModal('novel',event)"><span class="n">5</span><b>Re-run the 8 models</b><small>same 4 questions, new entity set + novel-entity block · click</small></a>
+      <a class="qstep is-todo click" href="#h2" onclick="openModal('h2',event)"><span class="n">5</span><b>Re-test the hypotheses</b><small>H1 gap · route weights per model · click for H2</small></a>
       <div class="qarrow"></div>
-      <a class="qstep is-todo click" href="#h2" onclick="openModal('h2',event)"><span class="n">6</span><b>Re-test the hypotheses</b><small>H1 gap · route weights per model · click for H2</small></a>
+      <div class="qstep is-todo"><span class="n">6</span><b>Preregister on OSF</b></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">7</span><b>Preregister on OSF</b></div>
+      <div class="qstep is-wait"><span class="n">7</span><b>Pick the headline</b></div>
       <div class="qarrow"></div>
-      <div class="qstep is-wait"><span class="n">8</span><b>Pick the headline</b></div>
-      <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">9</span><b>Write &amp; submit</b><small>abstract 27 Oct → full paper 3 Nov</small></div>
+      <div class="qstep is-todo"><span class="n">8</span><b>Write &amp; submit</b><small>abstract 27 Oct → full paper 3 Nov</small></div>
     </div>
   </div>
 
@@ -336,7 +334,6 @@ details.ledger table{margin-top:10px}
     <h2>FAccT 2027 <span class="pill ok">D-001</span></h2>
     <p class="mini">Abstract <b>27 Oct 2026</b> · full paper <b>3 Nov 2026</b>.</p>
     <ol class="steps">
-      <li><b>Pilot on the frozen 30</b><span class="mini">8 models, gap found.</span></li>
       <li><b>Re-pick 30 entities for the five routes</b></li>
       <li><b>Feature matrix, re-run, re-test</b><span class="mini">H1 gap · route weights per model (Bradley-Terry).</span></li>
       <li><b>Preregister H2 on OSF</b></li>
