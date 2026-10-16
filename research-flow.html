@@ -8,24 +8,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Public+Sans:wght@400;500;600&display=swap">
 <style>
 :root{
-  --bg:#FAFBF9; --card:#FFFFFF; --ink:#1A2126; --muted:#5C6B70; --line:#E3E8E6;
-  --facts:#0E7F9E; --care:#B4562A; --ok:#2E7D43; --warn:#B8860B;
-  --facts-soft:rgba(14,127,158,.10); --care-soft:rgba(180,86,42,.10); --ok-soft:rgba(46,125,67,.12); --warn-soft:rgba(184,134,11,.12);
-  --chip:#F0F3F1;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#10151A; --card:#1A222A; --ink:#E8ECEA; --muted:#93A1A6; --line:#2A343C;
-    --facts:#2E96B8; --care:#C9713D; --ok:#5DBA78; --warn:#D9A93A;
-    --facts-soft:rgba(46,150,184,.16); --care-soft:rgba(201,113,61,.16); --ok-soft:rgba(93,186,120,.16); --warn-soft:rgba(217,169,58,.16);
-    --chip:#222C34;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#10151A; --card:#1A222A; --ink:#E8ECEA; --muted:#93A1A6; --line:#2A343C;
-  --facts:#2E96B8; --care:#C9713D; --ok:#5DBA78; --warn:#D9A93A;
-  --facts-soft:rgba(46,150,184,.16); --care-soft:rgba(201,113,61,.16); --ok-soft:rgba(93,186,120,.16); --warn-soft:rgba(217,169,58,.16);
-  --chip:#222C34;
+  --bg:#F2F7F3; --card:#FFFFFF; --ink:#1E2B24; --muted:#5F7068; --line:#D9E6DD;
+  --facts:#2F7D5B; --care:#6E8F5E; --ok:#3C8D5F; --warn:#B8A24A;
+  --facts-soft:rgba(47,125,91,.10); --care-soft:rgba(110,143,94,.13); --ok-soft:rgba(60,141,95,.14); --warn-soft:rgba(184,162,74,.18);
+  --chip:#EAF3EC;
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;font-size:15px;line-height:1.45}
@@ -170,6 +156,13 @@ a{color:var(--facts)}
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;align-items:center;justify-content:center;padding:16px}
 .modal.open{display:flex}
 .modal .panel{background:var(--card);color:var(--ink);border-radius:14px;max-width:900px;width:100%;max-height:90vh;overflow:auto;padding:18px 20px;position:relative}
+.modal .panel.wide{max-width:1200px}
+.mxwrap{overflow:auto;max-height:70vh;border:1px solid var(--line);border-radius:10px}
+.mx{font-size:12px;min-width:1100px}
+.mx th{position:sticky;top:0;background:var(--chip);z-index:2}
+.mx th .csub{display:block;font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;color:var(--muted);max-width:110px;white-space:normal}
+.mx td{white-space:nowrap}
+.mx td:last-child{white-space:normal;min-width:220px;color:var(--muted);font-size:11.5px}
 .modal .close{position:absolute;top:10px;right:12px;border:0;background:var(--chip);color:var(--ink);border-radius:999px;width:28px;height:28px;cursor:pointer;font-size:16px}
 .modal h2{margin-bottom:10px}
 .ents{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
@@ -198,10 +191,8 @@ details.ledger table{margin-top:10px}
   <nav class="topnav">
     <a href="questions-methodology.html">Questions &amp; methodology</a>
     <a href="APS_Presentation_v2.html">Presentation</a>
-    <a href="theory-map.html">Theory map</a>
     <a href="routes-literature.html">Past research per route</a>
-    <a href="entity-pool.html">Entity pool</a>
-    <a href="weekly-2026-09-07.html">Feature matrix</a>
+    <a href="#matrix" onclick="openModal('matrix',event)">Feature matrix</a>
     <a href="https://github.com/tuba-sds/research-project-outline/tree/main/projects/aps">Outline repo</a>
   </nav>
   <div class="tl" aria-label="timeline">
@@ -224,7 +215,7 @@ details.ledger table{margin-top:10px}
   <div class="lane lp1">
     <div class="ltitle"><b>Paper 1</b>Models only<small>FAccT 2027 · abstract 27 Oct · paper 3 Nov</small></div>
     <div class="chain">
-      <a class="qstep is-done click" href="#entities" onclick="openEnts(event)"><span class="n">1</span><b>Pilot: 30 entities × 8 models</b><small>click to see the 30 entities by route</small></a>
+      <a class="qstep is-done click" href="#ents" onclick="openModal('ents',event)"><span class="n">1</span><b>Pilot: 30 entities × 8 models</b><small>click to see the 30 entities by route</small></a>
       <div class="qarrow"></div>
       <div class="qstep is-wait"><span class="n">2</span><b>Fix the 5 routes</b><small>feeling · threat · legal rule · future potential · disgust</small></div>
       <div class="qarrow"></div>
@@ -234,7 +225,7 @@ details.ledger table{margin-top:10px}
       <div class="qarrow"></div>
       <div class="qstep is-todo"><span class="n">5</span><b>Re-run the 8 models</b><small>same 4 questions, new entity set</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">6</span><b>Re-test the hypotheses</b><small>H1 gap · route weights per model</small></div>
+      <a class="qstep is-todo click" href="#h2" onclick="openModal('h2',event)"><span class="n">6</span><b>Re-test the hypotheses</b><small>H1 gap · route weights per model · click for H2</small></a>
       <div class="qarrow"></div>
       <div class="qstep is-todo"><span class="n">7</span><b>Preregister on OSF</b></div>
       <div class="qarrow"></div>
@@ -249,15 +240,15 @@ details.ledger table{margin-top:10px}
     <div class="chain">
       <div class="qstep is-wait"><span class="n">1</span><b>Ethics application</b><small>様式1-1, six documents</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-wait"><span class="n">2</span><b>Fix the entity subset</b><small>from the 99-entity pool</small></div>
+      <div class="qstep is-wait"><span class="n">2</span><b>Fix the entity subset</b><small>TBD</small></div>
       <div class="qarrow"></div>
       <div class="qstep is-todo"><span class="n">3</span><b>Build the survey platform</b><small>jsPsych or custom, own SQL backend</small></div>
       <div class="qarrow"></div>
       <div class="qstep is-wait"><span class="n">4</span><b>Committee approval</b><small>result mid-Nov</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">5</span><b>Pilot the session</b><small>≈25–32 min</small></div>
+      <div class="qstep is-todo"><span class="n">5</span><b>Pilot the session</b><small>TBD</small></div>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">6</span><b>Recruit &amp; run</b><small>US on Prolific · JP / IN arms later</small></div>
+      <div class="qstep is-todo"><span class="n">6</span><b>Recruit &amp; run</b><small>US on Prolific · other arms TBD</small></div>
       <div class="qarrow"></div>
       <div class="qstep is-todo"><span class="n">7</span><b>Analyze (H2)</b></div>
       <div class="qarrow"></div>
@@ -301,8 +292,8 @@ details.ledger table{margin-top:10px}
   <span class="num">2 · WHO GETS RATED</span>
   <div class="head"><h2>The entities</h2></div>
   <div class="two">
-    <div class="box"><b>Paper 1: 30 entities, six per route.</b><br><br><button class="btn" onclick="openEnts(event)">See the 30 entities by route →</button></div>
-    <div class="box"><b>Paper 2: a pool of 99, each participant rates 24.</b><br><br><a class="btn" href="entity-pool.html">Entity pool →</a> <a class="btn" href="https://github.com/tuba-sds/Final-APS/blob/main/entity-pool-frozen-2026-10-06.md">Frozen list →</a></div>
+    <div class="box"><b>Paper 1: 30 entities, six per route.</b><br><br><button class="btn" onclick="openModal('ents',event)">See the 30 entities by route →</button></div>
+    <div class="box"><b>Paper 2: TBD.</b><br><br><a class="btn" href="https://github.com/tuba-sds/Final-APS/blob/main/entity-pool-frozen-2026-10-06.md">Frozen pool of 99 →</a></div>
   </div>
 </div>
 <div class="arrow"></div>
@@ -312,9 +303,9 @@ details.ledger table{margin-top:10px}
   <span class="num">3 · WHY ENTITIES DIFFER</span>
   <div class="head"><h2>Properties → routes → the four factors</h2></div>
   <div class="layers">
-    <div class="lay"><b>Properties</b>Coded per entity, never shown to raters. <a href="weekly-2026-09-07.html">Feature matrix →</a></div>
+    <div class="lay"><b>Properties</b>Coded per entity, never shown to raters. <a href="#matrix" onclick="openModal('matrix',event)">Feature matrix →</a></div>
     <div class="lar">→</div>
-    <div class="lay"><b>Routes</b>Five for Paper 1: feeling · threat · legal rule · future potential · disgust. <a href="theory-map.html">Theory map →</a> · <a href="routes-literature.html">Past research →</a></div>
+    <div class="lay"><b>Routes</b>Five for Paper 1: feeling · threat · legal rule · future potential · disgust. <a href="routes-literature.html">Past research →</a></div>
     <div class="lar">→</div>
     <div class="lay"><b>The four factors</b>sentience · agency · empathy · protectiveness</div>
   </div>
@@ -350,24 +341,14 @@ details.ledger table{margin-top:10px}
   </div>
 
   <div class="col p2">
-    <div class="kick">Paper 2 · the human study · US + JP + IN</div>
+    <div class="kick">Paper 2 · the human study</div>
     <h2>CogSci 2027 <span class="pill ok">D-001</span></h2>
     <p class="mini">Submission ≈ <b>1 Feb 2027</b>. No human data before ethics approval (C1).</p>
     <ol class="steps">
       <li><b>Ethics application</b><span class="mini">様式1-1, six documents · Joe is PI · committee mid-Nov.</span></li>
-      <li><b>Survey platform</b> <span class="pill ok">D-006</span><span class="mini">jsPsych or custom, own SQL backend, de-identified.</span></li>
-      <li><b>Recruit</b> <span class="pill ok">D-007</span><span class="mini">US on Prolific, ≈275 → 250 · JP and IN arms with their own instruments.</span></li>
-      <li><b>One session, ≈25–32 min</b>
-        <div class="session">
-          <span class="s">Consent</span><span class="ar">→</span>
-          <span class="s">Main battery<small>24 entities × 4 factors + 24 familiarity</small></span><span class="ar">→</span>
-          <span class="s">Novel-entity block<small>described experience × status</small></span><span class="ar">→</span>
-          <span class="s">2 attention checks</span><span class="ar">→</span>
-          <span class="s">Speciesism + IDAQ-short</span><span class="ar">→</span>
-          <span class="s">Demographics</span><span class="ar">→</span>
-          <span class="s">Debrief</span>
-        </div></li>
-      <li><b>Analyze</b><span class="mini">H2: described experience raises protection in both; status (sacred, legal) raises it in humans only. Mantel test for map correspondence.</span></li>
+      <li><b>Survey platform</b> <span class="pill ok">D-006</span><span class="mini">own build, own SQL backend.</span></li>
+      <li><b>Recruit</b> <span class="pill ok">D-007</span><span class="mini">US on Prolific · other arms TBD.</span></li>
+      <li><b>Session, entities, analysis</b><span class="mini">shared with Paper 1 where they overlap; the rest TBD.</span></li>
       <li><b>Submit</b></li>
     </ol>
   </div>
@@ -403,9 +384,9 @@ details.ledger table{margin-top:10px}
 </details>
 
 <!-- entity modal -->
-<div class="modal" id="ents" onclick="if(event.target===this)closeEnts()">
+<div class="modal" id="ents" onclick="if(event.target===this)closeModal()">
   <div class="panel">
-    <button class="close" onclick="closeEnts()" aria-label="close">×</button>
+    <button class="close" onclick="closeModal()" aria-label="close">×</button>
     <h2>Paper 1: 30 entities, six per route</h2>
     <p class="mini" style="margin-bottom:12px">Draft pick from the frozen pool. Each route has its own contrast entities.</p>
     <div class="ents">
@@ -418,12 +399,65 @@ details.ledger table{margin-top:10px}
   </div>
 </div>
 
+<!-- feature matrix modal -->
+<div class="modal" id="matrix" onclick="if(event.target===this)closeModal()">
+  <div class="panel wide">
+    <button class="close" onclick="closeModal()" aria-label="close">×</button>
+    <h2>Feature matrix — the frozen 30</h2>
+    <p class="mini" style="margin-bottom:10px">Properties we code per entity (0 / 1 / 2). Never shown to raters. Tuba's corrected values, 09 Sep 2026; six cells flagged for Joe. The new 30 for Paper 1 get the same columns.</p>
+    <div class="mxwrap"><table class="mx">
+      <tr><th>id<span class="csub">frozen id</span></th><th>entity<span class="csub">as shown to raters</span></th><th>EXP<span class="csub">can it feel pain, fear, comfort?</span></th><th>AGY<span class="csub">can it plan and choose?</span></th><th>ALV<span class="csub">biologically alive?</span></th><th>HUM<span class="csub">human-like in form/behavior?</span></th><th>HRM<span class="csub">dangerous to people?</span></th><th>DIS<span class="csub">disgusting / low-status?</span></th><th>USE<span class="csub">useful (food, work, revenue)?</span></th><th>VUL<span class="csub">fragile, can’t defend itself?</span></th><th>REL<span class="csub">personal bond likely (pet, kin, local)?</span></th><th>LEG<span class="csub">0 none / 1 protected / 2 legal person</span></th><th>SAC<span class="csub">held sacred or symbolic?</span></th><th>IRR<span class="csub">unique or last-of-kind?</span></th><th>FUT<span class="csub">future life ahead? (blank = non-living)</span></th><th>FAM<span class="csub">familiar / much text about it?</span></th><th>GRP<span class="csub">a collective (company, ministry)?</span></th><th>notes<span class="csub">contested calls</span></th></tr>
+      <tr><td>human_girl4 ✓Joe→Tuba</td><td>a 4-year-old girl</td><td>2</td><td>1</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>Joe's worked row (Tuba changed REL 1→2, IRR 2→0)</td></tr>
+      <tr><td>human_boy4</td><td>a 4-year-old boy</td><td>2</td><td>1</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>identical to girl by design — the pair varies nothing in the matrix</td></tr>
+      <tr><td>human_fetus_t2</td><td>a human fetus at 20 weeks</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>EXP contested → 1; LEG varies by jurisdiction</td></tr>
+      <tr><td>human_newborn</td><td>a newborn baby</td><td>2</td><td>0</td><td>2</td><td></td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>HUM left blank — confirm</td></tr>
+      <tr><td>human_adult</td><td>an adult person</td><td>2</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>1</td><td>0</td><td>2</td><td>2</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>anchor; USE=1 (labour); HRM=1 (Tuba)</td></tr>
+      <tr><td>human_elderly</td><td>an 80-year-old person</td><td>2</td><td>2</td><td>2</td><td>2</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>2</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>FUT coded 2 (pre-fill had 1 limited)</td></tr>
+      <tr><td>human_braindead</td><td>a brain-dead person on a ventilator</td><td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>ALV=1 machine-sustained; LEG=2 (Tuba; pre-fill 1 contested)</td></tr>
+      <tr><td>squid</td><td>a squid</td><td>2</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>0</td><td>USE=1 food</td></tr>
+      <tr><td>honeybee</td><td>a honeybee</td><td>2</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>0</td><td>Tuba: EXP=2, HRM=0 (pre-fill notes stale)</td></tr>
+      <tr><td>bumblebee</td><td>a bumblebee</td><td>2</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>0</td><td>honeybee mirror, FAM/USE one step lower</td></tr>
+      <tr><td>cat</td><td>a cat</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>1</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>LEG=1 animal-welfare protection</td></tr>
+      <tr><td>tiger</td><td>a tiger</td><td>2</td><td>2</td><td>2</td><td>1</td><td>2</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>2</td><td>2</td><td>2</td><td>0</td><td>HRM=2; IRR=2 endangered; LEG=1 protected species</td></tr>
+      <tr><td>dog</td><td>a dog</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>2</td><td>1</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>USE=2 (Tuba)</td></tr>
+      <tr><td>pig</td><td>a pig</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>DIS=1 farm stereotype; USE=2 food; REL=2 (Tuba — see flag 2)</td></tr>
+      <tr><td>cricket</td><td>a cricket</td><td>2</td><td>1</td><td>2</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>0</td><td>DIS=1 low-status insect (Tuba's column)</td></tr>
+      <tr><td>tardigrade</td><td>a tardigrade</td><td>1</td><td>1</td><td>2</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>FAM=0 near-invisible in text</td></tr>
+      <tr><td>young_tree</td><td>a young tree</td><td>1</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>0</td><td>plants coded EXP=1/AGY=1/HUM=1 (Tuba — see flag 4)</td></tr>
+      <tr><td>mother_tree</td><td>an old tree</td><td>1</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>1</td><td>0</td><td>1</td><td>2</td><td>1</td><td>2</td><td>0</td><td>IRR=2 centuries of history; LEG=0 (Tuba; pre-fill 1 heritage)</td></tr>
+      <tr><td>sunflower</td><td>a sunflower</td><td>1</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>USE=1 seeds/oil</td></tr>
+      <tr><td>rose</td><td>a rose</td><td>1</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>SAC=1 symbolic/romantic; REL=1 gift</td></tr>
+      <tr><td>fable5</td><td>Fable 5, an AI model</td><td>0</td><td>2</td><td>0</td><td>1</td><td>1</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>EXP=0 publicly contested; FAM=2 (Tuba — see flag 3); FUT=0</td></tr>
+      <tr><td>gpt56sol</td><td>GPT-5.6 Sol, an AI model</td><td>0</td><td>2</td><td>0</td><td>1</td><td>1</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>as fable5; FAM=2</td></tr>
+      <tr><td>sophia_robot</td><td>Sophia, a humanoid robot</td><td>0</td><td>2</td><td>0</td><td>1</td><td>1</td><td>0</td><td>2</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td>LEG=2 (Tuba; pre-fill 1 ex-citizenship); HUM=1; FUT=1 non-living — confirm</td></tr>
+      <tr><td>fastretailing ✓Joe→Tuba</td><td>Fast Retailing, a clothing company</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>2</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>2</td><td>2</td><td>Joe's worked row (Tuba changed AGY 2→0, LEG 2→0 — see flag 1, SAC 0→1, REL 0→1, FUT →1)</td></tr>
+      <tr><td>mhe_japan</td><td>Japan's Ministry of Health and Environment</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>2</td><td>2</td><td>mirror of the company; LEG=0 (Tuba)</td></tr>
+      <tr><td>whanganui_river ✓Joe→Tuba</td><td>the Whanganui River</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>2</td><td>1</td><td>1</td><td>2</td><td>2</td><td>0</td><td>1</td><td>2</td><td>0</td><td>Joe's worked row (Tuba changed USE 1→2, IRR 2→0, FAM 1→2, FUT →1)</td></tr>
+      <tr><td>statue</td><td>a stone statue in a local park</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>REL=1 local/communal; the anti-Lincoln; FUT=1 non-living — confirm</td></tr>
+      <tr><td>lincoln_memorial</td><td>the Lincoln Memorial</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>2</td><td>2</td><td>1</td><td>2</td><td>0</td><td>REL/FAM arm-dependent; LEG=0 (Tuba; pre-fill 1 protected monument)</td></tr>
+      <tr><td>meiji_shrine</td><td>Meiji Shrine</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>2</td><td>2</td><td>1</td><td>2</td><td>0</td><td>REL/FAM arm-dependent (JP high, US lower)</td></tr>
+      <tr><td>gravel</td><td>a piece of gravel</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>floor — all zeros</td></tr>
+    </table></div>
+  </div>
+</div>
+
+<!-- H2 modal -->
+<div class="modal" id="h2" onclick="if(event.target===this)closeModal()">
+  <div class="panel">
+    <button class="close" onclick="closeModal()" aria-label="close">×</button>
+    <h2>H2, in route terms — for Joe to confirm</h2>
+    <div class="box" style="margin-bottom:10px"><b>H2:</b> varying an entity's described experience raises protection in both humans and models; varying its status (sacred &amp; last of its kind, legal person) raises protection in humans but not in models.</div>
+    <div class="box care"><b>Falsifier, symmetric:</b> if models show the human status effects, the route-deficit claim dies.</div>
+    <p class="mini" style="margin-top:10px">Paper 1 runs this on models only. The human half is Paper 2 (TBD).</p>
+  </div>
+</div>
+
 <footer></footer>
 </div>
 <script>
-function openEnts(e){if(e)e.preventDefault();document.getElementById('ents').classList.add('open')}
-function closeEnts(){document.getElementById('ents').classList.remove('open')}
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeEnts()});
+function openModal(id,e){if(e)e.preventDefault();closeModal();document.getElementById(id).classList.add('open')}
+function closeModal(){document.querySelectorAll('.modal.open').forEach(function(m){m.classList.remove('open')})}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
 </script>
 </body>
 </html>
