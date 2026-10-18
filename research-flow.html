@@ -172,8 +172,9 @@ a{color:var(--facts)}
 .mx td:last-child{white-space:normal;min-width:220px;color:var(--muted);font-size:11.5px}
 .modal .close{position:absolute;top:10px;right:12px;border:0;background:var(--chip);color:var(--ink);border-radius:999px;width:28px;height:28px;cursor:pointer;font-size:16px}
 .modal h2{margin-bottom:10px}
-.ents{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-@media(max-width:860px){.ents{grid-template-columns:repeat(2,1fr)}}
+.ents{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+@media(max-width:1000px){.ents{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.ents{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.ents{grid-template-columns:1fr}}
 .ents div{background:var(--chip);border-radius:10px;padding:10px 11px;font-size:12.5px;border-top:3px solid var(--facts)}
 .ents div b{display:block;font-size:13px;margin-bottom:5px}
@@ -230,13 +231,13 @@ details.ledger table{margin-top:10px}
   <div class="lane lp1">
     <div class="ltitle"><b>Paper 1</b>Models only<small>FAccT 2027 · abstract 27 Oct · paper 3 Nov</small></div>
     <div class="chain">
-      <div class="qstep is-wait"><span class="n">1</span><b>Fix the 5 routes</b><small>feeling · threat · legal rule · future potential · pleasantness</small></div>
+      <div class="qstep is-wait"><span class="n">1</span><b>Fix the 6 routes</b><small>feeling · threat · legal rule · future potential · pleasantness · sacredness</small></div>
       <div class="qarrow"></div>
-      <a class="qstep is-todo click" href="#ents" onclick="openModal('ents',event)"><span class="n">2</span><b>Pick 30 entities by route</b><small>3 with, 3 without, per route · click to see the list</small></a>
+      <a class="qstep is-todo click" href="#ents" onclick="openModal('ents',event)"><span class="n">2</span><b>Pick 36 entities by route</b><small>3 with, 3 without, per route · click to see the list</small></a>
       <div class="qarrow"></div>
-      <a class="qstep is-todo click" href="#matrix" onclick="openModal('matrix',event)"><span class="n">3</span><b>Code the feature matrix</b><small>same columns, for the 30 entities · click</small></a>
+      <a class="qstep is-todo click" href="#matrix" onclick="openModal('matrix',event)"><span class="n">3</span><b>Code the feature matrix</b><small>same columns, for the 36 entities · click</small></a>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">4</span><b>Run the 8 models</b><small>4 questions × 30 entities, 3 of them made-up · while the runs go, check the APS 1 answers for consistency (same pick in both orders, choices form a ranking)</small></div>
+      <div class="qstep is-todo"><span class="n">4</span><b>Run the 8 models</b><small>4 questions × 36 entities, 3 of them made-up · while the runs go, check the APS 1 answers for consistency (same pick in both orders, choices form a ranking)</small></div>
       <div class="qarrow"></div>
       <a class="qstep is-todo click" href="#h2" onclick="openModal('h2',event)"><span class="n">5</span><b>Test the hypotheses</b><small>H1 gap · route weights per model · click for H2</small></a>
       <div class="qarrow"></div>
@@ -278,7 +279,7 @@ details.ledger table{margin-top:10px}
 <div class="stage">
   <span class="num">0 · THE QUESTION</span>
   <div class="head"><h2>Do AI models decide <i>who matters</i> the way people do, and for the same reasons?</h2><span class="pill ok">G-1</span></div>
-  <p>We ask models and people the same four questions about the same things. Then we test five reasons protection rises: feeling, threat, legal rule, future potential, pleasantness.</p>
+  <p>We ask models and people the same four questions about the same things. Then we test six reasons protection rises: feeling, threat, legal rule, future potential, pleasantness, sacredness.</p>
   <div class="two">
     <div class="box facts"><b>Facts:</b> can it feel? can it act? Models and humans largely agree.</div>
     <div class="box care"><b>Care:</b> do you feel for it? would you protect it? This is where models and humans part ways.</div>
@@ -305,7 +306,7 @@ details.ledger table{margin-top:10px}
   <span class="num">2 · WHO GETS RATED</span>
   <div class="head"><h2>The entities</h2></div>
   <div class="two">
-    <div class="box"><b>Paper 1: 30 entities, six per route.</b><br><br><button class="btn" onclick="openModal('ents',event)">See the 30 entities by route →</button></div>
+    <div class="box"><b>Paper 1: 36 entities, six per route.</b><br><br><button class="btn" onclick="openModal('ents',event)">See the 36 entities by route →</button></div>
     <div class="box"><b>Paper 2: TBD.</b><br><br><a class="btn" href="https://github.com/tuba-sds/Final-APS/blob/main/entity-pool-frozen-2026-10-06.md">Frozen pool of 99 →</a></div>
   </div>
 </div>
@@ -318,11 +319,10 @@ details.ledger table{margin-top:10px}
   <div class="layers">
     <div class="lay"><b>Properties</b>Coded per entity, never shown to raters. <a href="#matrix" onclick="openModal('matrix',event)">Feature matrix →</a></div>
     <div class="lar">→</div>
-    <div class="lay"><b>Routes</b>Five for Paper 1: feeling · threat · legal rule · future potential · pleasantness. Pleasantness is the baseline every other route must beat; the models rate it themselves, checked against human word norms (Warriner et al. 2013; NRC VAD Lexicon v2.1). <a href="routes-literature.html">Past research →</a></div>
+    <div class="lay"><b>Routes</b>Six for Paper 1: feeling · threat · legal rule · future potential · pleasantness · sacredness. Pleasantness is the baseline every other route must beat; the models rate it themselves, checked against human word norms (Warriner et al. 2013; NRC VAD Lexicon v2.1). <a href="routes-literature.html">Past research →</a></div>
     <div class="lar">→</div>
     <div class="lay"><b>The four factors</b>sentience · agency · empathy · protectiveness</div>
   </div>
-  <div class="box" style="margin-top:12px"><b>Related work, updated 18 Oct from Joe's 17 Oct review.</b> Added: Jotautaitė, Caviola, Brewster &amp; Hagendorff (2026, <i>Nature Communications</i>); Kim et al. (2026, both papers); Ladak, Wilks, Loughnan &amp; Anthis (2025, CHI; the human study we repeat on the models); and the four critiques of the moral-weight approach: Chawla et al., Trhlik et al., Ajayi et al., Zhou &amp; Ackerman. Dropped: Cummins (2025), which cannot be verified. Full list by route: <a href="routes-literature.html">Past research →</a></div>
 </div>
 <div class="arrow"></div>
 
@@ -346,7 +346,7 @@ details.ledger table{margin-top:10px}
     <h2>FAccT 2027 <span class="pill ok">D-001</span></h2>
     <p class="mini">Abstract <b>27 Oct 2026</b> · full paper <b>3 Nov 2026</b>.</p>
     <ol class="steps">
-      <li><b>Pick 30 entities for the five routes</b></li>
+      <li><b>Pick 36 entities for the six routes</b></li>
       <li><b>Feature matrix, model runs, tests</b><span class="mini">H1 gap · route weights per model (Bradley-Terry).</span></li>
       <li><b>Preregister H2 on OSF</b></li>
       <li><b>Headline, write, submit</b></li>
@@ -389,7 +389,7 @@ details.ledger table{margin-top:10px}
     <tr><td>U-006</td><td>Zhuolun Zhong: authorship and §8 listing decided after a contributions discussion.</td><td>Tuba · Joe</td></tr>
     <tr><td>U-007</td><td>The entity pool: 99 frozen; final subset chosen with Joe.</td><td>Joe</td></tr>
     <tr><td>U-008</td><td>Ratify agent protocol v2.</td><td>Joe</td></tr>
-    <tr><td>U-009</td><td>Eight routes instead of six (disgust/purity, usefulness).</td><td>Joe</td></tr>
+    <tr><td>U-009</td><td>Eight routes instead of six (pleasantness, usefulness).</td><td>Joe</td></tr>
     <tr><td>U-010</td><td>Thesis category (学位関係・修士論文) on the ethics form. Changes C7.</td><td>Joe · Ira informed · a human amends C7</td></tr>
     <tr><td>U-011</td><td>Which arms the ethics filing covers: US only, or US + Japan + India.</td><td>Tuba · Joe</td></tr>
     <tr><td>—</td><td>Route model into Paper 1 and the "fragile care" headline pick.</td><td>Joe</td></tr>
@@ -400,13 +400,14 @@ details.ledger table{margin-top:10px}
 <div class="modal" id="ents" onclick="if(event.target===this)closeModal()">
   <div class="panel">
     <button class="close" onclick="closeModal()" aria-label="close">×</button>
-    <h2>Paper 1: 30 entities, six per route</h2>
+    <h2>Paper 1: 36 entities, six per route</h2>
     <p class="mini" style="margin-bottom:12px">Draft, following Joe's rule: for each route, three entities that have the property and three matched ones that lack it, all from the 99-entity pool in the ethics application. Three are made-up, so the model can only react to the description we give it.</p>
     <div class="ents">
       <div><b>Feeling</b><i>can feel · cannot feel</i><ul><li>an adult person</li><li>a dog</li><li>a squid</li></ul><ul class="no"><li>a sunflower</li><li>a stone statue in a local park</li><li>a piece of gravel</li></ul></div>
       <div><b>Threat</b><i>dangerous · harmless</i><ul><li>a tiger</li><li>a gharial (crocodile)</li><li>a street dog in Delhi</li></ul><ul class="no"><li>a cat</li><li>a white-tailed deer</li><li>a pig</li></ul><ul class="mu"><li><i class="pill care">made-up</i> the ridgeback stalker</li></ul></div>
       <div><b>Legal rule</b><i>legal person · no legal status</i><ul><li>the Whanganui River</li><li><i class="pill care">made-up</i> the Oruna River</li><li>a temple idol recognized as a legal person</li></ul><ul class="no"><li>Mount Fuji</li><li>the Amazon rainforest</li><li>a 1,000-year-old Buddha statue in a museum</li></ul></div>
       <div><b>Future potential</b><i>future ahead · none ahead</i><ul><li>a human fetus at 20 weeks</li><li>a newborn baby</li><li>a person who will be born in 2100</li></ul><ul class="no"><li>a brain-dead person on a ventilator</li><li>an 80-year-old person</li><li>your deceased grandparent</li></ul></div>
+      <div><b>Sacredness</b><i>held sacred · not sacred</i><ul><li>Meiji Shrine</li><li>a 1,000-year-old cedar at a shrine</li><li>a peepal (sacred fig) tree</li></ul><ul class="no"><li>Himeji Castle</li><li>an old tree</li><li>a rose</li></ul></div>
       <div><b>Pleasantness</b><i>unpleasant · equal-feeling, pleasant</i><ul><li>a cockroach</li><li>a cricket</li><li>a rat at the Karni Mata temple</li></ul><ul class="no"><li>a honeybee</li><li>a bumblebee</li><li>a tardigrade</li></ul><ul class="mu"><li><i class="pill care">made-up</i> the sludge mite</li></ul></div>
     </div>
     <h3 style="margin-top:14px">The made-up entities, as the model will read them</h3>
