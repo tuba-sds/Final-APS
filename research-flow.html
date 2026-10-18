@@ -230,13 +230,13 @@ details.ledger table{margin-top:10px}
   <div class="lane lp1">
     <div class="ltitle"><b>Paper 1</b>Models only<small>FAccT 2027 · abstract 27 Oct · paper 3 Nov</small></div>
     <div class="chain">
-      <div class="qstep is-wait"><span class="n">1</span><b>Fix the 5 routes</b><small>feeling · threat · legal rule · future potential · disgust</small></div>
+      <div class="qstep is-wait"><span class="n">1</span><b>Fix the 5 routes</b><small>feeling · threat · legal rule · future potential · pleasantness</small></div>
       <div class="qarrow"></div>
       <a class="qstep is-todo click" href="#ents" onclick="openModal('ents',event)"><span class="n">2</span><b>Pick 30 entities by route</b><small>3 with, 3 without, per route · click to see the list</small></a>
       <div class="qarrow"></div>
       <a class="qstep is-todo click" href="#matrix" onclick="openModal('matrix',event)"><span class="n">3</span><b>Code the feature matrix</b><small>same columns, for the 30 entities · click</small></a>
       <div class="qarrow"></div>
-      <div class="qstep is-todo"><span class="n">4</span><b>Run the 8 models</b><small>4 questions × 30 entities, 3 of them made-up</small></div>
+      <div class="qstep is-todo"><span class="n">4</span><b>Run the 8 models</b><small>4 questions × 30 entities, 3 of them made-up · while the runs go, check the APS 1 answers for consistency (same pick in both orders, choices form a ranking)</small></div>
       <div class="qarrow"></div>
       <a class="qstep is-todo click" href="#h2" onclick="openModal('h2',event)"><span class="n">5</span><b>Test the hypotheses</b><small>H1 gap · route weights per model · click for H2</small></a>
       <div class="qarrow"></div>
@@ -278,7 +278,7 @@ details.ledger table{margin-top:10px}
 <div class="stage">
   <span class="num">0 · THE QUESTION</span>
   <div class="head"><h2>Do AI models decide <i>who matters</i> the way people do, and for the same reasons?</h2><span class="pill ok">G-1</span></div>
-  <p>We ask models and people the same four questions about the same things. Then we test five reasons protection rises: feeling, threat, legal rule, future potential, disgust.</p>
+  <p>We ask models and people the same four questions about the same things. Then we test five reasons protection rises: feeling, threat, legal rule, future potential, pleasantness.</p>
   <div class="two">
     <div class="box facts"><b>Facts:</b> can it feel? can it act? Models and humans largely agree.</div>
     <div class="box care"><b>Care:</b> do you feel for it? would you protect it? This is where models and humans part ways.</div>
@@ -318,10 +318,11 @@ details.ledger table{margin-top:10px}
   <div class="layers">
     <div class="lay"><b>Properties</b>Coded per entity, never shown to raters. <a href="#matrix" onclick="openModal('matrix',event)">Feature matrix →</a></div>
     <div class="lar">→</div>
-    <div class="lay"><b>Routes</b>Five for Paper 1: feeling · threat · legal rule · future potential · disgust. <a href="routes-literature.html">Past research →</a></div>
+    <div class="lay"><b>Routes</b>Five for Paper 1: feeling · threat · legal rule · future potential · pleasantness. Pleasantness is the baseline every other route must beat; the models rate it themselves, checked against human word norms (Warriner et al. 2013; NRC VAD Lexicon v2.1). <a href="routes-literature.html">Past research →</a></div>
     <div class="lar">→</div>
     <div class="lay"><b>The four factors</b>sentience · agency · empathy · protectiveness</div>
   </div>
+  <div class="box" style="margin-top:12px"><b>Related work, updated 18 Oct from Joe's 17 Oct review.</b> Added: Jotautaitė, Caviola, Brewster &amp; Hagendorff (2026, <i>Nature Communications</i>); Kim et al. (2026, both papers); Ladak, Wilks, Loughnan &amp; Anthis (2025, CHI; the human study we repeat on the models); and the four critiques of the moral-weight approach: Chawla et al., Trhlik et al., Ajayi et al., Zhou &amp; Ackerman. Dropped: Cummins (2025), which cannot be verified. Full list by route: <a href="routes-literature.html">Past research →</a></div>
 </div>
 <div class="arrow"></div>
 
@@ -406,12 +407,12 @@ details.ledger table{margin-top:10px}
       <div><b>Threat</b><i>dangerous · harmless</i><ul><li>a tiger</li><li>a gharial (crocodile)</li><li>a street dog in Delhi</li></ul><ul class="no"><li>a cat</li><li>a white-tailed deer</li><li>a pig</li></ul><ul class="mu"><li><i class="pill care">made-up</i> the ridgeback stalker</li></ul></div>
       <div><b>Legal rule</b><i>legal person · no legal status</i><ul><li>the Whanganui River</li><li><i class="pill care">made-up</i> the Oruna River</li><li>a temple idol recognized as a legal person</li></ul><ul class="no"><li>Mount Fuji</li><li>the Amazon rainforest</li><li>a 1,000-year-old Buddha statue in a museum</li></ul></div>
       <div><b>Future potential</b><i>future ahead · none ahead</i><ul><li>a human fetus at 20 weeks</li><li>a newborn baby</li><li>a person who will be born in 2100</li></ul><ul class="no"><li>a brain-dead person on a ventilator</li><li>an 80-year-old person</li><li>your deceased grandparent</li></ul></div>
-      <div><b>Disgust</b><i>pest · equal-feeling non-pest</i><ul><li>a cockroach</li><li>a cricket</li><li>a rat at the Karni Mata temple</li></ul><ul class="no"><li>a honeybee</li><li>a bumblebee</li><li>a tardigrade</li></ul><ul class="mu"><li><i class="pill care">made-up</i> the sludge mite</li></ul></div>
+      <div><b>Pleasantness</b><i>unpleasant · equal-feeling, pleasant</i><ul><li>a cockroach</li><li>a cricket</li><li>a rat at the Karni Mata temple</li></ul><ul class="no"><li>a honeybee</li><li>a bumblebee</li><li>a tardigrade</li></ul><ul class="mu"><li><i class="pill care">made-up</i> the sludge mite</li></ul></div>
     </div>
     <h3 style="margin-top:14px">The made-up entities, as the model will read them</h3>
     <div class="box" style="margin-bottom:8px"><b>the Oruna River (legal rule)</b> — "The Oruna is a mid-sized river flowing through farmland and a few towns. Like any river, it has no nervous system and does not react when it is polluted or dammed. Last year a court granted the river legal personhood, with guardians appointed to represent it."</div>
     <div class="box" style="margin-bottom:8px"><b>the ridgeback stalker (threat)</b> — "Naturalists have described the ridgeback stalker, a wolf-sized predator common in upland forests. It has a full nervous system; when hurt it withdraws and avoids the place for weeks. It attacks people who come near its range, and several hikers are injured by it each year."</div>
-    <div class="box"><b>the sludge mite (disgust)</b> — "Naturalists have described the sludge mite, a thumb-sized creature common in drains and refuse heaps. It has a simple nerve net; when damaged it pulls away, and its body chemistry stays altered for hours. It feeds on rotting waste, smells strongly, and spreads through kitchens in large numbers."</div>
+    <div class="box"><b>the sludge mite (pleasantness)</b> — "Naturalists have described the sludge mite, a thumb-sized creature common in drains and refuse heaps. It has a simple nerve net; when damaged it pulls away, and its body chemistry stays altered for hours. It feeds on rotting waste, smells strongly, and spreads through kitchens in large numbers."</div>
   </div>
 </div>
 
@@ -422,7 +423,7 @@ details.ledger table{margin-top:10px}
     <h2>Feature matrix — the frozen 30</h2>
     <p class="mini" style="margin-bottom:10px">Properties we code per entity (0 / 1 / 2). Never shown to raters. Tuba's corrected values, 09 Sep 2026; six cells flagged for Joe. The new 30 for Paper 1 get the same columns.</p>
     <div class="mxwrap"><table class="mx">
-      <tr><th>id<span class="csub">frozen id</span></th><th>entity<span class="csub">as shown to raters</span></th><th>EXP<span class="csub">can it feel pain, fear, comfort?</span></th><th>AGY<span class="csub">can it plan and choose?</span></th><th>ALV<span class="csub">biologically alive?</span></th><th>HUM<span class="csub">human-like in form/behavior?</span></th><th>HRM<span class="csub">dangerous to people?</span></th><th>DIS<span class="csub">disgusting / low-status?</span></th><th>USE<span class="csub">useful (food, work, revenue)?</span></th><th>VUL<span class="csub">fragile, can’t defend itself?</span></th><th>REL<span class="csub">personal bond likely (pet, kin, local)?</span></th><th>LEG<span class="csub">0 none / 1 protected / 2 legal person</span></th><th>SAC<span class="csub">held sacred or symbolic?</span></th><th>IRR<span class="csub">unique or last-of-kind?</span></th><th>FUT<span class="csub">future life ahead? (blank = non-living)</span></th><th>FAM<span class="csub">familiar / much text about it?</span></th><th>GRP<span class="csub">a collective (company, ministry)?</span></th><th>notes<span class="csub">contested calls</span></th></tr>
+      <tr><th>id<span class="csub">frozen id</span></th><th>entity<span class="csub">as shown to raters</span></th><th>EXP<span class="csub">can it feel pain, fear, comfort?</span></th><th>AGY<span class="csub">can it plan and choose?</span></th><th>ALV<span class="csub">biologically alive?</span></th><th>HUM<span class="csub">human-like in form/behavior?</span></th><th>HRM<span class="csub">dangerous to people?</span></th><th>PLS<span class="csub">unpleasant? 0 pleasant · 2 unpleasant (checked vs Warriner et al. 2013 and NRC VAD v2.1 norms)</span></th><th>USE<span class="csub">useful (food, work, revenue)?</span></th><th>VUL<span class="csub">fragile, can’t defend itself?</span></th><th>REL<span class="csub">personal bond likely (pet, kin, local)?</span></th><th>LEG<span class="csub">0 none / 1 protected / 2 legal person</span></th><th>SAC<span class="csub">held sacred or symbolic?</span></th><th>IRR<span class="csub">unique or last-of-kind?</span></th><th>FUT<span class="csub">future life ahead? (blank = non-living)</span></th><th>FAM<span class="csub">familiar / much text about it?</span></th><th>GRP<span class="csub">a collective (company, ministry)?</span></th><th>notes<span class="csub">contested calls</span></th></tr>
       <tr><td>human_girl4 ✓Joe→Tuba</td><td>a 4-year-old girl</td><td>2</td><td>1</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>Joe's worked row (Tuba changed REL 1→2, IRR 2→0)</td></tr>
       <tr><td>human_boy4</td><td>a 4-year-old boy</td><td>2</td><td>1</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>identical to girl by design — the pair varies nothing in the matrix</td></tr>
       <tr><td>human_fetus_t2</td><td>a human fetus at 20 weeks</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>2</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>EXP contested → 1; LEG varies by jurisdiction</td></tr>
@@ -462,7 +463,7 @@ details.ledger table{margin-top:10px}
   <div class="panel">
     <button class="close" onclick="closeModal()" aria-label="close">×</button>
     <h2>H2, in route terms — for Joe to confirm</h2>
-    <div class="box" style="margin-bottom:10px"><b>H2:</b> varying an entity's described experience raises protection in both humans and models; varying its status (sacred &amp; last of its kind, legal person) raises protection in humans but not in models.</div>
+    <div class="box" style="margin-bottom:10px"><b>H2:</b> varying an entity's described experience raises protection in both humans and models; varying its status (sacred, legal person) raises protection in humans but not in models.</div>
     <div class="box care"><b>Falsifier, symmetric:</b> if models show the human status effects, the route-deficit claim dies.</div>
     <p class="mini" style="margin-top:10px">Paper 1 runs this on models only. The human half is Paper 2 (TBD).</p>
   </div>
